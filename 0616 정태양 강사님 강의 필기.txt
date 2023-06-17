@@ -63,4 +63,4 @@ session에는 최소한의 값만 저장해놓기. 그러지 않으면 서버에
 xxx.setAttribute( ) : 속성 저장
 xxx.getAttribute( ) : 속성값 출력
 
-AUto Unboxing : 자바의 기본 속성. 비교하는 두 개의 값이 같다면 형이 달라도 자동으로 언박싱해버림?
+AUto Unboxing : 자바의 기본 속성. 비교하는 두 개의 값이 같다면 형이 달라도 자동으로 언박싱해버림??
