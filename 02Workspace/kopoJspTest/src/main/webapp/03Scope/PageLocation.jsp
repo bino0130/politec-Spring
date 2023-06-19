@@ -1,11 +1,11 @@
 <%@ page import = "common.Person" %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Page ¿µ¿ª</title>
+<meta charset="UTF-8">
+<title>Page ì˜ì—­</title>
 </head>
 <body>
 <%
@@ -14,14 +14,14 @@
 //out.println(pageContext.getAttribute("pagePerson"));
 
 Object pPageInt = pageContext.getAttribute("pageInt");
-// intÇü°ú IntegerÇüÀÌ ¸¸³ª¸é ÀÚ¹Ù ½Ã½ºÅÛ¿¡¼­ IntegerÇüÀ» Auto UnBoxingÇØ¼­ int¿¡ IntegerÀÇ °ªÀÌ µé¾î°£´Ù.
+// intí˜•ê³¼ Integerí˜•ì´ ë§Œë‚˜ë©´ ìë°” ì‹œìŠ¤í…œì—ì„œ Integerí˜•ì„ Auto UnBoxingí•´ì„œ intì— Integerì˜ ê°’ì´ ë“¤ì–´ê°„ë‹¤.
 Object pString = pageContext.getAttribute("pageStr");
 Object pPerson = pageContext.getAttribute("pagePerson");
 %>
 <ul>
-	<li>Integer Obj = <%= (pPageInt == null) ? "°ª ¾øÀ½" : pPageInt %></li>
-	<li>String Obj = <%= (pString == null) ? "°ª ¾øÀ½" : pString %></li>
-	<li>Person Obj = <%= (pPerson == null) ? "°ª ¾øÀ½" : ((Person)pPerson).getName() %></li>
+	<li>Integer Obj = <%= (pPageInt == null) ? "ê°’ ì—†ìŒ" : pPageInt %></li>
+	<li>String Obj = <%= (pString == null) ? "ê°’ ì—†ìŒ" : pString %></li>
+	<li>Person Obj = <%= (pPerson == null) ? "ê°’ ì—†ìŒ" : ((Person)pPerson).getName() %></li>
 </ul>
 </body>
 </html>

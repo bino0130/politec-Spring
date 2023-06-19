@@ -1,26 +1,26 @@
 <%@ page import="common.Person" %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%
-pageContext.setAttribute("pageInt", 10); // pageInt°¡ key, 10ÀÌ value
-pageContext.setAttribute("pageStr", "ÆäÀÌÁöÀúÀå"); // pageStrÀÌ key, "ÆäÀÌÁöÀúÀå"ÀÌ value
-pageContext.setAttribute("pagePerson", new Person("kopo", 50)); // pagePersonÀÌ key, new PersonÀÌ value
+pageContext.setAttribute("pageInt", 10); // pageIntê°€ key, 10ì´ value. ì»´íŒŒì¼ëŸ¬ê°€ ì›ì‹œ ë°ì´í„°íƒ€ì…(ê°ì²´í˜•)ìœ¼ë¡œ ë°ì´í„°í˜•ì„ ì •í•¨
+pageContext.setAttribute("pageStr", "í˜ì´ì§€ì €ì¥"); // pageStrì´ key, "í˜ì´ì§€ì €ì¥"ì´ value
+pageContext.setAttribute("pagePerson", new Person("kopo", 50)); // pagePersonì´ key, new Personì´ value
 %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<h2>page °ª °¡Á®¿Í¼­ Ãâ·ÂÇÏ±â</h2>
+<h2>page ê°’ ê°€ì ¸ì™€ì„œ ì¶œë ¥í•˜ê¸°</h2>
 <%
 //out.println(pageContext.getAttribute("pageInt"));
 //out.println(pageContext.getAttribute("pageStr"));
 //out.println(pageContext.getAttribute("pagePerson"));
 
 int pPageInt = (Integer)(pageContext.getAttribute("pageInt"));
-// intÇü°ú IntegerÇüÀÌ ¸¸³ª¸é ÀÚ¹Ù ½Ã½ºÅÛ¿¡¼­ IntegerÇüÀ» Auto UnBoxingÇØ¼­ int¿¡ IntegerÀÇ °ªÀÌ µé¾î°£´Ù.
+// intí˜•ê³¼ Integerí˜•ì´ ë§Œë‚˜ë©´ ìë°” ì‹œìŠ¤í…œì—ì„œ Integerí˜•ì„ Auto UnBoxingí•´ì„œ intì— Integerì˜ ê°’ì´ ë“¤ì–´ê°„ë‹¤.
 String pString = pageContext.getAttribute("pageStr").toString();
 Person pPerson = (Person)(pageContext.getAttribute("pagePerson"));
 %>
@@ -30,10 +30,10 @@ Person pPerson = (Person)(pageContext.getAttribute("pagePerson"));
 	<li>Person Obj = <%= pPerson.getName() %>, <%= pPerson.getAge() %></li>
 </ul>
 
-<h2>include µÈ ÆäÀÌÁö¿¡¼­ Ãâ·Â°ª È®ÀÎ</h2>
+<h2>include ëœ í˜ì´ì§€ì—ì„œ ì¶œë ¥ê°’ í™•ì¸</h2>
 <%@ include file = "PageInclude.jsp" %>
 
-<h2>´Ü¼ø ÆäÀÌÁö ÀÌµ¿ ÈÄ pageContext µ¥ÀÌÅÍ È®ÀÎ</h2>
-<a href="PageLocation.jsp">PageLocation.jsp ¹Ù·Î°¡±â</a>
+<h2>ë‹¨ìˆœ í˜ì´ì§€ ì´ë™ í›„ pageContext ë°ì´í„° í™•ì¸</h2>
+<a href="PageLocation.jsp">PageLocation.jsp ë°”ë¡œê°€ê¸°</a>
 </body>
 </html>

@@ -1,10 +1,10 @@
 <%@ page import="common.Person" %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Include Page</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
 //out.println(pageContext.getAttribute("pagePerson"));
 
 int pPageInt2 = (Integer)(pageContext.getAttribute("pageInt"));
-// intÇü°ú IntegerÇüÀÌ ¸¸³ª¸é ÀÚ¹Ù ½Ã½ºÅÛ¿¡¼­ IntegerÇüÀ» Auto UnBoxingÇØ¼­ int¿¡ IntegerÀÇ °ªÀÌ µé¾î°£´Ù.
+// intí˜•ê³¼ Integerí˜•ì´ ë§Œë‚˜ë©´ ìžë°” ì‹œìŠ¤í…œì—ì„œ Integerí˜•ì„ Auto UnBoxingí•´ì„œ intì— Integerì˜ ê°’ì´ ë“¤ì–´ê°„ë‹¤.
 //String pString = pageContext.getAttribute("pageStr").toString();
 Person pPerson2 = (Person)(pageContext.getAttribute("pagePerson"));
 %>
