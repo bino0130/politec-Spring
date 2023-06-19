@@ -1,0 +1,30 @@
+0619 정태양 강사님 강의 필기
+
+response.sendRedirect : 우회해서 view를 전달하는 느낌
+어떤 데이터를 첨가해서 보낼 때는 forward, forward를 사용할 때는 getRequestDispatcher 사용
+ex) request.getRequestDispatcher( ).forward( )
+
+session : 서버에 개인 클라이언트에 대한 영역을 분리해놓고 개개인의 정보를 따로 저장
+세션에는 최소한의 필요한 정보를 저장해야한다. 너무 많은 데이터를 세션에 저장하면 서버에 과부하가 걸리기 때문
+
+dto : Data Transfer Object (데이터 전달 객체)
+
+pageContext 안에 있는 데이터는 해당 페이지 안에서만 활용 가능하고, 다른 페이지에서는 활용이 불가능하다.
+다른 페이지에서 활용하고자 한다면 include를 사용해서 데이터를 공유해야함
+
+pageContext.setAttribute(변수명, 변수의 값) -> 값 저장
+pageContext.getAttribute(변수명) -> 값 가져오기
+
+Session : 웹페이지를 열어서 닫을때까지 데이터를 공유(로그인 유지), 웹페이지를 닫으면 로그아웃
+
+Application : Web서버가 처음 만들어질때 생성되고, 요청하는 모든 페이지에서 접근 가능하다.
+Web 페이지를 닫았다가 다시 열어도 데이터가 유지된다.
+
+쿠키 : 클라이언트의 상태정보를 유지하기 위한 기술 (session과 비슷함).
+* session과의 차이점 : 세션(session)은 웹 서버에 저장, 쿠키(cookie)는 클라이언트 정보에 key,value형태로 저장
+
+void setValue(String value) : 쿠키 값 세팅
+void setDomain(String domain)
+void setPath(String path)
+vod setMaxage(int expire_seconds)
+new Cookie(String name, String value)
