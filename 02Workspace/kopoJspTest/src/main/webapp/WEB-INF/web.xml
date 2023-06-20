@@ -10,7 +10,7 @@
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
   
-<!--   <context-param>
+<!-- <context-param>
   	<param-name>INIT_PARAM</param-name>
   	<param-value>나야 초기화변수</param-value>
   </context-param>
@@ -23,7 +23,27 @@
   <context-param>
   	<param-name>INIT_PARAM3</param-name>
   	<param-value>나야 초기화변수3</param-value>
-  </context-param>  -->
+  </context-param> -->
+  
+  <context-param>
+  	<param-name>OracleDriver</param-name>
+  	<param-value>oracle.jdbc.OracleDriver</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>OracleUrl</param-name>
+  	<param-value>jdbc:oracle:thin:@localhost:1521:xe</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>OracleId</param-name>
+  	<param-value>kopo</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>OraclePwd</param-name>
+  	<param-value>1234</param-value>
+  </context-param>
   
 <!--   <error-page>
   	<error-code>404</error-code>
