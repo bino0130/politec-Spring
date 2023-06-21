@@ -26,9 +26,9 @@ JDBConnect jdbc2 = new JDBConnect(driver, url, id, pwd); // 접속 시도
 jdbc2.close(); // 해제 시도
 %>
 
-<h2>JDBC TEST 3</h2>
+<h2>JDBC TEST 3</h2> 
 <%
-JDBConnect jdbc3 = new JDBConnect(application); // 접속 시도
+JDBConnect jdbc3 = new JDBConnect(application); // 접속 시도 (어플리케이션을 직접 넘김)
 jdbc3.close(); // 해제 시도
 %>
 

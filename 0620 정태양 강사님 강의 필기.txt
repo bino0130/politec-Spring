@@ -1,0 +1,20 @@
+0620 정태양 강사님 강의 필기
+
+grant connect, resource to userID : Role 설정
+
+- DBA : All
+- Connect : DB 접속허용
+- Resource : Obj(Table, View, ...) 생성허용
+
+JDBC 연결방법
+1. tomcat에서 추가 -> 한번 추가해놓으면 모든 웹 개발문서에 적용됨(편함).
+   문제는 배포할 때 또 다시 해줘야 한다는 점
+2. 개별 프로젝트마다 적용 -> 할 때는 번거롭지만 배포 시 까먹을 일은 없음
+
+C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib에 있는 ojdbc6파일을
+이클립스 프로젝트의 Web_inf -> lib 폴더 안에 복사
+
+Statement : Inparameter x
+PreparedStatement : Inparameter o
+* Inparameter : 쿼리문을 작성할 때 중간에 ?가 들어가는 부분.
+ex) String sql="select * from student where name=? order by no";
