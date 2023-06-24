@@ -11,4 +11,4 @@ session,setAttribute로 값을 저장하고 session.getAttribute로 값을 가�
 2. 특정 세션의 유지시간을 설정
 
 DTO : 데이터 교환 객체 (값만 만들어놓고 가져다 쓸 수 있게 함)
-DAO : 데이터 접근(access) 객체
+DAO : 데이터 접근(access) 객체 
