@@ -1,12 +1,14 @@
-package alcohol;
+package iqr;
 
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+
 import org.apache.commons.math3.distribution.TDistribution;
 import org.apache.commons.math3.stat.regression.OLSMultipleLinearRegression;
+
 import com.opencsv.CSVReader;
 
-public class alcoholRA {
+public class csvIQR {
 
    private static int coefficientCount = 3;
    private static int lineCount = 122;
@@ -42,8 +44,11 @@ public class alcoholRA {
       } catch (Exception e) {
          e.printStackTrace();
       }
-      multipleRegressionTest(xArray, yArray);
 
+      // IQR을 사용하여 아웃라이어 제거
+      double[] filteredYArray = removeOutliers(yArray, xArray);
+
+      multipleRegressionTest(xArray, filteredYArray);
    }
 
    public static void multipleRegressionTest(double[][] xArray, double[] yArray) {
@@ -96,6 +101,35 @@ public class alcoholRA {
             } else {
                 System.out.println("Regression coefficient " + (i + 1) + " is not significant.");
             }
-        }             
+        }
+   }
+
+   public static double[] removeOutliers(double[] yArray, double[][] xArray) {
+      double[] filteredYArray = yArray.clone();
+      double[][] filteredXArray = xArray.clone();
+
+      double Q1 = calculatePercentile(filteredYArray, 0.25);
+      double Q3 = calculatePercentile(filteredYArray, 0.75);
+      double IQR = Q3 - Q1;
+      double upperThreshold = Q3 + 1.5 * IQR;
+      double lowerThreshold = Q1 - 1.5 * IQR;
+
+      int newCount = 0;
+      for (int i = 0; i < filteredYArray.length; i++) {
+         if (filteredYArray[i] >= lowerThreshold && filteredYArray[i] <= upperThreshold) {
+            filteredYArray[newCount] = filteredYArray[i];
+            filteredXArray[newCount] = filteredXArray[i];
+            newCount++;
+         }
+      }
+
+      // 필터링된 배열 반환
+      return java.util.Arrays.copyOf(filteredYArray, newCount);
+   }
+
+   public static double calculatePercentile(double[] array, double percentile) {
+      java.util.Arrays.sort(array);
+      int index = (int) (array.length * percentile);
+      return array[index];
    }
 }
