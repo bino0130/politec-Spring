@@ -69,4 +69,68 @@ public class BoardDAO extends JDBConnect{
 		
 		return bbs;
 	}
+	
+	public int insertWrite(BoardDTO dto) {
+		int result = 0;
+		try {
+			String query = "insert into board"
+					+ "(num, title, content, id, visitcount)"
+					+ "values"
+					+ "(seq_board_num.NEXTVAL, ?, ?, ?, 0)";
+			// inparameter가 있을 때는 psmt, inparameter가 없을때는 stmt
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, dto.getTitle());
+			psmt.setString(2, dto.getTitle());
+			psmt.setString(3, dto.getTitle());
+			
+			result = psmt.executeUpdate();
+			System.out.println("result = " + result);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	public BoardDTO selectView(String num) {
+		BoardDTO dto = new BoardDTO();
+		String query = "select B.*, M.name "
+					 + "from member M inner join board B "
+					 + "on M.id = B.id "
+					 + "where num=?";
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, num);
+			rs = psmt.executeQuery(); // 쿼리 실행
+			
+			if (rs.next()) {
+				dto.setNum(rs.getString(1));
+				dto.setTitle(rs.getString(2));
+				dto.setContent(rs.getString(3));
+				dto.setPostdate(rs.getDate("postdate"));
+				dto.setId(rs.getString(4));
+				dto.setVisitcount(rs.getString(6));
+				dto.setName(rs.getString("name"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+	
+	public void updateVisitCount(String num) {
+		String query = "update board set"
+					 + "visitcount = visitcount + 1"
+					 + "where num = ?";
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, num);
+			psmt.executeQuery(); // 리턴값을 돌려주지 않음
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
