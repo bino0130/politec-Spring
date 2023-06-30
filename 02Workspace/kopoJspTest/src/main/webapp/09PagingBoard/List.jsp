@@ -1,6 +1,7 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.HashMap"%>
 <%@ page import="java.util.Map"%>
+<%@ page import="utils.BoardPage" %>
 <%@ page import="model1.BoardDAO"%>
 <%@ page import="model1.BoardDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -19,7 +20,28 @@ if (searchWord != null) {
 }
 
 int totalCount = dao.selectCount(param);  // 게시물 수 확인
-List<BoardDTO> boardLists = dao.selectList(param);  // 게시물 목록 받기
+
+/* 페이지 처리 시작*/
+// 전체 페이지 수 계산
+int pageSize = Integer.parseInt(application.getInitParameter("POSTS_PER_PAGE"));
+int blockPage = Integer.parseInt(application.getInitParameter("PAGES_PER_BLOCK"));
+int totalPage = (int) Math.ceil( (double) totalCount / pageSize); // 전체 페이지 수
+
+// 현재 페이지 확인
+int pageNum = 1;
+String pageTemp = request.getParameter("pageNum");
+if(pageTemp != null && !pageTemp.equals("")) {
+	pageNum = Integer.parseInt(pageTemp); // 요청받은 페이지 수로 수정
+}
+
+// 목록에 보여질 게시물 범위 확인
+int start = (pageNum - 1) * pageSize + 1;
+int end = pageNum * pageSize;
+param.put("start", start);
+param.put("end", end);
+/* 페이지 처리 끝 */
+
+List<BoardDTO> boardLists = dao.selectListPage(param);  // 게시물 목록 받기
 dao.close();  // DB 연결 닫기
 %>
 <!DOCTYPE html>
@@ -31,7 +53,7 @@ dao.close();  // DB 연결 닫기
 <body>
     <jsp:include page="../Common/Link.jsp" />  <!-- 공통 링크 -->
 
-    <h2>목록 보기(List)</h2>
+    <h2>목록 보기 - <%= pageNum %> / <%= totalPage %></h2>
     <!-- 검색폼 --> 
     <form method="get">  
     <table border="1" width="90%">
@@ -68,13 +90,15 @@ if (boardLists.isEmpty()) {
             </td>
         </tr>
 <%
-}
-else {
+} else {
     // 게시물이 있을 때 
     int virtualNum = 0;  // 화면상에서의 게시물 번호
+    int countNum = 0;
+    
     for (BoardDTO dto : boardLists)
     {
-        virtualNum = totalCount--;  // 전체 게시물 수에서 시작해 1씩 감소
+        //virtualNum = totalCount--;  // 전체 게시물 수에서 시작해 1씩 감소
+        virtualNum = totalCount - (((pageNum - 1) * pageSize) + countNum++);
 %>
         <tr align="center">
             <td><%= virtualNum %></td>  <!--게시물 번호-->
@@ -92,7 +116,11 @@ else {
     </table>
     <!--목록 하단의 [글쓰기] 버튼-->
     <table border="1" width="90%">
-        <tr align="right">
+        <tr align="center">
+        	<td>
+        		<%= BoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, 
+        				request.getRequestURI()) %>
+        	</td>
             <td><button type="button" onclick="location.href='Write.jsp';">글쓰기
                 </button></td>
         </tr>
