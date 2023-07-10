@@ -20,5 +20,18 @@ varStatus 사용 가능 -> rgba를 향상된 for문 형식으로 varStatus를 �
 <c:forEach items="<%= rgba %>" var="c">
 	<span style="color:${c};">${c }</span>
 </c:forEach>
+
+<h4> varStatus 속성</h4>
+<table border="1">
+	<c:forEach items="<%= rgba %>" var="c" varStatus="loop">
+		<tr>
+        	<td>count : ${loop.count }</td>
+        	<td>index : ${loop.index }</td>
+        	<td>current : ${loop.current }</td>
+        	<td>first : ${loop.first }</td>
+        	<td>last : ${loop.last }</td>
+      </tr>
+	</c:forEach>
+</table>
 </body>
 </html>
