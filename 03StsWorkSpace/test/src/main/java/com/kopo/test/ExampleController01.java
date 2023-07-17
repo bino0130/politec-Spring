@@ -24,7 +24,7 @@ public class ExampleController01 {
 	
 	@RequestMapping
 	public void requestMethod() {
-		System.out.println("@RequestMapping 예제");
+		System.out.println("@RequestMapping 클래스 수준의 매핑 예제");
 		System.out.println("웹 요청은 /exam01");
 	}
 }
