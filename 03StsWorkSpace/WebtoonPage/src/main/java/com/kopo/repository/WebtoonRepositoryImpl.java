@@ -35,6 +35,10 @@ public class WebtoonRepositoryImpl implements WebtoonRepository {
 		webtoon3.setReleaseDay("월요일");;
 		webtoon3.setWebsite("naver");
 		webtoon3.setGenre("드라마");
+		
+		listOfWebtoons.add(webtoon1);
+		listOfWebtoons.add(webtoon2);
+		listOfWebtoons.add(webtoon3);
 	}
 	
 	@Override

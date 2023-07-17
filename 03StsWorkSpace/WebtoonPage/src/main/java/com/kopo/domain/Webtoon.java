@@ -1,7 +1,7 @@
 package com.kopo.domain;
 
 public class Webtoon {
-	private String webtoonName;
+	private String name;
 	private String imagePath;
 	private String ranking;
 	private String website;
@@ -12,9 +12,9 @@ public class Webtoon {
 	private String condition;
 	private String genre;
 	
-	public Webtoon(String webtoonName, String imagePath) {
+	public Webtoon(String name, String imagePath) {
 		super();
-		this.webtoonName = webtoonName;
+		this.name = name;
 		this.imagePath = imagePath;
 	}
 	
@@ -28,11 +28,11 @@ public class Webtoon {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	public String getWebtoonName() {
-		return webtoonName;
+	public String getName() {
+		return name;
 	}
-	public void setWebtoonName(String webtoonName) {
-		this.webtoonName = webtoonName;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getImagePath() {
 		return imagePath;

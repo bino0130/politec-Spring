@@ -11,10 +11,10 @@
 	<!-- 서버상의 변경 : 2번째 자리 올림 -->
 	<!-- 변경사항이 많거나, 재배포가 되어야 할때는 1번째 자리 올림 -->
 	<properties>
-		<java-version>1.6</java-version>
-		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
-		<org.aspectj-version>1.6.10</org.aspectj-version>
-		<org.slf4j-version>1.6.6</org.slf4j-version>
+		<java-version>15</java-version>
+		<org.springframework-version>5.2.8.RELEASE</org.springframework-version>
+		<org.aspectj-version>1.9.6</org.aspectj-version>
+		<org.slf4j-version>1.7.25</org.slf4j-version>
 	</properties>
 	<dependencies> <!-- dependencies == Maven Dependencies의 Dependencies -->
 		<!-- Spring -->
