@@ -1,0 +1,48 @@
+느슨한 결합
+
+의존성 주입 (Dependency Injection) : DI -> 객체 간의 의존성을 줄인다. = 느슨한 결합 생성
+관점 지향 프로그래밍 (Aspect Oriented Programming) : AOP
+
+이 둘의 목표 : 느슨한 결합을 지향
+
+public class A { // 생성자 의존성 주입
+   private B b;
+   public A(B b) {
+     this.b = b;
+ }
+}
+
+public class A { // Setter 메서드 의존성 주입
+   private B b;
+   public void setB(B b) {
+       this.b = b;
+  }
+}
+
+Interface 구조를 활용한 의존 관계 생성 : 인터페이스 구현체
+
+public class A {
+   public A( ) {
+       b = new b( );
+  }
+}
+
+(== abstract)
+public interface B {
+}
+
+public class A {
+  public A( ) {
+     b = new B( );
+ }
+}
+
+인터페이스를 사용하면 수정이 용이하다.
+
+도메인: 데이터 모델, 객체 정보 저장
+퍼시스턴스 계층 : 데이터 액세스 계층, 데이터 처리
+서비스 계층 : 비즈니스 계층, 애플리케이션이 제공하는 전반적인 서비스를 처리, 
+	     프레젠테이션 계층과 퍼시스턴스 계층을 연결하는 역할
+프레젠테이션 계층 : 애플리케이션 최종 접점
+-> 사용자에게 데이터를 입력받거나, 결과를 웹으로 전달해주는 계층
+-> 처리와 결과를 담당하는 계층
