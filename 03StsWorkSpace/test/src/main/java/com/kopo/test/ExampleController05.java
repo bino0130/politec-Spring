@@ -1,13 +1,13 @@
 package com.kopo.test;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/home")
-public class ExampleController04 {
+public class ExampleController05 {
 	/*
 	 * Model = 모델에 응답 데이터를 가짐
 	 * 
@@ -28,10 +28,10 @@ public class ExampleController04 {
 	 * ModelAndView = 모델 정보 & 뷰 정보를 저장
 	 */
 	
-	@GetMapping("/exam04")
-	public String requestMethod(Model model) {
-		model.addAttribute("data", "Model 예제");
-		model.addAttribute("data2", "웹 요청 : /home/exam04");
+	@GetMapping("/exam05")
+	public String requestMethod(ModelMap model) {
+		model.addAttribute("data", "ModelMap 예제");
+		model.addAttribute("data2", "웹 요청 : /home/exam05");
 		return "webpage05";
 	}
 }

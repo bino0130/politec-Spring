@@ -1,7 +1,10 @@
 package com.kopo.repository;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.springframework.stereotype.Repository;
 
@@ -74,6 +77,56 @@ public class BookRepositoryImpl implements BookRepository {
 	@Override
 	public List<Book> getAllBookList() {
 		return listOfBooks;
+	}
+
+	@Override
+	public List<Book> getBookListByCategory(String category) {
+		List<Book> booksByCategory = new ArrayList<Book>();
+		for (int i = 0; i < listOfBooks.size(); i++) {
+			Book book = listOfBooks.get(i);
+			if (category.equalsIgnoreCase(book.getCategory())) {
+				// equalsIgnoreCase : 대소문자 관계없이 문자열을 비교
+				booksByCategory.add(book);
+			}
+		}
+		
+		return booksByCategory;
+	}
+
+	
+	// ex) localhost:8082/controller/books/filter/bookFilter;author=스튜디오 지브리;category=미술
+	@Override
+	public Set<Book> getBookListByFilter(Map<String, List<String>> filter) {
+		// author & category가 동일한 도서만 리턴
+		Set<Book> booksByAuthor = new HashSet<Book>();
+		Set<Book> booksByCategory = new HashSet<Book>();
+		
+		Set<String> booksByFilter = filter.keySet(); // keySet: 전체 key 출력
+		
+		// author 검출 작업
+		if (booksByFilter.contains("author")) {
+			for (int i = 0; i < filter.get("author").size(); i++) {
+				String authorName = filter.get("author").get(i);
+				for (int j = 0; j < listOfBooks.size(); j++) {
+					Book book = listOfBooks.get(j);
+					
+					if (authorName.equalsIgnoreCase(book.getAuthor())) {
+						booksByAuthor.add(book);
+					}
+				}
+			}
+			
+			if (booksByFilter.contains("category")) {
+				for (int i = 0; i < filter.get("category").size(); i++) {
+					String category = filter.get("category").get(i);
+					List<Book> list = getBookListByCategory(category); // 만든 메서드 활용
+					booksByCategory.addAll(list);
+				}
+			}
+		}
+		
+		booksByCategory.retainAll(booksByAuthor);
+		return booksByCategory;
 	}
 	
 }

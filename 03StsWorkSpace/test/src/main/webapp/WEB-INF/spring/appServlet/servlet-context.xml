@@ -19,7 +19,8 @@
 	<!-- 			  (getter/setter의 setter과 비슷하다) -->
 	<!-- @Inject : 종속되지 않는 애플리케이션 -->
 	
-	<annotation-driven />
+	<!-- @MatrixVariable 설정가능토록 수정 -->
+	<annotation-driven enable-matrix-variables="true"/>
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />

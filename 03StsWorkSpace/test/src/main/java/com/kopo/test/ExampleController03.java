@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ExampleController03 {
 	/*
 	 * @RequestMapping의 단순화
-	 * 스프링 4.3버전부터 지원
+	 * 스프링 4.3버전부터 지원 
+	 * (처음 깔면 1.6 ~ 1.8버전이라 버전 springframework-version 업그레이드 필요)
 	 * GET 방식인 경우 @GetMapping 어노테이션 활용 가능(읽을 때 GET requestMapping이라고 읽음)
 	 * @GetMapping		- 요청이 get인 경우
 	 * @PostMapping		- 요청이 post
