@@ -10,21 +10,21 @@ public class ExampleController01 {
 	/*
 	 * @RequestMapping
 	 * 
-	 * value = ╠Б╨╩ ╦егн ╟Ф╥нюг юл╦╖
-	 * method = ╦егнгр http ©Дц╩ ╧Ф╫д (GET, POST, head, options, put, delete, trace)
-	 * name = ╦егн юл╦╖ аЖа╓
-	 * params = ╦егн╣х ©Дц╩ ╦е╟Ё╨╞╪Ж
-	 * path = ╟Ф╥н ╦егн url (╪╜╨М╦╢ х╞╟Ф©║╪╜╦╦ юШ©К)
+	 * value = Й╦╟КЁ╦ К╖╓М∙▒ Й╡╫К║°Л²≤ Л²╢К╕└
+	 * method = К╖╓М∙▒М∙═ http Л ■Л╡╜ К╟╘Л▀² (GET, POST, head, options, put, delete, trace)
+	 * name = К╖╓М∙▒ Л²╢К╕└ Л╖─Л═∙
+	 * params = К╖╓М∙▒К░° Л ■Л╡╜ К╖╓Й╟°КЁ─Л┬≤
+	 * path = Й╡╫К║° К╖╓М∙▒ url (Л└°К╦■К╕© М≥≤Й╡╫Л≈░Л└°К╖▄ Л═│Л ╘)
 	 * 
-	 * ╧Ф╧Щ 2╟║аЖ а╦юГ
-	 * 1. е╛╥║╫╨ ╪Жаьюг ╦егн (е╛╥║╫╨ ю╖©║ ╦егн юш╪╨)
-	 * 2. ╦ч╪╜╣Е ╪Жаьюг ╦егн (╦ч╪╜╣Е ю╖©║ ╦егн юш╪╨)
+	 * К╟╘К╡∙ 2Й╟─Л╖─ Л║╢Л·╛
+	 * 1. М│╢К·≤Л┼╓ Л┬≤Л╓─Л²≤ К╖╓М∙▒ (М│╢К·≤Л┼╓ Л°└Л≈░ К╖╓М∙▒ Л·▒Л└╠)
+	 * 2. К╘■Л└°К⌠° Л┬≤Л╓─Л²≤ К╖╓М∙▒ (К╘■Л└°К⌠° Л°└Л≈░ К╖╓М∙▒ Л·▒Л└╠)
 	 * 
 	 */
 	
 	@RequestMapping
 	public void requestMethod() {
-		System.out.println("@RequestMapping е╛╥║╫╨ ╪Жаьюг ╦егн ©╧а╕");
-		System.out.println("ю╔ ©Дц╩ю╨ /exam01");
+		System.out.println("@RequestMapping М│╢К·≤Л┼╓ Л┬≤Л╓─Л²≤ К╖╓М∙▒ Л≤┬Л═°");
+		System.out.println("Л⌡╧ Л ■Л╡╜Л²─ /exam01");
 	}
 }

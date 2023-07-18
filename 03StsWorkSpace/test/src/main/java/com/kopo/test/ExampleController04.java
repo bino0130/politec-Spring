@@ -9,29 +9,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/home")
 public class ExampleController04 {
 	/*
-	 * Model = ¸ğµ¨¿¡ ÀÀ´ä µ¥ÀÌÅÍ¸¦ °¡Áü
+	 * Model = ëª¨ë¸ì— ì‘ë‹µ ë°ì´í„°ë¥¼ ê°€ì§
 	 * 
-	 * ¸ğµ¨ Å¬·¡½º
-	 * Model = µ¥ÀÌÅÍ Á¤º¸¸¦ ÀúÀå -> ÀÎÅÍÆäÀÌ½º
-	 * ¿ªÇÒ : Á¦°øµÈ ÀÌ¸§À¸·Î Á¦°øµÈ ¼Ó¼ºÀ» µî·Ï
-	 * ¸Å°³º¯¼ö : (attributeName, attributeValue)
-	 * attributeName : ¼Ó¼ºÀÇ ÀÌ¸§ -> null ºÒÇã
-	 * attributeValue : ¼Ó¼ºÀÇ °ª -> null Çã¿ë
+	 * ëª¨ë¸ í´ë˜ìŠ¤
+	 * Model = ë°ì´í„° ì •ë³´ë¥¼ ì €ì¥ -> ì¸í„°í˜ì´ìŠ¤
+	 * ì—­í•  : ì œê³µëœ ì´ë¦„ìœ¼ë¡œ ì œê³µëœ ì†ì„±ì„ ë“±ë¡
+	 * ë§¤ê°œë³€ìˆ˜ : (attributeName, attributeValue)
+	 * attributeName : ì†ì„±ì˜ ì´ë¦„ -> null ë¶ˆí—ˆ
+	 * attributeValue : ì†ì„±ì˜ ê°’ -> null í—ˆìš©
 	 * 
-	 * ModelMap = µ¥ÀÌÅÍ Á¤º¸¸¦ ÀúÀå -> ±¸ÇöÃ¼
-	 * Model vs ModelMap : Â÷ÀÌ°¡ ÀÖÀ¸³ª, ½Ã½ºÅÛ¿¡¼­ Ã³¸®µÇ±â¿¡ °á°úÀûÀ¸·Î ¾î¶²°É »ç¿ëÇØµµ »ó°ü¾øÀ½
-	 * ¿ªÇÒ : Á¦°øµÈ ÀÌ¸§À¸·Î Á¦°øµÈ ¼Ó¼ºÀ» µî·Ï
-	 * ¸Å°³º¯¼ö : (attributeName, attributeValue)
-	 * attributeName : ¼Ó¼ºÀÇ ÀÌ¸§ -> null ºÒÇã
-	 * attributeValue : ¼Ó¼ºÀÇ °ª -> null Çã¿ë
+	 * ModelMap = ë°ì´í„° ì •ë³´ë¥¼ ì €ì¥ -> êµ¬í˜„ì²´
+	 * Model vs ModelMap : ì°¨ì´ê°€ ìˆìœ¼ë‚˜, ì‹œìŠ¤í…œì—ì„œ ì²˜ë¦¬ë˜ê¸°ì— ê²°ê³¼ì ìœ¼ë¡œ ì–´ë–¤ê±¸ ì‚¬ìš©í•´ë„ ìƒê´€ì—†ìŒ
+	 * ì—­í•  : ì œê³µëœ ì´ë¦„ìœ¼ë¡œ ì œê³µëœ ì†ì„±ì„ ë“±ë¡
+	 * ë§¤ê°œë³€ìˆ˜ : (attributeName, attributeValue)
+	 * attributeName : ì†ì„±ì˜ ì´ë¦„ -> null ë¶ˆí—ˆ
+	 * attributeValue : ì†ì„±ì˜ ê°’ -> null í—ˆìš©
 	 * 
-	 * ModelAndView = ¸ğµ¨ Á¤º¸ & ºä Á¤º¸¸¦ ÀúÀå
+	 * ModelAndView = ëª¨ë¸ ì •ë³´ & ë·° ì •ë³´ë¥¼ ì €ì¥
 	 */
 	
 	@GetMapping("/exam04")
 	public String requestMethod(Model model) {
-		model.addAttribute("data", "Model ¿¹Á¦");
-		model.addAttribute("data2", "À¥ ¿äÃ» : /home/exam04");
+		model.addAttribute("data", "Model ì˜ˆì œ");
+		model.addAttribute("data2", "ì›¹ ìš”ì²­ : /home/exam04");
 		return "webpage05";
 	}
 }

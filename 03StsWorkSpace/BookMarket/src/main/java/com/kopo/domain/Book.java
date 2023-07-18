@@ -1,24 +1,24 @@
 package com.kopo.domain;
 
-// DTO ¿ªÇÒ
+// DTO ì—­í• 
 public class Book {
-	private String bookId;		// µµ¼­ID
-	private String imgPath;		// ÀÌ¹ÌÁö °æ·Î
-	private String name;		// µµ¼­¸í
-	private int unitPrice;		// °¡°İ
-	private String author;		// ÀúÀÚ
-	private String description;	// ¼³¸í
-	private String publisher;	// ÃâÆÇ»ç
-	private String category;	// ºĞ·ù
-	private String unitsInstock;// Àç°í¼ö
-	private String releaseDate;	// ÃâÆÇÀÏ
-	private String condition;	// ½Å±Ô or Áß°í or ÀüÀÚÃ¥
+	private String bookId;		// ë„ì„œID
+	private String imgPath;		// ì´ë¯¸ì§€ ê²½ë¡œ
+	private String name;		// ë„ì„œëª…
+	private int unitPrice;		// ê°€ê²©
+	private String author;		// ì €ì
+	private String description;	// ì„¤ëª…
+	private String publisher;	// ì¶œíŒì‚¬
+	private String category;	// ë¶„ë¥˜
+	private String unitsInstock;// ì¬ê³ ìˆ˜
+	private String releaseDate;	// ì¶œíŒì¼
+	private String condition;	// ì‹ ê·œ or ì¤‘ê³  or ì „ìì±…
 
 	public Book() {
 		super();
 	}
 	
-	// ÀÏ¹İ »ı¼ºÀÚ
+	// ì¼ë°˜ ìƒì„±ì
 	public Book(String bookId, String name, int unitPrice) {
 		super();
 		this.bookId = bookId;

@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@Controller // Å¬·¡½º WelcomeController°¡ Controller¶ó°í ÁöÁ¤
+@Controller //WelcomeControllerì— Controller ì–´ë…¸í…Œì´ì…˜ ì§€ì •
 public class WelcomeController {
 	@RequestMapping(value = "/home", method=RequestMethod.GET)
 	public String welcome(Model model) {

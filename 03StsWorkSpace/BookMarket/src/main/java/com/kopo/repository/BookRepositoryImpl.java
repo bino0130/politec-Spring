@@ -10,63 +10,63 @@ import org.springframework.stereotype.Repository;
 
 import com.kopo.domain.Book;
 
-//private String bookId;		// µµ¼­ID
-//private String name;		// µµ¼­¸í
-//private int unitPrice;		// °¡°Ý
-//private String author;		// ÀúÀÚ
-//private String description;	// ¼³¸í
-//private String publisher;	// ÃâÆÇ»ç
-//private String category;	// ºÐ·ù
-//private String unitsInstock;// Àç°í¼ö
-//private String releaseDate;	// ÃâÆÇÀÏ
-//private String condition;	// ½Å±Ô or Áß°í or ÀüÀÚÃ¥
+//private String bookId;		// ë„ì„œID
+//private String name;		// ë„ì„œëª…
+//private int unitPrice;		// ê°€ê²©
+//private String author;		// ì €ìž
+//private String description;	// ì„¤ëª…
+//private String publisher;	// ì¶œíŒì‚¬
+//private String category;	// ë¶„ë¥˜
+//private String unitsInstock;// ìž¬ê³ ìˆ˜
+//private String releaseDate;	// ì¶œíŒì¼
+//private String condition;	// ì‹ ê·œ or ì¤‘ê³  or ì „ìžì±…
 
 @Repository
 public class BookRepositoryImpl implements BookRepository {
 	private List<Book> listOfBooks = new ArrayList<Book>();
 	
 	public BookRepositoryImpl() {
-		Book book1 = new Book("9791141108601", "½ºÆ©µð¿À Áöºê¸® ÀÔÃ¼°ÇÃàÀü µµ·Ï(º¹°¢ÆÇ)",  27000);
-		book1.setAuthor("½ºÆ©µð¿À Áöºê¸®");
-		book1.setDescription("³ª´Â °Ç¹°º¸´Ù °Ç¹° ¾È¿¡ ÀÖ´Â »ç¶÷¿¡°Ô °ü½ÉÀÌ ÀÖ´Â ÆíÀÔ´Ï´Ù. ¹° ¾È¿¡ »ç´Â »ç¶÷ÀÇ Çàµ¿¡¦ ¿¹¸¦ µé¾î ¾î´À µµ·Î ÁÖº¯¿¡ ¿À·¡ Àü¿¡ ¹®À» ´ÝÀº µíÇÑ »óÁ¡ÀÌ ÀÖ°í, ±× °£ÆÇ°ÇÃàÀÇ °Ç¹°¿¡ ÆäÀÎÆ®°¡ ¹þ°ÜÁø ½Î±¸·Á °£ÆÇÀÌ ´Þ·Á ÀÖ´Ù°í ÇÕ½Ã´Ù. Áö±ÝÀº ÀÌ·¸°Ô ³°°í ÃÊ¶óÇØÁø °¡°Ô¶óµµ, Ã³À½ ½ÃÀÛÇßÀ» ¶§ ÁÖÀÎÀº ¾ó¸¶³ª °¡½¿ µÎ±Ù°Å¸®¸ç ¼Õ´ÔÀÌ ¸¹¾ÒÀ¸¸é ÁÁ°Ú´Ù°í »ý°¢ÇßÀ»±î ¶óµçÁö, ±×¶§ °³¾÷±â³äÀ¸·Î ¼Õ´Ô µé¿¡°Ô ¹«¾ùÀ» ³ª´©¾î ÁÖ¾úÀ»±î ¶óµçÁö, ÀÌ·±Àú·± »ý°¢À» ÇÕ´Ï´Ù. ±×·±µ¥ ¼Õ´ÔÀÇ ¹ß±æÀÌ Á¡Á¡ ¶äÇØÁö°í, ±×·¯´Â »çÀÌ¿¡ ÁÖÀÎÀÌ º´¿¡ °É·Á¼­ °¡°Ô ¹®À» ´Ý´Â ¸ð½ÀÀÌ¶óµçÁö¡¦. ±×·± »ý°¢À» ÇÏ´Ù º¸¸é ´ë´ÜÇÑ °Ç¹°ÀÌ ¾Æ´Ï´õ¶óµµ Èï¹ÌÁøÁøÇÏ°Ô °Ç¹°À» º¼ ¼ö ÀÖÁö¿ä. ³» ¸Ú´ë·Î ¸Á»ó¿¡ Àá°Ü ÀÖÀ» »ÓÀÌÁö¸¸¿ä.\n- ¹Ì¾ßÀÚÅ° ÇÏ¾ß¿À -");
-		book1.setPublisher("ÇÐ»ê¹®È­»ç");
-		book1.setCategory("¹Ì¼ú");
-		book1.setUnitsInstock("¹ÌÈ®ÀÎ");
+		Book book1 = new Book("9791141108601", "ìŠ¤íŠœë””ì˜¤ ì§€ë¸Œë¦¬ ìž…ì²´ê±´ì¶•ì „ ë„ë¡(ë³µê°íŒ)",  27000);
+		book1.setAuthor("ìŠ¤íŠœë””ì˜¤ ì§€ë¸Œë¦¬");
+		book1.setDescription("ë‚˜ëŠ” ê±´ë¬¼ë³´ë‹¤ ê±´ë¬¼ ì•ˆì— ìžˆëŠ” ì‚¬ëžŒì—ê²Œ ê´€ì‹¬ì´ ìžˆëŠ” íŽ¸ìž…ë‹ˆë‹¤. ë¬¼ ì•ˆì— ì‚¬ëŠ” ì‚¬ëžŒì˜ í–‰ë™â€¦ ì˜ˆë¥¼ ë“¤ì–´ ì–´ëŠ ë„ë¡œ ì£¼ë³€ì— ì˜¤ëž˜ ì „ì— ë¬¸ì„ ë‹«ì€ ë“¯í•œ ìƒì ì´ ìžˆê³ , ê·¸ ê°„íŒê±´ì¶•ì˜ ê±´ë¬¼ì— íŽ˜ì¸íŠ¸ê°€ ë²—ê²¨ì§„ ì‹¸êµ¬ë ¤ ê°„íŒì´ ë‹¬ë ¤ ìžˆë‹¤ê³  í•©ì‹œë‹¤. ì§€ê¸ˆì€ ì´ë ‡ê²Œ ë‚¡ê³  ì´ˆë¼í•´ì§„ ê°€ê²Œë¼ë„, ì²˜ìŒ ì‹œìž‘í–ˆì„ ë•Œ ì£¼ì¸ì€ ì–¼ë§ˆë‚˜ ê°€ìŠ´ ë‘ê·¼ê±°ë¦¬ë©° ì†ë‹˜ì´ ë§Žì•˜ìœ¼ë©´ ì¢‹ê² ë‹¤ê³  ìƒê°í–ˆì„ê¹Œ ë¼ë“ ì§€, ê·¸ë•Œ ê°œì—…ê¸°ë…ìœ¼ë¡œ ì†ë‹˜ ë“¤ì—ê²Œ ë¬´ì—‡ì„ ë‚˜ëˆ„ì–´ ì£¼ì—ˆì„ê¹Œ ë¼ë“ ì§€, ì´ëŸ°ì €ëŸ° ìƒê°ì„ í•©ë‹ˆë‹¤. ê·¸ëŸ°ë° ì†ë‹˜ì˜ ë°œê¸¸ì´ ì ì  ëœ¸í•´ì§€ê³ , ê·¸ëŸ¬ëŠ” ì‚¬ì´ì— ì£¼ì¸ì´ ë³‘ì— ê±¸ë ¤ì„œ ê°€ê²Œ ë¬¸ì„ ë‹«ëŠ” ëª¨ìŠµì´ë¼ë“ ì§€â€¦. ê·¸ëŸ° ìƒê°ì„ í•˜ë‹¤ ë³´ë©´ ëŒ€ë‹¨í•œ ê±´ë¬¼ì´ ì•„ë‹ˆë”ë¼ë„ í¥ë¯¸ì§„ì§„í•˜ê²Œ ê±´ë¬¼ì„ ë³¼ ìˆ˜ ìžˆì§€ìš”. ë‚´ ë©‹ëŒ€ë¡œ ë§ìƒì— ìž ê²¨ ìžˆì„ ë¿ì´ì§€ë§Œìš”.\n- ë¯¸ì•¼ìží‚¤ í•˜ì•¼ì˜¤ -");
+		book1.setPublisher("í•™ì‚°ë¬¸í™”ì‚¬");
+		book1.setCategory("ë¯¸ìˆ ");
+		book1.setUnitsInstock("ë¯¸í™•ì¸");
 		book1.setReleaseDate("2023-07-11");
-		book1.setCondition("½Å±Ô");
+		book1.setCondition("ì‹ ê·œ");
 		book1.setImgPath("img4.jpg");
 		
-		Book book2 = new Book("9791168473690", "¼¼ÀÌ³ëÀÇ °¡¸£Ä§",  6480);
-		book2.setAuthor("¼¼ÀÌ³ë(sayNo)");
-		book2.setDescription("ÇÊ¸í ¼¼ÀÌ³ë´Â ÇöÀç±îÁö ¹Ï°í ÀÖ´Â °Íµé¿¡ ´ëÇØ No¶ó°í ¸»ÇÏ¶ó(Say No)´Â ¶æÀÌ´Ù. 2023³â ±âÁØ ¼øÀÚ»ê Ãµ¾ï ¿ø´ë ÀÚ»ê°¡´Ù. 1955³â»ý. ÀÇ»çÀÇ Àå³²À¸·Î ÅÂ¾î³ª ¼­³Ê »ì À¯³â±âºÎÅÍ ¾Æ¹öÁöÀÇ °¡¸£Ä§À» ¹Þ¾Ò´Ù. ¾Æ¹öÁö°¡ Àü Àç»êÀ» »ç±â·Î ¸ðµÎ ³¯¸° ÈÄ »ç¸ÁÇÏ¸é¼­ Ä£ºÎ¸ð¸¦ ¸ðµÎ ¿©ÀÇ°í °í±³½ÃÀýºÎÅÍ »ýÈ°°í¿¡ Å©°Ô ½Ã´Þ·È´Ù.\r\n" + 
+		Book book2 = new Book("9791168473690", "ì„¸ì´ë…¸ì˜ ê°€ë¥´ì¹¨",  6480);
+		book2.setAuthor("ì„¸ì´ë…¸(sayNo)");
+		book2.setDescription("í•„ëª… ì„¸ì´ë…¸ëŠ” í˜„ìž¬ê¹Œì§€ ë¯¿ê³  ìžˆëŠ” ê²ƒë“¤ì— ëŒ€í•´ Noë¼ê³  ë§í•˜ë¼(Say No)ëŠ” ëœ»ì´ë‹¤. 2023ë…„ ê¸°ì¤€ ìˆœìžì‚° ì²œì–µ ì›ëŒ€ ìžì‚°ê°€ë‹¤. 1955ë…„ìƒ. ì˜ì‚¬ì˜ ìž¥ë‚¨ìœ¼ë¡œ íƒœì–´ë‚˜ ì„œë„ˆ ì‚´ ìœ ë…„ê¸°ë¶€í„° ì•„ë²„ì§€ì˜ ê°€ë¥´ì¹¨ì„ ë°›ì•˜ë‹¤. ì•„ë²„ì§€ê°€ ì „ ìž¬ì‚°ì„ ì‚¬ê¸°ë¡œ ëª¨ë‘ ë‚ ë¦° í›„ ì‚¬ë§í•˜ë©´ì„œ ì¹œë¶€ëª¨ë¥¼ ëª¨ë‘ ì—¬ì˜ê³  ê³ êµì‹œì ˆë¶€í„° ìƒí™œê³ ì— í¬ê²Œ ì‹œë‹¬ë ¸ë‹¤.\r\n" + 
 				"\r\n" + 
-				"°í±³ 3ÇÐ³â ¶§ °Ç°­°ú °¡³­ ¶§¹®¿¡ ÈÞÇÐÇÏ°í Ä£±¸ ¾Æ¹ö´Ô°ú Ä£±¸µéÀÇ ÅõÀÚ¸¦ ¹Þ¾Æ »ç¾÷À» ÇßÀ¸³ª ½ÇÆÐ ÈÄ º¹ÇÐÇÏ¿© °í±³¸¦ 4³â ¸¸¿¡ Á¹¾÷ÇÏ°í ÀÔ´ëÇß´Ù. °ø±º»çº´À¸·Î º¹¹«ÇÏ´Â µ¿¾È ±ººÎ´ë ºÎµ¿»ê °ü¸® ¾÷¹«¿Í µµ¼­°ü °üÀåÀ» ¸Ã¾Ò°í, Á¦´ë ÈÄ ¿µ¾î°øºÎ¿¡ ¸ôµÎÇÏ¿© ¹Ì8±º ³» ¸Þ¸±·£µå´ëÇÐ ºÐ±³¿¡ ÀÔÇÐÇÏ¿´´Ù. ÇÐºñ¸¦ ¹ú°íÀÚ º¸µû¸® Àå»çºÎÅÍ ½ÃÀÛÇÏ¿© °ú¿Ü¡¤ÀÔ½Ã¿µ¾îÇÐ¿ø¡¤¹ø¿ª¾÷ µîÀ» Çß´Ù.\r\n" + 
+				"ê³ êµ 3í•™ë…„ ë•Œ ê±´ê°•ê³¼ ê°€ë‚œ ë•Œë¬¸ì— íœ´í•™í•˜ê³  ì¹œêµ¬ ì•„ë²„ë‹˜ê³¼ ì¹œêµ¬ë“¤ì˜ íˆ¬ìžë¥¼ ë°›ì•„ ì‚¬ì—…ì„ í–ˆìœ¼ë‚˜ ì‹¤íŒ¨ í›„ ë³µí•™í•˜ì—¬ ê³ êµë¥¼ 4ë…„ ë§Œì— ì¡¸ì—…í•˜ê³  ìž…ëŒ€í–ˆë‹¤. ê³µêµ°ì‚¬ë³‘ìœ¼ë¡œ ë³µë¬´í•˜ëŠ” ë™ì•ˆ êµ°ë¶€ëŒ€ ë¶€ë™ì‚° ê´€ë¦¬ ì—…ë¬´ì™€ ë„ì„œê´€ ê´€ìž¥ì„ ë§¡ì•˜ê³ , ì œëŒ€ í›„ ì˜ì–´ê³µë¶€ì— ëª°ë‘í•˜ì—¬ ë¯¸8êµ° ë‚´ ë©”ë¦´ëžœë“œëŒ€í•™ ë¶„êµì— ìž…í•™í•˜ì˜€ë‹¤. í•™ë¹„ë¥¼ ë²Œê³ ìž ë³´ë”°ë¦¬ ìž¥ì‚¬ë¶€í„° ì‹œìž‘í•˜ì—¬ ê³¼ì™¸Â·ìž…ì‹œì˜ì–´í•™ì›Â·ë²ˆì—­ì—… ë“±ì„ í–ˆë‹¤.\r\n" + 
 				"\r\n" + 
-				"°áÈ¥ ÈÄ¿¡´Â °ÅÀÇ ½Ê¿© ³â ÀÌ»ó ½¬´Â ³¯ ¾øÀÌ ¹ã´Êµµ·Ï ÀÏ°ú °øºÎ¿¡ ¸ôµÎÇÏ¸é¼­ ÀÇ·ù¾÷¡¤Á¤º¸Ã³¸®¡¤ÄÄÇ»ÅÍ¡¤À½Çâ±â±â¡¤À¯Åë¾÷¡¤¹«¿ª¾÷ µîÀ¸·Î ÀÚ»êÀ» ¸ðÀ¸±â ½ÃÀÛÇß´Ù. ±× ÀÚ»êÀ» ¿ÜÈ¯ÅõÀÚ¡¤ºÎµ¿»ê°æ¸Å¡¤ÁÖ½Ä µîÀ¸·Î Áõ´ë½ÃÄ×°í ÇÐ¿¬¡¤Ç÷¿¬¡¤Áö¿¬¡¤Á¤Ä¡Àû ¹è°æ ¾øÀÌ È¦·Î ÇöÀçÀÇ ÀÚ»êÀ» ÀÌ·èÇß´Ù.\r\n" + 
+				"ê²°í˜¼ í›„ì—ëŠ” ê±°ì˜ ì‹­ì—¬ ë…„ ì´ìƒ ì‰¬ëŠ” ë‚  ì—†ì´ ë°¤ëŠ¦ë„ë¡ ì¼ê³¼ ê³µë¶€ì— ëª°ë‘í•˜ë©´ì„œ ì˜ë¥˜ì—…Â·ì •ë³´ì²˜ë¦¬Â·ì»´í“¨í„°Â·ìŒí–¥ê¸°ê¸°Â·ìœ í†µì—…Â·ë¬´ì—­ì—… ë“±ìœ¼ë¡œ ìžì‚°ì„ ëª¨ìœ¼ê¸° ì‹œìž‘í–ˆë‹¤. ê·¸ ìžì‚°ì„ ì™¸í™˜íˆ¬ìžÂ·ë¶€ë™ì‚°ê²½ë§¤Â·ì£¼ì‹ ë“±ìœ¼ë¡œ ì¦ëŒ€ì‹œì¼°ê³  í•™ì—°Â·í˜ˆì—°Â·ì§€ì—°Â·ì •ì¹˜ì  ë°°ê²½ ì—†ì´ í™€ë¡œ í˜„ìž¬ì˜ ìžì‚°ì„ ì´ë£©í–ˆë‹¤.\r\n" + 
 				"\r\n" + 
-				"¼¼°èÀûÀÎ ´Ù±¹Àû ±â¾÷ÀÇ ¾Æ½Ã¾Æ Áö¿ª ºÎ»çÀåÁ÷µµ °âÀÓÇÏ¿´°í »ç¾÷»ó 70¿© °³±¹À» ¿©ÇàÇß´Ù. ±¹³»¿¡¼­ °æ¿µÇÏ¿´´ø È¸»çµéÀº ¼öÃâÅ¾°ú »ê¾÷ÈÆÀåÀ» ¹Þ¾ÒÀ¸¸ç, ÀÎÀç°æ¿µ´ë»óÈÄº¸·Î ¿À¸£±âµµ Çß´Ù.\r\n" + 
+				"ì„¸ê³„ì ì¸ ë‹¤êµ­ì  ê¸°ì—…ì˜ ì•„ì‹œì•„ ì§€ì—­ ë¶€ì‚¬ìž¥ì§ë„ ê²¸ìž„í•˜ì˜€ê³  ì‚¬ì—…ìƒ 70ì—¬ ê°œêµ­ì„ ì—¬í–‰í–ˆë‹¤. êµ­ë‚´ì—ì„œ ê²½ì˜í•˜ì˜€ë˜ íšŒì‚¬ë“¤ì€ ìˆ˜ì¶œíƒ‘ê³¼ ì‚°ì—…í›ˆìž¥ì„ ë°›ì•˜ìœ¼ë©°, ì¸ìž¬ê²½ì˜ëŒ€ìƒí›„ë³´ë¡œ ì˜¤ë¥´ê¸°ë„ í–ˆë‹¤.\r\n" + 
 				"\r\n" + 
-				"2003³âºÎÅÍ´Â »ç¾÷À» ÁÙ¿© ¿Ô°í ±¤¹üÀ§ÇÑ µ¶¼­¡¤À½¾Ç¡¤¿µÈ­°¨»óÀ» Áñ±ä´Ù. °¡Àå ÁÁ¾ÆÇÏ´Â °ÍÀº ¹®Á¦¸¦ ÇØ°áÇÏ´Â °Í, »ç¶÷À» °¡¸£Ä¡°í ±ú¿ìÄ¡´Â °ÍÀÌ¸ç, °¡Àå ½È¾îÇÏ´Â °ÍÀº Á¢´ë ¼úÀÚ¸®, ±â¾÷ Á¤Ä¡°¡µé, ºÎÀÚÀÎ Ã´ÇÏ´Â ÀÚµéÀÇ ºí·¯ÇÎ. ¸Å³â ½Ê¾ï ¿ø´ëÀÇ ¼Òµæ¼¼¸¦ 2000³â±îÁö 5³â ÀÌ»ó ¼¼ÀÌ³ë °³ÀÎÀÌ ³³ºÎÇÏ¿´°í 2001³âºÎÅÍ´Â °¡Á· ´ÜÀ§·Î ³³ºÎÇÏ°í ÀÖ´Ù.");
-		book2.setPublisher("µ¥ÀÌ¿ø");
-		book2.setCategory("¼º°ø");
-		book2.setUnitsInstock("¹ÌÈ®ÀÎ");
+				"2003ë…„ë¶€í„°ëŠ” ì‚¬ì—…ì„ ì¤„ì—¬ ì™”ê³  ê´‘ë²”ìœ„í•œ ë…ì„œÂ·ìŒì•…Â·ì˜í™”ê°ìƒì„ ì¦ê¸´ë‹¤. ê°€ìž¥ ì¢‹ì•„í•˜ëŠ” ê²ƒì€ ë¬¸ì œë¥¼ í•´ê²°í•˜ëŠ” ê²ƒ, ì‚¬ëžŒì„ ê°€ë¥´ì¹˜ê³  ê¹¨ìš°ì¹˜ëŠ” ê²ƒì´ë©°, ê°€ìž¥ ì‹«ì–´í•˜ëŠ” ê²ƒì€ ì ‘ëŒ€ ìˆ ìžë¦¬, ê¸°ì—… ì •ì¹˜ê°€ë“¤, ë¶€ìžì¸ ì²™í•˜ëŠ” ìžë“¤ì˜ ë¸”ëŸ¬í•‘. ë§¤ë…„ ì‹­ì–µ ì›ëŒ€ì˜ ì†Œë“ì„¸ë¥¼ 2000ë…„ê¹Œì§€ 5ë…„ ì´ìƒ ì„¸ì´ë…¸ ê°œì¸ì´ ë‚©ë¶€í•˜ì˜€ê³  2001ë…„ë¶€í„°ëŠ” ê°€ì¡± ë‹¨ìœ„ë¡œ ë‚©ë¶€í•˜ê³  ìžˆë‹¤.");
+		book2.setPublisher("ë°ì´ì›");
+		book2.setCategory("ì„±ê³µ");
+		book2.setUnitsInstock("ë¯¸í™•ì¸");
 		book2.setReleaseDate("2023-03-02");
-		book2.setCondition("½Å±Ô");
+		book2.setCondition("ì‹ ê·œ");
 		book2.setImgPath("img5.jpg");
 		
-		Book book3 = new Book("9791192836188", "¹®°ú ³²ÀÚÀÇ °úÇÐ °øºÎ",  15750);
-		book3.setAuthor("À¯½Ã¹Î");
-		book3.setDescription("°úÇÐ °øºÎ·Î ±æ¾î ¿Ã¸° »ý¸í°ú ¿ìÁÖ¿¡ °üÇÑ Áø½Ç, ÀÎ°£°ú »çÈ¸¸¦ ÀÌÇØÇÏ´Â ¹æ¹ý\r\n" + 
-				"¡°³» »îÀ» ¾î¶² ÀÇ¹Ì·Î Ã¤¿ï °ÍÀÎ°¡?¡±\r\n" + 
+		Book book3 = new Book("9791192836188", "ë¬¸ê³¼ ë‚¨ìžì˜ ê³¼í•™ ê³µë¶€",  15750);
+		book3.setAuthor("ìœ ì‹œë¯¼");
+		book3.setDescription("ê³¼í•™ ê³µë¶€ë¡œ ê¸¸ì–´ ì˜¬ë¦° ìƒëª…ê³¼ ìš°ì£¼ì— ê´€í•œ ì§„ì‹¤, ì¸ê°„ê³¼ ì‚¬íšŒë¥¼ ì´í•´í•˜ëŠ” ë°©ë²•\r\n" + 
+				"â€œë‚´ ì‚¶ì„ ì–´ë–¤ ì˜ë¯¸ë¡œ ì±„ìš¸ ê²ƒì¸ê°€?â€\r\n" + 
 				"\r\n" + 
-				"Áö±Ý ¿©±â, Áö½Ä°ú ±³¾çÀÇ »õ·Î¿î ÆÐ·¯´ÙÀÓ\r\n" + 
-				"°úÇÐÀÇ »çÀ¯¿Í ÀÎ¹®ÇÐÀÇ ¼ºÂûÀÌ ÇÔ²²ÇÏ´Â ÁöÀû ¿©Á¤\r\n" + 
-				"¡°¹®°úµµ °úÇÐÀûÀ¸·Î »ý°¢ÇÒ ¼ö ÀÖ´Ù!¡±");
-		book3.setPublisher("µ¹º£°³");
-		book3.setCategory("ÀÎ¹®ÇÐ");
-		book3.setUnitsInstock("¹ÌÈ®ÀÎ");
+				"ì§€ê¸ˆ ì—¬ê¸°, ì§€ì‹ê³¼ êµì–‘ì˜ ìƒˆë¡œìš´ íŒ¨ëŸ¬ë‹¤ìž„\r\n" + 
+				"ê³¼í•™ì˜ ì‚¬ìœ ì™€ ì¸ë¬¸í•™ì˜ ì„±ì°°ì´ í•¨ê»˜í•˜ëŠ” ì§€ì  ì—¬ì •\r\n" + 
+				"â€œë¬¸ê³¼ë„ ê³¼í•™ì ìœ¼ë¡œ ìƒê°í•  ìˆ˜ ìžˆë‹¤!â€");
+		book3.setPublisher("ëŒë² ê°œ");
+		book3.setCategory("ì¸ë¬¸í•™");
+		book3.setUnitsInstock("ë¯¸í™•ì¸");
 		book3.setReleaseDate("2023-06-23");
-		book3.setCondition("½Å±Ô");
+		book3.setCondition("ì‹ ê·œ");
 		book3.setImgPath("img6.jpg");
 		
 		listOfBooks.add(book1);
@@ -85,7 +85,7 @@ public class BookRepositoryImpl implements BookRepository {
 		for (int i = 0; i < listOfBooks.size(); i++) {
 			Book book = listOfBooks.get(i);
 			if (category.equalsIgnoreCase(book.getCategory())) {
-				// equalsIgnoreCase : ´ë¼Ò¹®ÀÚ °ü°è¾øÀÌ ¹®ÀÚ¿­À» ºñ±³
+				// equalsIgnoreCase : ëŒ€ì†Œë¬¸ìž ê´€ê³„ì—†ì´ ë¬¸ìžì—´ì„ ë¹„êµ
 				booksByCategory.add(book);
 			}
 		}
@@ -94,16 +94,16 @@ public class BookRepositoryImpl implements BookRepository {
 	}
 
 	
-	// ex) localhost:8082/controller/books/filter/bookFilter;author=½ºÆ©µð¿À Áöºê¸®;category=¹Ì¼ú
+	// ex) localhost:8082/controller/books/filter/bookFilter;author=ìŠ¤íŠœë””ì˜¤ ì§€ë¸Œë¦¬;category=ë¯¸ìˆ 
 	@Override
 	public Set<Book> getBookListByFilter(Map<String, List<String>> filter) {
-		// author & category°¡ µ¿ÀÏÇÑ µµ¼­¸¸ ¸®ÅÏ
+		// author & categoryê°€ ë™ì¼í•œ ë„ì„œë§Œ ë¦¬í„´
 		Set<Book> booksByAuthor = new HashSet<Book>();
 		Set<Book> booksByCategory = new HashSet<Book>();
 		
-		Set<String> booksByFilter = filter.keySet(); // keySet: ÀüÃ¼ key Ãâ·Â
+		Set<String> booksByFilter = filter.keySet(); // keySet: ì „ì²´ key ì¶œë ¥
 		
-		// author °ËÃâ ÀÛ¾÷
+		// author ê²€ì¶œ ìž‘ì—…
 		if (booksByFilter.contains("author")) {
 			for (int i = 0; i < filter.get("author").size(); i++) {
 				String authorName = filter.get("author").get(i);
@@ -119,7 +119,7 @@ public class BookRepositoryImpl implements BookRepository {
 			if (booksByFilter.contains("category")) {
 				for (int i = 0; i < filter.get("category").size(); i++) {
 					String category = filter.get("category").get(i);
-					List<Book> list = getBookListByCategory(category); // ¸¸µç ¸Þ¼­µå È°¿ë
+					List<Book> list = getBookListByCategory(category); // ë§Œë“  ë©”ì„œë“œ í™œìš©
 					booksByCategory.addAll(list);
 				}
 			}
@@ -127,6 +127,23 @@ public class BookRepositoryImpl implements BookRepository {
 		
 		booksByCategory.retainAll(booksByAuthor);
 		return booksByCategory;
+	}
+
+	@Override
+	public Book getBookById(String bookId) {
+		Book bookInfo = null;
+		for (int i = 0; i < listOfBooks.size(); i++) {
+			Book book = listOfBooks.get(i);
+			if (book != null && book.getBookId() != null && book.getBookId().equals(bookId)) {
+				bookInfo = book;
+				break;
+			}
+		}
+		if (bookInfo == null) {
+			throw new IllegalArgumentException("ë„ì„œì˜ IDë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤ : " + bookId);
+		}
+		
+		return bookInfo;
 	}
 	
 }

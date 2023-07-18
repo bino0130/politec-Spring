@@ -10,27 +10,27 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/home")
 public class ExampleController06 {
 	/*
-	 * Model = ¸ğµ¨¿¡ ÀÀ´ä µ¥ÀÌÅÍ¸¦ °¡Áü
+	 * Model = ëª¨ë¸ì— ì‘ë‹µ ë°ì´í„°ë¥¼ ê°€ì§
 	 * 
-	 * ModelAndView = ¸ğµ¨ Á¤º¸ & ºä Á¤º¸¸¦ ÀúÀå
+	 * ModelAndView = ëª¨ë¸ ì •ë³´ & ë·° ì •ë³´ë¥¼ ì €ì¥
 	 * 
 	 * void setViewName(String viewName)
-	 * ¿ªÇÒ : ModelAndView ºä ÀÌ¸§À» ¼³Á¤
-	 * ¸Å°³º¯¼ö : (viewName)
-	 * viewName : ºä ÀÌ¸§
+	 * ì—­í•  : ModelAndView ë·° ì´ë¦„ì„ ì„¤ì •
+	 * ë§¤ê°œë³€ìˆ˜ : (viewName)
+	 * viewName : ë·° ì´ë¦„
 	 * 
 	 * Model 				vs ModelAndView
-	 * ºä : addAttribute()		addObject()
-	 * ºäÀÌ¸§ : X(returnÀ¸·Î °áÁ¤)	setViewName()
+	 * ë·° : addAttribute()		addObject()
+	 * ë·°ì´ë¦„ : X(returnìœ¼ë¡œ ê²°ì •)	setViewName()
 	 */
 	
 	@GetMapping("/exam06")
 	public ModelAndView requestMethod(ModelMap model) {
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("data", "ModelAndView °´Ã¼");
-		mav.addObject("data2", "À¥ ¿äÃ»Àº /home/exam06");
+		mav.addObject("data", "ModelAndView ê°ì²´");
+		mav.addObject("data2", "ì›¹ ìš”ì²­ì€ /home/exam06");
 
-		// ModelAndView¿¡´Â Ãâ·ÂÇÏ°íÀÚ ÇÏ´Â View(jsp)µµ ´ãÀ» ¼ö ÀÖ´Ù.
+		// ModelAndViewì—ëŠ” ì¶œë ¥í•˜ê³ ì í•˜ëŠ” View(jsp)ë„ ë‹´ì„ ìˆ˜ ìˆë‹¤.
 		mav.setViewName("webpage05");
 		
 		return mav;

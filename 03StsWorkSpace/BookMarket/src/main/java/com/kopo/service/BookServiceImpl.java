@@ -16,7 +16,7 @@ public class BookServiceImpl implements BookService {
 	private BookRepository bookRepository;
 	
 	/*
-	 *	@Autowired ¾î³ëÅ×ÀÌ¼ÇÀ» »ç¿ëÇÏÁö ¾ÊÀ» °æ¿ì setter¸¦ Á¤ÀÇÇØ¾ßÇÔ
+	 *	@Autowired ì–´ë…¸í…Œì´ì…˜ì„ ì‚¬ìš©í•˜ì§€ ì•Šì„ ê²½ìš° setterë¥¼ ì •ì˜í•´ì•¼í•¨
 	 *	public void setBookRepository (BookRepository bookRepository) {
 	 *		this.bookRepository = bookRepository;
 	 * 	}
@@ -37,6 +37,12 @@ public class BookServiceImpl implements BookService {
 	public Set<Book> getBookListByFilter(Map<String, List<String>> filter) {
 		Set<Book> booksByFilter = bookRepository.getBookListByFilter(filter);
 		return booksByFilter;
+	}
+
+	@Override
+	public Book getBookById(String bookId) {
+		Book bookById = bookRepository.getBookById(bookId);
+		return bookById;
 	}
 
 }

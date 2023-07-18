@@ -12,29 +12,29 @@ public class WebtoonRepositoryImpl implements WebtoonRepository {
 	private List<Webtoon> listOfWebtoons = new ArrayList<Webtoon>();
 	
 	public WebtoonRepositoryImpl() {
-		Webtoon webtoon1 = new Webtoon("ºäÆ¼Ç® ±º¹Ù¸®", "img1.jpg");
-		webtoon1.setAuthor("¼³ÀÌ, À±¼º¿ø");
-		webtoon1.setDescription("'¿©ÀÚµµ ±º´ë¿¡ °£´Ù¸é?'º»°Ý ¿©ÀÚµµ ±º´ë °¡´Â ¸¸È­!");
-		webtoon1.setRanking("1À§");
-		webtoon1.setReleaseDay("¿ù¿äÀÏ");;
+		Webtoon webtoon1 = new Webtoon("ë·°í‹°í’€ êµ°ë°”ë¦¬", "img1.jpg");
+		webtoon1.setAuthor("ì„¤ì´, ìœ¤ì„±ì›");
+		webtoon1.setDescription("'ì—¬ìžë„ êµ°ëŒ€ì— ê°„ë‹¤ë©´?'ë³¸ê²© ì—¬ìžë„ êµ°ëŒ€ ê°€ëŠ” ë§Œí™”!");
+		webtoon1.setRanking("1ìœ„");
+		webtoon1.setReleaseDay("ì›”ìš”ì¼");;
 		webtoon1.setWebsite("naver");
-		webtoon1.setGenre("µå¶ó¸¶");
+		webtoon1.setGenre("ë“œë¼ë§ˆ");
 		
-		Webtoon webtoon2 = new Webtoon("À©µåºê·¹ÀÌÄ¿", "img2.jpg");
-		webtoon2.setAuthor("Á¶¿ë¼Ó");
-		webtoon2.setDescription("È¥ÀÚ¼­ ÀÚÀü°Å¸¦ Áñ°ÜÅ¸´ø ¸ð¹ü»ý Á¶ÀÚÇö. ¿øÄ¡ ¾Ê°Ô ÀÚÀü°Å Å©·çÀÇ ÀÏ¿¡ ÀÚ²Ù ÈÖ¸»¸®°Ô µÇ´Âµ¥... ÀÚÀ¯¸¦ ²Þ²Ù´Â Ã»ÃáµéÀÇ ½ºÆ®¸´¶óÀÌµù µå¶ó¸¶!");
-		webtoon2.setRanking("2À§");
-		webtoon2.setReleaseDay("¿ù¿äÀÏ");;
+		Webtoon webtoon2 = new Webtoon("ìœˆë“œë¸Œë ˆì´ì»¤", "img2.jpg");
+		webtoon2.setAuthor("ì¡°ìš©ì†");
+		webtoon2.setDescription("í˜¼ìžì„œ ìžì „ê±°ë¥¼ ì¦ê²¨íƒ€ë˜ ëª¨ë²”ìƒ ì¡°ìží˜„. ì›ì¹˜ ì•Šê²Œ ìžì „ê±° í¬ë£¨ì˜ ì¼ì— ìžê¾¸ íœ˜ë§ë¦¬ê²Œ ë˜ëŠ”ë°... ìžìœ ë¥¼ ê¿ˆê¾¸ëŠ” ì²­ì¶˜ë“¤ì˜ ìŠ¤íŠ¸ë¦¿ë¼ì´ë”© ë“œë¼ë§ˆ!");
+		webtoon2.setRanking("2ìœ„");
+		webtoon2.setReleaseDay("ì›”ìš”ì¼");;
 		webtoon2.setWebsite("naver");
-		webtoon2.setGenre("½ºÆ÷Ã÷");
+		webtoon2.setGenre("ìŠ¤í¬ì¸ ");
 		
-		Webtoon webtoon3 = new Webtoon("º°³­ ½Ä´ç", "img3.jpg");
+		Webtoon webtoon3 = new Webtoon("ë³„ë‚œ ì‹ë‹¹", "img3.jpg");
 		webtoon3.setAuthor("HO9");
-		webtoon3.setDescription("Æ¯±ÞÈ£ÅÚ¿¡¼­ ÃÖ¿¬¼Ò ÆÀÀå¿¡ ¿À¸£¸ç ½Â½ÂÀå±¸ÇÏ´ø ÁÖÀÎ°ø ÇÑº°Àº Åð»ç¸¦ ÇÏ°í ÀÛÀº ½Ä´çÀ» Â÷¸°´Ù. ±× ½Ä´çÀÇ ÀÌ¸§Àº 'º°³­½Ä´ç'. º°³­½Ä´çÀº »ó±ÇÀÌ¶ó°í´Â Ã£¾Æº¼ ¼ö ¾ø´Â, ¼­¿ï¿¡¼­ Á¦ÀÏ °¡³­ÇÑ µ¿³×ÀÎ ºÎÀÚµ¿¿¡ À§Ä¡ÇØ ÀÖ´Ù. ¶ÇÇÑ ¸Þ´ºµµ º°³ª´Ù. ¹Ù·Î ¸Þ´º°¡ ¾ø±â ¶§¹®ÀÌ´Ù. ¸Þ´º°¡ ¾øÀÌ ÇÑº° ¼ÎÇÁ°¡ ±×¶§±×¶§ Á¦Ã¶ ½ÄÀç·á¸¦ ÀÌ¿ëÇØ ¿ä¸®¸¦ ¸¸µå´Â ½Ä´çÀÌ´Ù. ÀÌ ½Ä´çÀÇ Æ¯º°ÇÑ Á¡Àº ¿ä¸®¸¦ ¸Ô´Â ¼Õ´ÔÀÌ ¸¶À½±îÁö À§·Î ¹Þ´Â´Ù´Â °Í. ÇÑº° ¼ÎÇÁ´Â ´ëÃ¼ ¾î¶°ÇÑ ¹æ¹ýÀ¸·Î ¸¶À½ÀÇ »óÃ³°¡ ÀÖ´Â ¸¹Àº ¼Õ´ÔµéÀ» ¿ä¸®·Î Ä¡À¯ÇÏ´Â °ÍÀÏ±î?");
-		webtoon3.setRanking("3À§");
-		webtoon3.setReleaseDay("¿ù¿äÀÏ");;
+		webtoon3.setDescription("íŠ¹ê¸‰í˜¸í…”ì—ì„œ ìµœì—°ì†Œ íŒ€ìž¥ì— ì˜¤ë¥´ë©° ìŠ¹ìŠ¹ìž¥êµ¬í•˜ë˜ ì£¼ì¸ê³µ í•œë³„ì€ í‡´ì‚¬ë¥¼ í•˜ê³  ìž‘ì€ ì‹ë‹¹ì„ ì°¨ë¦°ë‹¤. ê·¸ ì‹ë‹¹ì˜ ì´ë¦„ì€ 'ë³„ë‚œì‹ë‹¹'. ë³„ë‚œì‹ë‹¹ì€ ìƒê¶Œì´ë¼ê³ ëŠ” ì°¾ì•„ë³¼ ìˆ˜ ì—†ëŠ”, ì„œìš¸ì—ì„œ ì œì¼ ê°€ë‚œí•œ ë™ë„¤ì¸ ë¶€ìžë™ì— ìœ„ì¹˜í•´ ìžˆë‹¤. ë˜í•œ ë©”ë‰´ë„ ë³„ë‚˜ë‹¤. ë°”ë¡œ ë©”ë‰´ê°€ ì—†ê¸° ë•Œë¬¸ì´ë‹¤. ë©”ë‰´ê°€ ì—†ì´ í•œë³„ ì…°í”„ê°€ ê·¸ë•Œê·¸ë•Œ ì œì²  ì‹ìž¬ë£Œë¥¼ ì´ìš©í•´ ìš”ë¦¬ë¥¼ ë§Œë“œëŠ” ì‹ë‹¹ì´ë‹¤. ì´ ì‹ë‹¹ì˜ íŠ¹ë³„í•œ ì ì€ ìš”ë¦¬ë¥¼ ë¨¹ëŠ” ì†ë‹˜ì´ ë§ˆìŒê¹Œì§€ ìœ„ë¡œ ë°›ëŠ”ë‹¤ëŠ” ê²ƒ. í•œë³„ ì…°í”„ëŠ” ëŒ€ì²´ ì–´ë– í•œ ë°©ë²•ìœ¼ë¡œ ë§ˆìŒì˜ ìƒì²˜ê°€ ìžˆëŠ” ë§Žì€ ì†ë‹˜ë“¤ì„ ìš”ë¦¬ë¡œ ì¹˜ìœ í•˜ëŠ” ê²ƒì¼ê¹Œ?");
+		webtoon3.setRanking("3ìœ„");
+		webtoon3.setReleaseDay("ì›”ìš”ì¼");;
 		webtoon3.setWebsite("naver");
-		webtoon3.setGenre("µå¶ó¸¶");
+		webtoon3.setGenre("ë“œë¼ë§ˆ");
 		
 		listOfWebtoons.add(webtoon1);
 		listOfWebtoons.add(webtoon2);

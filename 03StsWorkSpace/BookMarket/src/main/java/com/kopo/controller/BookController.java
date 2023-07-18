@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kopo.domain.Book;
@@ -49,7 +50,7 @@ public class BookController {
 		return mav;
 	}
 	
-	@GetMapping("/{category}") // exam08 »ç¿ë ¹æ¹ý 2
+	@GetMapping("/{category}") // exam08 ì‚¬ìš© ë°©ë²• 2
 	public String requestBooksByCategory(@PathVariable("category") String bookCategory
 											, Model model) {
 		List<Book> booksByCategory = bookService.getBookListByCategory(bookCategory);
@@ -57,7 +58,7 @@ public class BookController {
 		return "books";
 	}
 	
-	// ex) localhost:8082/controller/books/filter/bookFilter;author=½ºÆ©µð¿À Áöºê¸®;category=¹Ì¼ú
+	// ex) localhost:8082/controller/books/filter/bookFilter;author=ìŠ¤íŠœë””ì˜¤ ì§€ë¸Œë¦¬;category=ë¯¸ìˆ 
 	@GetMapping("/filter/{bookFilter}")
 	public String requestBooksByFilter(
 			@MatrixVariable(pathVar="bookFilter") Map<String, List<String>> bookFilter,
@@ -65,5 +66,12 @@ public class BookController {
 		Set<Book> booksByFilter = bookService.getBookListByFilter(bookFilter);
 		model.addAttribute("bookList", booksByFilter);
 		return "books";
+	}
+	
+	@GetMapping("/book")
+	public String requestBookById(@RequestParam("id") String bookId, Model model) {
+		Book bookById = bookService.getBookById(bookId);
+		model.addAttribute("book", bookById);
+		return "book";
 	}
 }

@@ -10,27 +10,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/home")
 public class ExampleController07 {
 	/*
-	 * °æ·Î º¯¼ö - @PathVariable
-	 * À¥ ¿äÃ» URL¿¡ Æ÷ÇÔµÈ ÆÄ¶ó¹ÌÅÍ °ªÀ» Àü´Ş¹ŞÀ» ¼ö ÀÖÀ½
-	 * {} Áß°ıÈ£¸¦ È°¿ëÇØ¼­ URL¿¡ Æ÷ÇÔµÈ ¿äÃ» Á¶°Ç °ªÀ» Àü´Ş¹ŞÀ½
+	 * ê²½ë¡œ ë³€ìˆ˜ - @PathVariable
+	 * ì›¹ ìš”ì²­ URLì— í¬í•¨ëœ íŒŒë¼ë¯¸í„° ê°’ì„ ì „ë‹¬ë°›ì„ ìˆ˜ ìˆìŒ
+	 * {} ì¤‘ê´„í˜¸ë¥¼ í™œìš©í•´ì„œ URLì— í¬í•¨ëœ ìš”ì²­ ì¡°ê±´ ê°’ì„ ì „ë‹¬ë°›ìŒ
 	 * 
-	 * »ç¿ë ¹æ¹ı 1 (µé¾î¿Â °ª ±×´ë·Î »ç¿ë)
-	 * @RequestMapping("°æ·Î º¯¼ö")
-	 * public string MethodName(@PathVariable °æ·Îº¯¼ö, ..) {
+	 * ì‚¬ìš© ë°©ë²• 1 (ë“¤ì–´ì˜¨ ê°’ ê·¸ëŒ€ë¡œ ì‚¬ìš©)
+	 * @RequestMapping("ê²½ë¡œ ë³€ìˆ˜")
+	 * public string MethodName(@PathVariable ê²½ë¡œë³€ìˆ˜, ..) {
 	 * 
 	 * }
 	 * 
-	 * »ç¿ë ¹æ¹ı 2 (µé¾î¿Â °ªÀÇ ÀÌ¸§À» º¯°æÇØ¼­ »ç¿ë0
-	 * @RequestMapping("°æ·Î º¯¼ö")
-	 * public string MethodName(@PathVariable (°æ·Îº¯¼ö) ¸Å°³º¯¼ö, ..) {
+	 * ì‚¬ìš© ë°©ë²• 2 (ë“¤ì–´ì˜¨ ê°’ì˜ ì´ë¦„ì„ ë³€ê²½í•´ì„œ ì‚¬ìš©0
+	 * @RequestMapping("ê²½ë¡œ ë³€ìˆ˜")
+	 * public string MethodName(@PathVariable (ê²½ë¡œë³€ìˆ˜) ë§¤ê°œë³€ìˆ˜, ..) {
 	 * 
 	 * }
 	 */
 	
 	@GetMapping("/exam07/{bookId}")
 	public String requestMethod(@PathVariable String bookId, Model model) {
-		System.out.println("µµ¼­ ID: " + bookId);
-		model.addAttribute("data", "µµ¼­ ID : " + bookId);
+		System.out.println("ë„ì„œ ID: " + bookId);
+		model.addAttribute("data", "ë„ì„œ ID : " + bookId);
 		
 		return "webpage06";
 	}

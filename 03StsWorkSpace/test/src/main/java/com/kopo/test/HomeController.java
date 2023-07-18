@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * Handles requests for the application home page.
  */
-@Controller // HomeController°¡ ControllerÀÓÀ» ÁöÁ¤ÇØÁÖ´Â Annotation @Controller
+@Controller // HomeControllerê°€ Controllerì„ì„ ì§€ì •í•´ì£¼ëŠ” Annotation @Controller
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -23,11 +23,11 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	// value´Â °æ·Î, method´Â get ¹æ½Ä, post ¹æ½Ä Áß ÅÃ 1. default°ªÀº get ¹æ½Ä
+	// valueëŠ” ê²½ë¡œ, methodëŠ” get ë°©ì‹, post ë°©ì‹ ì¤‘ íƒ 1. defaultê°’ì€ get ë°©ì‹
 	
 	public String home(Locale locale, Model model) {
 		
-		// ·Î±×¸¦ ³²±è, localeÀ» »ç¿ëÇÏ¸é À§Ä¡-Áö¿ª¿¡ ´ëÇØ ³ª¿È
+		// ë¡œê·¸ë¥¼ ë‚¨ê¹€, localeì„ ì‚¬ìš©í•˜ë©´ ìœ„ì¹˜-ì§€ì—­ì— ëŒ€í•´ ë‚˜ì˜´
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
@@ -36,14 +36,14 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
-		// ÀúÀåÇØ¾ß ÇÒ Àå¼Ò´Â model
+		// ì €ì¥í•´ì•¼ í•  ì¥ì†ŒëŠ” model
 		
 		return "home";
 		// home
 		// <beans:property name="prefix" value="/WEB-INF/views/" />
-		// prefix´Â home ¾Õ¿¡ ºÙÀÌ´Â °æ·Î
+		// prefixëŠ” home ì•ì— ë¶™ì´ëŠ” ê²½ë¡œ
 		// <beans:property name="suffix" value=".jsp" />
-		// suffix´Â home µÚ¿¡ ºÙÀÌ´Â °æ·Î
+		// suffixëŠ” home ë’¤ì— ë¶™ì´ëŠ” ê²½ë¡œ
 		//    /WEB-INF/views/home.jsp
 		
 	}

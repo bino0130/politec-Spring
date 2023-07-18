@@ -8,20 +8,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/home")
 public class ExampleController03 {
 	/*
-	 * @RequestMappingÀÇ ´Ü¼øÈ­
-	 * ½ºÇÁ¸µ 4.3¹öÀüºÎÅÍ Áö¿ø 
-	 * (Ã³À½ ±ò¸é 1.6 ~ 1.8¹öÀüÀÌ¶ó ¹öÀü springframework-version ¾÷±×·¹ÀÌµå ÇÊ¿ä)
-	 * GET ¹æ½ÄÀÎ °æ¿ì @GetMapping ¾î³ëÅ×ÀÌ¼Ç È°¿ë °¡´É(ÀĞÀ» ¶§ GET requestMappingÀÌ¶ó°í ÀĞÀ½)
-	 * @GetMapping		- ¿äÃ»ÀÌ getÀÎ °æ¿ì
-	 * @PostMapping		- ¿äÃ»ÀÌ post
-	 * @PutMapping		- ¿äÃ»ÀÌ put
-	 * @DeleteMapping	- ¿äÃ»ÀÌ delete
-	 * @PatchMapping	- ¿äÃ»ÀÌ patch
+	 * @RequestMappingì˜ ë‹¨ìˆœí™”
+	 * ìŠ¤í”„ë§ 4.3ë²„ì „ë¶€í„° ì§€ì› 
+	 * (ì²˜ìŒ ê¹”ë©´ 1.6 ~ 1.8ë²„ì „ì´ë¼ ë²„ì „ springframework-version ì—…ê·¸ë ˆì´ë“œ í•„ìš”)
+	 * GET ë°©ì‹ì¸ ê²½ìš° @GetMapping ì–´ë…¸í…Œì´ì…˜ í™œìš© ê°€ëŠ¥(ì½ì„ ë•Œ GET requestMappingì´ë¼ê³  ì½ìŒ)
+	 * @GetMapping		- ìš”ì²­ì´ getì¸ ê²½ìš°
+	 * @PostMapping		- ìš”ì²­ì´ post
+	 * @PutMapping		- ìš”ì²­ì´ put
+	 * @DeleteMapping	- ìš”ì²­ì´ delete
+	 * @PatchMapping	- ìš”ì²­ì´ patch
 	 */
 	
 	@GetMapping("/exam03")
 	public void requestMethod() {
-		System.out.println("@GetMapping ¸ÅÇÎ ¿¹Á¦");
-		System.out.println("À¥ ¿äÃ»Àº /exam03");
+		System.out.println("@GetMapping ë§¤í•‘ ì˜ˆì œ");
+		System.out.println("ì›¹ ìš”ì²­ì€ /exam03");
 	}
 }

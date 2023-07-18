@@ -9,14 +9,16 @@ import org.springframework.stereotype.Service;
 import com.kopo.domain.Book;
 
 public interface BookService {
-	// ÀüÃ¼ µµ¼­ ¸ñ·Ï ¸®ÅÏ
+	// ì „ì²´ ë„ì„œ ëª©ë¡ ë¦¬í„´
 		List<Book> getAllBookList();
 		
-		// ¸Å°³º¯¼ö¿Í µ¿ÀÏÇÑ Á¾·ùÀÇ µµ¼­¸¸ ¸®ÅÏ
+		// ë§¤ê°œë³€ìˆ˜ì™€ ë™ì¼í•œ ì¢…ë¥˜ì˜ ë„ì„œë§Œ ë¦¬í„´
 		List<Book> getBookListByCategory(String category);
 		
-		// category & publisher°¡ µ¿ÀÏÇÑ µµ¼­¸¸ ¸®ÅÏ
-		// ex) localhost:8082/controller/books/filter/bookFilter;author=½ºÆ©µğ¿À Áöºê¸®;category=¹Ì¼ú
-		// À§ URLÀ» ÀÔ·ÂÇÏ¸é ºÎÇÕÇÏ´Â ¸ñ·Ï¸¸ ¹İÈ¯µÇµµ·Ï
+		// category & publisherê°€ ë™ì¼í•œ ë„ì„œë§Œ ë¦¬í„´
+		// ex) localhost:8082/controller/books/filter/bookFilter;author=ìŠ¤íŠœë””ì˜¤ ì§€ë¸Œë¦¬;category=ë¯¸ìˆ 
+		// ìœ„ URLì„ ì…ë ¥í•˜ë©´ ë¶€í•©í•˜ëŠ” ëª©ë¡ë§Œ ë°˜í™˜ë˜ë„ë¡
 		Set<Book> getBookListByFilter(Map<String, List<String>> filter);
+		
+		Book getBookById(String bookId);
 }

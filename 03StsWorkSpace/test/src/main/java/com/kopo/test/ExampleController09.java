@@ -11,36 +11,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/home")
 public class ExampleController09 {
 	/*
-	 * À¥ ¿äÃ» URL¿¡ ´ÙÁß ÆÄ¶ó¹ÌÅÍ °ªÀ» Àü´Ş¹Ş´Â ¸ÅÆ®¸¯½º º¯¼ö (matrix variable)
-	 * context root/books/color;year=2023;month=07 // key, value °ª µ¿½Ã¿¡ 2°³
-	 * context root/books;color=red,green,blue // key,value ÇÏ³ª¾¿ µé¾î¿ÔÀ¸³ª value ´ÙÁßº¯¼ö
+	 * ì›¹ ìš”ì²­ URLì— ë‹¤ì¤‘ íŒŒë¼ë¯¸í„° ê°’ì„ ì „ë‹¬ë°›ëŠ” ë§¤íŠ¸ë¦­ìŠ¤ ë³€ìˆ˜ (matrix variable)
+	 * context root/books/color;year=2023;month=07 // key, value ê°’ ë™ì‹œì— 2ê°œ
+	 * context root/books;color=red,green,blue // key,value í•˜ë‚˜ì”© ë“¤ì–´ì™”ìœ¼ë‚˜ value ë‹¤ì¤‘ë³€ìˆ˜
 	 * 
-	 * @RequestMapping("°æ·Î º¯¼ö")
-	 * public String MethodName (@MatrixVariable ¸ÅÆ®¸¯½º º¯¼ö, ...) {}
+	 * @RequestMapping("ê²½ë¡œ ë³€ìˆ˜")
+	 * public String MethodName (@MatrixVariable ë§¤íŠ¸ë¦­ìŠ¤ ë³€ìˆ˜, ...) {}
 	 * 
-	 * @RequestMapping("°æ·Î º¯¼ö")
-	 * public String MethodName(@MatrixVariable (¸ÅÆ®¸¯½º º¯¼ö) ¸Å°³º¯¼ö, ...) {}
+	 * @RequestMapping("ê²½ë¡œ ë³€ìˆ˜")
+	 * public String MethodName(@MatrixVariable (ë§¤íŠ¸ë¦­ìŠ¤ ë³€ìˆ˜) ë§¤ê°œë³€ìˆ˜, ...) {}
 	 * 
-	 * [¼Ó¼º Á¾·ù]
-	 * defaultValue - ±âº»°ª
-	 * name - ¸ÅÆ®¸¯½º º¯¼ö ÀÌ¸§
-	 * pathVar - ¸ÅÆ®¸¯½º º¯¼ö°¡ ÀÖ´Â URI °æ·Î º¯¼öÀÇ ÀÌ¸§ 
-	 * required - ¸ÅÆ®¸¯½º º¯¼ö°¡ ¿ä±¸µÇ´ÂÁö ¿©ºÎ
-	 * value - ¸ÅÆ®¸¯½ºº¯¼ö 'name=value'¿¡¼­ name¿¡ ÇØ´çÇÏ´Â ¿µ¿ª
+	 * [ì†ì„± ì¢…ë¥˜]
+	 * defaultValue - ê¸°ë³¸ê°’
+	 * name - ë§¤íŠ¸ë¦­ìŠ¤ ë³€ìˆ˜ ì´ë¦„
+	 * pathVar - ë§¤íŠ¸ë¦­ìŠ¤ ë³€ìˆ˜ê°€ ìˆëŠ” URI ê²½ë¡œ ë³€ìˆ˜ì˜ ì´ë¦„ 
+	 * required - ë§¤íŠ¸ë¦­ìŠ¤ ë³€ìˆ˜ê°€ ìš”êµ¬ë˜ëŠ”ì§€ ì—¬ë¶€
+	 * value - ë§¤íŠ¸ë¦­ìŠ¤ë³€ìˆ˜ 'name=value'ì—ì„œ nameì— í•´ë‹¹í•˜ëŠ” ì˜ì—­
 	 */
 	
 	
-	// /exam09/abcd1234;category=¹«ÇùÁö -> abcd1234°¡ bookId
+	// /exam09/abcd1234;category=ë¬´í˜‘ì§€ -> abcd1234ê°€ bookId
 	@GetMapping("/exam09/{bookId}")
 	public String requestMethod(@PathVariable String bookId, 
 								@MatrixVariable String category, 
 								Model model) {
-		System.out.println("Ã¥ÀÌ¸§ : " + bookId);
-		System.out.println("ºĞ·ù : " + category);
-		model.addAttribute("data", "Ã¥ÀÌ¸§ : " + bookId + "<br>" +
-							"ºĞ·ù : " + category);
-//		model.addAttribute("data", "ºĞ·ù : " + category);
-//		model.addAttribute("data2", "ÃâÆÇ»ç : " + publisher);
+		System.out.println("ì±…ì´ë¦„ : " + bookId);
+		System.out.println("ë¶„ë¥˜ : " + category);
+		model.addAttribute("data", "ì±…ì´ë¦„ : " + bookId + "<br>" +
+							"ë¶„ë¥˜ : " + category);
+//		model.addAttribute("data", "ë¶„ë¥˜ : " + category);
+//		model.addAttribute("data2", "ì¶œíŒì‚¬ : " + publisher);
 		
 		return "webpage06";
 	}
