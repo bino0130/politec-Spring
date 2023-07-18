@@ -36,9 +36,63 @@ public class WebtoonRepositoryImpl implements WebtoonRepository {
 		webtoon3.setWebsite("naver");
 		webtoon3.setGenre("드라마");
 		
+		Webtoon webtoon4 = new Webtoon("화산귀환", "img4.jpg");
+		webtoon4.setAuthor("LICO, 비가");
+		webtoon4.setDescription("대 화산파 13대 제자.천하삼대검수 매화검존 청명. 천하를 혼란에 빠뜨린 고금제일마 천마의 목을 치고 십만대산의 정상에서 영면. 백 년의 시간을 뛰어넘어 아이의 몸으로 다시 살아나다. ......뭐? 화산이 망해? 이게 뭔 개소리야!?");
+		webtoon4.setRanking("1위");
+		webtoon4.setReleaseDay("수요일");;
+		webtoon4.setWebsite("naver");
+		webtoon4.setGenre("무협/사극");
+		
+		Webtoon webtoon5 = new Webtoon("전지적 독자 시점", "img5.jpg");
+		webtoon5.setAuthor("UMI, 슬리피-C");
+		webtoon5.setDescription("'이건 내가 아는 그 전개다' 한순간에 세계가 멸망하고, 새로운 세상이 펼쳐졌다. 오직 나만이 완주했던 소설 세계에서 평범했던 독자의 새로운 삶이 시작된다.");
+		webtoon5.setRanking("2위");
+		webtoon5.setReleaseDay("수요일");;
+		webtoon5.setWebsite("naver");
+		webtoon5.setGenre("판타지");
+		
+		Webtoon webtoon6 = new Webtoon("백xx", "img6.jpg");
+		webtoon6.setAuthor("병장, 박태준 만화회사, 펀치킥");
+		webtoon6.setDescription("정보사(HID) 요원 '백이수'와 범죄 조직의 보스인 쌍둥이 형 '백도경'. 같은 얼굴 다른 삶을 살아온 쌍둥이 형제. 조직에 배신당한 동생은 자신의 신분을 버리고 형이 되기로 한다. 정보사요원, 범죄 조직의 보스가 되다...!");
+		webtoon6.setRanking("3위");
+		webtoon6.setReleaseDay("수요일");;
+		webtoon6.setWebsite("naver");
+		webtoon6.setGenre("액션");
+		
+		Webtoon webtoon7 = new Webtoon("외모지상주의", "img7.jpg");
+		webtoon7.setAuthor("박태준");
+		webtoon7.setDescription("못생기고 뚱뚱하다고 괴롭힘을 당하며 루저 인생만 살아온 내가 잘생겨졌다는 이유로 인싸가 됐다. 어느 날 자고 일어났더니 갑자기 완벽한 외모와 몸을 지닌 사람이 되어 깨어난다면?");
+		webtoon7.setRanking("1위");
+		webtoon7.setReleaseDay("금요일");;
+		webtoon7.setWebsite("naver");
+		webtoon7.setGenre("드라마");
+		
+		Webtoon webtoon8 = new Webtoon("광마회귀", "img8.jpg");
+		webtoon8.setAuthor("JP, 이히");
+		webtoon8.setDescription("무공에 미친 광마 이자하. 그는 마교 교주의 천옥을 훔쳐 쫓기던 중 벼랑에서 떨어지게 된다. 모든 게 끝났다고 생각한 순간 눈을 떠보니, 사람들에게 무시당하던 점소이 시절로 돌아와 있는데... 게다가 억울한 누명으로 두들겨 맞고 객잔은 박살이 나 있는 상황. ​점소이 시절로 회귀한 광마! 사내는 다시 미치게 될 것인가? 아니면 사내의 적들이 미치게 될 것인가.");
+		webtoon8.setRanking("2위");
+		webtoon8.setReleaseDay("금요일");;
+		webtoon8.setWebsite("naver");
+		webtoon8.setGenre("무협/사극");
+		
+		Webtoon webtoon9 = new Webtoon("나 혼자 만렙 뉴비", "img9.jpg");
+		webtoon9.setAuthor("WAN.Z, 스윙뱃");
+		webtoon9.setDescription("게임 너튜버로 활동 중인 주인공 진혁은 유일하게 [시련의 탑]의 엔딩을 봤지만, 게임의 인기가 하락하며 더 이상 게임 너튜버로서의 삶도 유지하기 힘들어진다. 엔딩을 보았기에 이대로 게임을 마무리하려는 진혁. 바로 그날, [시련의 탑]은 현실이 되었다. 게임의 모든 요소를 다 알고 있는 진혁은 누구보다 빠르게 모든 것을 차지한다! \"진짜 고인물이 뭔지 보여주지.\"");
+		webtoon9.setRanking("3위");
+		webtoon9.setReleaseDay("금요일");;
+		webtoon9.setWebsite("naver");
+		webtoon9.setGenre("판타지");
+		
 		listOfWebtoons.add(webtoon1);
 		listOfWebtoons.add(webtoon2);
 		listOfWebtoons.add(webtoon3);
+		listOfWebtoons.add(webtoon4);
+		listOfWebtoons.add(webtoon5);
+		listOfWebtoons.add(webtoon6);
+		listOfWebtoons.add(webtoon7);
+		listOfWebtoons.add(webtoon8);
+		listOfWebtoons.add(webtoon9);
 	}
 	
 	@Override

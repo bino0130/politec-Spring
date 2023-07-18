@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="./resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Welcome</title>
 </head>
@@ -31,7 +31,7 @@
 		<div class="row" align="center">
 			<c:forEach items="${webtoonList}" var="webtoon">
 				<div class="col-md-4">
-					<p><img src=./resources/img/${webtoon.imagePath }></p>
+					<p><img src=${pageContext.request.contextPath}/resources/img/${webtoon.imagePath }></p>
 					<h3>${webtoon.name}</h3>
 					<p>${webtoon.author}
 						<br>${webtoon.genre} | ${webtoon.releaseDay}

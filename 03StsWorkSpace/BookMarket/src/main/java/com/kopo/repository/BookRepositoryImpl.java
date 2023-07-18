@@ -34,7 +34,7 @@ public class BookRepositoryImpl implements BookRepository {
 		book1.setUnitsInstock("미확인");
 		book1.setReleaseDate("2023-07-11");
 		book1.setCondition("신규");
-		book1.setImgPath("img4.jpg");
+		book1.setImgPath("IMG4.jpg");
 		
 		Book book2 = new Book("9791168473690", "세이노의 가르침",  6480);
 		book2.setAuthor("세이노(sayNo)");
@@ -52,7 +52,7 @@ public class BookRepositoryImpl implements BookRepository {
 		book2.setUnitsInstock("미확인");
 		book2.setReleaseDate("2023-03-02");
 		book2.setCondition("신규");
-		book2.setImgPath("img5.jpg");
+		book2.setImgPath("IMG5.jpg");
 		
 		Book book3 = new Book("9791192836188", "문과 남자의 과학 공부",  15750);
 		book3.setAuthor("유시민");
@@ -67,7 +67,7 @@ public class BookRepositoryImpl implements BookRepository {
 		book3.setUnitsInstock("미확인");
 		book3.setReleaseDate("2023-06-23");
 		book3.setCondition("신규");
-		book3.setImgPath("img6.jpg");
+		book3.setImgPath("IMG6.jpg");
 		
 		listOfBooks.add(book1);
 		listOfBooks.add(book2);
