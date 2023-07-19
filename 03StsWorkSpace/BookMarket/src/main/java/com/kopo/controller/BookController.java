@@ -58,7 +58,7 @@ public class BookController {
 		return "books";
 	}
 	
-	// ex) localhost:8082/controller/books/filter/bookFilter;author=스튜디오 지브리;category=미술
+	// ex) localhost:8081/controller/books/filter/bookFilter;author=스튜디오 지브리;category=미술
 	@GetMapping("/filter/{bookFilter}")
 	public String requestBooksByFilter(
 			@MatrixVariable(pathVar="bookFilter") Map<String, List<String>> bookFilter,

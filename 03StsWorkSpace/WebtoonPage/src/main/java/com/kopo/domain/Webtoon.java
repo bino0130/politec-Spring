@@ -3,23 +3,23 @@ package com.kopo.domain;
 public class Webtoon {
 	private String name;
 	private String imagePath;
-	private String ranking;
-	private String website;
 	private String author;
 	private String description;
-	private int hits;
+	private String ranking;
 	private String releaseDay;
-	private String condition;
+	private String website;
 	private String genre;
+//	private int hits;
+//	private String condition;
+	
+	public Webtoon() {
+		super();
+	}
 	
 	public Webtoon(String name, String imagePath) {
 		super();
 		this.name = name;
 		this.imagePath = imagePath;
-	}
-	
-	public Webtoon() {
-		super();
 	}
 	
 	public String getGenre() {
@@ -64,22 +64,22 @@ public class Webtoon {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getHits() {
-		return hits;
-	}
-	public void setHits(int hits) {
-		this.hits = hits;
-	}
+//	public int getHits() {
+//		return hits;
+//	}
+//	public void setHits(int hits) {
+//		this.hits = hits;
+//	}
 	public String getReleaseDay() {
 		return releaseDay;
 	}
 	public void setReleaseDay(String releaseDay) {
 		this.releaseDay = releaseDay;
 	}
-	public String getCondition() {
-		return condition;
-	}
-	public void setCondition(String condition) {
-		this.condition = condition;
-	}
+//	public String getCondition() {
+//		return condition;
+//	}
+//	public void setCondition(String condition) {
+//		this.condition = condition;
+//	}
 }

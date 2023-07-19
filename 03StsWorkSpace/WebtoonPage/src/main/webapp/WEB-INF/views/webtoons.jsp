@@ -13,10 +13,12 @@
 	<nav class="navbar navbar-expand navbar-dark bg-dark">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="./home">Home</a> <a
-					class="navbar-brand" href="./home">게시판</a> <a class="navbar-brand"
-					href="./home">쇼핑몰</a>
+				<a class="navbar-brand" href="./webtoons">Home</a> <a
+					class="navbar-brand" href="./webtoons">웹툰목록</a> <a class="navbar-brand"
+					href="./webtoons">쇼핑몰</a>
 			</div>
+			<form action="./webtoon.jsp" method="get">
+			</form>
 		</div>
 	</nav>
 
@@ -31,7 +33,7 @@
 		<div class="row" align="center">
 			<c:forEach items="${webtoonList}" var="webtoon">
 				<div class="col-md-4">
-					<p><img src=${pageContext.request.contextPath}/resources/img/${webtoon.imagePath }></p>
+					<p><img width="220" height="300" src=${pageContext.request.contextPath}/resources/img/${webtoon.imagePath }></p>
 					<h3>${webtoon.name}</h3>
 					<p>${webtoon.author}
 						<br>${webtoon.genre} | ${webtoon.releaseDay}

@@ -86,10 +86,10 @@ public class BookRepositoryImpl implements BookRepository {
 			Book book = listOfBooks.get(i);
 			if (category.equalsIgnoreCase(book.getCategory())) {
 				// equalsIgnoreCase : 대소문자 관계없이 문자열을 비교
+				System.out.println("category:" + category);
 				booksByCategory.add(book);
 			}
 		}
-		
 		return booksByCategory;
 	}
 
@@ -103,7 +103,7 @@ public class BookRepositoryImpl implements BookRepository {
 		
 		Set<String> booksByFilter = filter.keySet(); // keySet: 전체 key 출력
 		
-		// author 검출 작업
+		// author, category 검출 작업
 		if (booksByFilter.contains("author")) {
 			for (int i = 0; i < filter.get("author").size(); i++) {
 				String authorName = filter.get("author").get(i);
