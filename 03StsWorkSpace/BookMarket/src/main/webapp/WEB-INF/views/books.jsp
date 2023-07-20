@@ -40,7 +40,11 @@
 					<p>${book.author}
 						<br>${book.category} | ${book.releaseDate}
 					<p align=left>${fn:substring(book.description, 0, 60)} ...
-					<p>${book.condition}<br>
+					<p>${book.condition}</p>
+					<p><a href="<c:url value="/books/book?id=${book.bookId }"/>"
+						class="btn btn-secondary" role="button">상세보기 &raquo;
+						</a>
+					</p>
 				</div>
 			</c:forEach>
 		</div>

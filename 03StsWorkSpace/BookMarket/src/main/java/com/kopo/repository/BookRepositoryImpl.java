@@ -145,5 +145,10 @@ public class BookRepositoryImpl implements BookRepository {
 		
 		return bookInfo;
 	}
+
+	@Override
+	public void setNewBook(Book book) {
+		listOfBooks.add(book);
+	}
 	
 }

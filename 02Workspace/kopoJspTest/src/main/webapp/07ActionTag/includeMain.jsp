@@ -25,11 +25,11 @@ request.setAttribute("rAttr", "온조왕");
 	 5. newVal2 출력 -->
 <h3>지시어로 페이지 포함</h3>	 
 <%@ include file="./inc/OuterPage1.jsp" %>
-<p>include 지시어 출력 : <%=newVar1%></p>
+<p>include 지시어 출력 : <%=newVar1%></p> <!-- 주로 정적인 페이지에서 사용 -->
 
 <h3>액션태그로 페이지 포함</h3>
 <jsp:include page="./inc/OuterPage2.jsp" />
 <jsp:include page="<%=outPath2%>" />
-<p>include 액션태그 출력 : <%--newVar2--%></p> <!-- 액션태그로 include시 변수 호환 사용이 불가능함 -->
+<p>include 액션태그 출력 : <%--newVar2--%></p> <!-- 액션태그로 include시 변수 호환 사용이 불가능함, 주로 동적인 페이지에서 사용 -->
 </body>
 </html>

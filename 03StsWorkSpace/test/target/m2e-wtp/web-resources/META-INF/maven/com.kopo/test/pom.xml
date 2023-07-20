@@ -119,7 +119,26 @@
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
-		</dependency>        
+		</dependency> 
+		
+		<!-- Security -->
+		<!-- 
+			spring-security-web.jar : 필터, 보안 인프라 관련 코드가 담겨있음
+			스프링 시큐리티 웹 인증 서비스 및 URL 기반 액세스를 제어하는 경우 필요함
+			
+			spring-security-config.jar : 스프링 시큐리티 XML 관장
+		 -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>5.6.3</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>5.6.3</version>
+		</dependency> 
 	</dependencies>
     <build>
         <plugins> <!-- 배포 파일 관련 정보 -->

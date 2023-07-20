@@ -21,4 +21,7 @@ public interface BookService {
 		Set<Book> getBookListByFilter(Map<String, List<String>> filter);
 		
 		Book getBookById(String bookId);
+		
+		// 신규 도서 추가
+		void setNewBook(Book book);
 }

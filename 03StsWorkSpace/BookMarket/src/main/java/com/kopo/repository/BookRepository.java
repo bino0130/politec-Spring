@@ -18,5 +18,9 @@ public interface BookRepository {
 	// 위 URL을 입력하면 부합하는 목록만 반환되도록
 	Set<Book> getBookListByFilter(Map<String, List<String>> filter);
 	
+	// bookId로 book 찾는 메서드
 	Book getBookById(String bookId);
+	
+	// 신규 도서 추가
+	void setNewBook(Book book);
 }
