@@ -13,13 +13,13 @@
 	<p>아이디 : <form:input path="id" name="id"/></p>
 	<p>비밀번호 : <form:password path="password"/></p>
 	<p>도시명 : <form:select path="city">
-				 	<form:option value="서울시">서울시</form:option>
-				 	<form:option value="경기도">경기도</form:option>
-				 	<form:option value="인천시">인천시</form:option>
-				 	<form:option value="강원도">강원도</form:option>
-				 	<form:option value="경상도">경상도</form:option>
-				 	<form:option value="전라도">전라도</form:option>
-				 	<form:option value="충청도">충청도</form:option>
+				 <form:option value="서울시">서울시</form:option>
+				 <form:option value="경기도">경기도</form:option>
+				 <form:option value="인천시">인천시</form:option>
+				 <form:option value="강원도">강원도</form:option>
+				 <form:option value="경상도">경상도</form:option>
+				 <form:option value="전라도">전라도</form:option>
+				 <form:option value="충청도">충청도</form:option>
 			  </form:select>
 	</p>
 	<p>성별 : <form:radiobutton path="sex" value="남성"/>남성

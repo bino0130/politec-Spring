@@ -15,7 +15,7 @@
 	<p>거주지 : ${member.city}</p>
 	<p>성별 : ${member.sex}</p>
 	<p>취미 : <c:forEach items="${member.hobby}" var="hobby">
-			 <c:out value="${hobby}"/>
+			 	<c:out value="${hobby}"/>
 			 </c:forEach>
 	</p>
 </body>
