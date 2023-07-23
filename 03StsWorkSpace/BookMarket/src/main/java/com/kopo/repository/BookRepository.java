@@ -15,7 +15,7 @@ public interface BookRepository {
 	
 	// author & category가 동일한 도서만 리턴
 	// ex) localhost:8082/controller/books/filter/bookFilter;author=스튜디오 지브리;category=미술
-	// 위 URL을 입력하면 부합하는 목록만 반환되도록
+	// 위 URL을 입력하면 조건에 부합하는 목록만 리턴
 	Set<Book> getBookListByFilter(Map<String, List<String>> filter);
 	
 	// bookId로 book 찾는 메서드

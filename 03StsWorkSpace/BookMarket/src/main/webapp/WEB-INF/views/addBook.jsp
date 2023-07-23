@@ -14,7 +14,7 @@
 			<div class="navbar-header">
 				<a class="navbar-brand" href="./books">Home</a> <a
 					class="navbar-brand" href="./books">게시판</a> <a class="navbar-brand"
-					href="./books">쇼핑몰</a>
+					href="./books">로그인</a>
 			</div>
 		</div>
 	</nav>

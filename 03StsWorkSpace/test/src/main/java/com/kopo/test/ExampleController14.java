@@ -3,9 +3,10 @@ package com.kopo.test;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+//@RequestMapping("/home")
 public class ExampleController14 {
 	/*
 	 * 스프링 form태그 - 폼 태그 라이브러리(<%@ taglib %>) 선언 후 사용

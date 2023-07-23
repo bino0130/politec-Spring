@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.MatrixVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -56,11 +57,21 @@ public class WebtoonController {
 		return "webtoons";
 	}
 	
-	@GetMapping("/webtoon")
+	@GetMapping("/webtoon") // /webtoon?name=aaaa로 특정 웹툰 검색
 	public String requestWebtoonsByName(@RequestParam String name, Model model) {
 		Webtoon webtoonByName = webtoonService.getWebtoonByName(name);
 		model.addAttribute("webtoon", webtoonByName);
 		
 		return "webtoon";
+	}
+	
+	@GetMapping("/add")
+	public String requestAddWebtoonForm(@ModelAttribute("NewWebtoon") Webtoon webtoon) {
+		return "addWebtoon";
+	}
+	
+	@ModelAttribute
+	public void addAttribute(Model model) {
+		model.addAttribute("addTitle", "신규 웹툰 등록");
 	}
 }

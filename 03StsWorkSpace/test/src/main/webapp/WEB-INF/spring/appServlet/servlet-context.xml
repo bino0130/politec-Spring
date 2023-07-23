@@ -31,7 +31,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.kopo.test" />
+	<context:component-scan base-package="com.kopo.*" />
 	
 	
 	

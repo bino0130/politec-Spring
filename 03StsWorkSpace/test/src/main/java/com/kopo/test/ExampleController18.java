@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ExampleController18 {
 	/*
 	 * 스프링 시큐리티 태그
-<http> = 시작과 끝을 알려주는 태그
+<http> = 시작과 끝을 알려주는 태그 </http>
 <intercept.url> = 감시해야할 URL (권한을 확인 → 접근 가능 유무 판단)
 <form-login> = 로그인 설정
 <logout> = 로그아웃 설정
@@ -31,7 +31,7 @@ SpEL : Spring Expression Language (스프링 표현 언어)
 웹언어 jsp, jsf 다양함 → 통합표현언어
 
 EX)
-<http auto-config='true' use-expressions="true>
+<http auto-config='true' use-expressions="true">
 	
 </http>
 
@@ -41,10 +41,10 @@ access - pattern에 설정된 경로로 접근할 수 있게 권한 부여
 required-channel - URL로 접근하면 리다이렉션
 
 EX)
-<http auto-config='true' use-expressions="true>
+<http auto-config='true' use-expressions="true">
 	<intercept-url pattern="/admin/**" access="hasAuthority('ROLE_ADMIN')"/>
 	<intercept-url pattern="/manager/**" access="hasAuthority('ROLE_MANAGER')"/>
-	<intercept-url pattern="/guest/**" access="hasAuthority('ROLE_GUEST')"/>
+	<intercept-url pattern="/member/**" access="hasAuthority('ROLE_GUEST')"/>
 </http>
 
 /admin/main/... → ROLE_ADMIN(O), MANAGER(X)
@@ -92,7 +92,24 @@ IS-AUTHENTICATED-REMEMBERED - 기억된 사용자
 	</authentication-provider>
 </authentication-manager>
 </beans:beans>
-	 */
+
+[뷰 페이지에서 시큐리티 태그]
+JSP 뷰 페이지에서 보안 / 특정 정보에 접근 -> 제약
+-> 시큐리티 태그 라이브러리
+
+[태그 선언]
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+pom.xml 등록하여 라이브러리 설치
+
+- 권한 태그
+<sec:authorize> : 태그 안에 있는 내용을 평가할지 결정
+access : 접근 권한 설정을 위한 표현식
+url : 접근 권한이 설정된 사용자만 허락하는 경로
+var : 접근 권한이 설정된 사용자를 변수로 재정의
+
+<sec:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE-MANAGER')">
+								└ 이 위치에 어떤 속성을 부여하냐에 따라 허용 범위가 달라짐
+*/
 	
 	// 
 	@GetMapping("/exam18") // 필드 작성 화면으로 이동
