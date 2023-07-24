@@ -162,10 +162,13 @@
 
       
       
-      <Context docBase="WebtoonPage" path="/toons" reloadable="true" source="org.eclipse.jst.jee.server:WebtoonPage"/>
+      
+      
+      
+      <Context docBase="Players" path="/football" reloadable="true" source="org.eclipse.jst.jee.server:Players"/>
+      <Context docBase="BookMarket" path="/controller" reloadable="true" source="org.eclipse.jst.jee.server:BookMarket"/>
       <Context docBase="security" path="/sec" reloadable="true" source="org.eclipse.jst.jee.server:security"/>
-      <Context docBase="file" path="/file" reloadable="true" source="org.eclipse.jst.jee.server:file"/>
-      <Context docBase="Players" path="/football" reloadable="true" source="org.eclipse.jst.jee.server:Players"/><Context docBase="BookMarket" path="/controller" reloadable="true" source="org.eclipse.jst.jee.server:BookMarket"/></Host>
+      <Context docBase="file" path="/file" reloadable="true" source="org.eclipse.jst.jee.server:file"/></Host>
     </Engine>
   </Service>
 </Server>

@@ -69,6 +69,7 @@ public class BookController {
 			Model model) {
 		Set<Book> booksByFilter = bookService.getBookListByFilter(bookFilter);
 		model.addAttribute("bookList", booksByFilter);
+		System.out.println("bookFilter : " + bookFilter);
 		return "books";
 	}
 	

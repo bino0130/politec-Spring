@@ -1,5 +1,7 @@
 package com.kopo.domain;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Players {
 	private String name; 		// 선수 이름
 	private String position; 	// 포지션
@@ -11,8 +13,17 @@ public class Players {
 	private String height; 		// 신장
 	private String season; 		// 선수 시즌
 	private String description; // 선수 설명
-	private String imgPath;
+	private String imgPath; 	// 이미지 경로
+	private MultipartFile file; // 멀티파트 파일
 	
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+
 	public String getImgPath() {
 		return imgPath;
 	}

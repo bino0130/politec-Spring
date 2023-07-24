@@ -35,7 +35,7 @@
 					<label class="col-sm-2 control-label">도서ID</label>
 					<div class="col-sm-3">
 						<form:input path="bookId" class="form-control"/>
-					</div>	
+					</div>
 				</div>
 				
 				<div class="form-group row">

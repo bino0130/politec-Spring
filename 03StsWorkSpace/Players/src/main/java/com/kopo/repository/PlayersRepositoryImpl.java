@@ -2,6 +2,7 @@ package com.kopo.repository;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -15,7 +16,7 @@ public class PlayersRepositoryImpl implements PlayersRepository {
 	private List<Players> listOfPlayers = new ArrayList<Players>();
 	
 	public PlayersRepositoryImpl() {
-		Players player1 = new Players("Puskas Ferenc", "ST");
+		Players player1 = new Players("Ferenc Puskas", "ST");
 		player1.setClub("Fut Icons");
 		player1.setNation("Hungary");
 		player1.setLeague("Icons");
@@ -45,7 +46,7 @@ public class PlayersRepositoryImpl implements PlayersRepository {
 		
 		Players player3 = new Players("Kaka", "CAN");
 		player3.setClub("Fut Icons");
-		player3.setNation("Brazil;");
+		player3.setNation("Brazil");
 		player3.setLeague("Icons");
 		player3.setSkill("5★");
 		player3.setWeakFoot("4★");
@@ -92,7 +93,7 @@ public class PlayersRepositoryImpl implements PlayersRepository {
 		
 		Players player6 = new Players("Kylian Mbappé", "ST");
 		player6.setClub("Paris SG");
-		player6.setNation("France;");
+		player6.setNation("France");
 		player6.setLeague("Ligue 1");
 		player6.setSkill("5★");
 		player6.setWeakFoot("4★");
@@ -104,39 +105,37 @@ public class PlayersRepositoryImpl implements PlayersRepository {
 				"또한 음바페는 어린 나이임에도 불구하고 박스 안에서의 침착함, 골키퍼와 1대 1, 득점찬스에서 더 좋은 위치에 있는 동료에게 패스하는 이타성 또한 광장히 좋은 편이며 이러한 장점들이 데뷔 초에 비하여 경험이 쌓여가며 더욱 발전한 만큼 앞으로도 계속해서 발전할 것으로 예상된다.");
 		player6.setImgPath("mbappe.png");
 		
-		Players player7 = new Players("Javier Mascherano", "CDM");
+		Players player7 = new Players("David Ginola", "LM");
 		player7.setClub("HERO");
-		player7.setNation("Argentina");
-		player7.setLeague("LaLiga Santander");
-		player7.setSkill("3★");
-		player7.setWeakFoot("3★");
-		player7.setHeight("174cm");
+		player7.setNation("France");
+		player7.setLeague("Ligue 1");
+		player7.setSkill("5★");
+		player7.setWeakFoot("5★");
+		player7.setHeight("186cm");
 		player7.setSeason("HERO");
-		player7.setDescription("전형적인 홀딩 미드필더로, 헌신적인 선수다. 상대 선수를 마크하여 경기장에서 지워 버리는 능력이 탁월하며[23] 패스 길목 차단에도 능하다. 젠나로 가투소와 유사하게 과격하고 터프한 수비를 구사하기에 옐로 카드는 일상으로 달고 다니는 사나이지만, 그의 활동량과 패스 차단 능력은 언제나 팀에 도움이 된다.\r\n" + 
-				"\r\n" + 
-				"주 포지션은 포백 앞의 수비형 미드필더이나 축구 IQ가 높아서 멀티 플레이어로 팀 상황에 따라 여러 포지션을 소화가 가능했다. 본래 위치뿐만 아니라 조금 더 전진하는 박스투박스 미드필더로도 뛴 적이 있으며, 바르셀로나 시절에는 푸욜이 은퇴한 이후 수 년간 피케와 짝을 이뤄 센터백 역할을 수행했다. 심지어 부상자가 많아 수비진 구성이 짜여지지 않을 때는 측면 수비수로도 출전한 적이 있다.\r\n" + 
-				"\r\n" + 
-				"리더십과 인품 역시 훌륭하다고 평가받는 선수이며, 대표팀에서는 사네티의 뒤를 이어 주장 완장을 찼다.[24]\r\n" + 
-				"\r\n" + 
-				"웨스트햄, 리버풀 시절부터 마스체라노를 지켜본 축구팬들은 알겠지만, 마스체라노는 거칠고 투박한 이미지가 강했고 패스, 발기술에 강점이 있는 선수는 아니었다. 그런데 바르셀로나로 와서 진화를 거듭하며 후방 빌드업을 큰 무리 없이 수행할 수 있는 자원으로 거듭났다. 비교 대상이 패스플레이의 최정점에 있는 바르셀로나의 주전 피케 혹은 부스케츠이기에 평가절하되지만 다른 팀의 정상급 센터백과 비교해 봐도 중장거리 패스를 꽤 능수능란하게 뿌리는 자원중에 하나다. 발 기술도 늘어서 간단한 탈압박 또한 가능해져, 수비형 미드필더로 뛰는 아르헨티나 국가대표팀에서도 과거보다 섬세한 선수로 탈바꿈했다. 심지어 가고가 폼이 떨어지고 바네가가 대표팀에 복귀하기 전까지인 2010년대 초중반에는 후방 빌드업과 수비 라인 컨트롤 등 후방에서 벌어지는 모든 일을 마스체라노 혼자 책임진다 해도 과언이 아닐 정도였다. 즉 그의 플레이스타일 변화와 전성기가 곧 아르헨티나 대표팀의 변화와 전성기라고 볼 수 있다. 아직 빌드업 측면에서 완숙하지 못했던 2010년 월드컵에서는 이미 35살을 넘긴 베론과 짝을 맞춰 출전하며 왕성한 활동량과 수비력을 자랑했으나, 베론이 1차전 이후 부상으로 나올 수 없게 되자 마라도나의 기이한 포메이션의 허리를 홀로 책임졌고, 아르헨티나 대표팀은 무너졌다. 반면 기량이 절정에 달한 2014년 월드컵에서는 가고, 빌리아라는 다소 부족한 중원을 이끌며 대표팀이 결승전에 이르는데 메시 못지않은 기여를 했다. 하지만 전성기가 지난 2018년 월드컵에서는 대표팀의 침몰을 막지 못하고 16강에서 탈락했다. 즉 2010년대 아르헨티나 대표팀에서의 마스체라노는 메시 못지않은 키 플레이어였다.");
-		player7.setImgPath("mascherano.png");
-		
-		Players player8 = new Players("David Ginola", "LM");
-		player8.setClub("HERO");
-		player8.setNation("France");
-		player8.setLeague("Ligue 1");
-		player8.setSkill("5★");
-		player8.setWeakFoot("5★");
-		player8.setHeight("186cm");
-		player8.setSeason("HERO");
-		player8.setDescription("정교한 기술력을 가진 좌측 윙어로, 드리블 테크닉을 통해 화려한 볼거리를 제공하여 팬들과 평론가 모두에게 극찬을 받았던 그라운드의 마법사였다. 특히 그 시대에 흔치 않게 양발을 자유자재로 사용했던 윙어로, 뉴캐슬 시절 페렌츠바로시를 상대로 오른발로 데니스 베르캄프가 연상되는 트래핑을 한 후 바로 왼발로 쏜 대포알 발리슛은 이를 잘 보여주는 지놀라의 대표적 골로 회자된다. 또한 1999년 리즈 유나이티드와의 FA컵 경기에서 왼발 중거리슛으로 골대를 두 번 친 후 오른발 중거리 슛으로 기어이 득점을 이뤄내는 (...) 신기를 보일 정도로 본인이 가진 기술력을 양발과 연계하는 능력이 탁월했다. 이 양발을 이용한 드리블 돌파 기술이 특히 탁월했는데, 상대 풀백 앞에서 공을 오밀조밀 드리블하며 상대의 태클을 유도하고 본인은 앞으로 치고나가는 특유의 드리블 스타일은 아직도 지놀라의 대표 기술로 회자된다.\r\n" + 
+		player7.setDescription("정교한 기술력을 가진 좌측 윙어로, 드리블 테크닉을 통해 화려한 볼거리를 제공하여 팬들과 평론가 모두에게 극찬을 받았던 그라운드의 마법사였다. 특히 그 시대에 흔치 않게 양발을 자유자재로 사용했던 윙어로, 뉴캐슬 시절 페렌츠바로시를 상대로 오른발로 데니스 베르캄프가 연상되는 트래핑을 한 후 바로 왼발로 쏜 대포알 발리슛은 이를 잘 보여주는 지놀라의 대표적 골로 회자된다. 또한 1999년 리즈 유나이티드와의 FA컵 경기에서 왼발 중거리슛으로 골대를 두 번 친 후 오른발 중거리 슛으로 기어이 득점을 이뤄내는 (...) 신기를 보일 정도로 본인이 가진 기술력을 양발과 연계하는 능력이 탁월했다. 이 양발을 이용한 드리블 돌파 기술이 특히 탁월했는데, 상대 풀백 앞에서 공을 오밀조밀 드리블하며 상대의 태클을 유도하고 본인은 앞으로 치고나가는 특유의 드리블 스타일은 아직도 지놀라의 대표 기술로 회자된다.\r\n" + 
 				"\r\n" + 
 				"다만 상기된 바 있는 저주받은 국가대표 경력과 EPL 중위권 팀을 전전한 팀 커리어의 영향으로 수상 경력이 빈약하다. 특히 지놀라의 전성기였던 토트넘 시절은 정작 팀이 강등권에서 허우적대는 막장테크 (...)를 타고있었기 때문에 임대의 전설을 쓴 위르겐 클린스만과 신입생 지놀라 둘이서 눈물겨운 활약을 보여줘야만 했다. 또한 본인의 주장과 개성이 뚜렷하여 자유방임적인 케빈 키건같은 감독 밑에서는 예술적인 천재성을 뚜렷히 보여줬으나, 제라르 울리에 등 권위적 감독들과는 상기된 엑조세 미사일 발언으로 인한 명예훼손 법정공방까지 가는 등, 마찰을 많이 일으켜 다루기 힘든 선수라는 이미지도 있었다. 또한 화려한 발기술과 외모에 가려졌지만 수비 참여에 적극적이지 않은 모습을 보여줬다.");
-		player8.setImgPath("ginola.png");
+		player7.setImgPath("ginola.png");
+		
+		Players player8 = new Players("Diego Forlan", "ST");
+		player8.setClub("HERO");
+		player8.setNation("Uruguay");
+		player8.setLeague("LaLiga Santander");
+		player8.setSkill("4★");
+		player8.setWeakFoot("4★");
+		player8.setHeight("180cm");
+		player8.setSeason("HERO");
+		player8.setDescription("한국에서는 과소평가와 과대평가가 공존하는 선수이다. 현역 시절 전성기를 맞은 팀이 유명하거나 인기 있었던 팀이 아닌 점, 선수로서 말년이 그렇게 잘 풀린 편은 아니라는 점 때문에 과소 평가를 받지만, 반대로 단순한 스트라이커 뿐만이 아니라 게임 전체를 지배하는 플레이메이커로서의 모습도 보여준 월드컵에서의 활약으로 인해 과대 평가를 받기도 한다. 그리고 과대평가에 대한 반감이 다시 과소평가를 낳고 과소평가에 대한 반감이 과대평가를 낳는 등, 국내에서의 포를란에 대한 평가는 혼재되어 있는 부분이 없지 않다. 그러나 분명한 것은 전성기의 포를란은 세계 최고급의 스트라이커였으며, 이 전성기의 포를란보다 뛰어난 모습을 보여준 스트라이커는 얼마 없다는 사실이다.\r\n" + 
+				"\r\n" + 
+				"포를란은 분명 스트라이커이긴 하나, 고전적이지 않은 변칙적인 유형의 스트라이커였다. 최전방의 중앙이 아닌, 측면 후방에 치우쳐 왕성한 활동량을 가져갔기에 타겟맨으로 분류하기는 어려우며, 좋은 체격과 바디 밸런스, 괜찮은 주력을 지니고 있긴 하나 이를 살려 상대의 뒷공간을 파고드는 라인 브레이커는 또 아니었다. 포를란은 오히려 상대 수비를 앞에 두고 일정 거리를 두고 드리블을 치는 플레이를 더 즐겼다. 어느 정도 발재간이 있어서 수비수 한 둘쯤은 달고 드리블을 할 수 있었고, 탈압박 능력도 없는 편은 아니나 우리에게 익숙한 드리블러는 아니다. 패스도 곧잘 찔러넣어 주고 연계도 잘 했지만 올리비에 지루나 카림 벤제마처럼 좁은 박스 안에서의 연계에 정말 뛰어난 스타일도 아니었다.\r\n" + 
+				"\r\n" + 
+				"뭐든 다 일정 이상이긴 하지만 최고 수준은 아니면 대체 뭘 잘하나 싶을 수 있는데, 포를란의 진짜 무서운 점이자 최고의 장점은 바로 슈팅 능력이다. 슈팅의 세기는 물론이고 정확도, 타이밍 등 슈팅과 관련한 능력에 있어서는 가히 당대 최고의 선수였다. 위치와 거리를 가리지 않고, 어느 타이밍이든 골대를 타격할 수 있는 선수가 바로 포를란이었다. 심지어 포를란의 슈팅은 구질도 다양했는데, 발등에 얹히는 무회전슛은 물론이고 파포스트를 노리며 때리는 감아차기, 발리슛까지 수준급으로 구사할 수 있었다. 포를란이 상대진영에서 볼을 잡으면 골대와의 거리가 얼마가 되든 그 순간 수비진과 골키퍼는 긴장을 해야만 했다. 심지어 오른발잡이에도 불구하고 왼발 슈팅 역시 정확도가 엄청났다. 바로 이 점이 포를란이 피치치를 두 번이나 차지할 수 있었던 가장 큰 장점이었다.");
+		player8.setImgPath("forlan.png");
 		
 		Players player9 = new Players("Joe Cole", "RW");
 		player9.setClub("HERO");
-		player9.setNation("England;");
+		player9.setNation("England");
 		player9.setLeague("Premier League");
 		player9.setSkill("4★");
 		player9.setWeakFoot("4★");
@@ -174,9 +173,8 @@ public class PlayersRepositoryImpl implements PlayersRepository {
 		List<Players> playersBySeason = new ArrayList<Players>();
 		for (int i = 0; i < listOfPlayers.size(); i++) {
 			Players players = listOfPlayers.get(i);
-			if (season.equalsIgnoreCase(players.getSeason())); {
+			if (season.equalsIgnoreCase(players.getSeason())) {
 				// equalsIgnoreCase : 대소문자 관계없이 문자열을 비교
-				System.out.println("Season : " + season);
 				playersBySeason.add(players);
 			}
 		}
@@ -199,25 +197,30 @@ public class PlayersRepositoryImpl implements PlayersRepository {
 				for (int j = 0; j < listOfPlayers.size(); j++) {
 					Players players = listOfPlayers.get(j);
 					
-					if (nationName.equalsIgnoreCase(players.getName())) playersByNation.add(players);
+					if (nationName.equalsIgnoreCase(players.getNation())) {
+						playersByNation.add(players);
+					}
 				}
 			}
-		}
-		
-		if (playersByFilter.contains("height")) {
-			for (int i = 0; i < filter.get("height").size(); i++) {
-				String heightLength = filter.get("height").get(i);
-				for (int j = 0; j < listOfPlayers.size(); j++) {
-					Players players = listOfPlayers.get(j);
+			
+			if (playersByFilter.contains("height")) {
+				for (int i = 0; i < filter.get("height").size(); i++) {
+					String height = filter.get("height").get(i);
 					
-					if (heightLength.equalsIgnoreCase(players.getHeight())) playersByHeight.add(players);
+					List<Players> playersHeight = new ArrayList<Players>();
+					for (int j = 0; j < listOfPlayers.size(); j++) {
+						Players player = listOfPlayers.get(j);
+						if (height.equalsIgnoreCase(player.getHeight())) playersHeight.add(player);
+					}
+					playersByHeight.addAll(playersHeight);
 				}
 			}
 		}
 		
-		playersByNation.retainAll(playersByHeight);
+		playersByHeight.retainAll(playersByNation);
 		// A.retainAll(B) : A와 B의 교집합만 남기고 나머지는 제거한다. 
-		return playersByNation;
+		
+		return playersByHeight;
 	}
 
 	@Override
@@ -242,5 +245,4 @@ public class PlayersRepositoryImpl implements PlayersRepository {
 	public void setNewPlayer(Players player) {
 		listOfPlayers.add(player);
 	}
-
 }

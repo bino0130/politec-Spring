@@ -43,18 +43,14 @@ public class exam02 {
    public String submitForm(@ModelAttribute("member") Member member,
 		   HttpServletRequest request,HttpSession session) {
       
-   
-      
-      String name =member.getName();
+      String name = member.getName();
       String filename = member.getImageFile().getOriginalFilename();
       
       try {
-         member.getImageFile().transferTo(new File("c:\\upload\\"+name+"_"+filename));
-      }catch(Exception e) {
-         e.printStackTrace();
+    	  member.getImageFile().transferTo(new File("c:\\upload\\"+name+"_"+filename));
+      } catch(Exception e) {
+    	  e.printStackTrace();
       }
       return "file_submit";
-      
    }
-   
 }

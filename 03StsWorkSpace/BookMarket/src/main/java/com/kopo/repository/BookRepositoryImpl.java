@@ -86,7 +86,7 @@ public class BookRepositoryImpl implements BookRepository {
 			Book book = listOfBooks.get(i);
 			if (category.equalsIgnoreCase(book.getCategory())) {
 				// equalsIgnoreCase : 대소문자 관계없이 문자열을 비교
-				System.out.println("category:" + category);
+				System.out.println("Bookcategory:" + book.getCategory());
 				booksByCategory.add(book);
 			}
 		}
@@ -97,6 +97,7 @@ public class BookRepositoryImpl implements BookRepository {
 	// ex) localhost:8082/controller/books/filter/bookFilter;author=스튜디오 지브리;category=미술
 	@Override
 	public Set<Book> getBookListByFilter(Map<String, List<String>> filter) {
+		System.out.println("filter : " + filter);
 		// author & category가 동일한 도서만 리턴
 		Set<Book> booksByAuthor = new HashSet<Book>();
 		Set<Book> booksByCategory = new HashSet<Book>();
