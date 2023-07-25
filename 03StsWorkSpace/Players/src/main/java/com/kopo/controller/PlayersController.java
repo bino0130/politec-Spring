@@ -80,22 +80,33 @@ public class PlayersController {
 		String name = player.getName();
 		String fileName =  player.getFileImage().getOriginalFilename();
 		System.out.println(player.getFileImage());
-		String imagePath = uuid + name+"_"+fileName;
+		String imagePath = uuid.toString() + name+"_"+fileName.replaceAll(" ", "");
+//		String servletPath = request.getServletPath(); // jsp 파일명 가져오는 메서드
 		try {
 			player.setImgPath(imagePath);
+			player.setPositionSort(player.getPosition());
 			player.getFileImage().transferTo(
 			new File("c:\\Users\\Bino\\Documents\\GitHub\\politec-Spring\\03StsWorkSpace\\Players\\src\\main\\webapp\\resources\\img\\"+imagePath));
 			System.out.println("imagePath : " + imagePath);
 			System.out.println("업로드 완료");
+//			System.out.println("servletPath : " + servletPath);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		playerService.setNewPlayer(player);
+//		return "redirect:"+servletPath;
 		return "redirect:/players";
 	}
 	
 	@ModelAttribute
 	public void addAttribute(Model model) {
 		model.addAttribute("addTitle", "신규 선수 등록");
+	}
+	
+	@GetMapping("/login")
+	public String loginForm(HttpServletRequest request, Model model) {
+		String servletPath = request.getServletPath();
+		System.out.println("servletPath : " + servletPath);
+		return "redirect:"+servletPath;
 	}
 }

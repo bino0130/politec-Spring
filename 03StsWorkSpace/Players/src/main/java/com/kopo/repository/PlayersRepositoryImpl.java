@@ -96,7 +96,7 @@ public class PlayersRepositoryImpl implements PlayersRepository {
 		player5.setImgPath("benzema.png");
 		player5.setPositionSort("CF");
 		
-		Players player6 = new Players("Kylian Mbappé", "ST");
+		Players player6 = new Players("Kylian Mbappe", "ST");
 		player6.setClub("Paris SG");
 		player6.setNation("France");
 		player6.setLeague("Ligue 1");

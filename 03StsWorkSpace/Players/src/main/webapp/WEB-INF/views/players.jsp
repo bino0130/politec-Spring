@@ -27,7 +27,8 @@
 								src=${pageContext.request.contextPath}/resources/img/${players.imgPath}>
 						</p>
 						<div class="playerInfo">
-							<h3>${players.name}</h3>
+							<h3><a style="text-decoration:none; color:black;" 
+							href="<c:url value="/players/player?name=${players.name}"/>">${players.name}</a></h3>
 							<p><span class="${players.positionSort}">${players.position}</span>
 								<br>${players.club} | ${players.nation}
 							<p align=left>${fn:substring(players.description, 0, 60)}...
