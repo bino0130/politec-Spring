@@ -6,8 +6,16 @@
 <html>
 <head>
 <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
 <title>header</title>
+<style>
+*{
+	font-family: 'Black Han Sans', sans-serif;
+}
+</style>
 </head>
 <body>
 	<nav class="navbar navbar-expand navbar-dark bg-dark">

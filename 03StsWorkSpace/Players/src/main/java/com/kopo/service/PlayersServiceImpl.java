@@ -42,6 +42,4 @@ public class PlayersServiceImpl implements PlayersService {
 	public void setNewPlayer(Players player) {
 		playersRepository.setNewPlayer(player);
 	}
-	
-	
 }

@@ -14,14 +14,45 @@ public class Players {
 	private String season; 		// 선수 시즌
 	private String description; // 선수 설명
 	private String imgPath; 	// 이미지 경로
-	private MultipartFile file; // 멀티파트 파일
+	private MultipartFile fileImage; // 멀티파트 파일
+	private String positionSort; 	// 포지션 구분 
 	
-	public MultipartFile getFile() {
-		return file;
+	public String getPositionSort() {
+		return positionSort;
 	}
 
-	public void setFile(MultipartFile file) {
-		this.file = file;
+	public void setPositionSort(String position) {
+		if(position.equals("ST") || position.equals("LW") || 
+		position.equals("RW") || position.equals("LF") || 
+		position.equals("CF") || position.equals("RF")) {
+			
+			this.positionSort = "badge badge-danger"; // 공격수
+			
+		} else if(position.equals("LAM") || position.equals("CAM") || position.equals("RAM") ||
+				position.equals("LCM") || position.equals("CM") || position.equals("RCM") ||
+				position.equals("LDM") || position.equals("CDM") || position.equals("RDM") ||
+				position.equals("LM") || position.equals("RM") ) {
+			
+			this.positionSort = "badge badge-success"; // 미드필더
+			
+		} else if(position.equals("LWB") || position.equals("LB") || position.equals("LCB") ||
+				position.equals("CB") || position.equals("RCB") || position.equals("RB") ||
+				position.equals("RWB") ) {
+			
+			this.positionSort = "badge badge-primary"; // 수비수
+			
+		} else if(position.equals("GK")) {
+			this.positionSort = "badge badge-warning"; // 골키퍼
+		}
+		
+	}
+
+	public MultipartFile getFileImage() {
+		return fileImage;
+	}
+
+	public void setFileImage(MultipartFile fileImage) {
+		this.fileImage = fileImage;
 	}
 
 	public String getImgPath() {

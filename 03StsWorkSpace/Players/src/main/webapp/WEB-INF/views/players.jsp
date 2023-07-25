@@ -23,12 +23,12 @@
 				<c:forEach items="${playerList}" var="players">
 					<div class="col-md-4">
 						<p>
-							<img width="420" height="600"
+							<img width="420" height="600" alt="playerImage"
 								src=${pageContext.request.contextPath}/resources/img/${players.imgPath}>
 						</p>
 						<div class="playerInfo">
 							<h3>${players.name}</h3>
-							<p>${players.position}
+							<p><span class="${players.positionSort}">${players.position}</span>
 								<br>${players.club} | ${players.nation}
 							<p align=left>${fn:substring(players.description, 0, 60)}...
 							<p>${players.league}</p>

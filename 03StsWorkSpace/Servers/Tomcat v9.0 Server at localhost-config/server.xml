@@ -165,10 +165,11 @@
       
       
       
-      <Context docBase="Players" path="/football" reloadable="true" source="org.eclipse.jst.jee.server:Players"/>
-      <Context docBase="BookMarket" path="/controller" reloadable="true" source="org.eclipse.jst.jee.server:BookMarket"/>
+      
+      
       <Context docBase="security" path="/sec" reloadable="true" source="org.eclipse.jst.jee.server:security"/>
-      <Context docBase="file" path="/file" reloadable="true" source="org.eclipse.jst.jee.server:file"/></Host>
+      <Context docBase="file" path="/file" reloadable="true" source="org.eclipse.jst.jee.server:file"/>
+      <Context docBase="Players" path="/football" reloadable="true" source="org.eclipse.jst.jee.server:Players"/></Host>
     </Engine>
   </Service>
 </Server>

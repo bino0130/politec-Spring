@@ -7,6 +7,8 @@
 <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Player Info</title>
+<style>
+</style>
 </head>
 <body>
 	<%@ include file="header.jsp" %>
@@ -16,7 +18,7 @@
 				<p><img width="220" height="300" alt="img.jpg" src=${pageContext.request.contextPath}/resources/img/${player.imgPath}></p>
 				<h3>${player.name }</h3>
 				<p>${player.description }</p>
-				<p><b>포지션 : </b><span class="badge badge-info">${player.position}</span></p>
+				<p><b>포지션 : </b><span class="${player.positionSort}">${player.position}</span></p>
 				<p><b>클럽 : </b>${player.club}</p>
 				<p><b>국가 : </b>${player.nation}</p>
 				<p><b>리그 : </b>${player.league}</p>

@@ -30,6 +30,7 @@ public class PlayersRepositoryImpl implements PlayersRepository {
 				"\r\n" + 
 				"​마치 요한 크루이프가 토탈 풋볼을 잘 이행해낸것처럼 그 역시도 '소셜리스트 풋볼' 정립에 있어서 크나 큰 역할을 했다고 본다. 정말 아쉬운것은 헝가리 혁명이다. 축구에 만약은 없다지만 헝가리 혁명이 없었다면 축구강국은 브라질이 아닌 헝가리였을 수도 있다. 월드컵 결승에는 정말 많은 비극과 기적이 있었지만 푸스카스에게 있어서 최악의 비극은 당연 '베른의 비극', 또 스페인으로 귀화했을때는 운없게도 4경기밖에 못뛰고 다시한번 국대은퇴를 선언했어야 했으니...... 2009년에는 올해의 골 상의 이름을 푸스카스상으로 변경해서 발롱도르와 함께 수상하기 시작했다. 이를 보면 축구사의 푸스카스가 남긴 발자취가 대단하다는 것을 알수 있다.");
 		player1.setImgPath("puskas.png");
+		player1.setPositionSort("ST");
 		
 		Players player2 = new Players("Pele", "CAM");
 		player2.setClub("Fut Icons");
@@ -43,8 +44,9 @@ public class PlayersRepositoryImpl implements PlayersRepository {
 				"\r\n" + 
 				"펠레의 높은 득점 기록 때문에 그를 전형적인 골게터로 착각하기 쉽지만, 펠레는 자서전에서 스스로를 공격형 미드필더라 칭했을 정도로 미드필더적인 성향이 있는 선수였다. 1970년 월드컵 직전에 브라질 대표팀 감독이 펠레를 센터포워드로 뛰게하자, 당시 언론의 인터뷰에서 거기는 당신이 좋아하는 포지션이 아니었던 것이 아니냐고 물어볼 정도였다. 펠레도 이에 대해 15년을 미드필더로 뛰었는데, 갑자기 하라고 하면 되겠느냐며 불만을 표출했다. 실제로 이 링크처럼 펠레를 공격형 미드필더로 분류한 사례들이 존재한다. 당시 펠레의 포지션은 브라질에서 Ponta de Lança(창날)이라 불렸던 포지션이다. 이 창날 포지션은 빠르고 날렵한 드리블로 라인을 부순 뒤, 창처럼 침투해서 마무리를 짓기도 했고, 때때로 3선까지 내려와 박스 사이를 휘저으며 중원 장악을 돕기도 했다. 현재의 전술 및 포지션과 완전한 1대1 대응은 어려우나, 연관짓자면 지금의 세컨드 스트라이커 혹은 공격형 미드필더와 비슷한 역할을 수행했다고 볼 수 있다. 이러한 펠레의 역할을 잘 알고 있었던 전문가들은 발롱도르 드림팀을 선정할 때 펠레를 공격형 미드필더 후보로 분류했다. 이에 대해 축구 매니아를 제외한 많은 축구팬들은 당황하는 반응을 보였다.");
 		player2.setImgPath("pele.png");
+		player2.setPositionSort("CAM");
 		
-		Players player3 = new Players("Kaka", "CAN");
+		Players player3 = new Players("Kaka", "CAM");
 		player3.setClub("Fut Icons");
 		player3.setNation("Brazil");
 		player3.setLeague("Icons");
@@ -68,6 +70,7 @@ public class PlayersRepositoryImpl implements PlayersRepository {
 				"\r\n" + 
 				"카카의 이런 유니크한 플레이 스타일과 수려한 외모 때문에 많은 팬들이 제2의 카카를 기대하지만, 현재까지 이런 유형의 선수는 찾기 어렵다.");
 		player3.setImgPath("kaka.png");
+		player3.setPositionSort("CAM");
 		
 		Players player4 = new Players("Vinicius Junior", "LW");
 		player4.setClub("Real Madrid");
@@ -79,6 +82,7 @@ public class PlayersRepositoryImpl implements PlayersRepository {
 		player4.setSeason("TOTS");
 		player4.setDescription("폭발적인 스피드와 화려한 발재간을 갖췄으며 탄력적이고 유연한 피지컬과 이에 기반한 민첩성을 앞세워 상대 수비진을 헤집는 스타일이다. 속도가 빠르고 민첩하다보니 드리블의 파괴력이 상당하며 최대 장점으로 꼽힌다. 왼쪽 윙이 주 포지션이며 오른쪽 윙어로도 뛸 수 있지만, 아직은 왼쪽에서 뛰는 것에 비해 퍼포먼스가 떨어진다. 브라질리언 특유의 예측하기 힘든 플레이와 깔끔한 첫 터치가 장점으로 꼽힌다. 전형적인 브라질리언의 클래식함이 잘 묻어나면서도 현대 축구가 요구하는 능력들을 지닌 선수라 레알 마드리드 팬들에게도 기대를 많이 받고 있다.");
 		player4.setImgPath("vinicius.png");
+		player4.setPositionSort("LW");
 		
 		Players player5 = new Players("Karim Benzema", "CF");
 		player5.setClub("Real Madrid");
@@ -90,6 +94,7 @@ public class PlayersRepositoryImpl implements PlayersRepository {
 		player5.setSeason("TOTS");
 		player5.setDescription("준수한 피지컬과 스피드, 뛰어난 볼 컨트롤 능력을 바탕으로 세계 최정상급 포스트 플레이를 할 수 있으며, 드리블과 패스에도 능해 찬스 메이킹에서도 뛰어난 강점을 보임과 동시에 해가 지날수록 더욱 좋아지는 골 결정력을 바탕으로 10년 넘게 레알 마드리드의 주전 스트라이커를 차지하고 있다. 본디 2010년대 4대 스트라이커 중에서 아구에로와 최약체 자리를 두고 다투는 위치였으나, 21-22 시즌에 본인의 커리어 하이를 갱신하며 발롱도르까지 받아버린 역대급 활약을 보여준 덕에 확실하게 급수가 올라가 현재 각종 축구 커뮤니티에선 레반도프스키-수아레스-벤제마 누가 제일 위인가를 두고 활발하게 토론하고 있을 지경이다.");
 		player5.setImgPath("benzema.png");
+		player5.setPositionSort("CF");
 		
 		Players player6 = new Players("Kylian Mbappé", "ST");
 		player6.setClub("Paris SG");
@@ -104,6 +109,7 @@ public class PlayersRepositoryImpl implements PlayersRepository {
 				"\r\n" + 
 				"또한 음바페는 어린 나이임에도 불구하고 박스 안에서의 침착함, 골키퍼와 1대 1, 득점찬스에서 더 좋은 위치에 있는 동료에게 패스하는 이타성 또한 광장히 좋은 편이며 이러한 장점들이 데뷔 초에 비하여 경험이 쌓여가며 더욱 발전한 만큼 앞으로도 계속해서 발전할 것으로 예상된다.");
 		player6.setImgPath("mbappe.png");
+		player6.setPositionSort("ST");
 		
 		Players player7 = new Players("David Ginola", "LM");
 		player7.setClub("HERO");
@@ -117,6 +123,7 @@ public class PlayersRepositoryImpl implements PlayersRepository {
 				"\r\n" + 
 				"다만 상기된 바 있는 저주받은 국가대표 경력과 EPL 중위권 팀을 전전한 팀 커리어의 영향으로 수상 경력이 빈약하다. 특히 지놀라의 전성기였던 토트넘 시절은 정작 팀이 강등권에서 허우적대는 막장테크 (...)를 타고있었기 때문에 임대의 전설을 쓴 위르겐 클린스만과 신입생 지놀라 둘이서 눈물겨운 활약을 보여줘야만 했다. 또한 본인의 주장과 개성이 뚜렷하여 자유방임적인 케빈 키건같은 감독 밑에서는 예술적인 천재성을 뚜렷히 보여줬으나, 제라르 울리에 등 권위적 감독들과는 상기된 엑조세 미사일 발언으로 인한 명예훼손 법정공방까지 가는 등, 마찰을 많이 일으켜 다루기 힘든 선수라는 이미지도 있었다. 또한 화려한 발기술과 외모에 가려졌지만 수비 참여에 적극적이지 않은 모습을 보여줬다.");
 		player7.setImgPath("ginola.png");
+		player7.setPositionSort("LM");
 		
 		Players player8 = new Players("Diego Forlan", "ST");
 		player8.setClub("HERO");
@@ -132,6 +139,7 @@ public class PlayersRepositoryImpl implements PlayersRepository {
 				"\r\n" + 
 				"뭐든 다 일정 이상이긴 하지만 최고 수준은 아니면 대체 뭘 잘하나 싶을 수 있는데, 포를란의 진짜 무서운 점이자 최고의 장점은 바로 슈팅 능력이다. 슈팅의 세기는 물론이고 정확도, 타이밍 등 슈팅과 관련한 능력에 있어서는 가히 당대 최고의 선수였다. 위치와 거리를 가리지 않고, 어느 타이밍이든 골대를 타격할 수 있는 선수가 바로 포를란이었다. 심지어 포를란의 슈팅은 구질도 다양했는데, 발등에 얹히는 무회전슛은 물론이고 파포스트를 노리며 때리는 감아차기, 발리슛까지 수준급으로 구사할 수 있었다. 포를란이 상대진영에서 볼을 잡으면 골대와의 거리가 얼마가 되든 그 순간 수비진과 골키퍼는 긴장을 해야만 했다. 심지어 오른발잡이에도 불구하고 왼발 슈팅 역시 정확도가 엄청났다. 바로 이 점이 포를란이 피치치를 두 번이나 차지할 수 있었던 가장 큰 장점이었다.");
 		player8.setImgPath("forlan.png");
+		player8.setPositionSort("ST");
 		
 		Players player9 = new Players("Joe Cole", "RW");
 		player9.setClub("HERO");
@@ -151,6 +159,7 @@ public class PlayersRepositoryImpl implements PlayersRepository {
 				"\r\n" + 
 				"다만, 피지컬적으로 그리 튼튼하지 않은 몸임에도 거칠고 헌신적인 플레이와 역동적인 테크닉을 모두 구사하며 경기 욕심을 구가하였기에 필연적으로 선수 생활 내내 부상을 동반하며 시즌을 보내곤 했다. 그럼에도 자신의 세대에서 가장 뛰어난 기술과 재능을 가진 선수임에는 변함이 없었으나, 계속 되는 부상으로 인해 리버풀 이적 즈음에서는 이미 신체 능력의 손상으로 재능을 다리가 맞춰주지 못하면서 전성기가 꺾이게 된다. 그 이후 릴 등을 전전하며 그저 그런 커리어를 쌓았으나, 2000년대 중반까지 보여주었던 그 명성만큼은 그 시절의 축구를 보았던 많은 사람들에겐 아직까지 남아 있다.");
 		player9.setImgPath("cole.png");
+		player9.setPositionSort("RW");
 		
 		listOfPlayers.add(player1);
 		listOfPlayers.add(player2);

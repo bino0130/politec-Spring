@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -75,17 +76,21 @@ public class PlayersController {
 	@PostMapping("/add")
 	public String submitAddNewPlayer(@ModelAttribute("NewPlayer") Players player, HttpServletRequest request,
 			HttpSession session) {
-		playerService.setNewPlayer(player);
+		UUID uuid = UUID.randomUUID();
 		String name = player.getName();
-		String fileName =  player.getFile().getOriginalFilename();
-		
+		String fileName =  player.getFileImage().getOriginalFilename();
+		System.out.println(player.getFileImage());
+		String imagePath = uuid + name+"_"+fileName;
 		try {
-			player.getFile().transferTo(
-			new File("C:\\Users\\Bino\\Documents\\GitHub\\politec-Spring\\03StsWorkSpace\\Players\\src\\main\\webapp\\resources\\img"+name+"_"+fileName));
+			player.setImgPath(imagePath);
+			player.getFileImage().transferTo(
+			new File("c:\\Users\\Bino\\Documents\\GitHub\\politec-Spring\\03StsWorkSpace\\Players\\src\\main\\webapp\\resources\\img\\"+imagePath));
+			System.out.println("imagePath : " + imagePath);
 			System.out.println("업로드 완료");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		playerService.setNewPlayer(player);
 		return "redirect:/players";
 	}
 	

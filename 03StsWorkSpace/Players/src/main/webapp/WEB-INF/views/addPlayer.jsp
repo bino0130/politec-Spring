@@ -7,7 +7,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 <title>Insert title here</title>
+<style>
+</style>
 </head>
 <body>
 <%@ include file="header.jsp" %>
@@ -22,7 +25,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<form:form modelAttribute="NewPlayer" class="form-horizontal"
-						 enctype="multipart/form-data">
+						method="POST" enctype="multipart/form-data">
 							<fieldset>
 								<div class="form-group row">
 									<label class="col-sm-2 control-label">선수 이름</label>
@@ -99,12 +102,14 @@
 									<label class="col-sm-2 control-label">파일</label>
 									<div class="col-sm-3">
 										<input type="file" name="fileImage" />
+										<input name="${_csrf.parameterName }" type="hidden" value="${_csrf.token }"/>
 									</div>
 								</div>
 								
 								<div class="form-group row">
 									<div class="col-sm-offset-2 col-sm-10">
 										<input type="submit" class="btn btn-primary" value="등록">
+										<input type="reset" class="btn btn-primary" value="다시쓰기" />
 									</div>
 								</div>
 
