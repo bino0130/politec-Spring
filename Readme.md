@@ -18,3 +18,7 @@
 ''' bash
 
 추가 수정
+
+이건 또 다른 branch에서 작업중인 ReadMe 파일이에요 1
+이건 또 다른 branch에서 작업중인 ReadMe 파일이에요 2
+이건 또 다른 branch에서 작업중인 ReadMe 파일이에요 3
