@@ -25,12 +25,12 @@ import com.kopo.domain.Players;
 import com.kopo.service.PlayersService;
 
 @Controller
-@RequestMapping("/players")
+//@RequestMapping("/players")
 public class PlayersController {
 	@Autowired
 	private PlayersService playerService;
 	
-	@GetMapping // 전체 플레이어 출력 1
+	@GetMapping("players") // 전체 플레이어 출력 1
 	public String requestPlayersList (Model model) {
 		List<Players> list = playerService.getAllPlayersList();
 		model.addAttribute("playerList", list);
@@ -68,12 +68,12 @@ public class PlayersController {
 		return "player";
 	}
 	
-	@GetMapping("/add")
+	@GetMapping("/admin/add")
 	public String requestAddPlayerForm(@ModelAttribute("NewPlayer") Players player) {
 		return "addPlayer";
 	}
 	
-	@PostMapping("/add")
+	@PostMapping("/admin/add")
 	public String submitAddNewPlayer(@ModelAttribute("NewPlayer") Players player, HttpServletRequest request,
 			HttpSession session) {
 		UUID uuid = UUID.randomUUID();

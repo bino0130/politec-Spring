@@ -1,5 +1,6 @@
 package com.kopo.controller;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kopo.domain.Book;
@@ -101,6 +103,18 @@ public class BookController {
 	
 	@PostMapping("/add")
 	public String submitAddNewBook(@ModelAttribute("NewBook") Book book) {
+		MultipartFile bookImage = book.getBookImage();
+		String saveName = bookImage.getOriginalFilename();
+		File saveFile = new File("C:\\upload", saveName);
+		
+		if(bookImage != null && !bookImage.isEmpty()) {
+			try {
+				bookImage.transferTo(saveFile);
+			} catch (Exception e) {
+				throw new RuntimeException("이미지 업로드에 실패하였습니다." , e);
+			}
+		}
+		
 		bookService.setNewBook(book);
 		return "redirect:/books"; // View Redirection - 웹 요청에 따라서 뷰 페이지 이동
 		
@@ -127,9 +141,14 @@ public class BookController {
 	// exam17 InitBinder 사용
 	@InitBinder
 	public void setsubTitle(WebDataBinder binder) {
-		binder.setAllowedFields("bookId", "imgPath", "name",
+		binder.setAllowedFields("bookId", "name", "imgPath", "name",
 				"unitPrice", "author", "description", "publisher",
-				"category", "unitsInstock", "releaseDate", "condition");
-		binder.setDisallowedFields("name");
+				"category", "unitsInstock", "releaseDate", "condition", "bookImage");
+//		binder.setDisallowedFields("name");
 	}
+	
+//	@GetMapping("/add")
+//	public String requestAddBookForm(@RequestParam("id") String bookId, Model model) {
+//		return "addBook";
+//	}
 }

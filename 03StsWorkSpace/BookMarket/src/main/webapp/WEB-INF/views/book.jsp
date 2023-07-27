@@ -12,9 +12,9 @@
 	<nav class="navbar navbar-expand navbar-dark bg-dark">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="./home">Home</a> <a
-					class="navbar-brand" href="./books">도서목록</a> <a class="navbar-brand"
-					href="./home">게시판</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/books">Home</a> <a
+					class="navbar-brand" href="${pageContext.request.contextPath}/books">도서목록</a> <a class="navbar-brand"
+					href="${pageContext.request.contextPath}/books">게시판</a>
 			</div>
 		</div>
 	</nav>
@@ -31,6 +31,10 @@
 
 	<div class="container">
 		<div class="row">
+			<div class="col-md-4">
+				<img width="420" height="600" alt="book.jpg" src="<c:url value='/resources/img/${book.imgPath}' />">
+			</div>
+			
 			<div class="col-md-12">
 				<h3>${book.name }</h3>
 				<p>${book.description }</p>

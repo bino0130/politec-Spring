@@ -1,5 +1,7 @@
 package com.kopo.domain;
 
+import org.springframework.web.multipart.MultipartFile;
+
 // DTO 역할
 public class Book {
 	private String bookId;		// 도서ID
@@ -13,6 +15,15 @@ public class Book {
 	private String unitsInstock;// 재고수
 	private String releaseDate;	// 출판일
 	private String condition;	// 신규 or 중고 or 전자책
+	private MultipartFile bookImage;
+
+	public MultipartFile getBookImage() {
+		return bookImage;
+	}
+
+	public void setBookImage(MultipartFile bookImage) {
+		this.bookImage = bookImage;
+	}
 
 	public Book() {
 		super();

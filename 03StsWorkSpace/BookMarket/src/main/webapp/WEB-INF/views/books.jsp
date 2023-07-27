@@ -14,9 +14,9 @@
 	<nav class="navbar navbar-expand navbar-dark bg-dark">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="./home">Home</a> <a
-					class="navbar-brand" href="./home">게시판</a> <a class="navbar-brand"
-					href="./home">쇼핑몰</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/books">Home</a> <a
+					class="navbar-brand" href="${pageContext.request.contextPath}/books">게시판</a> <a class="navbar-brand"
+					href="${pageContext.request.contextPath}/books">쇼핑몰</a>
 			</div>
 		</div>
 	</nav>
@@ -35,6 +35,11 @@
 		<div class="row" align="center">
 			<c:forEach items="${bookList}" var="book">
 				<div class="col-md-4">
+					<c:choose>
+						<c:when test="${book.getBookImage()==null}">
+							
+						</c:when>
+					</c:choose>
 					<p><img width="420" height="600" src=${pageContext.request.contextPath}/resources/img/${book.imgPath}></p>
 					<h3>${book.name}</h3>
 					<p>${book.author}
