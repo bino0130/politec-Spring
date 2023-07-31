@@ -3,7 +3,7 @@ package com.kopo.domain;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Players {
-	private int id;				// Primary Key
+	private Integer id;				// Primary Key
 	private String name; 		// 선수 이름
 	private String position; 	// 포지션
 	private String club; 		// 소속 클럽
@@ -18,11 +18,11 @@ public class Players {
 	private MultipartFile fileImage; // 멀티파트 파일
 	private String positionSort; 	// 포지션 구분
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	

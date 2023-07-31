@@ -28,6 +28,14 @@
 						<form:form modelAttribute="NewPlayer" class="form-horizontal"
 						method="POST" enctype="multipart/form-data">
 							<fieldset>
+
+								<div class="form-group row">
+									<label class="col-sm-2 control-label">ID</label>
+									<div class="col-sm-3">
+										<form:input path="id" class="form-control" />
+									</div>
+								</div>
+							
 								<div class="form-group row">
 									<label class="col-sm-2 control-label">선수 이름</label>
 									<div class="col-sm-3">

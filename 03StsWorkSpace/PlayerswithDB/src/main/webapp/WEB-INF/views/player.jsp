@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +20,7 @@
 				<p><img width="220" height="300" alt="img.jpg" src=${pageContext.request.contextPath}/resources/img/${player.imgPath}></p>
 				<h3>${player.name }</h3>
 				<p>${player.description }</p>
+				<p><b>ID : </b><span>${player.id }</span>
 				<p><b>포지션 : </b><span class="${player.positionSort}">${player.position}</span></p>
 				<p><b>클럽 : </b>${player.club}</p>
 				<p><b>국가 : </b>${player.nation}</p>
@@ -29,8 +31,11 @@
 				<p><b>시즌 : </b>${player.season}</p>
 				<br>
 				<p><a href="#" class="btn btn-primary">이적시장 &raquo;</a></p>
-				<a href="<c:url value='/players'/>" class="btn btn-secondary">
-				선수 목록 &raquo;</a>
+				<p><a href="<c:url value='/players'/>" class="btn btn-secondary">
+				선수 목록 &raquo;</a></p>
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+					<a href="<c:url value="/admin/delete?id=${player.id}"/>" class="btn btn-danger">삭제 &raquo;</a>
+				</sec:authorize>
 			</div>
 		</div>
 		<%@ include file="footer.jsp" %>

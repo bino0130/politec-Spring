@@ -116,7 +116,7 @@ public class PlayersRepositoryImpl implements PlayersRepository {
 	}
 
 	@Override // Mapper 이용
-	public void deleteOnePlayer(int id) {
+	public void deleteOnePlayer(Integer id) {
 		mapper.deleteOnePlayer(id);
 	}
 }

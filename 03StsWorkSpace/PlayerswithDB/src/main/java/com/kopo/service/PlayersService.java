@@ -25,5 +25,5 @@ public interface PlayersService {
 	void setNewPlayer(Players player);
 	
 	// 선수 삭제
-	void deleteOnePlayer(int id);
+	void deleteOnePlayer(Integer id);
 }

@@ -16,7 +16,7 @@ public interface FifaMapper {
 		@Insert("insert into player (id, name, position, club, nation, league, " + 
 				"skill, weakfoot, height, season, description, imgpath) values " + 
 				"(#{Players.id}, #{Players.name}, #{Players.position}, #{Players.club}, #{Players.nation}, #{Players.league}, " + 
-				"#{Players.skill}, #{Players.weakFoot}, #{Players.height}, #{Players.season}, #{Players.description}, #{Players.imgPath}")
+				"#{Players.skill}, #{Players.weakFoot}, #{Players.height}, #{Players.season}, #{Players.description}, #{Players.imgPath})")
 		public void insertOnePlayer(@Param("Players") Players player);
 		
 	//read
@@ -35,5 +35,5 @@ public interface FifaMapper {
 	
 	//delete
 	@Delete("delete from player where id = ${ id }")
-	public void deleteOnePlayer(@Param("Players") int id);
+	public void deleteOnePlayer(@Param("id") Integer id);
 }

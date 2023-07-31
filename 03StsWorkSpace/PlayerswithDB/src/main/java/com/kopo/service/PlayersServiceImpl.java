@@ -44,7 +44,7 @@ public class PlayersServiceImpl implements PlayersService {
 	}
 
 	@Override
-	public void deleteOnePlayer(int id) {
+	public void deleteOnePlayer(Integer id) {
 		playersRepository.deleteOnePlayer(id);
 	}
 }

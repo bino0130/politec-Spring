@@ -101,10 +101,16 @@ public class PlayersController {
 		model.addAttribute("addTitle", "신규 선수 등록");
 	}
 	
-	@GetMapping("/login")
-	public String loginForm(HttpServletRequest request, Model model) {
-		String servletPath = request.getServletPath();
-		System.out.println("servletPath : " + servletPath);
-		return "redirect:"+servletPath;
+	@GetMapping("/admin/delete")
+	public String deletePlayer(@RequestParam("id") Integer id) {
+		playerService.deleteOnePlayer(id);
+		return "redirect:/players";
 	}
+	
+//	@GetMapping("/login")
+//	public String loginForm(HttpServletRequest request, Model model) {
+//		String servletPath = request.getServletPath();
+//		System.out.println("servletPath : " + servletPath);
+//		return "redirect:"+servletPath;
+//	}
 }
