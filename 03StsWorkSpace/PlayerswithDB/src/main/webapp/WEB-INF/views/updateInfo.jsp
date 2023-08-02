@@ -19,20 +19,20 @@
 		<c:when test="${isAdmin}">
 			<div class="container">
 				<div class="display-3">
-					<p style="font-weight:500;">Add Player</p>
+					<p style="font-weight:500;">Update Info</p>
 				</div>
 			</div>
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<form:form modelAttribute="NewPlayer" class="form-horizontal"
+						<form:form modelAttribute="updatePlayer" class="form-horizontal"
 						method="POST" enctype="multipart/form-data">
 							<fieldset>
-
+							
 								<div class="form-group row">
 									<label class="col-sm-2 control-label">ID</label>
 									<div class="col-sm-3">
-										<form:input path="id" class="form-control" />
+										<form:input path="id" class="form-control" readonly="true"/>
 									</div>
 								</div>
 							
@@ -55,7 +55,6 @@
 									<label class="col-sm-2 control-label">포지션</label>
 									<div class="col-sm-3">
 										<form:input path="position" class="form-control" />
-										
 									</div>
 								</div>
 
@@ -120,6 +119,7 @@
 								<div class="form-group row">
 									<div class="col-sm-offset-2 col-sm-10">
 										<input type="submit" class="btn btn-primary" value="등록">
+										<input type="hidden" value="${player.id}">
 										<input type="reset" class="btn btn-primary" value="다시쓰기" />
 									</div>
 								</div>

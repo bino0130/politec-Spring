@@ -18,12 +18,15 @@ public interface PlayersRepository {
 	// 위 URL을 입력하면 조건에 부합하는 목록만 리턴
 	Set<Players> getPlayersListByFilter(Map<String, List<String>> filter);
 
-	// name으로 선수 찾는 메서드
-	Players getPlayersByName(String name);
+	// id로 선수 찾는 메서드
+	Players getPlayersById(Integer id);
 
 	// 신규 선수 추가
 	void setNewPlayer(Players player);
 	
 	// 선수 삭제
 	void deleteOnePlayer(Integer id);
+	
+	// 선수 정보 변경
+	void updateOnePlyaer(Players player, Integer id);
 }

@@ -2,13 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kopo.mapper.FifaMapper">
 
-
 	<!--  create  -->
 		<!-- insert -->
 		<insert id="insertOne" parameterType="com.kopo.domain.Players" >
-			insert into player (id, name, position, club, nation, league, 
+			insert into player (id, name, position, positionsort, club, nation, league, 
 			skill, weakfoot, height, season, description, imgpath) values 
-			(#{Players.id}, #{Players.name}, #{Players.position}, #{Players.club}, #{Players.nation}, #{Players.league},
+			(#{Players.id}, #{Players.name}, #{Players.position}, #{Players.positionsort}, #{Players.club}, #{Players.nation}, #{Players.league},
 			#{Players.skill}, #{Players.weakFoot}, #{Players.height}, #{Players.season}, #{Players.description}, #{Players.imgPath})
 		</insert>
 		
@@ -17,8 +16,8 @@
 			select * from player order by id
 		</select>
 	
-		<select id="getOneById" resultType="com.kopo.domain.Players">
-			select * from player where id=1
+		<select id="getOneById" parameterType="Integer" resultType="com.kopo.domain.Players">
+			select * from player where id=${id}
 		</select>
 	
 		<select id="searchSeason" parameterType="String" resultType="com.kopo.domain.Players">
@@ -26,6 +25,12 @@
 		</select>
 		
 	<!-- update -->
+		<update id="updateOne" parameterType="Integer">
+			update player set name = #{Players.name}, position = #{Players.position},
+			positionsort = #{Players.position}, club = #{Players.club}, nation = #{Players.nation},
+			league = #{Players.league}, skill = #{Players.skill}, weakfoot = #{Players.weakFoot},
+			height = #{Players.height}, season = #{Players.season}, imgpath = #{Players.imgPath} where id = ${ id }
+		</update>
 	
 	<!-- delete -->
 	<delete id="deleteOne" parameterType="Integer" >

@@ -92,21 +92,8 @@ public class PlayersRepositoryImpl implements PlayersRepository {
 	}
 
 	@Override
-	public Players getPlayersByName(String name) {
-		Players playersInfo = null;
-		for (int i = 0; i < listOfPlayers.size(); i++) {
-			Players players = listOfPlayers.get(i);
-			if (players != null && players.getName() != null && players.getName().equals(name)) {
-				playersInfo = players;
-				break;
-			}
-		}
-		
-		if (playersInfo == null) {
-			throw new IllegalArgumentException("선수 이름을 찾을 수 없습니다 : " + name);
-		}
-		
-		return playersInfo;
+	public Players getPlayersById(Integer id) {
+		return mapper.getOnePlayer(id);
 	}
 
 	@Override // Mapper 이용
@@ -118,5 +105,10 @@ public class PlayersRepositoryImpl implements PlayersRepository {
 	@Override // Mapper 이용
 	public void deleteOnePlayer(Integer id) {
 		mapper.deleteOnePlayer(id);
+	}
+
+	@Override
+	public void updateOnePlyaer(Players player, Integer id) {
+		mapper.updatePlayer(player, id);
 	}
 }

@@ -33,9 +33,9 @@ public class PlayersServiceImpl implements PlayersService {
 	}
 
 	@Override
-	public Players getPlayersByName(String name) {
-		Players playerName = playersRepository.getPlayersByName(name);
-		return playerName;
+	public Players getPlayersById(Integer id) {
+		Players playerId = playersRepository.getPlayersById(id);
+		return playerId;
 	}
 
 	@Override
@@ -46,5 +46,10 @@ public class PlayersServiceImpl implements PlayersService {
 	@Override
 	public void deleteOnePlayer(Integer id) {
 		playersRepository.deleteOnePlayer(id);
+	}
+
+	@Override
+	public void updateOnePlyaer(Players player, Integer id) {
+		playersRepository.updateOnePlyaer(player, id);
 	}
 }

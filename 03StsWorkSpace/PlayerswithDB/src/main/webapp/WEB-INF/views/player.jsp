@@ -30,11 +30,10 @@
 				<p><b>키 : </b>${player.height}</p>
 				<p><b>시즌 : </b>${player.season}</p>
 				<br>
-				<p><a href="#" class="btn btn-primary">이적시장 &raquo;</a></p>
-				<p><a href="<c:url value='/players'/>" class="btn btn-secondary">
-				선수 목록 &raquo;</a></p>
+				<p><a href="<c:url value='/players'/>" class="btn btn-secondary">선수목록 &raquo;</a></p>
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
-					<a href="<c:url value="/admin/delete?id=${player.id}"/>" class="btn btn-danger">삭제 &raquo;</a>
+					<p><a href="${pageContext.request.contextPath}/admin/update?id=${player.id}" class="btn btn-primary">정보 수정 &raquo;</a>
+					<p><a href="<c:url value="/admin/delete?id=${player.id}"/>" class="btn btn-danger">삭제 &raquo;</a>
 				</sec:authorize>
 			</div>
 		</div>
