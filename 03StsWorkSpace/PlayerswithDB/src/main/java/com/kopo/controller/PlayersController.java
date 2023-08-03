@@ -54,7 +54,8 @@ public class PlayersController {
 	
 	// ex) localhost:8082/football/players/filter/playersFilter;nation=Brazil;height=186cm
 	@GetMapping("/filter/{playersFilter}") // 조건부 검색 (조건 2개)
-	public String requestPlayerByFilter(@MatrixVariable(pathVar="playersFilter") Map<String, List<String>> playersFilter, Model model) {
+	public String requestPlayerByFilter(@MatrixVariable(pathVar="playersFilter") 
+										Map<String, List<String>> playersFilter, Model model) {
 		Set<Players> playersByFilter = playerService.getPlayersListByFilter(playersFilter);
 		model.addAttribute("playerList", playersByFilter);
 		return "players";
@@ -87,12 +88,10 @@ public class PlayersController {
 			new File("c:\\Users\\Bino\\Documents\\GitHub\\politec-Spring\\03StsWorkSpace\\PlayerswithDB\\src\\main\\webapp\\resources\\img\\"+imagePath));
 			System.out.println("imagePath : " + imagePath);
 			System.out.println("업로드 완료");
-//			System.out.println("servletPath : " + servletPath);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 		playerService.setNewPlayer(player);
-//		return "redirect:"+servletPath;
 		return "redirect:/players";
 	}
 	
@@ -122,7 +121,6 @@ public class PlayersController {
 		String name = player.getName();
 		String fileName =  player.getFileImage().getOriginalFilename();
 		String imagePath = uuid.toString() + name.replaceAll(" ", "") + "_" + fileName.replaceAll(" ", "");
-//		String servletPath = request.getServletPath(); // jsp 파일명 가져오는 메서드
 		try {
 			player.setImgPath(imagePath);
 			player.setPositionSort(player.getPosition());
@@ -130,7 +128,6 @@ public class PlayersController {
 			new File("c:\\Users\\Bino\\Documents\\GitHub\\politec-Spring\\03StsWorkSpace\\PlayerswithDB\\src\\main\\webapp\\resources\\img\\"+imagePath));
 			System.out.println("imagePath : " + imagePath);
 			System.out.println("업데이트 완료");
-//			System.out.println("servletPath : " + servletPath);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
