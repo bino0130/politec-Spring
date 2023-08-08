@@ -169,9 +169,10 @@
       
       
       
-      <Context docBase="Players" path="/football" reloadable="true" source="org.eclipse.jst.jee.server:Players"/>
-      <Context docBase="BookMarket" path="/controller" reloadable="true" source="org.eclipse.jst.jee.server:BookMarket"/>
-      <Context docBase="PlayerswithDB" path="/fifa" reloadable="true" source="org.eclipse.jst.jee.server:PlayerswithDB"/></Host>
+      
+      
+      
+      <Context docBase="Hello" path="/domain" reloadable="true" source="org.eclipse.jst.jee.server:Hello"/></Host>
     </Engine>
   </Service>
 </Server>
