@@ -3,10 +3,10 @@ package com.kopo.service;
 import java.lang.reflect.Member;
 import java.util.List;
 
-import com.kopo.dto.DTO;
+import com.kopo.dto.ItemDTO;
 
-public interface Service {
-	public List<DTO> selectItems();
+public interface ItemService {
+	public List<ItemDTO> selectItems();
 	
 	public int insertItems(Member mb);
 	

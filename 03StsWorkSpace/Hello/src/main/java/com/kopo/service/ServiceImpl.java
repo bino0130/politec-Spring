@@ -2,18 +2,19 @@ package com.kopo.service;
 
 import java.lang.reflect.Member;
 import java.util.List;
-
+import org.springframework.stereotype.Service;
 import javax.inject.Inject;
 
 import com.kopo.dao.DAOImpl;
-import com.kopo.dto.DTO;
+import com.kopo.dto.ItemDTO;
 
-public class ServiceImpl implements Service {
+@Service
+public class ServiceImpl implements ItemService {
 	@Inject
 	private DAOImpl dao;
 
 	@Override
-	public List<DTO> selectItems() {
+	public List<ItemDTO> selectItems() {
 		return dao.selectItem();
 	}
 
@@ -29,7 +30,7 @@ public class ServiceImpl implements Service {
 
 	@Override
 	public String getAllTheItems() {
-		List<DTO> ld = dao.selectItem();
+		List<ItemDTO> ld = dao.selectItem();
 		int lengthOfList = ld.size();
 		String result = "";
 		for (int i = 0; i < lengthOfList; i++) {

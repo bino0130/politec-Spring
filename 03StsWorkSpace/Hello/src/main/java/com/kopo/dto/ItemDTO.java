@@ -1,11 +1,11 @@
 package com.kopo.dto;
 
-public class DTO {
+public class ItemDTO {
 	private int id;
 	private String name;
 	private int price;
 	
-	public DTO() {
+	public ItemDTO() {
 		
 	}
 

@@ -1,4 +1,4 @@
-package com.kopo.domain;
+package com.kopo.controller;
 
 import java.text.DateFormat;
 import java.util.Date;

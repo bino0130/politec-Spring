@@ -3,10 +3,10 @@ package com.kopo.dao;
 import java.lang.reflect.Member;
 import java.util.List;
 
-import com.kopo.dto.DTO;
+import com.kopo.dto.ItemDTO;
 
-public interface DAO {
-	List<DTO> selectItem();
+public interface ItemDAO {
+	List<ItemDTO> selectItem();
 	
 	int insertItems(Member mb);
 	
