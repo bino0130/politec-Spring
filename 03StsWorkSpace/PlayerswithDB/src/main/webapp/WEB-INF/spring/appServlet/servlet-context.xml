@@ -31,7 +31,7 @@
 	</beans:bean>
 	
 	<beans:bean id="uploadDirResource" class="org.springframework.core.io.FileSystemResource">
-		<beans:constructor-arg value="c:\\Users\\Bino\\Documents\\GitHub\\politec-Spring\\03StsWorkSpace\\Players\\src\\main\\webapp\\resources\\img" />
+		<beans:constructor-arg value="C:\Users\USER\Documents\Github\politec-Spring\03StsWorkSpace\PlayerswithDB\src\main\webapp\resources\img" />
 	</beans:bean>
 	
 </beans:beans>
