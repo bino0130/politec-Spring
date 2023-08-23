@@ -14,5 +14,12 @@ public class ResortServiceImpl implements ResortService {
 	@Override
 	public void updateReservation(Resort resort) {
 		resortRepository.updateReservation(resort);
+		System.out.println("Serivce 변경날짜 출력 : "+resort.getResv_date());
+		System.out.println("Serivce 기존날짜 출력 : "+resort.getResv_date2());
+	}
+
+	@Override
+	public void makeReservation(Resort resort) {
+		resortRepository.makeReservation(resort);
 	}
 }

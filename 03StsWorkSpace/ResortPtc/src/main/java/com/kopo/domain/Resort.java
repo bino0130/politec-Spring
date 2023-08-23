@@ -11,6 +11,7 @@ public class Resort {
 	private String write_date; // 작성 날짜
 	private Integer processing; // 진행 상황
 	private String resv_date2;
+	private Integer room2;
 	
 	public String getCustomer_name() {
 		return customer_name;
@@ -21,6 +22,7 @@ public class Resort {
 	public String getResv_date() {
 		return resv_date;
 	}
+	
 	public void setResv_date(String resv_date) {
 		this.resv_date = resv_date;
 	}
@@ -72,5 +74,12 @@ public class Resort {
 	}
 	public void setResv_date2(String resv_date2) {
 		this.resv_date2 = resv_date2;
+	}
+	
+	public Integer getRoom2() {
+		return room2;
+	}
+	public void setRoom2(Integer room2) {
+		this.room2 = room2;
 	}
 }

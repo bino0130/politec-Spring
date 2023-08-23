@@ -32,7 +32,7 @@
 	SimpleDateFormat dformat = new SimpleDateFormat("yyyy-MM-dd");
 	String date = dformat.format(cal.getTime());
 %>
-<form:form modelAttribute="NewReservation" method="POST">
+<form:form modelAttribute="updateReservation" method="POST">
 <table class="secondTable">
 <tr>
 	<td class="tdTwo">성명</td><td class="tdEight"><form:input path="customer_name" type="text" value=""/></td>
@@ -44,10 +44,22 @@
 	<td class="tdTwo">기존 예약일자</td><td class="tdEight"><form:input path="resv_date2" type="text" value=""/></td>
 </tr>
 <tr>
-	<td class="tdTwo">예약방</td>
+	<td class="tdTwo">변경 예약방</td>
 	<td class="tdEight">
 		<div class="dropdown">
 			<select name="room" id="room">
+				<option value="1">VIP 룸</option>
+				<option value="2">비즈니스 룸</option>
+				<option value="3">스탠다드 룸</option>
+			</select>
+		</div>
+	</td>
+</tr>
+<tr>
+	<td class="tdTwo">기존 예약방</td>
+	<td class="tdEight">
+		<div class="dropdown">
+			<select name="room2" id="room2">
 				<option value="1">VIP 룸</option>
 				<option value="2">비즈니스 룸</option>
 				<option value="3">스탠다드 룸</option>
