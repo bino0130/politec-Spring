@@ -162,7 +162,9 @@
       
       
       
-      <Context docBase="PlayerswithDB" path="/fifa" reloadable="true" source="org.eclipse.jst.jee.server:PlayerswithDB"/></Host>
+      
+      <Context docBase="ResortPtc" path="/resort" reloadable="true" source="org.eclipse.jst.jee.server:ResortPtc"/>
+      </Host>
     </Engine>
   </Service>
 </Server>

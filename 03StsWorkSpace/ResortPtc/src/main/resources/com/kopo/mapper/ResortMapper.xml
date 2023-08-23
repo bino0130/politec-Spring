@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kopo.mapper.ResortMapper">
+
+	<!--  create  -->
+		<!-- insert -->
+		<insert id="makeReservation" parameterType="com.kopo.domain.Resort" >
+			insert into resort (customer_name, resv_date, room, addr, telnum, in_name, memo, write_date, processing)
+			values (#{Resort.customer_name}, #{Resort.resv_date}, #{Resort.room}, #{Resort.addr}, #{Resort.telnum}, 
+			#{Resort.in_name}, #{Resort.memo}, #{Resort.write_date}, #{Resort.processing})
+		</insert>
+		
+	<!-- read  -->
+		<select id="getAll" resultType="com.kopo.domain.Resort">
+			select * from resort order by 
+		</select>
+	
+		<select id="getOneById" parameterType="Integer" resultType="com.kopo.domain.Resort">
+			select * from player where id=${id}
+		</select>
+	
+		<select id="searchSeason" parameterType="String" resultType="com.kopo.domain.Resort">
+			select * from player where lower(season) like '%${ season }%'
+		</select>
+		
+	<!-- update -->
+		<update id="updateReservation" parameterType="com.kopo.domain.Resort">
+			update resort set customer_name = #{Resort.customer_name}, 
+			resv_date = to_date(#{Resort.resv_date}, 'YYYY-MM-DD'), room = ${Resort.room}, addr = #{Resort.addr}, 
+			telnum = #{Resort.telnum}, in_name = #{Resort.in_name}, memo = #{Resort.memo}, 
+			write_date = to_date(#{Resort.write_date}, 'YYYY-MM-DD'), processing = ${Resort.processing}	
+			where to_char(resv_date, 'YYYY-MM-DD') = #{Resort.resv_date2} and room = ${Resort.room}
+		</update>
+	
+	<!-- delete -->
+	<!-- <delete id="deleteOne" parameterType="Integer" >
+		delete from player where id = ${ id }
+	</delete> --> 
+	
+</mapper>
