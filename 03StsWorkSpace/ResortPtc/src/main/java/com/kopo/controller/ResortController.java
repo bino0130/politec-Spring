@@ -48,51 +48,70 @@ public class ResortController {
 	public String showD01(Model model) {
 		List<Resort> resortList = resortService.getAllReserve();
 		List<ReservationStatus> statusList = new ArrayList<ReservationStatus>();
+		List<ReservationStatus> sendStatusList = new ArrayList<ReservationStatus>();
 		
 		Resort resort = new Resort();
-		ReservationStatus status = new ReservationStatus();
 		
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat dformat = new SimpleDateFormat("yyyy-MM-dd");
 		
-		for (int i = 0; i < 30; i++) {
+		for(int i = 0; i < 30; i++) {
 			int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
 			String date = dformat.format(cal.getTime());
 			
-			switch(dayOfWeek) {
-			case 1 :
-				status.setKorDayOfWeek("일");
-				break;
-			case 2 :
-				status.setKorDayOfWeek("월");
-				break;
-			case 3 :
-				status.setKorDayOfWeek("화");
-				break;
-			case 4 :
-				status.setKorDayOfWeek("수");
-				break;
-			case 5 :
-				status.setKorDayOfWeek("목");
-				break;
-			case 6 :
-				status.setKorDayOfWeek("금");
-				break;
-			case 7 :
-				status.setKorDayOfWeek("토");
-				break;
+			ReservationStatus status = new ReservationStatus("예약가능", "예약가능", "예약가능");
+			status.setStatusDate(date);
+			
+			statusList.add(status);
+			cal.add(cal.DATE, + 1);
+		}
+		
+		cal = Calendar.getInstance();
+		for(ReservationStatus eachStatus : statusList) {
+			int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+			
+			for(Resort eachResort : resortList) {
+				if(eachStatus.getStatusDate().equals(eachResort.getResv_date().substring(0, 10))) {
+					if(eachResort.getRoom() == 1) {
+						eachStatus.setRoom1(eachResort.getCustomer_name());
+					} else if (eachResort.getRoom() == 2) {
+						eachStatus.setRoom2(eachResort.getCustomer_name());
+					} else if (eachResort.getRoom() == 3) {
+						eachStatus.setRoom3(eachResort.getCustomer_name());
+					}
+				}
 			}
 			
-			for(int j = 0; j < resortList.size(); j++) {
-				
+			System.out.println(dayOfWeek);
+			switch(dayOfWeek) {
+			case 1 :
+				eachStatus.setKorDayOfWeek("일");
+				break;
+			case 2 :
+				eachStatus.setKorDayOfWeek("월");
+				break;
+			case 3 :
+				eachStatus.setKorDayOfWeek("화");
+				break;
+			case 4 :
+				eachStatus.setKorDayOfWeek("수");
+				break;
+			case 5 :
+				eachStatus.setKorDayOfWeek("목");
+				break;
+			case 6 :
+				eachStatus.setKorDayOfWeek("금");
+				break;
+			case 7 :
+				eachStatus.setKorDayOfWeek("토");
+				break;
 			}
 			
 			cal.add(cal.DATE, + 1);
-			statusList.add(status);
 		}
 		
-		
 		model.addAttribute("statusList", statusList);
+		System.out.println("statusList 전달 : " + statusList);
 		return "d_01";
 	}
 	

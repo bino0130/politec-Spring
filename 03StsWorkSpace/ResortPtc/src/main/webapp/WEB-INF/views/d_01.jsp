@@ -10,85 +10,86 @@
 <style>
 .oneTable {
 	border : 1px solid black;
-	width : 500px;
-	margin : auto;
-}
-
-.printCal {
-	border : 1px solid black;
-	width : 20%;
-}
-
-.printDate {
-	border : 1px solid black;
-	width : 10%;
-}
-
-.printRoom {
-	border : 1px solid black;
+	margin : 0 auto;
+	width : 700px;
 }
 </style>
 </head>
 <body>
 <%@ include file="top.jsp"%>
-<% 
-	Calendar cal = Calendar.getInstance();
-	SimpleDateFormat dformat = new SimpleDateFormat("yyyy-MM-dd");
-	String korDayOfWeek = "";
-%>
 <table class="oneTable">
-<%
-	for (int i = 0; i < 30; i++) {
-		int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
-		String date = dformat.format(cal.getTime());
-%>
-<tr>
-<%
-		switch(dayOfWeek) {
-		case 1 :
-			korDayOfWeek = "일";
-			break;
-		case 2 :
-			korDayOfWeek = "월";
-			break;
-		case 3 :
-			korDayOfWeek = "화";
-			break;
-		case 4 :
-			korDayOfWeek = "수";
-			break;
-		case 5 :
-			korDayOfWeek = "목";
-			break;
-		case 6 :
-			korDayOfWeek = "금";
-			break;
-		case 7 :
-			korDayOfWeek = "토";
-			break;
-		}
-%>
-<%
-if(korDayOfWeek.equals("토") || korDayOfWeek.equals("일")) {
-%>
-<td class="printCal"><div style="color:red;"><%=date%></div></td>
-<td class="printDate"><div style="color:red;"><%=korDayOfWeek%></div></td>
-<%
-} else {
-%>
-<td class="printCal"><div><%=date%></div></td>
-<td class="printDate"><div><%=korDayOfWeek%></div></td>
-<%
-}
-%>
-<td class="printRoom">VIP 룸</td>
-<td class="printRoom">비즈니스 룸</td>
-<td class="printRoom">스탠다드 룸</td>
-</tr>
-<%
-		cal.add(cal.DATE, + 1);
-	}
-%>
+	<c:forEach items="${statusList}" var="statusList">
+		<c:choose>
+			<c:when test="${statusList.korDayOfWeek eq '토' or statusList.korDayOfWeek eq '일'}">
+				<tr class="tableTr">
+					<td class="dateTd" style="color : red;">${statusList.statusDate}</td>
+					<td class="dayTd" style="color : red;">${statusList.korDayOfWeek}</td>
+
+						<c:choose>
+							<c:when test="${statusList.room1 eq '예약가능'}">
+								<td class="room1Td"><a href="">${statusList.room1}</a></td>
+							</c:when>
+							<c:otherwise>
+								<td class="room1Td">${statusList.room1}</td>
+							</c:otherwise>
+						</c:choose>
+
+						<c:choose>
+							<c:when test="${statusList.room2 eq '예약가능'}">
+								<td class="room2Td"><a href="">${statusList.room2}</a></td>
+							</c:when>
+							<c:otherwise>
+								<td class="room2Td">${statusList.room2}</td>
+							</c:otherwise>
+						</c:choose>
+
+						<c:choose>
+							<c:when test="${statusList.room3 eq '예약가능'}">
+								<td class="room3Td"><a href="">${statusList.room3}</a></td>
+							</c:when>
+							<c:otherwise>
+								<td class="room3Td">${statusList.room3}</td>
+							</c:otherwise>
+						</c:choose>
+					</tr>
+			</c:when>
+		
+			<c:otherwise>
+				<tr class="tableTr">
+					<td class="dateTd">${statusList.statusDate}</td>
+					<td class="dayTd">${statusList.korDayOfWeek}</td>
+
+						<c:choose>
+							<c:when test="${statusList.room1 eq '예약가능'}">
+								<td class="room1Td"><a href="<c:url value="/d_02?date=${statusList.statusDate}&room=1"/>">${statusList.room1}</a></td>
+							</c:when>
+							<c:otherwise>
+								<td class="room1Td">${statusList.room1}</td>
+							</c:otherwise>
+						</c:choose>
+
+						<c:choose>
+							<c:when test="${statusList.room2 eq '예약가능'}">
+								<td class="room2Td"><a href="<c:url value="/d_02?date=${statusList.statusDate}&room=2"/>">${statusList.room2}</a></td>
+							</c:when>
+							<c:otherwise>
+								<td class="room2Td">${statusList.room2}</td>
+							</c:otherwise>
+						</c:choose>
+
+						<c:choose>
+							<c:when test="${statusList.room3 eq '예약가능'}">
+								<td class="room3Td"><a href="<c:url value="/d_02?date=${statusList.statusDate}&room=3"/>">${statusList.room3}</a></td>
+							</c:when>
+							<c:otherwise>
+								<td class="room3Td">${statusList.room3}</td>
+							</c:otherwise>
+						</c:choose>
+					</tr>
+			</c:otherwise>
+		</c:choose>
+	</c:forEach>
+	
 </table>
 </body>
 </html>
