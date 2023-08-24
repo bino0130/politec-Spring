@@ -13,6 +13,9 @@ public class Resort {
 	private String resv_date2;
 	private Integer room2;
 	
+	public Resort() {
+		super();
+	}
 	public String getCustomer_name() {
 		return customer_name;
 	}

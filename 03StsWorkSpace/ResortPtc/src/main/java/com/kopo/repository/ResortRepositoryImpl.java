@@ -1,5 +1,8 @@
 package com.kopo.repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -10,6 +13,8 @@ import com.kopo.mapper.ResortMapper;
 public class ResortRepositoryImpl implements ResortRepository {
 	@Autowired
 	private ResortMapper mapper;
+	
+	private List<Resort> listOfReservations = new ArrayList<Resort>();
 
 	@Override
 	public void updateReservation(Resort resort) {
@@ -21,6 +26,12 @@ public class ResortRepositoryImpl implements ResortRepository {
 	@Override
 	public void makeReservation(Resort resort) {
 		mapper.makeReservation(resort);
+	}
+
+	@Override
+	public List<Resort> getAllReserve() {
+		listOfReservations = mapper.getAllReserve();
+		return listOfReservations;
 	}
 
 }

@@ -1,5 +1,10 @@
 package com.kopo.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.kopo.domain.ReservationStatus;
 import com.kopo.domain.Resort;
 import com.kopo.service.ResortService;
 
@@ -40,7 +46,53 @@ public class ResortController {
 	
 	@GetMapping("/d_01")
 	public String showD01(Model model) {
+		List<Resort> resortList = resortService.getAllReserve();
+		List<ReservationStatus> statusList = new ArrayList<ReservationStatus>();
 		
+		Resort resort = new Resort();
+		ReservationStatus status = new ReservationStatus();
+		
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat dformat = new SimpleDateFormat("yyyy-MM-dd");
+		
+		for (int i = 0; i < 30; i++) {
+			int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+			String date = dformat.format(cal.getTime());
+			
+			switch(dayOfWeek) {
+			case 1 :
+				status.setKorDayOfWeek("일");
+				break;
+			case 2 :
+				status.setKorDayOfWeek("월");
+				break;
+			case 3 :
+				status.setKorDayOfWeek("화");
+				break;
+			case 4 :
+				status.setKorDayOfWeek("수");
+				break;
+			case 5 :
+				status.setKorDayOfWeek("목");
+				break;
+			case 6 :
+				status.setKorDayOfWeek("금");
+				break;
+			case 7 :
+				status.setKorDayOfWeek("토");
+				break;
+			}
+			
+			for(int j = 0; j < resortList.size(); j++) {
+				
+			}
+			
+			cal.add(cal.DATE, + 1);
+			statusList.add(status);
+		}
+		
+		
+		model.addAttribute("statusList", statusList);
 		return "d_01";
 	}
 	

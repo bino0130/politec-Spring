@@ -11,8 +11,8 @@
 		</insert>
 		
 	<!-- read  -->
-		<select id="getAll" resultType="com.kopo.domain.Resort">
-			select * from resort order by 
+		<select id="getAllReserve" resultType="com.kopo.domain.Resort">
+			select * from resort where to_char(resv_date, 'YYYY-MM-DD') > sysdate order by resv_date, room
 		</select>
 	
 		<select id="getOneById" parameterType="Integer" resultType="com.kopo.domain.Resort">

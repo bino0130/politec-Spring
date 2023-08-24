@@ -1,5 +1,7 @@
 package com.kopo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +23,10 @@ public class ResortServiceImpl implements ResortService {
 	@Override
 	public void makeReservation(Resort resort) {
 		resortRepository.makeReservation(resort);
+	}
+
+	@Override
+	public List<Resort> getAllReserve() {
+		return resortRepository.getAllReserve();
 	}
 }
