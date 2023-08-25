@@ -115,7 +115,7 @@ function fncHide( pos ) {
 			</table>
 			<table id='menu3' style="display:none; border:0px; width:600px; height:30px;">
 				<tr>
-					<td width='140'></td>
+					<td width='100'></td>
 					<td width='600' style='text-align:left;'>
 						<a href='${pageContext.request.contextPath}/d_01' >
 						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| 예약상황 </span>

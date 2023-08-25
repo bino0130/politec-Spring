@@ -83,7 +83,6 @@ public class ResortController {
 				}
 			}
 			
-			System.out.println(dayOfWeek);
 			switch(dayOfWeek) {
 			case 1 :
 				eachStatus.setKorDayOfWeek("일");
@@ -112,7 +111,6 @@ public class ResortController {
 		}
 		
 		model.addAttribute("statusList", statusList);
-		System.out.println("statusList 전달 : " + statusList);
 		return "d_01";
 	}
 	
@@ -150,8 +148,43 @@ public class ResortController {
 	
 	@PostMapping("/d_03")
 	public String submitUpdateReservation(@ModelAttribute("updateReservation")Resort resort, 
-			HttpServletRequest request, HttpSession session, Model model) {
+			HttpServletRequest request, HttpSession session) {
 		resortService.updateReservation(resort);
 		return "redirect:/d_01";
+	}
+	
+	@GetMapping("/setCookie")
+	public String setCookie() {
+		return "setCookie";
+	}
+	
+	@GetMapping("/getCookie")
+	public String getCookie() {
+		return "getCookie";
+	}
+	
+	@GetMapping("/ses_create")
+	public String sesCreate() {
+		return "/session/ses_create";
+	}
+	
+	@GetMapping("/ses_get")
+	public String sesGet() {
+		return "/session/ses_get";
+	}
+	
+	@GetMapping("/ses_end")
+	public String sesEnd() {
+		return "/session/ses_end";
+	}
+	
+	@GetMapping("/ses_option_get")
+	public String getSesOption() {
+		return "/session/ses_option_get";
+	}
+	
+	@GetMapping("b_01")
+	public String showRoute() {
+		return "/map/b_01";
 	}
 }
