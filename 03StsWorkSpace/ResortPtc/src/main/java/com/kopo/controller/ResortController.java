@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kopo.domain.ReservationStatus;
 import com.kopo.domain.Resort;
@@ -115,13 +116,28 @@ public class ResortController {
 		return "d_01";
 	}
 	
-	@GetMapping("/d_02")
+	@GetMapping("/d_02_1")
 	public String requestAddReservationForm(@ModelAttribute("NewReservation") Resort resort) {
-		return "d_02";
+		return "d_02_1";
 	}
 	
-	@PostMapping("/d_02")
+	@PostMapping("/d_02_1")
 	public String AddReservation(@ModelAttribute("NewReservation") Resort resort, 
+			HttpServletRequest request, HttpSession session) {
+		resortService.makeReservation(resort);
+		return "redirect:/d_01";
+	}
+	
+	@GetMapping("/d_02_2")
+	public String requestAddReservationFormWithInfo(@ModelAttribute("NewReservation") Resort resort,
+			@RequestParam("date")String date, @RequestParam("room") String room, Model model) {
+		model.addAttribute("date", date);
+		model.addAttribute("room", room);
+		return "d_02_2";
+	}
+	
+	@PostMapping("/d_02_2")
+	public String AddReservationWithInfo(@ModelAttribute("NewReservation") Resort resort, 
 			HttpServletRequest request, HttpSession session) {
 		resortService.makeReservation(resort);
 		return "redirect:/d_01";
@@ -136,8 +152,6 @@ public class ResortController {
 	public String submitUpdateReservation(@ModelAttribute("updateReservation")Resort resort, 
 			HttpServletRequest request, HttpSession session, Model model) {
 		resortService.updateReservation(resort);
-		System.out.println("Controller 변경날짜 출력 : "+resort.getResv_date());
-		System.out.println("Controller 기존날짜 출력 : "+resort.getResv_date2());
 		return "redirect:/d_01";
 	}
 }

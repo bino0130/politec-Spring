@@ -11,7 +11,7 @@
 .oneTable {
 	border : 1px solid black;
 	margin : 0 auto;
-	width : 700px;
+	width : 500px;
 }
 </style>
 </head>
@@ -27,7 +27,7 @@
 
 						<c:choose>
 							<c:when test="${statusList.room1 eq '예약가능'}">
-								<td class="room1Td"><a href="">${statusList.room1}</a></td>
+								<td class="room1Td"><a href="<c:url value="/d_02_2?date=${statusList.statusDate}&room=1"/>">${statusList.room1}</a></td>
 							</c:when>
 							<c:otherwise>
 								<td class="room1Td">${statusList.room1}</td>
@@ -36,7 +36,7 @@
 
 						<c:choose>
 							<c:when test="${statusList.room2 eq '예약가능'}">
-								<td class="room2Td"><a href="">${statusList.room2}</a></td>
+								<td class="room2Td"><a href="<c:url value="/d_02_2?date=${statusList.statusDate}&room=2"/>">${statusList.room2}</a></td>
 							</c:when>
 							<c:otherwise>
 								<td class="room2Td">${statusList.room2}</td>
@@ -45,7 +45,7 @@
 
 						<c:choose>
 							<c:when test="${statusList.room3 eq '예약가능'}">
-								<td class="room3Td"><a href="">${statusList.room3}</a></td>
+								<td class="room3Td"><a href="<c:url value="/d_02_2?date=${statusList.statusDate}&room=3"/>">${statusList.room3}</a></td>
 							</c:when>
 							<c:otherwise>
 								<td class="room3Td">${statusList.room3}</td>
@@ -61,7 +61,7 @@
 
 						<c:choose>
 							<c:when test="${statusList.room1 eq '예약가능'}">
-								<td class="room1Td"><a href="<c:url value="/d_02?date=${statusList.statusDate}&room=1"/>">${statusList.room1}</a></td>
+								<td class="room1Td"><a href="<c:url value="/d_02_2?date=${statusList.statusDate}&room=1"/>">${statusList.room1}</a></td>
 							</c:when>
 							<c:otherwise>
 								<td class="room1Td">${statusList.room1}</td>
@@ -70,7 +70,7 @@
 
 						<c:choose>
 							<c:when test="${statusList.room2 eq '예약가능'}">
-								<td class="room2Td"><a href="<c:url value="/d_02?date=${statusList.statusDate}&room=2"/>">${statusList.room2}</a></td>
+								<td class="room2Td"><a href="<c:url value="/d_02_2?date=${statusList.statusDate}&room=2"/>">${statusList.room2}</a></td>
 							</c:when>
 							<c:otherwise>
 								<td class="room2Td">${statusList.room2}</td>
@@ -79,7 +79,7 @@
 
 						<c:choose>
 							<c:when test="${statusList.room3 eq '예약가능'}">
-								<td class="room3Td"><a href="<c:url value="/d_02?date=${statusList.statusDate}&room=3"/>">${statusList.room3}</a></td>
+								<td class="room3Td"><a href="<c:url value="/d_02_2?date=${statusList.statusDate}&room=3"/>">${statusList.room3}</a></td>
 							</c:when>
 							<c:otherwise>
 								<td class="room3Td">${statusList.room3}</td>

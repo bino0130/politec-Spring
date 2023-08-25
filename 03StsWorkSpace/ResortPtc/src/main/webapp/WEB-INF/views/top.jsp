@@ -120,7 +120,7 @@ function fncHide( pos ) {
 						<a href='${pageContext.request.contextPath}/d_01' >
 						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| 예약상황 </span>
 						</a>
-						<a href='${pageContext.request.contextPath}/d_02'>
+						<a href='${pageContext.request.contextPath}/d_02_1'>
 						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| 예약하기 </span>
 						</a>
 						<a href='${pageContext.request.contextPath}/d_03'>
