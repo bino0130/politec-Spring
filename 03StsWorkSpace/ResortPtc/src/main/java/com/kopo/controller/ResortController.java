@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,15 +50,11 @@ public class ResortController {
 	public String showD01(Model model) {
 		List<Resort> resortList = resortService.getAllReserve();
 		List<ReservationStatus> statusList = new ArrayList<ReservationStatus>();
-		List<ReservationStatus> sendStatusList = new ArrayList<ReservationStatus>();
-		
-		Resort resort = new Resort();
 		
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat dformat = new SimpleDateFormat("yyyy-MM-dd");
 		
 		for(int i = 0; i < 30; i++) {
-			int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
 			String date = dformat.format(cal.getTime());
 			
 			ReservationStatus status = new ReservationStatus("예약가능", "예약가능", "예약가능");
@@ -121,9 +118,14 @@ public class ResortController {
 	
 	@PostMapping("/d_02_1")
 	public String AddReservation(@ModelAttribute("NewReservation") Resort resort, 
-			HttpServletRequest request, HttpSession session) {
-		resortService.makeReservation(resort);
-		return "redirect:/d_01";
+			HttpServletRequest request, HttpSession session, Model model) {
+		try {
+			resortService.makeReservation(resort);
+			return "redirect:/d_01";
+		} catch (DuplicateKeyException e) {
+			model.addAttribute("duplicateFind", 1);
+			return "redirect:/d_02_1";
+		}
 	}
 	
 	@GetMapping("/d_02_2")

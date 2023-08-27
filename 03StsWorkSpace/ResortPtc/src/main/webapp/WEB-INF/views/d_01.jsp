@@ -11,13 +11,20 @@
 .oneTable {
 	border : 1px solid black;
 	margin : 0 auto;
-	width : 500px;
+	width : 600px;
 }
 </style>
 </head>
 <body>
 <%@ include file="top.jsp"%>
 <table class="oneTable">
+	<tr>
+		<td>날짜</td>
+		<td>요일</td>
+		<td>VIP 룸</td>
+		<td>비즈니스 룸</td>
+		<td>스탠다드 룸</td>
+	</tr>
 	<c:forEach items="${statusList}" var="statusList">
 		<c:choose>
 			<c:when test="${statusList.korDayOfWeek eq '토' or statusList.korDayOfWeek eq '일'}">
@@ -64,7 +71,7 @@
 								<td class="room1Td"><a href="<c:url value="/d_02_2?date=${statusList.statusDate}&room=1"/>">${statusList.room1}</a></td>
 							</c:when>
 							<c:otherwise>
-								<td class="room1Td">${statusList.room1}</td>
+								<td class="room1Td"><div style="text-overflow:elipsis;">${statusList.room1}</div></td>
 							</c:otherwise>
 						</c:choose>
 
