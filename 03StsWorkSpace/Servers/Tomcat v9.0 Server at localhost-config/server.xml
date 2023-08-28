@@ -163,8 +163,8 @@
       
       
       
-      <Context docBase="ResortPtc" path="/resort" reloadable="true" source="org.eclipse.jst.jee.server:ResortPtc"/>
-      </Host>
+      
+      <Context docBase="ResortPtc" path="/resort" reloadable="true" source="org.eclipse.jst.jee.server:ResortPtc"/></Host>
     </Engine>
   </Service>
 </Server>

@@ -20,6 +20,7 @@ public class ResortServiceImpl implements ResortService {
 
 	@Override
 	public void makeReservation(Resort resort) {
+		System.out.println("service 변경된 room : " + resort.getRoom());
 		resortRepository.makeReservation(resort);
 	}
 

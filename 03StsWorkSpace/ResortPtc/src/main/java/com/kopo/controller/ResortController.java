@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kopo.domain.ReservationStatus;
 import com.kopo.domain.Resort;
@@ -118,29 +119,37 @@ public class ResortController {
 	
 	@PostMapping("/d_02_1")
 	public String AddReservation(@ModelAttribute("NewReservation") Resort resort, 
-			HttpServletRequest request, HttpSession session, Model model) {
+			HttpServletRequest request, HttpSession session, RedirectAttributes redirectAttr) {
 		try {
 			resortService.makeReservation(resort);
 			return "redirect:/d_01";
 		} catch (DuplicateKeyException e) {
-			model.addAttribute("duplicateFind", 1);
+			redirectAttr.addFlashAttribute("duplicateKey", true);
+			redirectAttr.addFlashAttribute("resort", resort);
 			return "redirect:/d_02_1";
 		}
 	}
 	
 	@GetMapping("/d_02_2")
 	public String requestAddReservationFormWithInfo(@ModelAttribute("NewReservation") Resort resort,
-			@RequestParam("date")String date, @RequestParam("room") String room, Model model) {
-		model.addAttribute("date", date);
-		model.addAttribute("room", room);
+			@RequestParam("date")String resv_date, @RequestParam("room") String room, Model model) {
+//		model.addAttribute("resv_date", resv_date);
+//		model.addAttribute("requestRoom", room);
 		return "d_02_2";
 	}
 	
 	@PostMapping("/d_02_2")
 	public String AddReservationWithInfo(@ModelAttribute("NewReservation") Resort resort, 
-			HttpServletRequest request, HttpSession session) {
-		resortService.makeReservation(resort);
-		return "redirect:/d_01";
+			HttpServletRequest request, HttpSession session, RedirectAttributes redirectAttr) {
+		try {
+			resortService.makeReservation(resort);
+			System.out.println("controller 변경된 room : " + resort.getRoom());
+			return "redirect:/d_01";
+		} catch (DuplicateKeyException e) {
+			redirectAttr.addFlashAttribute("duplicateKey", true);
+			redirectAttr.addFlashAttribute("resort", resort);
+			return "redirect:/d_02_2";
+		}
 	}
 	
 	@GetMapping("/d_03")
@@ -150,9 +159,15 @@ public class ResortController {
 	
 	@PostMapping("/d_03")
 	public String submitUpdateReservation(@ModelAttribute("updateReservation")Resort resort, 
-			HttpServletRequest request, HttpSession session) {
-		resortService.updateReservation(resort);
-		return "redirect:/d_01";
+			HttpServletRequest request, HttpSession session, RedirectAttributes redirectAttr) {
+		try {
+			resortService.updateReservation(resort);
+			return "redirect:/d_01";
+		} catch (DuplicateKeyException e) {
+			redirectAttr.addFlashAttribute("duplicateKey", true);
+			redirectAttr.addFlashAttribute("resort", resort);
+			return "redirect:/d_03";
+		}
 	}
 	
 	@GetMapping("/setCookie")
