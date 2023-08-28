@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kopo.mapper.ResortMapper">
+
+	<!--  create  -->
+		<!-- insert -->
+		<insert id="makeReservation" parameterType="com.kopo.domain.Resort" >
+			insert into resort values (#{Resort.customer_name}, to_date(#{Resort.resv_date}, 'YYYY-MM-DD'), ${Resort.room}, 
+			#{Resort.addr}, #{Resort.telnum}, #{Resort.in_name}, #{Resort.memo}, 
+			to_date(#{Resort.write_date}, 'YYYY-MM-DD'), ${Resort.processing})
+		</insert>
+		
+	<!-- read  -->
+		<select id="getAllReserve" resultType="com.kopo.domain.Resort">
+			select * from resort where to_char(resv_date, 'YYYY-MM-DD') >= SYSDATE-1 order by resv_date, room
+		</select>
+	
+		<select id="getOneByDateAndRoom" parameterType="Integer" resultType="com.kopo.domain.Resort">
+			select * from resort where to_char(resv_date, 'YYYY-MM-DD') = #{Resort.resv_date) and room = ${Resort.room}
+		</select>
+	
+	<!-- update -->
+		<update id="updateReservation" parameterType="com.kopo.domain.Resort">
+			update resort set customer_name = #{Resort.customer_name}, 
+			resv_date = to_date(#{Resort.resv_date}, 'YYYY-MM-DD'), room = ${Resort.room}, addr = #{Resort.addr}, 
+			telnum = #{Resort.telnum}, in_name = #{Resort.in_name}, memo = #{Resort.memo}, 
+			write_date = to_date(#{Resort.write_date}, 'YYYY-MM-DD'), processing = ${Resort.processing}	
+			where to_char(resv_date, 'YYYY-MM-DD') = #{Resort.resv_date2} and room = ${Resort.room2}
+		</update>
+	
+	<!-- delete -->
+	<delete id="deleteOne" parameterType="Integer" >
+		delete from resort where to_char(resv_date, 'YYYY-MM-DD') = #{Resort.resv_date) and room = ${Resort.room}
+	</delete> 
+	
+</mapper>
