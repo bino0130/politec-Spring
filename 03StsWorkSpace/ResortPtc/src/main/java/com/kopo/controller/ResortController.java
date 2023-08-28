@@ -71,12 +71,19 @@ public class ResortController {
 			
 			for(Resort eachResort : resortList) {
 				if(eachStatus.getStatusDate().equals(eachResort.getResv_date().substring(0, 10))) {
+//					if(eachResort.getRoom() == 1) {
+//						eachStatus.setRoom1(eachResort.getCustomer_name());
+//					} else if (eachResort.getRoom() == 2) {
+//						eachStatus.setRoom2(eachResort.getCustomer_name());
+//					} else if (eachResort.getRoom() == 3) {
+//						eachStatus.setRoom3(eachResort.getCustomer_name());
+//					}
 					if(eachResort.getRoom() == 1) {
-						eachStatus.setRoom1(eachResort.getCustomer_name());
+						eachStatus.setRoom1("예약불가");
 					} else if (eachResort.getRoom() == 2) {
-						eachStatus.setRoom2(eachResort.getCustomer_name());
+						eachStatus.setRoom2("예약불가");
 					} else if (eachResort.getRoom() == 3) {
-						eachStatus.setRoom3(eachResort.getCustomer_name());
+						eachStatus.setRoom3("예약불가");
 					}
 				}
 			}
@@ -131,24 +138,25 @@ public class ResortController {
 	}
 	
 	@GetMapping("/d_02_2")
-	public String requestAddReservationFormWithInfo(@ModelAttribute("NewReservation") Resort resort,
+	public String requestAddReservationFormWithInfo(@ModelAttribute("AnotherReservation") Resort resort,
 			@RequestParam("date")String resv_date, @RequestParam("room") String room, Model model) {
-//		model.addAttribute("resv_date", resv_date);
-//		model.addAttribute("requestRoom", room);
+		model.addAttribute("resv_date", resv_date);
+		model.addAttribute("room", room);
 		return "d_02_2";
 	}
 	
 	@PostMapping("/d_02_2")
-	public String AddReservationWithInfo(@ModelAttribute("NewReservation") Resort resort, 
-			HttpServletRequest request, HttpSession session, RedirectAttributes redirectAttr) {
+	public String AddReservationWithInfo(@ModelAttribute("AnotherReservation") Resort resort, 
+			HttpServletRequest request, HttpSession session, Model model) {
 		try {
 			resortService.makeReservation(resort);
+			System.out.println("예약자 이름 : " + resort.getCustomer_name());
 			System.out.println("controller 변경된 room : " + resort.getRoom());
 			return "redirect:/d_01";
 		} catch (DuplicateKeyException e) {
-			redirectAttr.addFlashAttribute("duplicateKey", true);
-			redirectAttr.addFlashAttribute("resort", resort);
-			return "redirect:/d_02_2";
+			model.addAttribute("duplicateKey", true);
+			model.addAttribute("resort", resort);
+			return "/d_02_2";
 		}
 	}
 	
@@ -159,14 +167,14 @@ public class ResortController {
 	
 	@PostMapping("/d_03")
 	public String submitUpdateReservation(@ModelAttribute("updateReservation")Resort resort, 
-			HttpServletRequest request, HttpSession session, RedirectAttributes redirectAttr) {
+			HttpServletRequest request, HttpSession session, Model model) {
 		try {
 			resortService.updateReservation(resort);
 			return "redirect:/d_01";
 		} catch (DuplicateKeyException e) {
-			redirectAttr.addFlashAttribute("duplicateKey", true);
-			redirectAttr.addFlashAttribute("resort", resort);
-			return "redirect:/d_03";
+			model.addAttribute("duplicateKey", true);
+			model.addAttribute("resort", resort);
+			return "/d_03";
 		}
 	}
 	

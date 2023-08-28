@@ -52,23 +52,23 @@ function validateForm() { // 데이터 전달하는 form 체크
 	 var in_name = document.forms["NewReservation"]["in_name"].value; // NewReservation 태그 안에 있는 in_name의 value를 가져옴
 	 var memo = document.forms["NewReservation"]["memo"].value; // NewReservation 태그 안에 있는 memo의 value를 가져옴
 	 
-	 if(InputCheck(name) == false) {
+	 if(InputCheck(name) === false) {
 		 alert("성함을 입력해주세요");
 		 return false;
 	 }
-	 if(InputCheck(addr) == false) {
+	 if(InputCheck(addr) === false) {
 		 alert("주소를 입력해주세요");
 		 return false;
 	 }
-	 if(InputCheck(telnum) == false) {
+	 if(InputCheck(telnum) === false) {
 		 alert("전화번호를 입력해주세요");
 		 return false;
 	 }
-	 if(InputCheck(in_name) == false) {
+	 if(InputCheck(in_name) === false) {
 		 alert("입금자명을 입력해주세요");
 		 return false;
 	 }
-	 if(InputCheck(memo) == false) {
+	 if(InputCheck(memo) === false) {
 		 alert("남기실 말을 입력해주세요");
 		 return false;
 	 }
