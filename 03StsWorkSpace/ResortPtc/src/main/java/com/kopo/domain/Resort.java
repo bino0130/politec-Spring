@@ -27,7 +27,7 @@ public class Resort {
 	}
 	
 	public void setResv_date(String resv_date) {
-		this.resv_date = resv_date;
+		this.resv_date = resv_date.substring(0, 10);
 	}
 	public Integer getRoom() {
 		return room;

@@ -70,7 +70,7 @@ public class ResortController {
 			int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
 			
 			for(Resort eachResort : resortList) {
-				if(eachStatus.getStatusDate().equals(eachResort.getResv_date().substring(0, 10))) {
+				if(eachStatus.getStatusDate().equals(eachResort.getResv_date())) {
 //					if(eachResort.getRoom() == 1) {
 //						eachStatus.setRoom1(eachResort.getCustomer_name());
 //					} else if (eachResort.getRoom() == 2) {

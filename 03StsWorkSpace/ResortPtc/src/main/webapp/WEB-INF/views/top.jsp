@@ -48,6 +48,7 @@ function fncHide( pos ) {
 <body>
 <div id="bodiv">
 <table style="width : 750px; margin : auto;">
+<tr>
 <td width='150'><a href="${pageContext.request.contextPath}/main"><img src="${pageContext.request.contextPath}/resources/img/logo.jpg" width='140' height='50' border='0'></a>
 </td>
 <td>
@@ -139,10 +140,10 @@ function fncHide( pos ) {
 				<tr>
 					<td width='350'></td>
 					<td width='250' style='text-align:left;'>
-						<a href='${pageContext.request.contextPath}/e_01'>
+						<a href='${pageContext.request.contextPath}/notice_list'>
 						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| 리조트 소식 </span>
 						</a>
-						<a href='${pageContext.request.contextPath}/e_02'>
+						<a href='${pageContext.request.contextPath}/comment_list'>
 						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| 이용후기 | </span>
 						</a>
 					</td>
@@ -152,6 +153,7 @@ function fncHide( pos ) {
 	</tr>
 </table>
 </td>
+</tr>
 </table>
 </div>
 </body>
