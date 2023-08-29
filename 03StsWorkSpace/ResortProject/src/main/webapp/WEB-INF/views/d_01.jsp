@@ -10,20 +10,26 @@
 <style>
 .oneTable {
 	border : 1px solid black;
+	border-collapse : collapse;
 	margin : 0 auto;
 	width : 600px;
 }
+
+.td, .dateTd, .dayTd, .room1Td, .room2Td, .room3Td {
+	border : 1px solid black;
+}
+
 </style>
 </head>
 <body>
 <%@ include file="top.jsp"%>
 <table class="oneTable">
 	<tr>
-		<td>날짜</td>
-		<td>요일</td>
-		<td>VIP 룸</td>
-		<td>비즈니스 룸</td>
-		<td>스탠다드 룸</td>
+		<td class="td">날짜</td>
+		<td class="td">요일</td>
+		<td class="td">VIP 룸</td>
+		<td class="td">비즈니스 룸</td>
+		<td class="td">스탠다드 룸</td>
 	</tr>
 	<c:forEach items="${statusList}" var="statusList">
 		<c:choose>

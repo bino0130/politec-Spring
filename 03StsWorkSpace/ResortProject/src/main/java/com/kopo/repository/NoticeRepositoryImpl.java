@@ -21,4 +21,9 @@ public class NoticeRepositoryImpl implements NoticeRepository {
 		listOfNotice = mapper.getAllNotice();
 		return listOfNotice;
 	}
+
+	@Override
+	public Notice getOneById(int id) {
+		return mapper.getOneById(id);
+	}
 }

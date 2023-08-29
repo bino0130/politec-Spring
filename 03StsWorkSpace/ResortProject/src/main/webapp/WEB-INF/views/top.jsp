@@ -14,7 +14,7 @@
 }
 td { 
 	font-size:12; 
-	text-align:center; 
+	text-align:center;
 }
 a:link {text-decoration:none; color:black;}
 a:visited {text-decoration:none;}

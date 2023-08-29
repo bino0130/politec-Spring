@@ -16,7 +16,7 @@
 		</select>
 	
 		<select id="getOneById" parameterType="Integer" resultType="com.kopo.domain.Notice">
-			select * from player where id=${id}
+			select * from notice where notice_id = ${notice_id}
 		</select>
 	
 		<select id="searchSeason" parameterType="String" resultType="com.kopo.domain.Notice">

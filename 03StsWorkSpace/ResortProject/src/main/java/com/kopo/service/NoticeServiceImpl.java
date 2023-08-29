@@ -18,4 +18,8 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeRepository.getAllNotice();
 	}
 
+	@Override
+	public Notice getOneById(int id) {
+		return noticeRepository.getOneById(id);
+	}
 }
