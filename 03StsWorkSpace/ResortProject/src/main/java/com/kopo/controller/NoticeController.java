@@ -17,6 +17,11 @@ import com.kopo.service.NoticeService;
 public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
+	
+	@GetMapping("/top")
+	public String top(){
+		return "top";
+	}
 
 	// read
 	@GetMapping("/notice_list")

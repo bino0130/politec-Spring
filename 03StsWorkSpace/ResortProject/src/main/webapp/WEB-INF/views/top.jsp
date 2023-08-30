@@ -4,157 +4,94 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- logo -->
+<link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.png" type="image/x-icon">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendors/linericon/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendors/owl-carousel/owl.carousel.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendors/nice-select/css/nice-select.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendors/owl-carousel/owl.carousel.min.css">
+<!-- Main CSS -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/responsive.css">
 <meta charset="UTF-8">
-<title>홈페이지 테스트</title>
-<style>
-#bodiv {
-	background-color : lightyellow;
-	width : 100%;
-	height : 20%;
-}
-td { 
-	font-size:12; 
-	text-align:center;
-}
-a:link {text-decoration:none; color:black;}
-a:visited {text-decoration:none;}
-a:hover {text-decoration:none;}
-a:active {text-decoration:none;}
-</style>
-<script>
-var muCnt = 5;
-
-function fncShow( pos ) {
-	var i = 0;
-	for(i; i < muCnt; i++) {
-		var obj = document.getElementById("menu" + i);
-		var obj2 = document.getElementById("m" + i);
-		if(i == pos) {
-			obj.style.display = '';
-			obj2.style.color = "#ff0000";
-		} else {
-			obj.style.display = 'none';
-			obj2.style.color = "#000000";
-		}
-	}
-}
-
-function fncHide( pos ) {
-	var obj = document.getElementById("menu" + pos);
-	obj.style.display = 'none';
-}
-</script>
+<title>Royal Hotel</title>
 </head>
 <body>
-<div id="bodiv">
-<table style="width : 750px; margin : auto;">
-<tr>
-<td width='150'><a href="${pageContext.request.contextPath}/main"><img src="${pageContext.request.contextPath}/resources/img/logo.jpg" width='140' height='50' border='0'></a>
-</td>
-<td>
-<table cellpadding='0' cellspacing='1' border='0' width='600' height='60'>
-	<tr style="height:30px; margin-top:80px;">
-		<td width='100' onmouseover='fncShow(0);' id='m0' style="cursor:pointer"><b>리조트소개</b></td>
-		<td width='100' onmouseover='fncShow(1);' id='m1' style="cursor:pointer"><b>찾아오기</b></td>
-		<td width='100' onmouseover='fncShow(2);' id='m2' style="cursor:pointer"><b>주변여행지</b></td>
-		<td width='100' onmouseover='fncShow(3);' id='m3' style="cursor:pointer"><b>예약하기</b></td>
-		<td width='100' onmouseover='fncShow(4);' id='m4' style="cursor:pointer"><b>리조트소식</b></td>
-		<td width='100'></td>
-	</tr>
-	<tr height='30'>
-		<td colspan='6'>
-			<table id='menu0' style="display:none; border:0px; width:600px; height:30px;">
-				<tr>
-					<td width='0'></td>
-					<td width='600' style='text-align:left;'>
-						<a href='${pageContext.request.contextPath}/main'>
-						<span onmouseover=this.style.color='#ff0000'; onmouseout=this.style.color='#000000';>| 조아 리조트 </span>
-						</a>
-						<a href='${pageContext.request.contextPath}/a_01'>
-						<span onmouseover=this.style.color='#ff0000'; onmouseout=this.style.color='#000000';>| VIP 룸 </span>
-						</a>
-						<a href='${pageContext.request.contextPath}/a_02'>
-						<span onmouseover=this.style.color='#ff0000'; onmouseout=this.style.color='#000000';>| 비즈니스 룸 </span>
-						</a>
-						<a href='${pageContext.request.contextPath}/a_03'>
-						<span onmouseover=this.style.color='#ff0000'; onmouseout=this.style.color='#000000';>| 스탠다드 룸 |</span>
-						</a>
-					</td>
-				</tr>
-			</table>
-			<table id='menu1' style="display:none; border:0px; width:600px; height:30px;">
-				<tr>
-					<td width='100'></td>
-					<td width='500' style="text-align:left;">
-						<a href='${pageContext.request.contextPath}/b_01'>
-						<span onmouseover=this.style.color="#ff0000"; onmouseout=this.style.color='#000000'>| 찾아오는길 </span>
-						</a>
-						<a href='${pageContext.request.contextPath}/b_02'>
-						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| 대중교통이용 </span>
-						</a>
-						<a href='${pageContext.request.contextPath}/b_03' >
-						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| 자가용이용 |</span>
-						</a>
-					</td>
-				</tr>
-			</table>
-			<table id='menu2' style="display:none; border:0px; width:600px; height:30px;">
-				<tr>
-					<td width='200'></td>
-					<td width='400' style='text-align:left;'>
-						<a href='${pageContext.request.contextPath}/c_01'>
-						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| 높아산 </span>
-						</a>
-						<a href='${pageContext.request.contextPath}/c_02'>
-						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| 조아해수욕장 </span>
-						</a>
-						<a href='${pageContext.request.contextPath}/c_03'>
-						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| 따끈온천 | </span>
-						</a>
-					</td>
-				</tr>
-			</table>
-			<table id='menu3' style="display:none; border:0px; width:600px; height:30px;">
-				<tr>
-					<td width='100'></td>
-					<td width='600' style='text-align:left;'>
-						<a href='${pageContext.request.contextPath}/d_01' >
-						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| 예약상황 </span>
-						</a>
-						<a href='${pageContext.request.contextPath}/d_02_1'>
-						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| 예약하기 </span>
-						</a>
-						<a href='${pageContext.request.contextPath}/d_03'>
-						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| 예약변경 </span>
-						</a>
-						<a href='${pageContext.request.contextPath}/adm_allview'>
-						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| 관리자페이지 </span>
-						</a>
-						<a href='${pageContext.request.contextPath}/adm_logout'>
-						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| 관리자로그아웃 | </span>
-						</a>
-					</td>
-				</tr>
-			</table>
-			<table id='menu4' style="display:none; border:0px; width:600px; height:30px;">
-				<tr>
-					<td width='350'></td>
-					<td width='250' style='text-align:left;'>
-						<a href='${pageContext.request.contextPath}/notice_list'>
-						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| 리조트 소식 </span>
-						</a>
-						<a href='${pageContext.request.contextPath}/comment_list'>
-						<span onmouseover=this.style.color='#ff0000' onmouseout=this.style.color='#000000'>| 이용후기 | </span>
-						</a>
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-</table>
-</td>
-</tr>
-</table>
-</div>
+<header class="header_area" style="display:contents">
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-light">
+			<!-- Brand and toggle get grouped for better mobile display -->
+				<a class="navbar-brand logo_h" href="${pageContext.request.contextPath}/main">
+					<img src="${pageContext.request.contextPath}/resources/img/logo.png" alt="">
+				</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                </button>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                	<ul class="nav navbar-nav menu_nav ml-auto">
+                    	<li class="nav-item active submenu dropdown">
+                    		<a class="nav-link" href="${pageContext.request.contextPath}/main">Home</a>
+                    	</li>
+                        <li class="nav-item submenu dropdown">
+                        	<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        		About us
+                        	</a>
+                        	<ul class="dropdown-menu">
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/b_01">찾아오시는 길</a></li>
+                        	</ul>
+                        </li>
+                        <li class="nav-item submenu dropdown">
+                        	<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        		Accomodation
+                        	</a>
+                        	<ul class="dropdown-menu">
+                    			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/a_01">스위트룸</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/a_02">슈페리어룸</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/a_03">스탠다드룸</a></li>
+                    		</ul>
+                        </li>
+                        <li class="nav-item submenu dropdown"><a class="nav-link" href="gallery.html">Spots</a></li>
+                        <li class="nav-item submenu dropdown">
+                         	<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                         		Reservation
+                         	</a>
+                    		<ul class="dropdown-menu">
+                    			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/d_01">예약 현황</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/d_02_1">예약하기</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/d_03">예약 변경</a></li>
+                    		</ul>
+                        </li>
+                        <li class="nav-item submenu dropdown">
+                        	<a class="nav-link">Posts</a>
+                        	<ul class="dropdown-menu">
+                    			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/notice_list">공지사항</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="blog-single.html">이용 후기</a></li>
+                    		</ul>
+                        </li>
+                    </ul>
+                </div> 
+        </nav>
+    </div>
+</header>
+<!-- 이 부분은 footer로 나중에 옮기기 -->
+<script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/popper.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendors/owl-carousel/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery.ajaxchimp.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/mail-script.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendors/nice-select/js/jquery.nice-select.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/mail-script.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/stellar.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendors/lightbox/simpleLightbox.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
 </body>
 </html>
