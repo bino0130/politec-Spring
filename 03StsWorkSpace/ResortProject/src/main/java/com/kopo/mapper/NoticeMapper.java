@@ -10,7 +10,7 @@ import com.kopo.domain.Notice;
 @Mapper
 public interface NoticeMapper {
 	// create
-//	public void makeReservation (@Param("Resort") Resort resort);
+	public void makeNotice (@Param("Notice") Notice notice);
 			
 	// read
 	public List<Notice> getAllNotice();
@@ -18,8 +18,8 @@ public interface NoticeMapper {
 	public Notice getOneById(@Param("notice_id") int notice_id);
 			
 	// update
-//	public void updateReservation (@Param("Resort") Resort resort);
+	public void updateNotice (@Param("Notice") Notice notice);
 	
 	// delete
-			 
+	public void deleteNotice (@Param("notice_id") int notice_id);
 }

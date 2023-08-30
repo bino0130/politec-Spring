@@ -50,10 +50,15 @@
 	<c:forEach items="${noticeList}" var="noticeList">
 		<tr>
 			<td class="one">${noticeList.notice_id}</td>
-			<td class="seven"><a href="<c:url value="/notice_view?notice_id=${noticeList.notice_id}"/>">${noticeList.notice_title}</a></td>
+			<td class="seven">
+				<a href="<c:url value="/notice_view?notice_id=${noticeList.notice_id}"/>">
+					<c:out value="[공지] ${noticeList.notice_title}"/>
+				</a>
+			</td>
 			<td class="two">${noticeList.notice_date}</td>
 		</tr>
 	</c:forEach>
+	<!-- 글쓰기 부분 admin 권한 -->
 	<tr>
 		<td colspan='3' style="text-align : right;">
 			<button class="submit" type="button" onclick="location.href='notice_insert'">글쓰기</button>

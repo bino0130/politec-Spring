@@ -22,4 +22,19 @@ public class NoticeServiceImpl implements NoticeService {
 	public Notice getOneById(int id) {
 		return noticeRepository.getOneById(id);
 	}
+
+	@Override
+	public void makeNotice(Notice notice) {
+		noticeRepository.makeNotice(notice);
+	}
+
+	@Override
+	public void updateNotice(Notice notice) {
+		noticeRepository.updateNotice(notice);
+	}
+
+	@Override
+	public void deleteNotice(int id) {
+		noticeRepository.deleteNotice(id);
+	}
 }

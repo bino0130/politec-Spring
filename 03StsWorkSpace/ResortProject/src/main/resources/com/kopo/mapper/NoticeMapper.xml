@@ -4,37 +4,38 @@
 
 	<!--  create  -->
 		<!-- insert -->
-		<insert id="makeReservation" parameterType="com.kopo.domain.Notice" >
-			insert into resort values (#{Resort.customer_name}, to_date(#{Resort.resv_date}, 'YYYY-MM-DD'), ${Resort.room}, 
-			#{Resort.addr}, #{Resort.telnum}, #{Resort.in_name}, #{Resort.memo}, 
-			to_date(#{Resort.write_date}, 'YYYY-MM-DD'), ${Resort.processing})
+		<insert id="makeNotice" parameterType="com.kopo.domain.Notice" >
+			<!-- selectkey order : insert 쿼리를 실행하기 전,후를 설정 -->
+			<selectKey keyProperty="Notice.notice_id" resultType="Integer" order="BEFORE">
+				select notice_seq.nextval from dual
+			</selectKey>
+			insert into notice values (${Notice.notice_id}, #{Notice.notice_title},
+			to_date(#{Notice.notice_date}, 'YYYY-MM-DD'), #{Notice.notice_content})
 		</insert>
 		
 	<!-- read  -->
 		<select id="getAllNotice" resultType="com.kopo.domain.Notice">
-			select * from notice
+			select * from notice order by notice_id
 		</select>
 	
 		<select id="getOneById" parameterType="Integer" resultType="com.kopo.domain.Notice">
 			select * from notice where notice_id = ${notice_id}
 		</select>
 	
-		<select id="searchSeason" parameterType="String" resultType="com.kopo.domain.Notice">
+		<!-- <select id="searchSeason" parameterType="String" resultType="com.kopo.domain.Notice">
 			select * from player where lower(season) like '%${ season }%'
-		</select>
+		</select>  -->
 		
 	<!-- update -->
-		<update id="updateReservation" parameterType="com.kopo.domain.Notice">
-			update resort set customer_name = #{Resort.customer_name}, 
-			resv_date = to_date(#{Resort.resv_date}, 'YYYY-MM-DD'), room = ${Resort.room}, addr = #{Resort.addr}, 
-			telnum = #{Resort.telnum}, in_name = #{Resort.in_name}, memo = #{Resort.memo}, 
-			write_date = to_date(#{Resort.write_date}, 'YYYY-MM-DD'), processing = ${Resort.processing}	
-			where to_char(resv_date, 'YYYY-MM-DD') = #{Resort.resv_date2} and room = ${Resort.room2}
+		<update id="updateNotice" parameterType="com.kopo.domain.Notice">
+			update notice set notice_title = #{Notice.notice_title}, 
+			notice_date = to_date(#{Notice.notice_date}, 'YYYY-MM-DD'), 
+			notice_content = #{Notice.notice_content} where notice_id = ${Notice.notice_id}
 		</update>
 	
 	<!-- delete -->
-	<!-- <delete id="deleteOne" parameterType="Integer" >
-		delete from player where id = ${ id }
-	</delete> --> 
+	<delete id="deleteNotice" parameterType="Integer" >
+		delete from notice where notice_id = ${notice_id}
+	</delete> 
 	
 </mapper>

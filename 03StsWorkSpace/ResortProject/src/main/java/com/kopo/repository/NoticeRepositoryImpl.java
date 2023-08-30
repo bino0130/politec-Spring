@@ -26,4 +26,19 @@ public class NoticeRepositoryImpl implements NoticeRepository {
 	public Notice getOneById(int id) {
 		return mapper.getOneById(id);
 	}
+
+	@Override
+	public void makeNotice(Notice notice) {
+		mapper.makeNotice(notice);
+	}
+
+	@Override
+	public void updateNotice(Notice notice) {
+		mapper.updateNotice(notice);
+	}
+
+	@Override
+	public void deleteNotice(int id) {
+		mapper.deleteNotice(id);
+	}
 }

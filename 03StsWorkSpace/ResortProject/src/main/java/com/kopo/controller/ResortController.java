@@ -150,8 +150,6 @@ public class ResortController {
 			HttpServletRequest request, HttpSession session, Model model) {
 		try {
 			resortService.makeReservation(resort);
-			System.out.println("예약자 이름 : " + resort.getCustomer_name());
-			System.out.println("controller 변경된 room : " + resort.getRoom());
 			return "redirect:/d_01";
 		} catch (DuplicateKeyException e) {
 			model.addAttribute("duplicateKey", true);
@@ -161,13 +159,14 @@ public class ResortController {
 	}
 	
 	@GetMapping("/d_03")
-	public String requestUpdateReservationForm(@ModelAttribute("updateReservation") Resort resort) {
+	public String requestUpdateReservationForm(Model model) {
+		Resort updateReservation = new Resort();
+		model.addAttribute("updateReservation", updateReservation);
 		return "d_03";
 	}
 	
-	@PostMapping("/d_03")
-	public String submitUpdateReservation(@ModelAttribute("updateReservation")Resort resort, 
-			HttpServletRequest request, HttpSession session, Model model) {
+	@PostMapping("/d_03") // HttpServletRequest request, HttpSession session 삭제
+	public String submitUpdateReservation(@ModelAttribute("updateReservation")Resort resort, Model model) {
 		try {
 			resortService.updateReservation(resort);
 			return "redirect:/d_01";
