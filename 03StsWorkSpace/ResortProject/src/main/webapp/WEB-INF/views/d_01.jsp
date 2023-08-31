@@ -17,8 +17,9 @@
 	width : 600px;
 }
 
-.td, .dateTd, .dayTd, .room1Td, .room2Td, .room3Td {
+.td, .dateTd, .dayTd, .room1Td, .room2Td, .room3Td, .room4Td {
 	border : 1px solid black;
+	text-align : center;
 }
 
 </style>
@@ -29,9 +30,10 @@
 	<tr>
 		<td class="td">날짜</td>
 		<td class="td">요일</td>
-		<td class="td">VIP 룸</td>
-		<td class="td">비즈니스 룸</td>
-		<td class="td">스탠다드 룸</td>
+		<td class="td">Economy Double</td>
+		<td class="td">Single Deluxe</td>
+		<td class="td">Double Deluxe</td>
+		<td class="td">HoneyMoon Suit</td>
 	</tr>
 	<c:forEach items="${statusList}" var="statusList">
 		<c:choose>
@@ -70,6 +72,17 @@
 							</c:when>
 							<c:otherwise>
 								<td class="room3Td">${statusList.room3}</td>
+							</c:otherwise>
+						</c:choose>
+						
+						<c:choose>
+							<c:when test="${statusList.room4 eq '예약가능'}">
+								<td class="room4Td">
+									<a href="<c:url value="/d_02_2?date=${statusList.statusDate}&room=4"/>" style="color:blue;">${statusList.room4}</a>
+								</td>
+							</c:when>
+							<c:otherwise>
+								<td class="room4Td">${statusList.room4}</td>
 							</c:otherwise>
 						</c:choose>
 					</tr>
@@ -112,11 +125,23 @@
 								<td class="room3Td">${statusList.room3}</td>
 							</c:otherwise>
 						</c:choose>
+						
+						<c:choose>
+							<c:when test="${statusList.room4 eq '예약가능'}">
+								<td class="room4Td">
+									<a href="<c:url value="/d_02_2?date=${statusList.statusDate}&room=4"/>" style="color:blue;">${statusList.room4}</a>
+								</td>
+							</c:when>
+							<c:otherwise>
+								<td class="room4Td">${statusList.room4}</td>
+							</c:otherwise>
+						</c:choose>
 					</tr>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
 	
 </table>
+<%@ include file="footer.jsp"%>
 </body>
 </html>

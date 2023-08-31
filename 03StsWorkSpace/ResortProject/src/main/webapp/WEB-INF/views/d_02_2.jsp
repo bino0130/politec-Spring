@@ -107,15 +107,19 @@ function validateForm() { // 데이터 전달하는 form 체크
 						<option value="3" <c:if test="${room eq 3}">selected="selected"</c:if> >스탠다드 룸</option> -->
 						<c:choose>
 							<c:when test="${room eq 1}">
-								<form:input path="room"	type="text" value="VIP 룸" readonly="true" required="true"/>
+								<form:input path="room"	type="text" value="Economy Double" readonly="true" required="true"/>
 							</c:when>
 							
 							<c:when test="${room eq 2}">
-								<form:input path="room"	type="text" value="비즈니스 룸" readonly="true" required="true"/>
+								<form:input path="room"	type="text" value="Single Deluxe" readonly="true" required="true"/>
 							</c:when>
 							
 							<c:when test="${room eq 3}">
-								<form:input path="room"	type="text" value="스탠다드 룸" readonly="true" required="true"/>
+								<form:input path="room"	type="text" value="Double Deluxe" readonly="true" required="true"/>
+							</c:when>
+							
+							<c:when test="${room eq 4}">
+								<form:input path="room"	type="text" value="HoneyMoon Suite" readonly="true" required="true"/>
 							</c:when>
 						</c:choose>
 					</div>

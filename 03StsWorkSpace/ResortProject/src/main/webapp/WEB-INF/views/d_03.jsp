@@ -6,6 +6,34 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- logo -->
+<link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.png" type="image/x-icon">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendors/linericon/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendors/owl-carousel/owl.carousel.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendors/nice-select/css/nice-select.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendors/owl-carousel/owl.carousel.min.css">
+<!-- Main CSS -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/responsive.css">
+
+<!-- 이 부분은 footer로 나중에 옮기기 -->
+ <script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script> 
+<script src="${pageContext.request.contextPath}/resources/js/popper.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendors/owl-carousel/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery.ajaxchimp.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/mail-script.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.js"></script> --%>
+<script src="${pageContext.request.contextPath}/resources/vendors/nice-select/js/jquery.nice-select.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/mail-script.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/stellar.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendors/lightbox/simpleLightbox.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
+
 <meta charset="UTF-8">
 <title>예약하기</title>
 <style>
@@ -76,7 +104,70 @@ function validateForm() { // 데이터 전달하는 form 체크
 </script>
 </head>
 <body>
-<%@ include file="top.jsp"%>
+
+<!-- include top 대신 코드 때려박음 -->
+<header class="header_area" style="display:contents">
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-light">
+			<!-- Brand and toggle get grouped for better mobile display -->
+				<a class="navbar-brand logo_h" href="${pageContext.request.contextPath}/main">
+					<img src="${pageContext.request.contextPath}/resources/img/logo.png" alt="">
+				</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                </button>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                	<ul class="nav navbar-nav menu_nav ml-auto">
+                    	<li class="nav-item active submenu dropdown">
+                    		<a class="nav-link" href="${pageContext.request.contextPath}/main">Home</a>
+                    	</li>
+                        <li class="nav-item submenu dropdown">
+                        	<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        		About us
+                        	</a>
+                        	<ul class="dropdown-menu">
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/b_01">찾아오시는 길</a></li>
+                        	</ul>
+                        </li>
+                        <li class="nav-item submenu dropdown">
+                        	<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        		Accomodation
+                        	</a>
+                        	<ul class="dropdown-menu">
+                    			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/EconomyDouble">Economy Double</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/SingleDeluxe">Single Deluxe</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/DoubleDeluxe">Double Deluxe</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/HoneyMoon-Suit">Honeymoon Suite</a></li>
+                    		</ul>
+                        </li>
+                        <li class="nav-item submenu dropdown"><a class="nav-link" href="gallery.html">Spots</a></li>
+                        <li class="nav-item submenu dropdown">
+                         	<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                         		Reservation
+                         	</a>
+                    		<ul class="dropdown-menu">
+                    			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/d_01">예약 현황</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/d_02_1">예약하기</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/d_03">예약 변경</a></li>
+                    		</ul>
+                        </li>
+                        <li class="nav-item submenu dropdown">
+                        	<a href="#" class="nav-link">Posts</a>
+                        	<ul class="dropdown-menu">
+                    			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/notice_list">공지사항</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="blog-single.html">이용 후기</a></li>
+                    		</ul>
+                        </li>
+                    </ul>
+                </div> 
+        </nav>
+    </div>
+</header>
+<!-- include top 대신 코드 때려박음 -->
+
 <% 
 	Calendar cal = Calendar.getInstance();
 	SimpleDateFormat dformat = new SimpleDateFormat("yyyy-MM-dd");
@@ -122,9 +213,10 @@ function validateForm() { // 데이터 전달하는 form 체크
 					<td class="tdEight">
 						<div class="dropdown">
 							<select name="room2" id="room2">
-								<option value="1">VIP 룸</option>
-								<option value="2">비즈니스 룸</option>
-								<option value="3">스탠다드 룸</option>
+								<option value="1" <c:if test="${resort.room eq 1}">selected="selected"</c:if> >Economy Double</option>
+								<option value="2" <c:if test="${resort.room eq 2}">selected="selected"</c:if> >Single Deluxe</option>
+								<option value="3" <c:if test="${resort.room eq 3}">selected="selected"</c:if> >Double Deluxe</option>
+								<option value="4" <c:if test="${resort.room eq 4}">selected="selected"</c:if> >HoneyMoon Suite</option>
 							</select>
 						</div>
 					</td>
@@ -155,9 +247,10 @@ function validateForm() { // 데이터 전달하는 form 체크
 					<td class="tdEight">
 						<div class="dropdown">
 							<select name="room" id="room">
-								<option value="1" <c:if test="${resort.room eq 1}">selected="selected"</c:if> >VIP 룸</option>
-								<option value="2" <c:if test="${resort.room eq 2}">selected="selected"</c:if> >비즈니스 룸</option>
-								<option value="3" <c:if test="${resort.room eq 3}">selected="selected"</c:if> >스탠다드 룸</option>
+								<option value="1" <c:if test="${resort.room eq 1}">selected="selected"</c:if> >Economy Double</option>
+								<option value="2" <c:if test="${resort.room eq 2}">selected="selected"</c:if> >Single Deluxe</option>
+								<option value="3" <c:if test="${resort.room eq 3}">selected="selected"</c:if> >Double Deluxe</option>
+								<option value="4" <c:if test="${resort.room eq 4}">selected="selected"</c:if> >HoneyMoon Suite</option>
 							</select>
 						</div>
 					</td>
@@ -237,9 +330,10 @@ function validateForm() { // 데이터 전달하는 form 체크
 					<td class="tdEight">
 						<div class="dropdown">
 							<select name="room2" id="room2">
-								<option value="1">VIP 룸</option>
-								<option value="2">비즈니스 룸</option>
-								<option value="3">스탠다드 룸</option>
+								<option value="1">Economy Double</option>
+								<option value="2">Single Deluxe</option>
+								<option value="3">Double Deluxe</option>
+								<option value="4">HoneyMoon Suite</option>
 							</select>
 						</div>
 					</td>
@@ -270,9 +364,10 @@ function validateForm() { // 데이터 전달하는 form 체크
 					<td class="tdEight">
 						<div class="dropdown">
 							<select name="room" id="room">
-								<option value="1">VIP 룸</option>
-								<option value="2">비즈니스 룸</option>
-								<option value="3">스탠다드 룸</option>
+								<option value="1">Economy Double</option>
+								<option value="2">Single Deluxe</option>
+								<option value="3">Double Deluxe</option>
+								<option value="4">HoneyMoon Suite</option>
 							</select>
 						</div>
 					</td>

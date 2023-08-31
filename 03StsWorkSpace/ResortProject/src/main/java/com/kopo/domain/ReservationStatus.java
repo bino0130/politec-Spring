@@ -6,6 +6,7 @@ public class ReservationStatus {
 	private String room1;
 	private String room2;
 	private String room3;
+	private String room4;
 	
 	public ReservationStatus() {
 		super();
@@ -19,11 +20,12 @@ public class ReservationStatus {
 		this.korDayOfWeek = korDayOfWeek;
 	}
 
-	public ReservationStatus(String room1, String room2, String room3) {
+	public ReservationStatus(String room1, String room2, String room3, String room4) {
 		super();
 		this.room1 = room1;
 		this.room2 = room2;
 		this.room3 = room3;
+		this.room4 = room4;
 	}
 	
 	public String getStatusDate() {
@@ -49,5 +51,13 @@ public class ReservationStatus {
 	}
 	public void setRoom3(String room3) {
 		this.room3 = room3;
+	}
+	
+	public String getRoom4() {
+		return room4;
+	}
+
+	public void setRoom4(String room4) {
+		this.room4 = room4;
 	}
 }

@@ -144,7 +144,7 @@ function validateForm() { // 데이터 전달하는 form 체크
                     			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/EconomyDouble">Economy Double</a></li>
                         		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/SingleDeluxe">Single Deluxe</a></li>
                         		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/DoubleDeluxe">Double Deluxe</a></li>
-                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/HoneyMoon-Suit">Honeymoon Suit</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/HoneyMoon-Suit">Honeymoon Suite</a></li>
                     		</ul>
                         </li>
                         <li class="nav-item submenu dropdown"><a class="nav-link" href="gallery.html">Spots</a></li>
@@ -176,12 +176,33 @@ function validateForm() { // 데이터 전달하는 form 체크
 	SimpleDateFormat dformat = new SimpleDateFormat("yyyy-MM-dd");
 	String date = dformat.format(cal.getTime());
 %>
+<c:set var="room" value="${room}" />
+<c:choose>
+
+<c:when test="${ room eq 1 }">
+	<c:set value="true" var="select1" />
+</c:when>
+
+<c:when test="${ room eq 2 }">
+	<c:set value="true" var="select2" />
+</c:when>
+
+<c:when test="${ room eq 3 }">
+	<c:set value="true" var="select3" />
+</c:when>
+
+<c:when test="${ room eq 4 }">
+	<c:set value="true" var="select4" />
+</c:when>
+
+</c:choose>
+
 <c:choose>
 	<c:when test="${duplicateKey eq true}">
 		<script>
 			alert("선택하신 방과 날짜는 이미 예약되어 있습니다.");
 		</script>
-		<form:form modelAttribute="NewReservation" method="POST" onsubmit="return validateForm()">
+		<form:form modelAttribute="RoomReservation" method="POST" onsubmit="return validateForm()">
 			<table class="secondTable">
 				<tr>
 					<td class="tdTwo">성명</td>
@@ -215,12 +236,12 @@ function validateForm() { // 데이터 전달하는 form 체크
 					<td class="tdTwo">예약방</td>
 					<td class="tdEight">
 						<div class="dropdown">
-							<select name="room" id="room">
-								<option value="1" <c:if test="${resort.room eq 1}">selected="selected"</c:if> >Economy Double</option>
-								<option value="2" <c:if test="${resort.room eq 2}">selected="selected"</c:if> >Single Deluxe</option>
-								<option value="3" <c:if test="${resort.room eq 3}">selected="selected"</c:if> >Double Deluxe</option>
-								<option value="4" <c:if test="${resort.room eq 4}">selected="selected"</c:if> >HoneyMoon Suit</option>
-							</select>
+							<form:select path="room">
+								<form:option value="1" select="${select1}">Economy Double</form:option>
+								<form:option value="2" select="${select2}">Single Deluxe</form:option>
+								<form:option value="3" select="${select3}">Double Deluxe</form:option>
+								<form:option value="4" select="${select4}">HoneyMoon Suite</form:option>
+							</form:select>
 						</div>
 					</td>
 				</tr>
@@ -266,7 +287,7 @@ function validateForm() { // 데이터 전달하는 form 체크
 	</c:when>
 	
 	<c:otherwise>
-		<form:form modelAttribute="NewReservation" method="POST" onsubmit="return validateForm()">
+		<form:form modelAttribute="RoomReservation" method="POST" onsubmit="return validateForm()">
 			<table class="secondTable">
 				<tr>
 					<td class="tdTwo">성명</td>
@@ -299,12 +320,23 @@ function validateForm() { // 데이터 전달하는 form 체크
 					<td class="tdTwo">예약방</td>
 					<td class="tdEight">
 						<div>
-							<select  name="room" id="room">
-								<option value="1">Economy Double</option>
-								<option value="2">Single Deluxe</option>
-								<option value="3">Double Deluxe</option>
-								<option value="4">HoneyMoon Suite</option>
-							</select>	
+							<c:choose>
+							<c:when test="${room eq 1}">
+								<form:input path="room"	type="text" value="Economy Double" readonly="true" required="true"/>
+							</c:when>
+							
+							<c:when test="${room eq 2}">
+								<form:input path="room"	type="text" value="Single Deluxe" readonly="true" required="true"/>
+							</c:when>
+							
+							<c:when test="${room eq 3}">
+								<form:input path="room"	type="text" value="Double Deluxe" readonly="true" required="true"/>
+							</c:when>
+							
+							<c:when test="${room eq 4}">
+								<form:input path="room"	type="text" value="HoneyMoon Suite" readonly="true" required="true"/>
+							</c:when>
+						</c:choose>	
 						</div>
 					</td>
 				</tr>
@@ -347,63 +379,5 @@ function validateForm() { // 데이터 전달하는 form 체크
 		</c:otherwise>
 </c:choose>
 
-<!-- footer 코드 다 때려박기 -->
-<footer class="footer-area section_gap">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3  col-md-6 col-sm-6">
-					<div class="single-footer-widget">
-						<div>
-							<span><img style="width:20px;" src="${pageContext.request.contextPath}/resources/img/placeholder.png"/></span>
-							<span style="margin-left:10px;" class="footer_title">Location</span>
-						</div>
-						<div style="font-size:17px; padding-left:5px;">536 Haean-ro, Gangneung-si, Gangwon-do, South Korea (Anhyeon-dong)</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 col-sm-6">
-					<div class="single-footer-widget">
-						<div>
-							<span><img style="width:20px;" src="${pageContext.request.contextPath}/resources/img/phone-call.png"/></span>
-							<span style="margin-left:10px;" class="footer_title">Reception</span>
-						</div>
-						<div style="font-size:17px; padding-left:5px;">033-640-6287</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 col-sm-6">
-					<div class="single-footer-widget">
-						<div>
-							<span><img style="width:20px;" src="${pageContext.request.contextPath}/resources/img/phone-call.png"/></span>
-							<span style="margin-left:10px;" class="footer_title">Shuttle Service</span>
-						</div>
-						<div style="font-size:17px; padding-left:5px;">033-640-6287</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6 col-sm-6">
-					<div class="single-footer-widget instafeed">
-						<div>
-							<span><img style="width:20px;" src="${pageContext.request.contextPath}/resources/img/phone-call.png"/></span>
-							<span style="margin-left:10px;" class="footer_title">Restaurant</span>
-						</div>
-						<div style="font-size:17px; padding-left:5px;">033-640-6287</div>
-					</div>
-				</div>
-			</div>
-			<div class="border_line"></div>
-			<div
-				class="row footer-bottom d-flex justify-content-between align-items-center">
-				<p class="col-lg-8 col-sm-12 footer-text m-0">
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					Copyright © 2014 Royal Hotel. ALL RIGHTS RESERVED.
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				</p>
-				<div class="col-lg-4 col-sm-12 footer-social">
-					<a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a> 
-					<a href="https://www.twitter.com" target="_blank"><i class="fa fa-twitter"></i></a> 
-					<a href="https://www.instagram.com" target="_blank"><i class="fa fa-instagram"></i></a>
-				</div>
-			</div>
-		</div>
-	</footer>
-<!-- footer 코드 다 때려박기 -->
 </body>
 </html>

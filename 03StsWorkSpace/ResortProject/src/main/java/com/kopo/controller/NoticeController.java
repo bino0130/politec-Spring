@@ -22,6 +22,11 @@ public class NoticeController {
 	public String top(){
 		return "top";
 	}
+	
+	@GetMapping("/footer")
+	public String footer() {
+		return "footer";
+	}
 
 	// read
 	@GetMapping("/notice_list")

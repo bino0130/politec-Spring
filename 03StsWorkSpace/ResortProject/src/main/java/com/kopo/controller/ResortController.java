@@ -32,19 +32,24 @@ public class ResortController {
 		return "main";
 	}
 	
-	@GetMapping("/a_01")
-	public String showA01() {
-		return "a_01";
+	@GetMapping("/EconomyDouble")
+	public String showRoom01() {
+		return "/room/EconomyDouble";
 	}
 	
-	@GetMapping("/a_02")
-	public String showA02() {
-		return "a_02";
+	@GetMapping("/SingleDeluxe")
+	public String showRoom02() {
+		return "/room/SingleDeluxe";
 	}
 	
-	@GetMapping("/a_03")
-	public String showA03() {
-		return "a_03";
+	@GetMapping("/DoubleDeluxe")
+	public String showRoom03() {
+		return "/room/DoubleDeluxe";
+	}
+	
+	@GetMapping("/HoneyMoon-Suite")
+	public String showRoom04() {
+		return "/room/HoneyMoon-Suite";
 	}
 	
 	@GetMapping("/d_01")
@@ -58,7 +63,7 @@ public class ResortController {
 		for(int i = 0; i < 30; i++) {
 			String date = dformat.format(cal.getTime());
 			
-			ReservationStatus status = new ReservationStatus("예약가능", "예약가능", "예약가능");
+			ReservationStatus status = new ReservationStatus("예약가능", "예약가능", "예약가능", "예약가능");
 			status.setStatusDate(date);
 			
 			statusList.add(status);
@@ -84,6 +89,8 @@ public class ResortController {
 						eachStatus.setRoom2("예약불가");
 					} else if (eachResort.getRoom() == 3) {
 						eachStatus.setRoom3("예약불가");
+					} else if (eachResort.getRoom() == 4) {
+						eachStatus.setRoom4("예약불가");
 					}
 				}
 			}
@@ -155,6 +162,26 @@ public class ResortController {
 			model.addAttribute("duplicateKey", true);
 			model.addAttribute("resort", resort);
 			return "/d_02_2";
+		}
+	}
+	
+	@GetMapping("/d_02_3")
+	public String requestAddReservationFormWithRoom(@ModelAttribute("RoomReservation") Resort resort, Model model,
+													@RequestParam("room") String room) {
+		model.addAttribute("room", room);
+		return "d_02_3";
+	}
+	
+	@PostMapping("/d_02_3")
+	public String AddReservationWithRoom(@ModelAttribute("RoomReservation") Resort resort, 
+			HttpServletRequest request, HttpSession session, Model model) {
+		try {
+			resortService.makeReservation(resort);
+			return "redirect:/d_01";
+		} catch (DuplicateKeyException e) {
+			model.addAttribute("duplicateKey", true);
+			model.addAttribute("resort", resort);
+			return "/d_02_3";
 		}
 	}
 	

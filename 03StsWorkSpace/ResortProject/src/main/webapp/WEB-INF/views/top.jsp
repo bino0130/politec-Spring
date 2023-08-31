@@ -6,6 +6,7 @@
 <head>
 <!-- logo -->
 <link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.png" type="image/x-icon">
+<!-- top 부분에 CSS 적용 -->
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendors/linericon/style.css">
@@ -17,6 +18,7 @@
 <!-- Main CSS -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/responsive.css">
+<!-- top 부분에 CSS 적용 -->
 <meta charset="UTF-8">
 <title>Royal Hotel</title>
 </head>
@@ -52,9 +54,10 @@
                         		Accomodation
                         	</a>
                         	<ul class="dropdown-menu">
-                    			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/a_01">스위트룸</a></li>
-                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/a_02">슈페리어룸</a></li>
-                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/a_03">스탠다드룸</a></li>
+                    			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/EconomyDouble">Economy Double</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/SingleDeluxe">Single Deluxe</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/DoubleDeluxe">Double Deluxe</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/HoneyMoon-Suite">Honeymoon Suite</a></li>
                     		</ul>
                         </li>
                         <li class="nav-item submenu dropdown"><a class="nav-link" href="gallery.html">Spots</a></li>
@@ -69,7 +72,7 @@
                     		</ul>
                         </li>
                         <li class="nav-item submenu dropdown">
-                        	<a class="nav-link">Posts</a>
+                        	<a href="#" class="nav-link">Posts</a>
                         	<ul class="dropdown-menu">
                     			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/notice_list">공지사항</a></li>
                         		<li class="nav-item"><a class="nav-link" href="blog-single.html">이용 후기</a></li>
@@ -80,18 +83,5 @@
         </nav>
     </div>
 </header>
-<!-- 이 부분은 footer로 나중에 옮기기 -->
-<script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/popper.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/vendors/owl-carousel/owl.carousel.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery.ajaxchimp.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/mail-script.js"></script>
-<script src="${pageContext.request.contextPath}/resources/vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/vendors/nice-select/js/jquery.nice-select.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/mail-script.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/stellar.js"></script>
-<script src="${pageContext.request.contextPath}/resources/vendors/lightbox/simpleLightbox.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
 </body>
 </html>
