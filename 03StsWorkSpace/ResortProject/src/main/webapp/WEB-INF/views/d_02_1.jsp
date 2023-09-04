@@ -144,7 +144,7 @@ function validateForm() { // 데이터 전달하는 form 체크
                     			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/EconomyDouble">Economy Double</a></li>
                         		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/SingleDeluxe">Single Deluxe</a></li>
                         		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/DoubleDeluxe">Double Deluxe</a></li>
-                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/HoneyMoon-Suit">Honeymoon Suit</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/HoneyMoon-Suite">Honeymoon Suit</a></li>
                     		</ul>
                         </li>
                         <li class="nav-item submenu dropdown"><a class="nav-link" href="gallery.html">Spots</a></li>

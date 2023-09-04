@@ -144,7 +144,7 @@ function validateForm() { // 데이터 전달하는 form 체크
                     			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/EconomyDouble">Economy Double</a></li>
                         		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/SingleDeluxe">Single Deluxe</a></li>
                         		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/DoubleDeluxe">Double Deluxe</a></li>
-                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/HoneyMoon-Suit">Honeymoon Suite</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/HoneyMoon-Suite">Honeymoon Suite</a></li>
                     		</ul>
                         </li>
                         <li class="nav-item submenu dropdown"><a class="nav-link" href="gallery.html">Spots</a></li>
@@ -178,7 +178,6 @@ function validateForm() { // 데이터 전달하는 form 체크
 %>
 <c:set var="room" value="${room}" />
 <c:choose>
-
 <c:when test="${ room eq 1 }">
 	<c:set value="true" var="select1" />
 </c:when>
@@ -194,8 +193,8 @@ function validateForm() { // 데이터 전달하는 form 체크
 <c:when test="${ room eq 4 }">
 	<c:set value="true" var="select4" />
 </c:when>
-
 </c:choose>
+<div style="text-align:center;">room=${room}</div>
 
 <c:choose>
 	<c:when test="${duplicateKey eq true}">
@@ -207,7 +206,7 @@ function validateForm() { // 데이터 전달하는 form 체크
 				<tr>
 					<td class="tdTwo">성명</td>
 					<td class="tdEight">
-						<form:input path="customer_name" type="text" value="${resort.customer_name}" 
+						<form:input path="customer_name" type="text" value="${resort.customer_name},${resort.room}" 
 						maxlength="16" placeholder="성함을 입력해주세요" required="true"/>
 					</td>
 				</tr>
@@ -237,10 +236,10 @@ function validateForm() { // 데이터 전달하는 form 체크
 					<td class="tdEight">
 						<div class="dropdown">
 							<form:select path="room">
-								<form:option value="1" select="${select1}">Economy Double</form:option>
-								<form:option value="2" select="${select2}">Single Deluxe</form:option>
-								<form:option value="3" select="${select3}">Double Deluxe</form:option>
-								<form:option value="4" select="${select4}">HoneyMoon Suite</form:option>
+								<form:option value="1" selected="${select1}">Economy Double</form:option>
+								<form:option value="2" selected="${select2}">Single Deluxe</form:option>
+								<form:option value="3" selected="${select3}">Double Deluxe</form:option>
+								<form:option value="4" selected="${select4}">HoneyMoon Suite</form:option>
 							</form:select>
 						</div>
 					</td>

@@ -164,5 +164,6 @@ function validateForm() { // 데이터 전달하는 form 체크
 			</tr>
 		</table>
 	</form:form>
+<%@ include file="footer.jsp"%>
 </body>
 </html>
