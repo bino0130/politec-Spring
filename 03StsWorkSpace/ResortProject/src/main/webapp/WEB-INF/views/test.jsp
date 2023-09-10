@@ -17,7 +17,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendors/nice-select/css/nice-select.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/vendors/owl-carousel/owl.carousel.min.css">
 
-
 <!-- Main CSS -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/responsive.css">
@@ -37,7 +36,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
 
 <!-- 달력 오픈소스 datepicker 시작 -->
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css"/>  
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <!-- 달력 오픈소스 datepicker 끝 -->
@@ -45,7 +44,7 @@
 <meta charset="UTF-8">
 <title>예약하기</title>
 <style>
-.secondTable {
+/*.secondTable {
 	border : 1px solid black;
 	width : 500px; 
 	height : 500px;
@@ -59,7 +58,7 @@
 	border : 1px solid black;
 	width : 80%;
 	text-align : left;
-}
+}*/
 </style>
 
 <script>
@@ -153,8 +152,8 @@ function validateForm() { // 데이터 전달하는 form 체크
                          		Reservation
                          	</a>
                     		<ul class="dropdown-menu">
-                    			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/d_01">예약 현황</a></li>
-                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/d_02_1">예약하기</a></li>
+                    			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/ReservationList">예약 현황</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/ReservationPage_1">예약하기</a></li>
                         		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/d_03">예약 변경</a></li>
                     		</ul>
                         </li>
@@ -176,178 +175,95 @@ function validateForm() { // 데이터 전달하는 form 체크
 	SimpleDateFormat dformat = new SimpleDateFormat("yyyy-MM-dd");
 	String date = dformat.format(cal.getTime());
 %>
-<c:choose>
-	<c:when test="${duplicateKey eq true}">
-		<script>
-			alert("선택하신 방과 날짜는 이미 예약되어 있습니다.");
-		</script>
-		<form:form modelAttribute="NewReservation" method="POST" onsubmit="return validateForm()">
-			<table class="secondTable">
-				<tr>
-					<td class="tdTwo">성명</td>
-					<td class="tdEight">
-						<form:input path="customer_name" type="text" value="${resort.customer_name}" 
-						maxlength="16" placeholder="성함을 입력해주세요" required="true"/>
-					</td>
-				</tr>
-				<tr>
-					<td class="tdTwo">예약일자</td>
-					<td class="tdEight">
-					<form:input id="Date" path="resv_date" placeholder="날짜를 선택해주세요"
-						type="text" value="${resort.resv_date}" readonly="true" required="true"/>
-						<script>
-							$(function() {
-								$("#Date").datepicker({
-									minDate : new Date(),
-									maxDate : '+365d',
-									dateFormat : 'yy-mm-dd',
-									showMonthAfterYear : true,
-									dayNamesMin : ['월', '화', '수', '목', '금', '토', '일' ], // 요일의 한글 형식.
-									monthNamesShort : ['1월', '2월', '3월', '4월', '5월', '6월', '7월',
-														'8월', '9월', '10월', '11월', '12월' ] // 월의 한글 형식.
-									});
-								});
-						</script>
-					</td>
-
-				</tr>
-				<tr>
-					<td class="tdTwo">예약방</td>
-					<td class="tdEight">
-						<div class="dropdown">
-							<select name="room" id="room">
-								<option value="1" <c:if test="${resort.room eq 1}">selected="selected"</c:if> >Economy Double</option>
-								<option value="2" <c:if test="${resort.room eq 2}">selected="selected"</c:if> >Single Deluxe</option>
-								<option value="3" <c:if test="${resort.room eq 3}">selected="selected"</c:if> >Double Deluxe</option>
-								<option value="4" <c:if test="${resort.room eq 4}">selected="selected"</c:if> >HoneyMoon Suit</option>
-							</select>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td class="tdTwo">주소</td>
-					<td class="tdEight">
-						<form:input path="addr" type="text" value="${resort.addr}" style="width:320px;"
-							placeholder="주소를 입력해주세요" maxlength="33" required="true"/>
-					</td>
-				</tr>
-				<tr>
-					<td class="tdTwo">전화번호</td>
-					<td class="tdEight">
-						<form:input path="telnum" type="text" value="${resort.telnum}" 
-						placeholder="전화번호를 입력해주세요" maxlength="13"
-						pattern="\d{3}-\d{4}-\d{4}" title="000-0000-0000 형식으로 입력하세요" required="true"/>
-					</td>
-				</tr>
-				<tr>
-					<td class="tdTwo">입금자명</td>
-					<td class="tdEight">
-						<form:input path="in_name" type="text" value="${resort.in_name}" 
-						maxlength="16" placeholder="입금자명을 입력해주세요" required="true"/>
-					</td>
-				</tr>
-				<tr>
-					<td class="tdTwo">남기실말</td>
-					<td class="tdEight">
-						<form:input path="memo" value="${resort.memo}" style="width : 320px;" 
-						maxlength="50" placeholder="남기실 말을 입력해주세요" required="true"/>
-						<form:input path="write_date" type="hidden" value="<%=date%>" />
-						<form:input path="processing" type="hidden" value="4" />
-					</td>
-				</tr>
-				<tr>
-					<td colspan='2' style="border: 1px solid black; height: 30px;">
-						<input type="submit" value="전송" style="text-align: center;">
-					</td>
-					<td></td>
-				</tr>
-				</table>
-			</form:form>
-	</c:when>
-	
-	<c:otherwise>
-		<form:form modelAttribute="NewReservation" method="POST" onsubmit="return validateForm()">
-			<table class="secondTable">
-				<tr>
-					<td class="tdTwo">성명</td>
-					<td class="tdEight">
-						<form:input path="customer_name" type="text" value="" 
-						maxlength="16" placeholder="성함을 입력해주세요"/>
-					</td>
-				</tr>
-				<tr>
-					<td class="tdTwo">예약일자</td>
-					<td class="tdEight"><form:input id="Date" path="resv_date" placeholder="예약날짜를 선택해주세요"
-					type="text" value="" readonly="true" required="true"/> 
-						<script>
-							$(function() {
-								$("#Date").datepicker({
-									minDate : new Date(),
-									maxDate : '+365d',
-									dateFormat : 'yy-mm-dd',
-									showMonthAfterYear : true,
-									dayNamesMin : ['월', '화', '수', '목', '금', '토', '일' ], // 요일의 한글 형식.
-									monthNamesShort : ['1월', '2월', '3월', '4월', '5월', '6월', '7월',
-														'8월', '9월', '10월', '11월', '12월' ] // 월의 한글 형식.
-									});
-								});
-						</script>
-					</td>
-
-				</tr>
-				<tr>
-					<td class="tdTwo">예약방</td>
-					<td class="tdEight">
-						<div>
-							<select  name="room" id="room">
-								<option value="1">Economy Double</option>
-								<option value="2">Single Deluxe</option>
-								<option value="3">Double Deluxe</option>
-								<option value="4">HoneyMoon Suite</option>
-							</select>	
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td class="tdTwo">주소</td>
-					<td class="tdEight"><form:input path="addr" type="text"
-						value="" style="width:320px;" placeholder="주소를 입력해주세요" maxlength="33"/>
-					</td>
-				</tr>
-				<tr>
-					<td class="tdTwo">전화번호</td>
-					<td class="tdEight">
-						<form:input path="telnum" type="text" value="" placeholder="전화번호를 입력해주세요" 
-						maxlength="13" pattern="\d{3}-\d{4}-\d{4}" title="000-0000-0000 형식으로 입력하세요" required="true"/>
-					</td>
-				</tr>
-				<tr>
-					<td class="tdTwo">입금자명</td>
-					<td class="tdEight">
-						<form:input path="in_name" type="text" value="" 
-						maxlength="16" placeholder="입금자명을 입력해주세요" required="true"/>
-					</td>
-				</tr>
-				<tr>
-					<td class="tdTwo">남기실말</td>
-					<td class="tdEight">
-						<form:input path="memo" value="" style="width : 320px;" 
-						maxlength="50" placeholder="남기실 말을 입력해주세요" required="true"/>
-						<form:input path="write_date" type="hidden" value="<%=date%>" />
-						<form:input path="processing" type="hidden" value="4" />
-					</td>
-				</tr>
-				<tr>
-					<td colspan='2' style="border: 1px solid black; height: 30px;"><input
-						type="submit" value="전송" style="text-align: center;"></td>
-					<td></td>
-				</tr>
-				</table>
-			</form:form>
-		</c:otherwise>
-</c:choose>
-
-<!-- footer 코드 다 때려박기 -->
+	<div class="whole-wrap">
+		<div class="container">
+			<div class="section-top-border">
+				<div class="row">
+					<div class="col-lg-8 col-md-8">
+						<h3 class="mb-30 title_color">Room Reservation</h3>
+						<form:form modelAttribute="NewReservation" method="POST" onsubmit="return validateForm()">
+							<div class="input-group-icon mt-10">
+								<div class="icon" style="z-index:1">
+									<i class="fa fa-user" aria-hidden="true"></i>
+								</div>
+								<form:input path="customer_name" type="text" value="" placeholder="Name" onfocus="this.placeholder = ''"
+									onblur="this.placeholder='Enter Name'" required="true" class="single-input"/>
+							</div>
+							<div class="input-group-icon mt-10">
+								<div class="icon" style="z-index:1">
+									<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+								</div>
+								<form:input id="Date" path="resv_date" type="text" placeholder="Reservation Date" onfocus="this.placeholder = ''"
+									onblur="this.placeholder = 'Reservation Date'" readonly="true" required="true" class="single-input"/>
+								<script>
+									$(function() {
+										$("#Date").datepicker({
+											minDate : new Date(),
+											maxDate : '+365d',
+											dateFormat : 'yy-mm-dd',
+											showMonthAfterYear : true,
+											dayNamesMin : ['월', '화', '수', '목', '금', '토', '일' ], // 요일의 한글 형식.
+											monthNamesShort : ['1월', '2월', '3월', '4월', '5월', '6월', '7월',
+																'8월', '9월', '10월', '11월', '12월' ] // 월의 한글 형식.
+											});
+										});
+								</script>
+							</div>
+							<div class="input-group-icon mt-10">
+								<div class="icon" style="z-index:1">
+									<i class="fa fa-bed" aria-hidden="true"></i>
+								</div>
+								<div class="form-select" id="default-select">
+									<select style="display: none;">
+										<option value="1">Economy Double</option>
+										<option value="2">Single Deluxe</option>
+										<option value="3">Double Deluxe</option>
+										<option value="4">HoneyMoon Suite</option>
+									</select>
+									<div class="nice-select" tabindex="0">
+										<span class="current">Room</span>
+										<ul class="list">
+											<li data-value="1" class="option">Economy Double</li>
+											<li data-value="2" class="option">Single Deluxe</li>
+											<li data-value="3" class="option">Double Deluxe</li>
+											<li data-value="4" class="option">HoneyMoon Suite</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="input-group-icon mt-10">
+								<div class="icon" style="z-index:0">
+									<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+								</div>
+								<form:input path="addr" type="text" value="" placeholder="Address" onfocus="this.placeholder = ''"
+									onblur="this.placeholder='Address'" class="single-input"/>
+							</div>
+							<div class="input-group-icon mt-10">
+								<div class="icon" style="z-index:0">
+									<i class="fa fa-mobile" aria-hidden="true"></i>
+								</div>
+								<form:input path="telnum" type="text" value="" placeholder="Phone Number" onfocus="this.placeholder=''"
+									onblur="this.placeholder='Phone Number'" required="true" class="single-input"/>
+							</div>
+							<div class="input-group-icon mt-10">
+								<div class="icon" style="z-index:0">
+									<i class="fa fa-dollar" aria-hidden="true"></i>
+								</div>
+								<form:input path="in_name" type="text" placeholder="Payer's Name" onfocus="this.placeholder=''"
+									onblur="this.placeholder='Payer's Name'" required="true" class="single-input"/>
+							</div>
+							<div class="mt-10">
+								<textarea class="single-textarea" placeholder="Message"
+									onfocus="this.placeholder = ''"
+									onblur="this.placeholder = 'Message'" required=""></textarea>
+							</div>
+						</form:form>
+					</div>
+				</div>
+			</div><!-- section top border 끝 -->
+		</div>
+	</div>
+	<!-- footer 코드 다 때려박기 -->
 <footer class="footer-area section_gap">
 		<div class="container">
 			<div class="row">
@@ -363,16 +279,16 @@ function validateForm() { // 데이터 전달하는 form 체크
 				<div class="col-lg-3 col-md-6 col-sm-6">
 					<div class="single-footer-widget">
 						<div>
-							<span><img style="width:20px;" src="${pageContext.request.contextPath}/resources/img/phone-call.png"/></span>
+							<span class="icon" style="z-index:1; color:#ffc107;"><i class="fa fa-phone" aria-hidden="true"></i></span>
 							<span style="margin-left:10px;" class="footer_title">Reception</span>
 						</div>
-						<div style="font-size:17px; padding-left:5px;">033-640-6287</div>
+						<div style="font-size:17px; padding-left:5px;">033-640-6282</div>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-6">
 					<div class="single-footer-widget">
 						<div>
-							<span><img style="width:20px;" src="${pageContext.request.contextPath}/resources/img/phone-call.png"/></span>
+							<span class="icon" style="z-index:1; color:#ffc107;"><i class="fa fa-bus" aria-hidden="true"></i></span>
 							<span style="margin-left:10px;" class="footer_title">Shuttle Service</span>
 						</div>
 						<div style="font-size:17px; padding-left:5px;">033-640-6287</div>
@@ -381,10 +297,10 @@ function validateForm() { // 데이터 전달하는 form 체크
 				<div class="col-lg-3 col-md-6 col-sm-6">
 					<div class="single-footer-widget instafeed">
 						<div>
-							<span><img style="width:20px;" src="${pageContext.request.contextPath}/resources/img/phone-call.png"/></span>
+							<span class="icon" style="z-index:1; color:#ffc107;"><i class="fa fa-cutlery" aria-hidden="true"></i></span>
 							<span style="margin-left:10px;" class="footer_title">Restaurant</span>
 						</div>
-						<div style="font-size:17px; padding-left:5px;">033-640-6287</div>
+						<div style="font-size:17px; padding-left:5px;">033-640-6288</div>
 					</div>
 				</div>
 			</div>

@@ -66,13 +66,13 @@
                          		Reservation
                          	</a>
                     		<ul class="dropdown-menu">
-                    			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/d_01">예약 현황</a></li>
-                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/d_02_1">예약하기</a></li>
-                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/d_03">예약 변경</a></li>
+                    			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/ReservationList">예약 현황</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/ReservationPage_1">예약하기</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/ReservationUpdate">예약 변경</a></li>
                     		</ul>
                         </li>
                         <li class="nav-item submenu dropdown">
-                        	<a href="#" class="nav-link">Posts</a>
+                        	<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Posts</a>
                         	<ul class="dropdown-menu">
                     			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/notice_list">공지사항</a></li>
                         		<li class="nav-item"><a class="nav-link" href="blog-single.html">이용 후기</a></li>

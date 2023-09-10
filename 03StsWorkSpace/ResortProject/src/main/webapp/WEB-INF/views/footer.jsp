@@ -35,16 +35,16 @@
 				<div class="col-lg-3 col-md-6 col-sm-6">
 					<div class="single-footer-widget">
 						<div>
-							<span><img style="width:20px;" src="${pageContext.request.contextPath}/resources/img/phone-call.png"/></span>
+							<span class="icon" style="z-index:1; color:#ffc107;"><i class="fa fa-phone" aria-hidden="true"></i></span>
 							<span style="margin-left:10px;" class="footer_title">Reception</span>
 						</div>
-						<div style="font-size:17px; padding-left:5px;">033-640-6287</div>
+						<div style="font-size:17px; padding-left:5px;">033-640-6282</div>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-6">
 					<div class="single-footer-widget">
 						<div>
-							<span><img style="width:20px;" src="${pageContext.request.contextPath}/resources/img/phone-call.png"/></span>
+							<span class="icon" style="z-index:1; color:#ffc107;"><i class="fa fa-bus" aria-hidden="true"></i></span>
 							<span style="margin-left:10px;" class="footer_title">Shuttle Service</span>
 						</div>
 						<div style="font-size:17px; padding-left:5px;">033-640-6287</div>
@@ -53,10 +53,10 @@
 				<div class="col-lg-3 col-md-6 col-sm-6">
 					<div class="single-footer-widget instafeed">
 						<div>
-							<span><img style="width:20px;" src="${pageContext.request.contextPath}/resources/img/phone-call.png"/></span>
+							<span class="icon" style="z-index:1; color:#ffc107;"><i class="fa fa-cutlery" aria-hidden="true"></i></span>
 							<span style="margin-left:10px;" class="footer_title">Restaurant</span>
 						</div>
-						<div style="font-size:17px; padding-left:5px;">033-640-6287</div>
+						<div style="font-size:17px; padding-left:5px;">033-640-6288</div>
 					</div>
 				</div>
 			</div>

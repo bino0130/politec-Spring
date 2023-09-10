@@ -76,7 +76,7 @@ function validateForm() { // 데이터 전달하는 form 체크
 </script>
 </head>
 <body>
-<%@ include file="top.jsp"%>
+<%@ include file="../top.jsp"%>
 <% 
 	Calendar cal = Calendar.getInstance();
 	SimpleDateFormat dformat = new SimpleDateFormat("yyyy-MM-dd");
@@ -164,6 +164,6 @@ function validateForm() { // 데이터 전달하는 form 체크
 			</tr>
 		</table>
 	</form:form>
-<%@ include file="footer.jsp"%>
+<%@ include file="../footer.jsp"%>
 </body>
 </html>

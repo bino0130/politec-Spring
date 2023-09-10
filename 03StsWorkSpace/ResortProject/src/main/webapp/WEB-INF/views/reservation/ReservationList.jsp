@@ -25,7 +25,7 @@
 </style>
 </head>
 <body>
-<%@ include file="top.jsp"%>
+<%@ include file="../top.jsp"%>
 <table class="oneTable">
 	<tr>
 		<td class="td">날짜</td>
@@ -45,7 +45,7 @@
 						<c:choose>
 							<c:when test="${statusList.room1 eq '예약가능'}">
 								<td class="room1Td">
-									<a href="<c:url value="/d_02_2?date=${statusList.statusDate}&room=1"/>" style="color:blue;">${statusList.room1}</a>
+									<a href="<c:url value="/ReservationPage_2?date=${statusList.statusDate}&room=1"/>" style="color:blue;">${statusList.room1}</a>
 								</td>
 							</c:when>
 							<c:otherwise>
@@ -56,7 +56,7 @@
 						<c:choose>
 							<c:when test="${statusList.room2 eq '예약가능'}">
 								<td class="room2Td">
-									<a href="<c:url value="/d_02_2?date=${statusList.statusDate}&room=2"/>" style="color:blue;">${statusList.room2}</a>
+									<a href="<c:url value="/ReservationPage_2?date=${statusList.statusDate}&room=2"/>" style="color:blue;">${statusList.room2}</a>
 								</td>
 							</c:when>
 							<c:otherwise>
@@ -67,7 +67,7 @@
 						<c:choose>
 							<c:when test="${statusList.room3 eq '예약가능'}">
 								<td class="room3Td">
-									<a href="<c:url value="/d_02_2?date=${statusList.statusDate}&room=3"/>" style="color:blue;">${statusList.room3}</a>
+									<a href="<c:url value="/ReservationPage_2?date=${statusList.statusDate}&room=3"/>" style="color:blue;">${statusList.room3}</a>
 								</td>
 							</c:when>
 							<c:otherwise>
@@ -78,7 +78,7 @@
 						<c:choose>
 							<c:when test="${statusList.room4 eq '예약가능'}">
 								<td class="room4Td">
-									<a href="<c:url value="/d_02_2?date=${statusList.statusDate}&room=4"/>" style="color:blue;">${statusList.room4}</a>
+									<a href="<c:url value="/ReservationPage_2?date=${statusList.statusDate}&room=4"/>" style="color:blue;">${statusList.room4}</a>
 								</td>
 							</c:when>
 							<c:otherwise>
@@ -96,7 +96,7 @@
 						<c:choose>
 							<c:when test="${statusList.room1 eq '예약가능'}">
 								<td class="room1Td">
-									<a href="<c:url value="/d_02_2?date=${statusList.statusDate}&room=1"/>" style="color:blue;">${statusList.room1}</a>
+									<a href="<c:url value="/ReservationPage_2?date=${statusList.statusDate}&room=1"/>" style="color:blue;">${statusList.room1}</a>
 								</td>
 							</c:when>
 							<c:otherwise>
@@ -107,7 +107,7 @@
 						<c:choose>
 							<c:when test="${statusList.room2 eq '예약가능'}">
 								<td class="room2Td">
-									<a href="<c:url value="/d_02_2?date=${statusList.statusDate}&room=2"/>" style="color:blue;">${statusList.room2}</a>
+									<a href="<c:url value="/ReservationPage_2?date=${statusList.statusDate}&room=2"/>" style="color:blue;">${statusList.room2}</a>
 								</td>
 							</c:when>
 							<c:otherwise>
@@ -118,7 +118,7 @@
 						<c:choose>
 							<c:when test="${statusList.room3 eq '예약가능'}">
 								<td class="room3Td">
-									<a href="<c:url value="/d_02_2?date=${statusList.statusDate}&room=3"/>" style="color:blue;">${statusList.room3}</a>
+									<a href="<c:url value="/ReservationPage_2?date=${statusList.statusDate}&room=3"/>" style="color:blue;">${statusList.room3}</a>
 								</td>
 							</c:when>
 							<c:otherwise>
@@ -129,7 +129,7 @@
 						<c:choose>
 							<c:when test="${statusList.room4 eq '예약가능'}">
 								<td class="room4Td">
-									<a href="<c:url value="/d_02_2?date=${statusList.statusDate}&room=4"/>" style="color:blue;">${statusList.room4}</a>
+									<a href="<c:url value="/ReservationPage_2?date=${statusList.statusDate}&room=4"/>" style="color:blue;">${statusList.room4}</a>
 								</td>
 							</c:when>
 							<c:otherwise>
@@ -142,6 +142,6 @@
 	</c:forEach>
 	
 </table>
-<%@ include file="footer.jsp"%>
+<%@ include file="../footer.jsp"%>
 </body>
 </html>
