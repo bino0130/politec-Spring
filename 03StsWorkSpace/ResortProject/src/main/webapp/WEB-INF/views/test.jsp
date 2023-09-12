@@ -77,10 +77,12 @@ function validateForm() { // 데이터 전달하는 form 체크
 							</div>
 						</div>
 						<div class="mt-10" style="text-align: right;">
-							<button type="button" class="genric-btn danger radius"
-								onclick="location.href='notice_delete?notice_id=${oneNotice.notice_id}'">삭제</button>
-							<button type="button" class="genric-btn info radius"
-								onclick="location.href='notice_update?notice_id=${oneNotice.notice_id}'">수정</button>
+							<div style="width:735px;">
+								<button type="button" class="genric-btn danger radius"
+									onclick="location.href='notice_delete?notice_id=${oneNotice.notice_id}'">삭제</button>
+								<button type="button" class="genric-btn info radius"
+									onclick="location.href='notice_update?notice_id=${oneNotice.notice_id}'">수정</button>
+							</div>
 						</div>
 					</form:form>
 				</div>
