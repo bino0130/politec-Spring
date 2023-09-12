@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kopo.mapper.ReplyMapper">
+
+	<!--  create  -->
+		<!-- insert -->
+		<insert id="makeReply" parameterType="com.kopo.domain.Reply" >
+			<!-- selectkey order : insert 쿼리를 실행하기 전,후를 설정 -->
+			<selectKey keyProperty="Reply.reply_id" resultType="Integer" order="BEFORE">
+				select reply_seq.nextval from dual
+			</selectKey>
+			insert into reply (root_id, reply_id, reply_person, reply_date,
+			reply_content) values (${Reply.root_id}, ${Reply.reply_id}, #{Reply.reply_title}, 
+			to_date(#{Reply.reply_date}, 'YYYY-MM-DD'), #{Reply.reply_content})
+		</insert>
+		
+	<!-- read  -->
+		<select id="getAllReply" resultType="com.kopo.domain.Reply">
+			select * from reply where root_id=${Reply.root_id} order by reply_id
+		</select>
+	
+	<!-- update -->
+		<update id="updateReply" parameterType="com.kopo.domain.Reply">
+			update reply set reply_person = ${Reply.reply_person}, reply_date = to_date(#{Reply.reply_date}, 'YYYY-MM-DD'), 
+			reply_content = #{Reply.reply_content} where reply_id = ${Reply.reply_id}
+		</update>
+		
+	<!-- delete -->
+	<delete id="deleteReply" parameterType="Integer" >
+		delete from reply where reply_id = ${Reply.reply_id}
+	</delete> 
+	
+</mapper>

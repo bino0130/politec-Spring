@@ -11,39 +11,6 @@
 <link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.png" type="image/x-icon">
 <meta charset="UTF-8">
 <title>공지사항 수정</title>
-<style>
-.updateNoticeTable {
-	width : 600px;
-	height : 500px;
-	border : 1px solid black;
-	border-collapse : collapse;
-	margin : auto;
-}
-
-.bottom {
-	width : 600px;
-	height : 0px;
-	bordedr : 0px; 
-	margin : auto;
-}
-
-.one {
-	width : 10%;
-	border : 1px solid black;
-	text-align : center;
-}
-
-.nine {
-	width : 90%;
-	border : 1px solid black;
-}
-
-.submit {
- 	background-color : skyblue;
-	border-color : skyblue;
-	border-radius : 5px;
-}
-</style>
 <script>
 function trimSpace(input) { // 공백 trim하는 함수
 	return input.replace(/^\s+/, ''); // 공백이 있으면 없앰	 
@@ -81,39 +48,50 @@ function validateForm() { // 데이터 전달하는 form 체크
 	SimpleDateFormat dformat = new SimpleDateFormat("yyyy-MM-dd");
 	String date = dformat.format(cal.getTime());
 %>
-<form:form modelAttribute="updateNotice" method="POST" onsubmit="return validateForm()">
-	<table class = "updateNoticeTable">
-			<tr>
-				<td class="one" style="background-color : skyblue;">제목</td>
-				<td class="nine" style="height : 7%; text-align : left; padding-left : 10px;">
-					<form:input style="width : 400px;" path="notice_title" type="text" maxlength="23" 
-					placeholder="제목을 입력해주세요" required="true"/>
-				</td>
-			</tr>
-			<tr>
-				<td class="one" style="background-color : skyblue;">일자</td>
-				<td class="nine" style="height : 7%; text-align : left; padding-left : 10px;">
-					<%=date%>
-					<form:input path="notice_date" type="hidden" value="" readonly="true"/>
-				</td>
-			</tr>
-			<tr>
-				<td class="one" style="background-color : skyblue;">내용</td>
-				<td class="nine" style="text-align : left; padding-left : 10px;">
-					<form:textarea path="notice_content" style="resize:none; border:0px;"
-						cols="70" rows="28" class="form-control" maxlength="500" 
-						placeholder="내용을 입력해주세요" required="true"></form:textarea>
-				</td>
-			</tr>
-		</table>
-		<table class="bottom">
-			<tr>
-				<td style="border:0px; text-align : right;">
-					<input class="submit" type="submit" value="수정">
-				</td>
-			</tr>
-		</table>
-</form:form>
+<div class="whole-wrap">
+	<div class="container">
+		<div class="section-top-border">
+			<div class="progress-table-wrap">
+				<div class="progress-table">
+					<form:form modelAttribute="updateNotice" method="POST" onsubmit="return validateForm()">
+						<div class="table-head" style="text-align:center;">
+							<div class="serial">제목</div>
+							<form:input path="notice_title" type="text" placeholder="Title" onfocus="this.placeholder=''" 
+								onblur="this.placeholder='Title'" required="true" class="single-input" maxlength="50"
+								style="background-color:#F1F1F1; width:600px;"/>
+						</div>
+						<hr>
+						<div class="table-head" style="text-align:center;">
+							<div class="serial" style="padding-left:35px;">일자</div>
+							<form:input class="single-input" path="notice_date" type="text" value="<%=date%>" readonly="true"/>
+						</div>
+						<hr>
+						<div class="table-head" style="text-align:center; height:300px;">
+							<div class="serial">내용</div>
+							<div style="text-align:left; width:600px; font-weight:500; color:black;">
+								<form:textarea path="notice_content" class="single-textarea"
+									placeholder="Message" onfocus="this.placeholder = ''"
+									onblur="this.placeholder = 'Message'" required="true"
+									maxlength="500" style="height:300px; width:600px; 
+									background-color:#F1F1F1;"/>
+							</div>
+						</div>
+						<div class="table-head" style="text-align: right;">
+							<div class="serial"></div>
+							<div style="text-align:right; width:600px;">
+								<div class="mt-10" style="text-align: right;">
+									<input type="button" value="취소" class="genric-btn danger radius"
+										onclick="window.location.href='notice_list'"/>
+									<input type="submit" value="수정" class="genric-btn info radius"/>
+								</div>
+							</div>
+						</div>
+					</form:form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <%@ include file="../footer.jsp"%>
 </body>
 </html>

@@ -19,7 +19,9 @@ public class NoticeController {
 	private NoticeService noticeService;
 	
 	@GetMapping("/test")
-	public String showTest(@ModelAttribute("insertNoticeForm") Notice notice) {
+	public String showTest(@RequestParam("notice_id") int notice_id, Model model) {
+		Notice updateNotice = noticeService.getOneById(notice_id);
+		model.addAttribute("updateNotice", updateNotice);
 		return "test";
 	}
 	
@@ -41,12 +43,12 @@ public class NoticeController {
 		return "/notice/notice_list";
 	}
 	
-	@PostMapping("/notice_list")
-	public String showPostNoticeList(Model model) {
-		List<Notice> noticeList = noticeService.getAllNotice();
-		model.addAttribute("noticeList", noticeList);
-		return "/notice/notice_list";
-	}
+//	@PostMapping("/notice_list")
+//	public String showPostNoticeList(Model model) {
+//		List<Notice> noticeList = noticeService.getAllNotice();
+//		model.addAttribute("noticeList", noticeList);
+//		return "/notice/notice_list";
+//	}
 	
 	@GetMapping("/notice_view")
 	public String requestShowNoticeForm(@RequestParam("notice_id") int notice_id, Model model) {

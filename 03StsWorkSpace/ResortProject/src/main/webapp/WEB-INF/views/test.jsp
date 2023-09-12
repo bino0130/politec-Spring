@@ -4,13 +4,13 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<!-- 공지사항 insert 관리자 권한 -->
+<!-- 공지사항 update 관리자 권한 -->
 <html>
 <head>
 <!-- logo -->
 <link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.png" type="image/x-icon">
 <meta charset="UTF-8">
-<title>공지사항 작성</title>
+<title>공지사항 수정</title>
 <script>
 function trimSpace(input) { // 공백 trim하는 함수
 	return input.replace(/^\s+/, ''); // 공백이 있으면 없앰	 
@@ -27,8 +27,8 @@ function InputCheck(input) { // 입력값 체크하는 함수
 }
  
 function validateForm() { // 데이터 전달하는 form 체크
-	 var title = document.forms["insertNoticeForm"]["notice_title"].value; // insertNoticeForm 태그 안에 있는 notice_title의 value를 가져옴
-	 var content = document.forms["insertNoticeForm"]["notice_content"].value; // insertNoticeForm 태그 안에 있는 notice_content의 value를 가져옴
+	 var title = document.forms["updateNotice"]["notice_title"].value; // insertNoticeForm 태그 안에 있는 notice_title의 value를 가져옴
+	 var content = document.forms["updateNotice"]["notice_content"].value; // insertNoticeForm 태그 안에 있는 notice_content의 value를 가져옴
 	 
 	 if(InputCheck(title) === false) {
 		 alert("제목을 입력해주세요");
@@ -53,10 +53,10 @@ function validateForm() { // 데이터 전달하는 form 체크
 		<div class="section-top-border">
 			<div class="progress-table-wrap">
 				<div class="progress-table">
-					<form:form modelAttribute="insertNoticeForm" method="POST" onsubmit="return validateForm()">
+					<form:form modelAttribute="updateNotice" method="POST" onsubmit="return validateForm()">
 						<div class="table-head" style="text-align:center;">
 							<div class="serial">제목</div>
-							<form:input path="notice_title" type="text" value="" placeholder="Title" onfocus="this.placeholder=''" 
+							<form:input path="notice_title" type="text" placeholder="Title" onfocus="this.placeholder=''" 
 								onblur="this.placeholder='Title'" required="true" class="single-input" maxlength="50"
 								style="background-color:#F1F1F1; width:600px;"/>
 						</div>
@@ -71,17 +71,17 @@ function validateForm() { // 데이터 전달하는 form 체크
 							<div style="text-align:left; width:600px; font-weight:500; color:black;">
 								<form:textarea path="notice_content" class="single-textarea"
 									placeholder="Message" onfocus="this.placeholder = ''"
-									onblur="this.placeholder = 'Message'" value=""
-									required="true" maxlength="500" style="height:300px; 
-									background-color:#F1F1F1; width:600px;"/>
+									onblur="this.placeholder = 'Message'" required="true"
+									maxlength="500" style="height:300px; width:600px; 
+									background-color:#F1F1F1;"/>
 							</div>
 						</div>
-						<div class="mt-10" style="text-align: right;">
-							<div style="width:735px;">
-								<button type="button" class="genric-btn danger radius"
-									onclick="location.href='notice_delete?notice_id=${oneNotice.notice_id}'">삭제</button>
-								<button type="button" class="genric-btn info radius"
-									onclick="location.href='notice_update?notice_id=${oneNotice.notice_id}'">수정</button>
+						<div class="table-head" style="text-align: right;">
+							<div class="serial"></div>
+							<div style="text-align:right; width:600px;">
+								<div class="mt-10" style="text-align: right;">
+									<input type="submit" value="수정" class="genric-btn info radius"/>
+								</div>
 							</div>
 						</div>
 					</form:form>

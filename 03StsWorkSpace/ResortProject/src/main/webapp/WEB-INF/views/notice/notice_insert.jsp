@@ -51,39 +51,45 @@ function validateForm() { // 데이터 전달하는 form 체크
 <div class="whole-wrap">
 	<div class="container">
 		<div class="section-top-border">
-			<div class="row">
-				<div class="col-lg-8 col-md-8">
-					<h3 class="mb-30 title_color">Make Notice</h3>
-					<form:form modelAttribute="insertNoticeForm" method="POST"
-							onsubmit="return validateForm()">
-						<div class="input-group-icon mt-10">
-							<div class="icon" style="z-index: 1">
-								<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-							</div>
+			<div class="progress-table-wrap">
+				<div class="progress-table">
+					<form:form modelAttribute="insertNoticeForm" method="POST" onsubmit="return validateForm()">
+						<div class="table-head" style="text-align:center;">
+							<div class="serial">제목</div>
 							<form:input path="notice_title" type="text" value="" placeholder="Title" onfocus="this.placeholder=''" 
-							onblur="this.placeholder='Title'" required="true" class="single-input" maxlength="23"/>
+								onblur="this.placeholder='Title'" required="true" class="single-input" maxlength="50"
+								style="background-color:#F1F1F1; width:600px;"/>
 						</div>
-						<div class="input-group-icon mt-10">
-							<div class="icon" style="z-index: 1">
-								<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
-							</div>
+						<hr>
+						<div class="table-head" style="text-align:center;">
+							<div class="serial" style="padding-left:35px;">일자</div>
 							<form:input class="single-input" path="notice_date" type="text" value="<%=date%>" readonly="true"/>
 						</div>
-						<div class="mt-10">
-							<form:textarea path="notice_content" class="single-textarea"
-								placeholder="Message" onfocus="this.placeholder = ''"
-								onblur="this.placeholder = 'Message'" value=""
-								required="true" maxlength="500" style="height:300px;"/>
+						<hr>
+						<div class="table-head" style="text-align:center; height:300px;">
+							<div class="serial">내용</div>
+							<div style="text-align:left; width:600px; font-weight:500; color:black;">
+								<form:textarea path="notice_content" class="single-textarea"
+									placeholder="Message" onfocus="this.placeholder = ''"
+									onblur="this.placeholder = 'Message'" value=""
+									required="true" maxlength="500" style="height:300px; 
+									background-color:#F1F1F1; width:600px;"/>
+							</div>
 						</div>
-						<div class="mt-10" style="text-align: right;">
-							<input type="button" value="취소" class="genric-btn danger radius"
-								onclick="window.location.href='notice_list'"/>
-							<input type="submit" value="쓰기" class="genric-btn info radius"/>
+						<div class="table-head" style="text-align: right;">
+							<div class="serial"></div>
+							<div style="text-align:right; width:600px;">
+								<div class="mt-10" style="text-align: right;">
+									<input type="button" value="취소" class="genric-btn danger radius"
+										onclick="window.location.href='notice_list'"/>
+									<input type="submit" value="쓰기" class="genric-btn info radius"/>
+								</div>
+							</div>
 						</div>
 					</form:form>
 				</div>
 			</div>
-		</div><!-- section top border 끝 -->
+		</div>
 	</div>
 </div>
 <%@ include file="../footer.jsp"%>
