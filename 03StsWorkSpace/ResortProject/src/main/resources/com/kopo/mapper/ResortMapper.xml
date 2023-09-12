@@ -5,9 +5,9 @@
 	<!--  create  -->
 		<!-- insert -->
 		<insert id="makeReservation" parameterType="com.kopo.domain.Resort" >
-			insert into resort values (#{Resort.customer_name}, to_date(#{Resort.resv_date}, 'YYYY-MM-DD'), ${Resort.room}, 
-			#{Resort.addr}, #{Resort.telnum}, #{Resort.in_name}, #{Resort.memo}, 
-			to_date(#{Resort.write_date}, 'YYYY-MM-DD'), ${Resort.processing})
+			insert into resort values ('${Resort.customer_name}', to_date('${Resort.resv_date}', 'YYYY-MM-DD'), ${Resort.room}, 
+			'${Resort.addr}', '${Resort.telnum}', '${Resort.in_name}', '${Resort.memo}', 
+			to_date('${Resort.write_date}', 'YYYY-MM-DD'), ${Resort.processing})
 		</insert>
 		
 	<!-- read  -->

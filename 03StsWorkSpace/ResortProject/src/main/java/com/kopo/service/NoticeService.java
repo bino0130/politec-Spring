@@ -17,6 +17,9 @@ public interface NoticeService {
 	// notice 테이블 업데이트
 	public void updateNotice(Notice notice);
 	
+	// notice 조회수 업데이트
+	public void updateViewCnt(int id, int view_cnt);
+	
 	// notice 테이블 삭제
 	public void deleteNotice(int id);
 }

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kopo.domain.Notice;
 import com.kopo.domain.ReservationStatus;
 import com.kopo.domain.Resort;
 import com.kopo.service.ResortService;
@@ -27,10 +28,7 @@ public class ResortController {
 	@Autowired
 	private ResortService resortService;
 	
-	@GetMapping("/test")
-	public String showTest(@ModelAttribute("NewReservation") Resort resort) {
-		return "test";
-	}
+	
 	
 	@GetMapping("/main")
 	public String showMain() {
@@ -160,14 +158,8 @@ public class ResortController {
 	@PostMapping("/ReservationPage_2")
 	public String AddReservationWithInfo(@ModelAttribute("AnotherReservation") Resort resort, 
 			HttpServletRequest request, HttpSession session, Model model) {
-		try {
 			resortService.makeReservation(resort);
-			return "redirect:/ReservationPage_2";
-		} catch (DuplicateKeyException e) {
-			model.addAttribute("duplicateKey", true);
-			model.addAttribute("resort", resort);
-			return "/reservation/ReservationPage_2";
-		}
+			return "redirect:/ReservationList";
 	}
 	
 	@GetMapping("/d_02_3")
@@ -201,7 +193,7 @@ public class ResortController {
 	public String submitUpdateReservation(@ModelAttribute("updateReservation")Resort resort, Model model) {
 		try {
 			resortService.updateReservation(resort);
-			return "redirect:/ReservationUpdatePage";
+			return "redirect:/ReservationList";
 		} catch (DuplicateKeyException e) {
 			model.addAttribute("duplicateKey", true);
 			model.addAttribute("resort", resort);

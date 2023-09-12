@@ -18,7 +18,10 @@ public interface NoticeMapper {
 	public Notice getOneById(@Param("notice_id") int notice_id);
 			
 	// update
-	public void updateNotice (@Param("Notice") Notice notice);
+	public void updateNotice(@Param("Notice") Notice notice);
+	
+	// update
+	public void updateViewCnt(@Param("notice_id") int notice_id, @Param("view_cnt") int view_cnt);
 	
 	// delete
 	public void deleteNotice (@Param("notice_id") int notice_id);

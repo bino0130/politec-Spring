@@ -9,10 +9,11 @@
 <title>HoneyMoon Suit</title>
 </head>
 <body>
-<div style="text-align : center;">
 <%@ include file="../top.jsp"%>
+<div style="text-align : center;">
 <img src="${pageContext.request.contextPath}/resources/img/room3.jpg" width=400 height=350>
 <br><h2>HoneyMoon Suit</h2>
 </div>
+<%@ include file="../footer.jsp"%>
 </body>
 </html>

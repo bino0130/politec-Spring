@@ -7,6 +7,8 @@
 <!-- 공지사항 update 관리자 권한 -->
 <html>
 <head>
+<!-- logo -->
+<link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.png" type="image/x-icon">
 <meta charset="UTF-8">
 <title>공지사항 수정</title>
 <style>
@@ -112,5 +114,6 @@ function validateForm() { // 데이터 전달하는 form 체크
 			</tr>
 		</table>
 </form:form>
+<%@ include file="../footer.jsp"%>
 </body>
 </html>

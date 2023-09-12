@@ -5,7 +5,7 @@ public class Notice {
 	private String notice_title;
 	private String notice_date;
 	private String notice_content;
-	
+	private int view_cnt;
 	
 	public int getNotice_id() {
 		return notice_id;
@@ -30,5 +30,11 @@ public class Notice {
 	}
 	public void setNotice_content(String notice_content) {
 		this.notice_content = notice_content;
+	}
+	public int getView_cnt() {
+		return view_cnt;
+	}
+	public void setView_cnt(int view_cnt) {
+		this.view_cnt = view_cnt;
 	}
 }

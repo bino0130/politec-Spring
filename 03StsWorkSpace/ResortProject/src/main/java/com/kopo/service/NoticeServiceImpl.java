@@ -32,6 +32,11 @@ public class NoticeServiceImpl implements NoticeService {
 	public void updateNotice(Notice notice) {
 		noticeRepository.updateNotice(notice);
 	}
+	
+	@Override
+	public void updateViewCnt(int id, int view_cnt) {
+		noticeRepository.updateViewCnt(id, view_cnt);
+	}
 
 	@Override
 	public void deleteNotice(int id) {

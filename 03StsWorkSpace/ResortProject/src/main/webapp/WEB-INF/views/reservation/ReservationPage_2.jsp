@@ -6,25 +6,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- logo -->
+<link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.png" type="image/x-icon">
 <meta charset="UTF-8">
 <title>예약하기</title>
-<style>
-.secondTable {
-	border : 1px solid black;
-	width : 500px; 
-	height : 500px;
-	margin : auto;
-}
-.tdTwo {
-	border : 1px solid black;
-	width : 20%;
-}
-.tdEight {
-	border : 1px solid black;
-	width : 80%;
-	text-align : left;
-}
-</style>
 <!-- 달력 오픈소스 datepicker 시작 -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
@@ -82,88 +67,96 @@ function validateForm() { // 데이터 전달하는 form 체크
 	SimpleDateFormat dformat = new SimpleDateFormat("yyyy-MM-dd");
 	String date = dformat.format(cal.getTime());
 %>
-	<form:form modelAttribute="AnotherReservation" method="POST" onsubmit="return validateForm()">
-		<table class="secondTable">
-			<tr>
-				<td class="tdTwo">성명</td>
-				<td class="tdEight">
-					<form:input path="customer_name" type="text" value="" 
-					maxlength="16" placeholder="성함을 입력해주세요" required="true" />
-				</td>
-			</tr>
-			<tr>
-				<td class="tdTwo">예약일자</td>
-				<td class="tdEight">
-					<form:input id="resv_date" path="resv_date" placeholder="날짜를 선택해주세요"
-					type="text" value="${resv_date}" readonly="true" required="true" />
-				</td>
-			</tr>
-			<tr>
-				<td class="tdTwo">예약방</td>
-				<td class="tdEight">
-					<div class="dropdown">
-						<!-- <option value="1" <c:if test="${room eq 1}">selected="selected"</c:if> >VIP 룸</option>
-						<option value="2" <c:if test="${room eq 2}">selected="selected"</c:if> >비즈니스 룸</option>
-						<option value="3" <c:if test="${room eq 3}">selected="selected"</c:if> >스탠다드 룸</option> -->
+<div class="whole-wrap">
+	<div class="container">
+		<div class="section-top-border">
+			<div class="row">
+				<div class="col-lg-8 col-md-8">
+				<h3 class="mb-30 title_color">Room Reservation</h3>
+				<form:form modelAttribute="AnotherReservation" method="POST" onsubmit="return validateForm()">
+					<div class="input-group-icon mt-10">
+						<div class="icon" style="z-index: 1">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</div>
+						<form:input path="customer_name" type="text" value="" placeholder="Name" onfocus="this.placeholder = ''" 
+										onblur="this.placeholder='Name'" required="true" class="single-input" maxlength="16"/>
+					</div>
+					<div class="input-group-icon mt-10">
+						<div class="icon" style="z-index: 1">
+							<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+						</div>
+						<form:input id="Date" path="resv_date" placeholder="Reservation Date" value="${resv_date}"
+							onfocus="this.placeholder = ''"  onblur="this.placeholder='Reservation Date'" 
+							type="text" readonly="true" required="true" class="single-input"/>
+					</div>
+					<div class="input-group-icon mt-10">
+						<div class="icon" style="z-index: 1">
+							<i class="fa fa-bed" aria-hidden="true"></i>
+						</div>
 						<c:choose>
 							<c:when test="${room eq 1}">
-								<form:input path="room"	type="text" value="Economy Double" readonly="true" required="true"/>
+								<form:input path="room"	type="text" value="Economy Double" readonly="true" required="true" class="single-input"/>
 							</c:when>
 							
 							<c:when test="${room eq 2}">
-								<form:input path="room"	type="text" value="Single Deluxe" readonly="true" required="true"/>
+								<form:input path="room"	type="text" value="Single Deluxe" readonly="true" required="true" class="single-input"/>
 							</c:when>
 							
 							<c:when test="${room eq 3}">
-								<form:input path="room"	type="text" value="Double Deluxe" readonly="true" required="true"/>
+								<form:input path="room"	type="text" value="Double Deluxe" readonly="true" required="true" class="single-input"/>
 							</c:when>
 							
 							<c:when test="${room eq 4}">
-								<form:input path="room"	type="text" value="HoneyMoon Suite" readonly="true" required="true"/>
+								<form:input path="room"	type="text" value="HoneyMoon Suite" readonly="true" required="true" class="single-input"/>
 							</c:when>
 						</c:choose>
 					</div>
-				</td>
-			</tr>
-			<tr>
-				<td class="tdTwo">주소</td>
-				<td class="tdEight">
-					<form:input path="addr" type="text" value="" maxlength="33" 
-						placeholder="주소를 입력해주세요" style="width:320px;" required="true"/>
-				</td>
-			</tr>
-			<tr>
-				<td class="tdTwo">전화번호</td>
-				<td class="tdEight">
-					<form:input path="telnum" type="text" value="" maxlength="13"
-						placeholder="전화번호를 입력해주세요" pattern="\d{3}-\d{4}-\d{4}" 
-						title="000-0000-0000 형식으로 입력하세요" required="true"/>
-				</td>
-			</tr>
-			<tr>
-				<td class="tdTwo">입금자명</td>
-				<td class="tdEight">
-					<form:input path="in_name" type="text" value=""
-						maxlength="16" placeholder="입금자명을 입력해주세요" required="true" />
-				</td>
-			</tr>
-			<tr>
-				<td class="tdTwo">남기실말</td>
-				<td class="tdEight">
-					<form:input path="memo" value="" style="width : 320px;" maxlength="50"
-						placeholder="남기실 말을 입력해주세요" required="true" /> 
-					<form:input path="write_date" type="hidden" value="<%=date%>" />
-					<form:input path="processing" type="hidden" value="4" />
-				</td>
-			</tr>
-			<tr>
-				<td colspan='2' style="border: 1px solid black; height: 30px;">
-					<input type="submit" value="전송" style="text-align: center;">
-				</td>
-				<td></td>
-			</tr>
-		</table>
-	</form:form>
+					<div class="input-group-icon mt-10">
+						<div class="icon" style="z-index: 0">
+							<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+						</div>
+						<form:input path="addr" type="text" value=""
+							placeholder="Address" onfocus="this.placeholder = ''"
+							onblur="this.placeholder='Address'" class="single-input" maxlength="33"/>
+					</div>
+					<div class="input-group-icon mt-10">
+						<div class="icon" style="z-index: 0">
+							<i class="fa fa-mobile" aria-hidden="true"></i>
+						</div>
+						<form:input path="telnum" type="text" value=""
+							placeholder="Phone Number" onfocus="this.placeholder=''"
+							onblur="this.placeholder='Phone Number'" pattern="\d{3}-\d{4}-\d{4}"
+							title="000-0000-0000 형식으로 입력하세요" required="true" class="single-input"/>
+					</div>
+					<div class="input-group-icon mt-10">
+						<div class="icon" style="z-index: 0">
+							<i class="fa fa-dollar" aria-hidden="true"></i>
+						</div>
+						<form:input path="in_name" type="text" value=""
+							placeholder="Deposit Name" onfocus="this.placeholder=''"
+							onblur="this.placeholder='Deposit Name'" required="true"
+							maxlength="16" class="single-input"/>
+					</div>
+					<div class="input-group-icon mt-10">
+						<div class="icon" style="z-index: 0">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</div>
+						<form:input path="memo" class="single-input"
+							placeholder="Message" onfocus="this.placeholder = ''"
+							onblur="this.placeholder = 'Message'" value=""
+							required="true" maxlength="50"/>
+						<form:input path="write_date" type="hidden" value="<%=date%>"/>
+						<form:input path="processing" type="hidden" value="4"/>
+					</div>
+					<div class="mt-10" style="text-align: right;">
+						<input type="submit" value="Reserve" class="genric-btn success"/>
+					</div>
+				</form:form>
+			</div>
+		</div>
+	</div><!-- section top border 끝 -->
+</div>
+</div>
 <%@ include file="../footer.jsp"%>
 </body>
 </html>

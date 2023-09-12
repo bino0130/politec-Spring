@@ -18,6 +18,11 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
+	@GetMapping("/test")
+	public String showTest(@ModelAttribute("insertNoticeForm") Notice notice) {
+		return "test";
+	}
+	
 	@GetMapping("/top")
 	public String top(){
 		return "top";
@@ -46,6 +51,8 @@ public class NoticeController {
 	@GetMapping("/notice_view")
 	public String requestShowNoticeForm(@RequestParam("notice_id") int notice_id, Model model) {
 		Notice oneNotice = noticeService.getOneById(notice_id);
+		int viewCnt = oneNotice.getView_cnt();
+		noticeService.updateViewCnt(notice_id, viewCnt);
 		model.addAttribute("oneNotice", oneNotice);
 		return "/notice/notice_view";
 	}

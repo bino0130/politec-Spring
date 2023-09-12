@@ -68,7 +68,7 @@
                     		<ul class="dropdown-menu">
                     			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/ReservationList">예약 현황</a></li>
                         		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/ReservationPage_1">예약하기</a></li>
-                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/ReservationUpdate">예약 변경</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/ReservationUpdatePage">예약 변경</a></li>
                     		</ul>
                         </li>
                         <li class="nav-item submenu dropdown">

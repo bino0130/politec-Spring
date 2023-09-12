@@ -7,6 +7,8 @@
 <!-- 공지사항 view 관리자 권한 -->
 <html>
 <head>
+<!-- logo -->
+<link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.png" type="image/x-icon">
 <meta charset="UTF-8">
 <title>공지사항 열람</title>
 <style>
@@ -45,45 +47,43 @@
 </head>
 <body>
 <%@ include file="../top.jsp"%>
-	<table class = "noticeViewTable">
-		<tr>
-			<td class="one" style="background-color : skyblue;">번호</td>
-			<td class="nine" style="height : 7%; text-align : left; padding-left : 10px;">
-				<c:out value="${oneNotice.notice_id}"/>
-			</td>
-		</tr>
-		<tr>
-			<td class="one" style="background-color : skyblue;">제목</td>
-			<td class="nine" style="height : 7%; text-align : left; padding-left : 10px;">
-				<c:out value="${oneNotice.notice_title}"/>
-			</td>
-		</tr>
-		<tr>
-			<td class="one" style="background-color : skyblue;">일자</td>
-			<td class="nine" style="height : 7%; text-align : left; padding-left : 10px;">
-				<c:out value="${oneNotice.notice_date}"/>
-			</td>
-		</tr>
-		<tr>
-			<td class="one" style="background-color : skyblue;">내용</td>
-			<td class="nine" style="text-align : left; padding-left : 10px; vertical-align: top;">
-				<c:out value="${oneNotice.notice_content}"/>
-			</td>
-		</tr>
-	</table>
-	<table class="bottom">
-		<tr>
-			<td style="border:0px; text-align : right;">
-				<a class="submit"
-				href="${pageContext.request.contextPath}/notice_delete?notice_id=${oneNotice.notice_id}">
-					삭제
-				</a>
-				<a class="submit" 
-				href="${pageContext.request.contextPath}/notice_update?notice_id=${oneNotice.notice_id}">
-					수정
-				</a>
-			</td>
-		</tr>
-	</table>
+<div class="whole-wrap">
+	<div class="container">
+		<div class="section-top-border">
+			<div class="progress-table-wrap">
+				<div class="progress-table">
+					<div class="table-head" style="text-align:center;">
+						<div class="serial">번호</div>
+						<div class="percentage"><c:out value="${oneNotice.notice_id}"/></div>
+					</div>
+					<hr>
+					<div class="table-head" style="text-align:center;">
+						<div class="serial">제목</div>
+						<div class="percentage"><c:out value="${oneNotice.notice_title}"/></div>
+					</div>
+					<hr>
+					<div class="table-head" style="text-align:center;">
+						<div class="serial">일자</div>
+						<div class="percentage"><c:out value="${oneNotice.notice_date}"/></div>
+					</div>
+					<hr>
+					<div class="table-head" style="text-align:center; height:300px;">
+						<div class="serial">내용</div>
+						<div class="percentage">
+							<c:out value="${oneNotice.notice_content}"/>
+						</div>
+					</div>
+					<div class="mt-10" style="text-align: right;">
+						<button type="button" class="genric-btn danger radius"
+							onclick="location.href='notice_delete?notice_id=${oneNotice.notice_id}'">삭제</button>
+						<button type="button" class="genric-btn info radius"
+							onclick="location.href='notice_update?notice_id=${oneNotice.notice_id}'">수정</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<%@ include file="../footer.jsp"%>
 </body>
 </html>

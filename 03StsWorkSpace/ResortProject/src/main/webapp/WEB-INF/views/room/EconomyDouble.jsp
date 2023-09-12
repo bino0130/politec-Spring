@@ -9,10 +9,11 @@
 <title>EconomyDouble</title>
 </head>
 <body>
-<div style="text-align : center;">
 <%@ include file="../top.jsp"%>
+<div style="text-align:center;">
 <img src="${pageContext.request.contextPath}/resources/img/room4.jpg" width=400 height=350>
 <br><h2>Economy Double</h2>
 </div>
+<%@ include file="../footer.jsp"%>
 </body>
 </html>

@@ -36,6 +36,12 @@ public class NoticeRepositoryImpl implements NoticeRepository {
 	public void updateNotice(Notice notice) {
 		mapper.updateNotice(notice);
 	}
+	
+	@Override
+	public void updateViewCnt(int id, int view_cnt) {
+		mapper.updateViewCnt(id, view_cnt);
+		
+	}
 
 	@Override
 	public void deleteNotice(int id) {

@@ -4,68 +4,46 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- logo -->
+<link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.png" type="image/x-icon">
 <meta charset="UTF-8">
 <title>공지사항 목록</title>
-<style>
-.oneTable {
-	width : 600px;
-	border-collapse : collapse;
-	margin : auto;	
-}
-
-.one {
-	width : 10%;
-	text-align : center;
-	border : 1px solid black;
-}
-
-.two {
-	width : 20%;
-	text-align : center;
-	border : 1px solid black;
-}
-
-.seven {
-	width : 70%;
-	border : 1px solid black;
-}
-
-.submit {
-	background-color : skyblue;
-	border-color : skyblue;
-	border-radius : 5px;
-}
-</style>
 </head>
 <body>
 <%@ include file="../top.jsp"%>
-<table class="oneTable">
-	<thead>
-		<tr>
-			<td class="one" style="background-color : skyblue;">번호</td>
-			<td class="seven" style="background-color : skyblue;">제목</td>
-			<td class="two" style="background-color : skyblue;">등록날짜</td>
-		</tr>
-	</thead>
-	<c:forEach items="${noticeList}" var="noticeList">
-		<tr>
-			<td class="one">${noticeList.notice_id}</td>
-			<td class="seven">
-				<a href="<c:url value="/notice_view?notice_id=${noticeList.notice_id}"/>">
-					<c:out value="[공지] ${noticeList.notice_title}"/>
-				</a>
-			</td>
-			<td class="two">${noticeList.notice_date}</td>
-		</tr>
-	</c:forEach>
-	<!-- 글쓰기 부분 admin 권한 -->
-	<tr>
-		<td colspan='3' style="text-align : right;">
-			<button class="submit" type="button" onclick="location.href='notice_insert'">글쓰기</button>
-		</td>
-		<td></td>
-		<td></td>
-	</tr>
-</table>
+<div class="whole-wrap">
+	<div class="container">
+		<div class="section-top-border">
+			<h3 class="mb-30 title_color">Notice</h3>
+			<div class="progress-table-wrap">
+				<div class="progress-table">
+					<div class="table-head" style="text-align:center;">
+						<div class="serial">번호</div>
+						<div class="percentage" style="margin-left:50px; padding-right:0px;">제목</div>
+						<div class="percentage" style="padding-right:0px;">작성일</div>
+						<div class="serial">조회수</div>
+					</div>
+					<c:forEach items="${noticeList}" var="noticeList">
+						<div class="table-head" style="text-align:center;">
+							<div class="serial">${noticeList.notice_id}</div>
+							<div class="percentage" style="margin-left:50px; padding-right:0px; text-align:left;">
+								<a style="color:black;" href="<c:url value="/notice_view?notice_id=${noticeList.notice_id}"/>">
+									<c:out value="[공지] ${noticeList.notice_title}"/>
+								</a>
+							</div>
+							<div class="percentage" style="padding-right:0px;">${noticeList.notice_date}</div>
+							<div class="serial">${noticeList.view_cnt}</div>
+						</div>
+					</c:forEach>
+					<div class="mt-10" style="text-align: right;">
+						<button style="font-size:15px;" type="button" onclick="location.href='notice_insert'" 
+						class="genric-btn info radius">글쓰기</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<%@ include file="../footer.jsp"%>
 </body>
 </html>
