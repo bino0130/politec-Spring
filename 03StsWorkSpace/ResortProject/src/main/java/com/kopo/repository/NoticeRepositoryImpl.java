@@ -40,7 +40,6 @@ public class NoticeRepositoryImpl implements NoticeRepository {
 	@Override
 	public void updateViewCnt(int id, int view_cnt) {
 		mapper.updateViewCnt(id, view_cnt);
-		
 	}
 
 	@Override

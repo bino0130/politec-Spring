@@ -3,30 +3,34 @@
 <mapper namespace="com.kopo.mapper.ReplyMapper">
 
 	<!--  create  -->
-		<!-- insert -->
-		<insert id="makeReply" parameterType="com.kopo.domain.Reply" >
+		<!-- 댓글 insert -->
+		<insert id="makeOneReply" parameterType="com.kopo.domain.Reply" >
 			<!-- selectkey order : insert 쿼리를 실행하기 전,후를 설정 -->
 			<selectKey keyProperty="Reply.reply_id" resultType="Integer" order="BEFORE">
 				select reply_seq.nextval from dual
 			</selectKey>
 			insert into reply (root_id, reply_id, reply_person, reply_date,
-			reply_content) values (${Reply.root_id}, ${Reply.reply_id}, #{Reply.reply_title}, 
-			to_date(#{Reply.reply_date}, 'YYYY-MM-DD'), #{Reply.reply_content})
+			reply_content, re_level, re_cnt) values (${Reply.root_id}, ${Reply.reply_id}, '${Reply.reply_person}', 
+			to_date('${Reply.reply_date}', 'YYYY-MM-DD'), '${Reply.reply_content}', ${Reply.re_level}, ${Reply.re_cnt})
 		</insert>
 		
 	<!-- read  -->
-		<select id="getAllReply" resultType="com.kopo.domain.Reply">
-			select * from reply where root_id=${Reply.root_id} order by reply_id
+		<select id="getReplyList" resultType="com.kopo.domain.Reply" parameterType="Integer">
+			select * from reply where root_id=${root_id} order by reply_id desc, re_cnt asc
+		</select>
+		
+		<select id="getOneReply" resultType="com.kopo.domain.Reply" parameterType="Integer">
+			select * from reply where reply_id = ${reply_id}
 		</select>
 	
 	<!-- update -->
-		<update id="updateReply" parameterType="com.kopo.domain.Reply">
+		<update id="updateOneReply" parameterType="com.kopo.domain.Reply">
 			update reply set reply_person = ${Reply.reply_person}, reply_date = to_date(#{Reply.reply_date}, 'YYYY-MM-DD'), 
 			reply_content = #{Reply.reply_content} where reply_id = ${Reply.reply_id}
 		</update>
 		
 	<!-- delete -->
-	<delete id="deleteReply" parameterType="Integer" >
+	<delete id="deleteOneReply" parameterType="Integer" >
 		delete from reply where reply_id = ${Reply.reply_id}
 	</delete> 
 	

@@ -28,8 +28,6 @@ public class ResortController {
 	@Autowired
 	private ResortService resortService;
 	
-	
-	
 	@GetMapping("/main")
 	public String showMain() {
 		return "main";
@@ -37,22 +35,22 @@ public class ResortController {
 	
 	@GetMapping("/EconomyDouble")
 	public String showRoom01() {
-		return "/room/EconomyDouble";
+		return "room/EconomyDouble";
 	}
 	
 	@GetMapping("/SingleDeluxe")
 	public String showRoom02() {
-		return "/room/SingleDeluxe";
+		return "room/SingleDeluxe";
 	}
 	
 	@GetMapping("/DoubleDeluxe")
 	public String showRoom03() {
-		return "/room/DoubleDeluxe";
+		return "room/DoubleDeluxe";
 	}
 	
 	@GetMapping("/HoneyMoon-Suite")
 	public String showRoom04() {
-		return "/room/HoneyMoon-Suite";
+		return "room/HoneyMoon-Suite";
 	}
 	
 	@GetMapping("/ReservationList")
@@ -126,12 +124,12 @@ public class ResortController {
 		}
 		
 		model.addAttribute("statusList", statusList);
-		return "/reservation/ReservationList";
+		return "reservation/ReservationList";
 	}
 	
 	@GetMapping("/ReservationPage_1")
 	public String requestAddReservationForm(@ModelAttribute("NewReservation") Resort resort) {
-		return "/reservation/ReservationPage_1";
+		return "reservation/ReservationPage_1";
 	}
 	
 	@PostMapping("/ReservationPage_1")
@@ -152,7 +150,7 @@ public class ResortController {
 			@RequestParam("date")String resv_date, @RequestParam("room") String room, Model model) {
 		model.addAttribute("resv_date", resv_date);
 		model.addAttribute("room", room);
-		return "/reservation/ReservationPage_2";
+		return "reservation/ReservationPage_2";
 	}
 	
 	@PostMapping("/ReservationPage_2")
@@ -162,31 +160,11 @@ public class ResortController {
 			return "redirect:/ReservationList";
 	}
 	
-	@GetMapping("/d_02_3")
-	public String requestAddReservationFormWithRoom(@ModelAttribute("RoomReservation") Resort resort, Model model,
-													@RequestParam("room") String room) {
-		model.addAttribute("room", room);
-		return "d_02_3";
-	}
-	
-	@PostMapping("/d_02_3")
-	public String AddReservationWithRoom(@ModelAttribute("RoomReservation") Resort resort, 
-			HttpServletRequest request, HttpSession session, Model model) {
-		try {
-			resortService.makeReservation(resort);
-			return "redirect:/d_01";
-		} catch (DuplicateKeyException e) {
-			model.addAttribute("duplicateKey", true);
-			model.addAttribute("resort", resort);
-			return "/d_02_3";
-		}
-	}
-	
 	@GetMapping("/ReservationUpdatePage")
 	public String requestUpdateReservationForm(Model model) {
 		Resort updateReservation = new Resort();
 		model.addAttribute("updateReservation", updateReservation);
-		return "/reservation/ReservationUpdatePage";
+		return "reservation/ReservationUpdatePage";
 	}
 	
 	@PostMapping("/ReservationUpdatePage") // HttpServletRequest request, HttpSession session 삭제
@@ -197,7 +175,7 @@ public class ResortController {
 		} catch (DuplicateKeyException e) {
 			model.addAttribute("duplicateKey", true);
 			model.addAttribute("resort", resort);
-			return "/reservation/ReservationUpdatePage";
+			return "reservation/ReservationUpdatePage";
 		}
 	}
 	
@@ -233,6 +211,6 @@ public class ResortController {
 	
 	@GetMapping("b_01")
 	public String showRoute() {
-		return "/map/b_01";
+		return "map/b_01";
 	}
 }

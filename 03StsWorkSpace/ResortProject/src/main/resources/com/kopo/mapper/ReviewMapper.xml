@@ -16,7 +16,7 @@
 		
 	<!-- read  -->
 		<select id="getAllReview" resultType="com.kopo.domain.Review">
-			select * from review order by review_id
+			select * from review order by review_id desc
 		</select>
 	
 		<select id="getOneReviewById" parameterType="Integer" resultType="com.kopo.domain.Review">

@@ -41,7 +41,7 @@ public class Review {
 	}
 
 	public void setReview_date(String review_date) {
-		this.review_date = review_date;
+		this.review_date = review_date.substring(0, 10);
 	}
 
 	public String getReview_content() {

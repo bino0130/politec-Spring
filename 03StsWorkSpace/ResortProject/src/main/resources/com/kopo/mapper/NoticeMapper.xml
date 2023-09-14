@@ -16,7 +16,7 @@
 		
 	<!-- read  -->
 		<select id="getAllNotice" resultType="com.kopo.domain.Notice">
-			select * from notice order by notice_id
+			select * from notice order by notice_id desc
 		</select>
 	
 		<select id="getOneById" parameterType="Integer" resultType="com.kopo.domain.Notice">

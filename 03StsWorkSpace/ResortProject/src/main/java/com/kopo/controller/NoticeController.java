@@ -18,13 +18,6 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
-	@GetMapping("/test")
-	public String showTest(@RequestParam("notice_id") int notice_id, Model model) {
-		Notice updateNotice = noticeService.getOneById(notice_id);
-		model.addAttribute("updateNotice", updateNotice);
-		return "test";
-	}
-	
 	@GetMapping("/top")
 	public String top(){
 		return "top";
@@ -40,7 +33,7 @@ public class NoticeController {
 	public String showNoticeList(Model model) {
 		List<Notice> noticeList = noticeService.getAllNotice();
 		model.addAttribute("noticeList", noticeList);
-		return "/notice/notice_list";
+		return "notice/notice_list";
 	}
 	
 //	@PostMapping("/notice_list")
@@ -56,13 +49,13 @@ public class NoticeController {
 		int viewCnt = oneNotice.getView_cnt();
 		noticeService.updateViewCnt(notice_id, viewCnt);
 		model.addAttribute("oneNotice", oneNotice);
-		return "/notice/notice_view";
+		return "notice/notice_view";
 	}
 	
 	// create
 	@GetMapping("/notice_insert")
 	public String requestNoticeInsertForm(@ModelAttribute("insertNoticeForm") Notice notice) {
-		return "/notice/notice_insert";
+		return "notice/notice_insert";
 	}
 	
 	@PostMapping("/notice_insert")
@@ -76,7 +69,7 @@ public class NoticeController {
 	public String requestNoticeUpdateForm(@RequestParam("notice_id") int notice_id, Model model) {
 		Notice updateNotice = noticeService.getOneById(notice_id);
 		model.addAttribute("updateNotice", updateNotice);
-		return "/notice/notice_update";
+		return "notice/notice_update";
 	}
 	
 	@PostMapping("/notice_update")

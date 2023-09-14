@@ -2,10 +2,12 @@ package com.kopo.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.kopo.domain.Review;
 
+@Mapper
 public interface ReviewMapper {
 	// create
 	public void makeReview(@Param("Review") Review review);

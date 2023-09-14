@@ -18,7 +18,7 @@
 	SimpleDateFormat dformatHour = new SimpleDateFormat("yyyy-MM-dd");
 	String dateTime = dformatHour.format(calendar.getTime());
 %>
-<%@ include file="./top.jsp"%>
+<%@ include file="../top.jsp"%>
 <a class="btn btn-outline-success my-2 my-sm-0" href=""
 						data-toggle="modal" data-target="#reply">로그인</a>
 
@@ -61,6 +61,6 @@
 			</div>
 		</div>
 	</div>
-<%@ include file="./footer.jsp"%>
+<%@ include file="../footer.jsp"%>
 </body>
 </html>
