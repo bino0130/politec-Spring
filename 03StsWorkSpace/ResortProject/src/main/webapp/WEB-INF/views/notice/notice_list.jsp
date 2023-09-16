@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,10 +36,12 @@
 							<div class="serial">${noticeList.view_cnt}</div>
 						</div>
 					</c:forEach>
-					<div class="mt-10" style="text-align: right;">
-						<button style="font-size:15px;" type="button" onclick="location.href='notice_insert'" 
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
+						<div class="mt-10" style="text-align: right;">
+						<button style="font-size:15px;" type="button" onclick="location.href='${pageContext.request.contextPath}/admin/notice_insert'" 
 						class="genric-btn info radius">글쓰기</button>
 					</div>
+					</sec:authorize>
 				</div>
 			</div>
 		</div>

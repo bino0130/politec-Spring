@@ -15,9 +15,11 @@ public interface ResortMapper {
 	// read
 		public List<Resort> getAllReserve();
 		
+		public Resort getOneByDateAndRoom(@Param("resv_date") String resv_date, @Param("room") Integer room);
+		
 	// update
 		public void updateReservation (@Param("Resort") Resort resort);
 	
 	// delete
-		
+	public void deleteOneReservation(@Param("resv_date") String resv_date, @Param("room") Integer room);
 }

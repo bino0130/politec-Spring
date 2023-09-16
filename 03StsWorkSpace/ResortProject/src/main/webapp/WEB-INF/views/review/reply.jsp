@@ -3,6 +3,7 @@
 <%@ page import="java.util.*, java.text.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,12 +34,36 @@
 										<div class="user justify-content-between d-flex">
 											<div class="desc">
 												<h5><b style="color:black;">${replyList.reply_person}</b></h5>
-												<p class="date">${replyList.reply_date}</p>
+												<p class="date" style="color:gray;">${replyList.reply_date}</p>
 												<p class="comment">${replyList.reply_content}</p>
 											</div>
 										</div>
-										<div class="reply-btn">
-											<a href="" class="btn-reply text-uppercase" data-toggle="modal" data-target="#reply">reply</a>
+										<div class="reply-btn" style="display:flex;">
+											<a href="" class="btn-reply text-uppercase" data-toggle="modal" data-target="#reply" style="height:29.6px;">reply</a>
+											<sec:authorize access="hasRole('ROLE_ADMIN')">
+												<a href="" class="btn-reply text-uppercase" data-toggle="modal" data-target="#deleteReply" style="height:29.6px;">delete</a>
+												<div class="modal" id="deleteReply">
+     												<div class="modal-dialog">
+    													<div class="modal-content">
+      														<div class="modal-header" style="height:70px;">
+        														<h4 class="modal-title">댓글 삭제</h4>
+        														<button type="button" class="botton close" data-dismiss="modal" aria-label="Close" style="cursor:pointer;">
+          															<span aria-hidden="true">&times;</span>
+        														</button>
+      														</div>
+      														<div class="modal-body" style="text-align:left;">
+      															<b style="color:black;">정말 삭제하시겠습니까?</b>
+      														</div>
+      														<div class="modal-footer">
+         														<button type="button" class="btn btn-danger" 
+																onclick="location.href='${pageContext.request.contextPath}/admin/reply_delete?reply_id=${replyList.reply_id}'"
+																style="cursor:pointer;">삭제</button>
+          														<button type="button" class="btn btn-primary" data-dismiss="modal" style="cursor:pointer;">취소</button>
+      														</div>
+    													</div>
+  													</div>
+												</div>
+											</sec:authorize>
 										</div>
 									</div>
 								</div>

@@ -146,7 +146,6 @@ function validateForm() { // 데이터 전달하는 form 체크
 							onblur="this.placeholder = 'Message'" value=""
 							required="true" maxlength="50"/>
 						<form:input path="write_date" type="hidden" value="<%=date%>"/>
-						<form:input path="processing" type="hidden" value="4"/>
 					</div>
 					<div class="mt-10" style="text-align: right;">
 						<input type="submit" value="Reserve" class="genric-btn success"/>

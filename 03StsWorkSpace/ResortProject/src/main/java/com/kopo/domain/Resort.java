@@ -9,7 +9,6 @@ public class Resort {
 	private String in_name; // 입금자명
 	private String memo; // 남길 말
 	private String write_date; // 작성 날짜
-	private Integer processing; // 진행 상황
 	private String resv_date2;
 	private Integer room2;
 	
@@ -63,13 +62,7 @@ public class Resort {
 		return write_date;
 	}
 	public void setWrite_date(String write_date) {
-		this.write_date = write_date;
-	}
-	public Integer getProcessing() {
-		return processing;
-	}
-	public void setProcessing(Integer processing) {
-		this.processing = processing;
+		this.write_date = write_date.substring(0, 10);
 	}
 	
 	public String getResv_date2() {

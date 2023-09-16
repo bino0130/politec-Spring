@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,7 +74,7 @@
                                 <img src="${pageContext.request.contextPath}/resources/img/room4.jpg" alt="">
                                 <a href="${pageContext.request.contextPath}/ReservationList" class="btn theme_btn button_hover">Book Now</a>
                             </div>
-                            <a href="${pageContext.request.contextPath}/EconomyDouble"><h4 class="sec_h4">Economy Double</h4></a>
+                            <a href="${pageContext.request.contextPath}/EconomySingle"><h4 class="sec_h4">Economy Single</h4></a>
                         </div>
                     </div>
                 </div>

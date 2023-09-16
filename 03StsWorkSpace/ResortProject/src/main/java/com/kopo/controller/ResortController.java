@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.kopo.domain.Notice;
 import com.kopo.domain.ReservationStatus;
 import com.kopo.domain.Resort;
 import com.kopo.service.ResortService;
@@ -33,9 +32,9 @@ public class ResortController {
 		return "main";
 	}
 	
-	@GetMapping("/EconomyDouble")
+	@GetMapping("/EconomySingle")
 	public String showRoom01() {
-		return "room/EconomyDouble";
+		return "room/EconomySingle";
 	}
 	
 	@GetMapping("/SingleDeluxe")
@@ -160,14 +159,14 @@ public class ResortController {
 			return "redirect:/ReservationList";
 	}
 	
-	@GetMapping("/ReservationUpdatePage")
+	@GetMapping("/admin/ReservationUpdatePage_1")
 	public String requestUpdateReservationForm(Model model) {
 		Resort updateReservation = new Resort();
 		model.addAttribute("updateReservation", updateReservation);
-		return "reservation/ReservationUpdatePage";
+		return "reservation/ReservationUpdatePage_1";
 	}
 	
-	@PostMapping("/ReservationUpdatePage") // HttpServletRequest request, HttpSession session 삭제
+	@PostMapping("/admin/ReservationUpdatePage_1") // HttpServletRequest request, HttpSession session 삭제
 	public String submitUpdateReservation(@ModelAttribute("updateReservation")Resort resort, Model model) {
 		try {
 			resortService.updateReservation(resort);
@@ -175,42 +174,47 @@ public class ResortController {
 		} catch (DuplicateKeyException e) {
 			model.addAttribute("duplicateKey", true);
 			model.addAttribute("resort", resort);
-			return "reservation/ReservationUpdatePage";
+			return "reservation/ReservationUpdatePage_1";
 		}
 	}
 	
-	@GetMapping("/setCookie")
-	public String setCookie() {
-		return "setCookie";
+	@GetMapping("/admin/ReservationUpdatePage_2")
+	public String requestReservationUpdateForm(@ModelAttribute("updateReservationInfo") Resort resort,
+			@RequestParam("resv_date")String resv_date, @RequestParam("room") Integer room, Model model) {
+		Resort updateReserveInfo = new Resort();
+		updateReserveInfo = resortService.getOneByDateAndRoom(resv_date, room);
+		model.addAttribute("updateReserveInfo", updateReserveInfo);
+		return "reservation/ReservationUpdatePage_2";
 	}
 	
-	@GetMapping("/getCookie")
-	public String getCookie() {
-		return "getCookie";
+	@PostMapping("/admin/ReservationUpdatePage_2") // HttpServletRequest request, HttpSession session 삭제
+	public String submitReservationUpdateForm(@ModelAttribute("updateReservationInfo")Resort resort, Model model) {
+		try {
+			resortService.updateReservation(resort);
+			return "redirect:/ReservationList";
+		} catch (DuplicateKeyException e) {
+			model.addAttribute("duplicateKey", true);
+			model.addAttribute("duplicateReservationInfo", resort);
+			return "reservation/ReservationUpdatePage_2";
+		}
 	}
 	
-	@GetMapping("/ses_create")
-	public String sesCreate() {
-		return "/session/ses_create";
+	@GetMapping("/admin/ReservationView")
+	public String requestReservationViewForm(@RequestParam("date")String resv_date, @RequestParam("room") Integer room, Model model) {
+		Resort oneResort = new Resort();
+		oneResort = resortService.getOneByDateAndRoom(resv_date, room);
+		model.addAttribute("oneResort", oneResort);
+		return "reservation/ReservationView";
 	}
 	
-	@GetMapping("/ses_get")
-	public String sesGet() {
-		return "/session/ses_get";
+	@GetMapping("/admin/ReservationDelete")
+	public String DeleteReservation(@RequestParam("resv_date")String resv_date, @RequestParam("room") Integer room, Model model) {
+		resortService.deleteOneReservation(resv_date, room);
+		return "redirect:/ReservationList";
 	}
 	
-	@GetMapping("/ses_end")
-	public String sesEnd() {
-		return "/session/ses_end";
-	}
-	
-	@GetMapping("/ses_option_get")
-	public String getSesOption() {
-		return "/session/ses_option_get";
-	}
-	
-	@GetMapping("b_01")
+	@GetMapping("howToCome")
 	public String showRoute() {
-		return "map/b_01";
+		return "map/howToCome";
 	}
 }

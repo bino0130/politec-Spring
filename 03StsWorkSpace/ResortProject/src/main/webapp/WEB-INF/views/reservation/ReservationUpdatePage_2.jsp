@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, java.text.*" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
@@ -44,7 +44,12 @@
 <!-- 달력 오픈소스 datepicker 끝 -->
 
 <meta charset="UTF-8">
-<title>예약하기</title>
+<title>예약 변경</title>
+<!-- 달력 오픈소스 datepicker 시작 -->
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<!-- 달력 오픈소스 datepicker 끝 -->
 <script>
 function trimSpace(input) { // 공백 trim하는 함수
 	return input.replace(/^\s+/, ''); // 공백이 있으면 없앰	 
@@ -61,11 +66,11 @@ function InputCheck(input) { // 입력값 체크하는 함수
 }
  
 function validateForm() { // 데이터 전달하는 form 체크
-	 var name = document.forms["NewReservation"]["customer_name"].value; // NewReservation 태그 안에 있는 customer_name의 value를 가져옴
-	 var addr = document.forms["NewReservation"]["addr"].value; // NewReservation 태그 안에 있는 addr의 value를 가져옴
-	 var telnum = document.forms["NewReservation"]["telnum"].value; // NewReservation 태그 안에 있는 telnum의 value를 가져옴
-	 var in_name = document.forms["NewReservation"]["in_name"].value; // NewReservation 태그 안에 있는 in_name의 value를 가져옴
-	 var memo = document.forms["NewReservation"]["memo"].value; // NewReservation 태그 안에 있는 memo의 value를 가져옴
+	 var name = document.forms["updateReserveInfo"]["customer_name"].value; // NewReservation 태그 안에 있는 customer_name의 value를 가져옴
+	 var addr = document.forms["updateReserveInfo"]["addr"].value; // NewReservation 태그 안에 있는 addr의 value를 가져옴
+	 var telnum = document.forms["updateReserveInfo"]["telnum"].value; // NewReservation 태그 안에 있는 telnum의 value를 가져옴
+	 var in_name = document.forms["updateReserveInfo"]["in_name"].value; // NewReservation 태그 안에 있는 in_name의 value를 가져옴
+	 var memo = document.forms["updateReserveInfo"]["memo"].value; // NewReservation 태그 안에 있는 memo의 value를 가져옴
 	 
 	 if(InputCheck(name) === false) {
 		 alert("성함을 입력해주세요");
@@ -179,46 +184,103 @@ function validateForm() { // 데이터 전달하는 form 체크
     </div>
 </header>
 <!-- include top 대신 코드 때려박음 -->
+
 <% 
 	Calendar cal = Calendar.getInstance();
 	SimpleDateFormat dformat = new SimpleDateFormat("yyyy-MM-dd");
 	String date = dformat.format(cal.getTime());
 %>
-<c:choose>
-	<c:when test="${resort.room eq 1}">
+
+<!-- RoomText에 방 이름 설정 -->
+<c:choose> 
+	<c:when test="${updateReserveInfo.room eq 1}">
 		<c:set var="RoomText" value="Economy Single"/>
 	</c:when>
 	
-	<c:when test="${resort.room eq 2}">
+	<c:when test="${updateReserveInfo.room eq 2}">
 		<c:set var="RoomText" value="Single Deluxe"/>
 	</c:when>
 	
-	<c:when test="${resort.room eq 3}">
+	<c:when test="${updateReserveInfo.room eq 3}">
 		<c:set var="RoomText" value="Double Deluxe"/>
 	</c:when>
 	
-	<c:when test="${resort.room eq 4}">
+	<c:when test="${updateReserveInfo.room eq 4}">
 		<c:set var="RoomText" value="HoneyMoon Suite"/>
 	</c:when>
 </c:choose>
+<c:choose> 
+	<c:when test="${updateReserveInfo.room2 eq 1}">
+		<c:set var="RoomText2" value="Economy Single"/>
+	</c:when>
+	
+	<c:when test="${updateReserveInfo.room2 eq 2}">
+		<c:set var="RoomText2" value="Single Deluxe"/>
+	</c:when>
+	
+	<c:when test="${updateReserveInfo.room2 eq 3}">
+		<c:set var="RoomText2" value="Double Deluxe"/>
+	</c:when>
+	
+	<c:when test="${updateReserveInfo.room2 eq 4}">
+		<c:set var="RoomText2" value="HoneyMoon Suite"/>
+	</c:when>
+</c:choose>
+
+<c:choose> 
+	<c:when test="${duplicateReservationInfo.room eq 1}">
+		<c:set var="RoomText" value="Economy Single"/>
+	</c:when>
+	
+	<c:when test="${duplicateReservationInfo.room eq 2}">
+		<c:set var="RoomText" value="Single Deluxe"/>
+	</c:when>
+	
+	<c:when test="${duplicateReservationInfo.room eq 3}">
+		<c:set var="RoomText" value="Double Deluxe"/>
+	</c:when>
+	
+	<c:when test="${duplicateReservationInfo.room eq 4}">
+		<c:set var="RoomText" value="HoneyMoon Suite"/>
+	</c:when>
+</c:choose>
+<c:choose>
+	<c:when test="${duplicateReservationInfo.room2 eq 1}">
+		<c:set var="RoomText2" value="Economy Single"/>
+	</c:when>
+	
+	<c:when test="${duplicateReservationInfo.room2 eq 2}">
+		<c:set var="RoomText2" value="Single Deluxe"/>
+	</c:when>
+	
+	<c:when test="${duplicateReservationInfo.room2 eq 3}">
+		<c:set var="RoomText2" value="Double Deluxe"/>
+	</c:when>
+	
+	<c:when test="${duplicateReservationInfo.room2 eq 4}">
+		<c:set var="RoomText2" value="HoneyMoon Suite"/>
+	</c:when>
+</c:choose>
+<!-- RoomText에 방 이름 설정 -->
+
 <c:choose>
 	<c:when test="${duplicateKey eq true}">
 		<script>
 			alert("선택하신 방과 날짜는 이미 예약되어 있습니다.");
 		</script>
-			<div class="whole-wrap">
+		<div class="whole-wrap">
 			<div class="container">
 				<div class="section-top-border">
 					<div class="row">
 						<div class="col-lg-8 col-md-8">
-							<h3 class="mb-30 title_color">Room Reservation</h3>
-							<form:form modelAttribute="NewReservation" method="POST"
+							<h3 class="mb-30 title_color">Update Reservation</h3>
+							<form:form modelAttribute="updateReservationInfo" method="POST"
 								onsubmit="return validateForm()">
 								<div class="input-group-icon mt-10">
 									<div class="icon" style="z-index: 1">
 										<i class="fa fa-user" aria-hidden="true"></i>
 									</div>
-									<form:input path="customer_name" type="text" value="${resort.customer_name}"
+									<form:input path="customer_name" type="text" value="${duplicateReservationInfo.customer_name}"
 										placeholder="Name" onfocus="this.placeholder = ''"
 										onblur="this.placeholder='Enter Name'" required="true"
 										class="single-input" maxlength="16" />
@@ -227,13 +289,13 @@ function validateForm() { // 데이터 전달하는 form 체크
 									<div class="icon" style="z-index: 1">
 										<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
 									</div>
-									<form:input id="Date" path="resv_date" type="text" value="${resort.resv_date}"
-										placeholder="Reservation Date" readonly="true"
-										required="true" onfocus="this.placeholder = ''"
-										onblur="this.placeholder='Reservation Date'" class="single-input"/>
+									<form:input id="date" path="resv_date" type="text" value="${duplicateReservationInfo.resv_date}"
+										placeholder="Original Reservation Date" onfocus="this.placeholder = ''" 
+										onblur="this.placeholder='Original Reservation Date'" readonly="true"
+										required="true" class="single-input"/>
 									<script>
-										$(function() {
-										$("#Date").datepicker({
+									$(function() {
+										$("#date").datepicker({
 											minDate : new Date(),
 											maxDate : '+365d',
 											dateFormat : 'yy-mm-dd',
@@ -251,93 +313,29 @@ function validateForm() { // 데이터 전달하는 form 체크
 									</div>
 									<div class="form-select" id="default-select">
 										<select id="room" name="room" style="display: none;">
-											<option value="1" <c:if test="${resort.room eq 1}">selected="selected"</c:if>>Economy Single</option>
-											<option value="2" <c:if test="${resort.room eq 2}">selected="selected"</c:if>>Single Deluxe</option>
-											<option value="3" <c:if test="${resort.room eq 3}">selected="selected"</c:if>>Double Deluxe</option>
-											<option value="4" <c:if test="${resort.room eq 4}">selected="selected"</c:if>>HoneyMoon Suite</option>
+											<option value="1" <c:if test="${duplicateReservationInfo.room eq 1}">selected="selected"</c:if>>Economy Single</option>
+											<option value="2" <c:if test="${duplicateReservationInfo.room eq 2}">selected="selected"</c:if>>Single Deluxe</option>
+											<option value="3" <c:if test="${duplicateReservationInfo.room eq 3}">selected="selected"</c:if>>Double Deluxe</option>
+											<option value="4" <c:if test="${duplicateReservationInfo.room eq 4}">selected="selected"</c:if>>HoneyMoon Suite</option>
 										</select>
 										<div class="nice-select" tabindex="0">
 											<span class="current" style="font-weight:400;"><c:out value="${RoomText}"/></span>
 											<ul class="list">
-												<li data-value="1" <c:if test="${resort.room eq 1}">class="option selected"</c:if> class="option">Economy Single</li>
-												<li data-value="2" <c:if test="${resort.room eq 2}">class="option selected"</c:if> class="option">Single Deluxe</li>
-												<li data-value="3" <c:if test="${resort.room eq 3}">class="option selected"</c:if> class="option">Double Deluxe</li>
-												<li data-value="4" <c:if test="${resort.room eq 4}">class="option selected"</c:if> class="option">HoneyMoon Suite</li>
+												<li data-value="1" <c:if test="${duplicateReservationInfo.room eq 1}">class="option selected"</c:if> class="option">Economy Single</li>
+												<li data-value="2" <c:if test="${duplicateReservationInfo.room eq 2}">class="option selected"</c:if> class="option">Single Deluxe</li>
+												<li data-value="3" <c:if test="${duplicateReservationInfo.room eq 3}">class="option selected"</c:if> class="option">Double Deluxe</li>
+												<li data-value="4" <c:if test="${duplicateReservationInfo.room eq 4}">class="option selected"</c:if> class="option">HoneyMoon Suite</li>
 											</ul>
 										</div>
 									</div>
 								</div>
 								<div class="input-group-icon mt-10">
-									<div class="icon" style="z-index: 0">
-										<i class="fa fa-thumb-tack" aria-hidden="true"></i>
-									</div>
-									<form:input path="addr" type="text" value="${resort.addr}"
-										placeholder="Address" onfocus="this.placeholder = ''"
-										onblur="this.placeholder='Address'" class="single-input"
-										maxlength="33" />
-								</div>
-								<div class="input-group-icon mt-10">
-									<div class="icon" style="z-index: 0">
-										<i class="fa fa-mobile" aria-hidden="true"></i>
-									</div>
-									<form:input path="telnum" type="text" value="${resort.telnum}"
-										placeholder="Phone Number" onfocus="this.placeholder=''"
-										onblur="this.placeholder='Phone Number'"
-										pattern="\d{3}-\d{4}-\d{4}" title="000-0000-0000 형식으로 입력하세요"
-										required="true" class="single-input" />
-								</div>
-								<div class="input-group-icon mt-10">
-									<div class="icon" style="z-index: 0">
-										<i class="fa fa-dollar" aria-hidden="true"></i>
-									</div>
-									<form:input path="in_name" type="text" value="${resort.in_name}"
-										placeholder="Deposit Name" onfocus="this.placeholder=''"
-										onblur="this.placeholder='Deposit Name'" required="true"
-										maxlength="" class="single-input" />
-								</div>
-								<div class="mt-10">
-									<form:textarea path="memo" class="single-textarea"
-										placeholder="Message" onfocus="this.placeholder = ''"
-										onblur="this.placeholder = 'Message'" value="${resort.memo}"
-										required="true" maxlength="100" />
-									<form:input path="write_date" type="hidden" value="<%=date%>" />
-								</div>
-								<div class="mt-10" style="text-align: right;">
-									<input type="submit" value="Reserve"
-										class="genric-btn success" />
-								</div>
-							</form:form>
-						</div>
-					</div>
-				</div>
-				<!-- section top border 끝 -->
-			</div>
-		</div>
-	</c:when>
-
-	<c:otherwise>
-		<div class="whole-wrap">
-			<div class="container">
-				<div class="section-top-border">
-					<div class="row">
-							<div class="col-lg-8 col-md-8">
-							<h3 class="mb-30 title_color">Room Reservation</h3>
-							<form:form modelAttribute="NewReservation" method="POST"
-							onsubmit="return validateForm()">
-								<div class="input-group-icon mt-10">
-									<div class="icon" style="z-index: 1">
-										<i class="fa fa-user" aria-hidden="true"></i>
-									</div>
-									<form:input path="customer_name" type="text" value="" placeholder="Name" onfocus="this.placeholder = ''" 
-										onblur="this.placeholder='Name'" required="true" class="single-input" maxlength="16"/>
-								</div>
-								<div class="input-group-icon mt-10">
 									<div class="icon" style="z-index: 1">
 										<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
 									</div>
-									<form:input id="Date" path="resv_date" type="text" value=""
-										placeholder="Reservation Date" onfocus="this.placeholder = ''" 
-										onblur="this.placeholder='Reservation Date'" readonly="true"
+									<form:input id="Date" path="resv_date2" type="text" value="${duplicateReservationInfo.resv_date2}"
+										placeholder="New Reservation Date" onfocus="this.placeholder = ''" 
+										onblur="this.placeholder='New Reservation Date'" readonly="true"
 										required="true" class="single-input"/>
 									<script>
 									$(function() {
@@ -358,14 +356,165 @@ function validateForm() { // 데이터 전달하는 form 체크
 										<i class="fa fa-bed" aria-hidden="true"></i>
 									</div>
 									<div class="form-select" id="default-select">
+										<select id="room2" name="room2" style="display: none;">
+											<option value="1" <c:if test="${duplicateReservationInfo.room2 eq 1}">selected="selected"</c:if>>Economy Single</option>
+											<option value="2" <c:if test="${duplicateReservationInfo.room2 eq 2}">selected="selected"</c:if>>Single Deluxe</option>
+											<option value="3" <c:if test="${duplicateReservationInfo.room2 eq 3}">selected="selected"</c:if>>Double Deluxe</option>
+											<option value="4" <c:if test="${duplicateReservationInfo.room2 eq 4}">selected="selected"</c:if>>HoneyMoon Suite</option>
+										</select>
+										<div class="nice-select" tabindex="0">
+											<span class="current" style="font-weight:400;"><c:out value="${RoomText2}"/></span>
+											<ul class="list">
+												<li data-value="1" <c:if test="${duplicateReservationInfo.room2 eq 1}">class="option selected"</c:if> class="option">Economy Single</li>
+												<li data-value="2" <c:if test="${duplicateReservationInfo.room2 eq 2}">class="option selected"</c:if> class="option">Single Deluxe</li>
+												<li data-value="3" <c:if test="${duplicateReservationInfo.room2 eq 3}">class="option selected"</c:if> class="option">Double Deluxe</li>
+												<li data-value="4" <c:if test="${duplicateReservationInfo.room2 eq 4}">class="option selected"</c:if> class="option">HoneyMoon Suite</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="input-group-icon mt-10">
+									<div class="icon" style="z-index: 0">
+										<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+									</div>
+									<form:input path="addr" type="text" value="${duplicateReservationInfo.addr}"
+										placeholder="Address" onfocus="this.placeholder = ''"
+										onblur="this.placeholder='Address'" class="single-input"
+										maxlength="33" />
+								</div>
+								<div class="input-group-icon mt-10">
+									<div class="icon" style="z-index: 0">
+										<i class="fa fa-mobile" aria-hidden="true"></i>
+									</div>
+									<form:input path="telnum" type="text" value="${duplicateReservationInfo.telnum}"
+										placeholder="Phone Number" onfocus="this.placeholder=''"
+										onblur="this.placeholder='Phone Number'"
+										pattern="\d{3}-\d{4}-\d{4}" title="000-0000-0000 형식으로 입력하세요"
+										required="true" class="single-input" />
+								</div>
+								<div class="input-group-icon mt-10">
+									<div class="icon" style="z-index: 0">
+										<i class="fa fa-dollar" aria-hidden="true"></i>
+									</div>
+									<form:input path="in_name" type="text" value="${duplicateReservationInfo.in_name}"
+										placeholder="Deposit Name" onfocus="this.placeholder=''"
+										onblur="this.placeholder='Deposit Name'" required="true"
+										maxlength="" class="single-input" />
+								</div>
+								<div class="mt-10">
+									<form:textarea path="memo" class="single-textarea"
+										placeholder="Message" onfocus="this.placeholder = ''"
+										onblur="this.placeholder = 'Message'" value="${duplicateReservationInfo.memo}"
+										required="true" maxlength="100" />
+									<form:input path="write_date" type="hidden" value="<%=date%>" />
+								</div>
+								<div class="mt-10" style="text-align: right;">
+									<input type="submit" value="Update"
+										class="genric-btn success" />
+								</div>
+							</form:form>
+						</div>
+					</div>
+				</div>
+				<!-- section top border 끝 -->
+			</div>
+		</div>
+	</c:when>
+
+	<c:otherwise>
+		<div class="whole-wrap">
+			<div class="container">
+				<div class="section-top-border">
+					<div class="row">
+						<div class="col-lg-8 col-md-8">
+							<h3 class="mb-30 title_color">Update Reservation</h3>
+							<form:form modelAttribute="updateReserveInfo" method="POST"
+							onsubmit="return validateForm()">
+								<div class="input-group-icon mt-10">
+									<div class="icon" style="z-index: 1">
+										<i class="fa fa-user" aria-hidden="true"></i>
+									</div>
+									<form:input path="customer_name" type="text" value="" placeholder="Name" required="true" class="single-input" maxlength="16"/>
+								</div>
+								<div class="input-group-icon mt-10">
+									<div class="icon" style="z-index: 1">
+										<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+									</div>
+									<form:input id="date" path="resv_date" type="text" value=""
+										placeholder="Original Reservation Date" onfocus="this.placeholder = ''" 
+										onblur="this.placeholder='Original Reservation Date'" readonly="true"
+										required="true" class="single-input"/>
+									<script>
+									$(function() {
+										$("#date").datepicker({
+											minDate : new Date(),
+											maxDate : '+365d',
+											dateFormat : 'yy-mm-dd',
+											showMonthAfterYear : true,
+											dayNamesMin : ['월', '화', '수', '목', '금', '토', '일' ], // 요일의 한글 형식.
+											monthNamesShort : ['1월', '2월', '3월', '4월', '5월', '6월', '7월',
+																'8월', '9월', '10월', '11월', '12월' ] // 월의 한글 형식.
+											});
+										});
+									</script>
+								</div>
+								<div class="input-group-icon mt-10">
+									<div class="icon" style="z-index: 1">
+										<i class="fa fa-bed" aria-hidden="true"></i>
+									</div>
+									<div class="form-select" id="default-select">
 										<select id="room" name="room" style="display: none;">
+											<option value="1" <c:if test="${updateReserveInfo.room eq 1}">selected="selected"</c:if>>Economy Single</option>
+											<option value="2" <c:if test="${updateReserveInfo.room eq 2}">selected="selected"</c:if>>Single Deluxe</option>
+											<option value="3" <c:if test="${updateReserveInfo.room eq 3}">selected="selected"</c:if>>Double Deluxe</option>
+											<option value="4" <c:if test="${updateReserveInfo.room eq 4}">selected="selected"</c:if>>HoneyMoon Suite</option>
+										</select>
+										<div class="nice-select" tabindex="0">
+											<span class="current" style="font-weight:400;"><c:out value="${RoomText}"/></span>
+											<ul class="list">
+												<li data-value="1" <c:if test="${updateReserveInfo.room eq 1}">class="option selected"</c:if> class="option">Economy Single</li>
+												<li data-value="2" <c:if test="${updateReserveInfo.room eq 2}">class="option selected"</c:if> class="option">Single Deluxe</li>
+												<li data-value="3" <c:if test="${updateReserveInfo.room eq 3}">class="option selected"</c:if> class="option">Double Deluxe</li>
+												<li data-value="4" <c:if test="${updateReserveInfo.room eq 4}">class="option selected"</c:if> class="option">HoneyMoon Suite</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="input-group-icon mt-10">
+									<div class="icon" style="z-index: 1">
+										<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+									</div>
+									<form:input id="Date" path="resv_date2" type="text" value=""
+										placeholder="New Reservation Date" onfocus="this.placeholder = ''" 
+										onblur="this.placeholder='New Reservation Date'" readonly="true"
+										required="true" class="single-input"/>
+									<script>
+									$(function() {
+										$("#Date").datepicker({
+											minDate : new Date(),
+											maxDate : '+365d',
+											dateFormat : 'yy-mm-dd',
+											showMonthAfterYear : true,
+											dayNamesMin : ['월', '화', '수', '목', '금', '토', '일' ], // 요일의 한글 형식.
+											monthNamesShort : ['1월', '2월', '3월', '4월', '5월', '6월', '7월',
+																'8월', '9월', '10월', '11월', '12월' ] // 월의 한글 형식.
+											});
+										});
+									</script>
+								</div>
+								<div class="input-group-icon mt-10">
+									<div class="icon" style="z-index: 1">
+										<i class="fa fa-bed" aria-hidden="true"></i>
+									</div>
+									<div class="form-select" id="default-select">
+										<select id="room2" name="room2" style="display: none;">
 											<option value="1">Economy Single</option>
 											<option value="2">Single Deluxe</option>
 											<option value="3">Double Deluxe</option>
 											<option value="4">HoneyMoon Suite</option>
 										</select>
 										<div class="nice-select" tabindex="0">
-											<span class="current" style="font-weight:400;">Room</span>
+											<span class="current" style="font-weight:400;">New Room</span>
 											<ul class="list">
 												<li data-value="1" class="option selected">Economy Single</li>
 												<li data-value="2" class="option">Single Deluxe</li>
@@ -414,7 +563,7 @@ function validateForm() { // 데이터 전달하는 form 체크
 									<form:input path="write_date" type="hidden" value="<%=date%>"/>
 								</div>
 								<div class="mt-10" style="text-align: right;">
-									<input type="submit" value="Reserve"
+									<input type="submit" value="Update"
 										class="genric-btn success"/>
 								</div>
 							</form:form>

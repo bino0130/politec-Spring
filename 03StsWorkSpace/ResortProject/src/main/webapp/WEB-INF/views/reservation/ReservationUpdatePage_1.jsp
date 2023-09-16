@@ -3,6 +3,7 @@
 <%@ page import="java.util.*, java.text.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -112,15 +113,39 @@ function validateForm() { // 데이터 전달하는 form 체크
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                 	<ul class="nav navbar-nav menu_nav ml-auto">
-                    	<li class="nav-item active submenu dropdown">
-                    		<a class="nav-link" href="${pageContext.request.contextPath}/main">Home</a>
-                    	</li>
+							<sec:authorize access="isAnonymous()">
+								<li class="nav-item submenu">
+									<a class="nav-link" href="${pageContext.request.contextPath}/login">LogIn</a>
+								</li>
+							</sec:authorize>
+							
+							<sec:authorize access="hasRole('ROLE_ADMIN')">
+								<li class="nav-item submenu">
+		                    		<a class="nav-link" id="logoutLink" href="${pageContext.request.contextPath}/logout">LogOut</a>
+		                    		<script>
+		                    			document.getElementById('logoutLink').addEventListener('click', function(event) {
+		                    				event.preventDefault();
+		                    				var form = document.createElement('form');
+		                    				form.method = 'post';
+		                    				form.action = '${pageContext.request.contextPath}/logout';
+		                    				var csrfInput = document.createElement('input');
+		                    				csrfInput.type = 'hidden';
+		                    				csrfInput.name = '${_csrf.parameterName}';
+		                    				csrfInput.value= '${_csrf.token}';
+		                    				form.appendChild(csrfInput);
+		                    				
+		                    				document.body.appendChild(form);
+		                    				form.submit();
+		                    			});
+		                    		</script>
+        		            	</li>
+							</sec:authorize>
                         <li class="nav-item submenu dropdown">
                         	<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         		About us
                         	</a>
                         	<ul class="dropdown-menu">
-                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/b_01">찾아오시는 길</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/howToCome">찾아오시는 길</a></li>
                         	</ul>
                         </li>
                         <li class="nav-item submenu dropdown">
@@ -128,13 +153,12 @@ function validateForm() { // 데이터 전달하는 form 체크
                         		Accomodation
                         	</a>
                         	<ul class="dropdown-menu">
-                    			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/EconomyDouble">Economy Double</a></li>
+                    			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/EconomySingle">Economy Single</a></li>
                         		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/SingleDeluxe">Single Deluxe</a></li>
                         		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/DoubleDeluxe">Double Deluxe</a></li>
                         		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/HoneyMoon-Suite">Honeymoon Suite</a></li>
                     		</ul>
                         </li>
-                        <li class="nav-item submenu dropdown"><a class="nav-link" href="gallery.html">Spots</a></li>
                         <li class="nav-item submenu dropdown">
                          	<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                          		Reservation
@@ -142,7 +166,9 @@ function validateForm() { // 데이터 전달하는 form 체크
                     		<ul class="dropdown-menu">
                     			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/ReservationList">예약 현황</a></li>
                         		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/ReservationPage_1">예약하기</a></li>
-                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/ReservationUpdatePage">예약 변경</a></li>
+                        		<sec:authorize access="hasRole('ROLE_ADMIN')">
+                        			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/ReservationUpdatePage_1">예약 변경</a></li>
+                        		</sec:authorize>
                     		</ul>
                         </li>
                         <li class="nav-item submenu dropdown">
@@ -166,7 +192,7 @@ function validateForm() { // 데이터 전달하는 form 체크
 %>
 <c:choose>
 	<c:when test="${resort.room eq 1}">
-		<c:set var="RoomText" value="Economy Double"/>
+		<c:set var="RoomText" value="Economy Single"/>
 	</c:when>
 	
 	<c:when test="${resort.room eq 2}">
@@ -183,7 +209,7 @@ function validateForm() { // 데이터 전달하는 form 체크
 </c:choose>
 <c:choose>
 	<c:when test="${resort.room2 eq 1}">
-		<c:set var="RoomText2" value="Economy Double"/>
+		<c:set var="RoomText2" value="Economy Single"/>
 	</c:when>
 	
 	<c:when test="${resort.room2 eq 2}">
@@ -224,7 +250,7 @@ function validateForm() { // 데이터 전달하는 form 체크
 									<div class="icon" style="z-index: 1">
 										<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
 									</div>
-									<form:input id="date" path="resv_date2" type="text" value="${resort.resv_date2}"
+									<form:input id="date" path="resv_date" type="text" value="${resort.resv_date}"
 										placeholder="Original Reservation Date" onfocus="this.placeholder = ''" 
 										onblur="this.placeholder='Original Reservation Date'" readonly="true"
 										required="true" class="single-input"/>
@@ -247,19 +273,19 @@ function validateForm() { // 데이터 전달하는 form 체크
 										<i class="fa fa-bed" aria-hidden="true"></i>
 									</div>
 									<div class="form-select" id="default-select">
-										<select id="room2" name="room2" style="display: none;">
-											<option value="1" <c:if test="${resort.room2 eq 1}">selected="selected"</c:if>>Economy Double</option>
-											<option value="2" <c:if test="${resort.room2 eq 2}">selected="selected"</c:if>>Single Deluxe</option>
-											<option value="3" <c:if test="${resort.room2 eq 3}">selected="selected"</c:if>>Double Deluxe</option>
-											<option value="4" <c:if test="${resort.room2 eq 4}">selected="selected"</c:if>>HoneyMoon Suite</option>
+										<select id="room" name="room" style="display: none;">
+											<option value="1" <c:if test="${resort.room eq 1}">selected="selected"</c:if>>Economy Single</option>
+											<option value="2" <c:if test="${resort.room eq 2}">selected="selected"</c:if>>Single Deluxe</option>
+											<option value="3" <c:if test="${resort.room eq 3}">selected="selected"</c:if>>Double Deluxe</option>
+											<option value="4" <c:if test="${resort.room eq 4}">selected="selected"</c:if>>HoneyMoon Suite</option>
 										</select>
 										<div class="nice-select" tabindex="0">
-											<span class="current" style="font-weight:400;"><c:out value="${RoomText2}"/></span>
+											<span class="current" style="font-weight:400;"><c:out value="${RoomText}"/></span>
 											<ul class="list">
-												<li data-value="1" <c:if test="${resort.room2 eq 1}">class="option selected"</c:if> class="option">Economy Double</li>
-												<li data-value="2" <c:if test="${resort.room2 eq 2}">class="option selected"</c:if> class="option">Single Deluxe</li>
-												<li data-value="3" <c:if test="${resort.room2 eq 3}">class="option selected"</c:if> class="option">Double Deluxe</li>
-												<li data-value="4" <c:if test="${resort.room2 eq 4}">class="option selected"</c:if> class="option">HoneyMoon Suite</li>
+												<li data-value="1" <c:if test="${resort.room eq 1}">class="option selected"</c:if> class="option">Economy Single</li>
+												<li data-value="2" <c:if test="${resort.room eq 2}">class="option selected"</c:if> class="option">Single Deluxe</li>
+												<li data-value="3" <c:if test="${resort.room eq 3}">class="option selected"</c:if> class="option">Double Deluxe</li>
+												<li data-value="4" <c:if test="${resort.room eq 4}">class="option selected"</c:if> class="option">HoneyMoon Suite</li>
 											</ul>
 										</div>
 									</div>
@@ -292,18 +318,18 @@ function validateForm() { // 데이터 전달하는 form 체크
 									</div>
 									<div class="form-select" id="default-select">
 										<select id="room" name="room" style="display: none;">
-											<option value="1" <c:if test="${resort.room eq 1}">selected="selected"</c:if>>Economy Double</option>
-											<option value="2" <c:if test="${resort.room eq 2}">selected="selected"</c:if>>Single Deluxe</option>
-											<option value="3" <c:if test="${resort.room eq 3}">selected="selected"</c:if>>Double Deluxe</option>
-											<option value="4" <c:if test="${resort.room eq 4}">selected="selected"</c:if>>HoneyMoon Suite</option>
+											<option value="1" <c:if test="${resort.room2 eq 1}">selected="selected"</c:if>>Economy Single</option>
+											<option value="2" <c:if test="${resort.room2 eq 2}">selected="selected"</c:if>>Single Deluxe</option>
+											<option value="3" <c:if test="${resort.room2 eq 3}">selected="selected"</c:if>>Double Deluxe</option>
+											<option value="4" <c:if test="${resort.room2 eq 4}">selected="selected"</c:if>>HoneyMoon Suite</option>
 										</select>
 										<div class="nice-select" tabindex="0">
-											<span class="current" style="font-weight:400;"><c:out value="${RoomText}"/></span>
+											<span class="current" style="font-weight:400;"><c:out value="${RoomText2}"/></span>
 											<ul class="list">
-												<li data-value="1" <c:if test="${resort.room eq 1}">class="option selected"</c:if> class="option">Economy Double</li>
-												<li data-value="2" <c:if test="${resort.room eq 2}">class="option selected"</c:if> class="option">Single Deluxe</li>
-												<li data-value="3" <c:if test="${resort.room eq 3}">class="option selected"</c:if> class="option">Double Deluxe</li>
-												<li data-value="4" <c:if test="${resort.room eq 4}">class="option selected"</c:if> class="option">HoneyMoon Suite</li>
+												<li data-value="1" <c:if test="${resort.room2 eq 1}">class="option selected"</c:if> class="option">Economy Single</li>
+												<li data-value="2" <c:if test="${resort.room2 eq 2}">class="option selected"</c:if> class="option">Single Deluxe</li>
+												<li data-value="3" <c:if test="${resort.room2 eq 3}">class="option selected"</c:if> class="option">Double Deluxe</li>
+												<li data-value="4" <c:if test="${resort.room2 eq 4}">class="option selected"</c:if> class="option">HoneyMoon Suite</li>
 											</ul>
 										</div>
 									</div>
@@ -342,10 +368,9 @@ function validateForm() { // 데이터 전달하는 form 체크
 										onblur="this.placeholder = 'Message'" value="${resort.memo}"
 										required="true" maxlength="100" />
 									<form:input path="write_date" type="hidden" value="<%=date%>" />
-									<form:input path="processing" type="hidden" value="4" />
 								</div>
 								<div class="mt-10" style="text-align: right;">
-									<input type="submit" value="Reserve"
+									<input type="submit" value="Update"
 										class="genric-btn success" />
 								</div>
 							</form:form>
@@ -376,7 +401,7 @@ function validateForm() { // 데이터 전달하는 form 체크
 									<div class="icon" style="z-index: 1">
 										<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
 									</div>
-									<form:input id="date" path="resv_date2" type="text" value=""
+									<form:input id="date" path="resv_date" type="text" value=""
 										placeholder="Original Reservation Date" onfocus="this.placeholder = ''" 
 										onblur="this.placeholder='Original Reservation Date'" readonly="true"
 										required="true" class="single-input"/>
@@ -399,8 +424,8 @@ function validateForm() { // 데이터 전달하는 form 체크
 										<i class="fa fa-bed" aria-hidden="true"></i>
 									</div>
 									<div class="form-select" id="default-select">
-										<select id="room2" name="room2" style="display: none;">
-											<option value="1">Economy Double</option>
+										<select id="room" name="room" style="display: none;">
+											<option value="1">Economy Single</option>
 											<option value="2">Single Deluxe</option>
 											<option value="3">Double Deluxe</option>
 											<option value="4">HoneyMoon Suite</option>
@@ -408,7 +433,7 @@ function validateForm() { // 데이터 전달하는 form 체크
 										<div class="nice-select" tabindex="0">
 											<span class="current" style="font-weight:400;">Original Room</span>
 											<ul class="list">
-												<li data-value="1" class="option selected">Economy Double</li>
+												<li data-value="1" class="option selected">Economy Single</li>
 												<li data-value="2" class="option">Single Deluxe</li>
 												<li data-value="3" class="option">Double Deluxe</li>
 												<li data-value="4" class="option">HoneyMoon Suite</li>
@@ -420,7 +445,7 @@ function validateForm() { // 데이터 전달하는 form 체크
 									<div class="icon" style="z-index: 1">
 										<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
 									</div>
-									<form:input id="Date" path="resv_date" type="text" value=""
+									<form:input id="Date" path="resv_date2" type="text" value=""
 										placeholder="New Reservation Date" onfocus="this.placeholder = ''" 
 										onblur="this.placeholder='New Reservation Date'" readonly="true"
 										required="true" class="single-input"/>
@@ -443,8 +468,8 @@ function validateForm() { // 데이터 전달하는 form 체크
 										<i class="fa fa-bed" aria-hidden="true"></i>
 									</div>
 									<div class="form-select" id="default-select">
-										<select id="room" name="room" style="display: none;">
-											<option value="1">Economy Double</option>
+										<select id="room2" name="room2" style="display: none;">
+											<option value="1">Economy Single</option>
 											<option value="2">Single Deluxe</option>
 											<option value="3">Double Deluxe</option>
 											<option value="4">HoneyMoon Suite</option>
@@ -452,7 +477,7 @@ function validateForm() { // 데이터 전달하는 form 체크
 										<div class="nice-select" tabindex="0">
 											<span class="current" style="font-weight:400;">New Room</span>
 											<ul class="list">
-												<li data-value="1" class="option selected">Economy Double</li>
+												<li data-value="1" class="option selected">Economy Single</li>
 												<li data-value="2" class="option">Single Deluxe</li>
 												<li data-value="3" class="option">Double Deluxe</li>
 												<li data-value="4" class="option">HoneyMoon Suite</li>
@@ -497,10 +522,9 @@ function validateForm() { // 데이터 전달하는 form 체크
 										onblur="this.placeholder = 'Message'" value=""
 										required="true" maxlength="50"/>
 									<form:input path="write_date" type="hidden" value="<%=date%>"/>
-									<form:input path="processing" type="hidden" value="4"/>
 								</div>
 								<div class="mt-10" style="text-align: right;">
-									<input type="submit" value="Reserve"
+									<input type="submit" value="Update"
 										class="genric-btn success"/>
 								</div>
 							</form:form>

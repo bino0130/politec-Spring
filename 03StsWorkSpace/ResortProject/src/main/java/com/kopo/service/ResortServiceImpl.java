@@ -27,4 +27,14 @@ public class ResortServiceImpl implements ResortService {
 	public List<Resort> getAllReserve() {
 		return resortRepository.getAllReserve();
 	}
+
+	@Override
+	public Resort getOneByDateAndRoom(String resv_date, Integer room) {
+		return resortRepository.getOneByDateAndRoom(resv_date, room);
+	}
+
+	@Override
+	public void deleteOneReservation(String resv_date, Integer room) {
+		resortRepository.deleteOneReservation(resv_date, room);
+	}
 }

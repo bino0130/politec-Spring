@@ -3,6 +3,7 @@
 <%@ page import="java.util.*, java.text.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <!-- 공지사항 view 관리자 권한 -->
 <html>
@@ -39,10 +40,34 @@
 							<div class="serial"></div>
 							<div style="text-align:right; width:600px;">
 								<div class="mt-10" style="text-align: right;">
-									<button type="button" class="genric-btn danger radius"
-										onclick="location.href='notice_delete?notice_id=${oneNotice.notice_id}'">삭제</button>
-									<button type="button" class="genric-btn info radius"
-										onclick="location.href='notice_update?notice_id=${oneNotice.notice_id}'">수정</button>
+									<sec:authorize access="hasRole('ROLE_ADMIN')">
+										<button type="button" class="genric-btn danger radius" data-toggle="modal" data-target="#deleteNotice">삭제</button>
+										<!-- modal -->
+										<div class="modal" id="deleteNotice">
+	     									<div class="modal-dialog">
+    											<div class="modal-content">
+      												<div class="modal-header" style="height:70px;">
+        												<h4 class="modal-title">게시글 삭제</h4>
+        												<button type="button" class="botton close" data-dismiss="modal" aria-label="Close" style="cursor:pointer;">
+          													<span aria-hidden="true">&times;</span>
+        												</button>
+      												</div>
+      												<div class="modal-body" style="text-align:left;">
+      													<b style="color:black;">정말 삭제하시겠습니까?</b>
+      												</div>
+      												<div class="modal-footer">
+         												<button type="button" class="btn btn-danger" 
+														onclick="location.href='${pageContext.request.contextPath}/admin/notice_delete?notice_id=${oneNotice.notice_id}'"
+														style="cursor:pointer;">삭제</button>
+    	      											<button type="button" class="btn btn-primary" data-dismiss="modal" style="cursor:pointer;">취소</button>
+      												</div>
+    											</div>
+  											</div>
+										</div>
+										<!-- modal -->
+										<button type="button" class="genric-btn info radius"
+											onclick="location.href='${pageContext.request.contextPath}/admin/notice_update?notice_id=${oneNotice.notice_id}'">수정</button>
+									</sec:authorize>
 								</div>
 							</div>
 						</div>

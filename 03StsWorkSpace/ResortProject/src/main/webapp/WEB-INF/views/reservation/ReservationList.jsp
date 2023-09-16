@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page import="java.util.*, java.text.*" %>
 <!DOCTYPE html>
 <html>
@@ -26,6 +27,7 @@
 </head>
 <body>
 <%@ include file="../top.jsp"%>
+<sec:authorize access="hasRole('ROLE_ADMIN')" var="isAdmin"></sec:authorize>
 <div class="whole-wrap">
 	<div class="container">
 		<div class="section-top-border">
@@ -35,7 +37,7 @@
 					<div class="table-head" style="text-align:center;">
 						<div class="visit">날짜</div>
 						<div class="serial" style="padding-left:0px;">요일</div>
-						<div class="visit">Economy Double</div>
+						<div class="visit">Economy Single</div>
 						<div class="visit">Single Deluxe</div>
 						<div class="visit">Double Deluxe</div>
 						<div class="visit">HoneyMoon Suite</div>
@@ -54,7 +56,16 @@
 											</div>
 										</c:when>
 										<c:otherwise>
-											<div class="visit">${statusList.room1}</div>
+											<c:choose>
+												<c:when test="${isAdmin}">
+													<div class="visit">
+														<a href="<c:url value="/admin/ReservationView?date=${statusList.statusDate}&room=1"/>"><b>예약됨</b></a>
+													</div>
+												</c:when>
+												<c:otherwise>
+													<div class="visit">${statusList.room1}</div>
+												</c:otherwise>
+											</c:choose>
 										</c:otherwise>
 									</c:choose>
 									
@@ -65,7 +76,16 @@
 											</div>
 										</c:when>
 										<c:otherwise>
-											<div class="visit">${statusList.room2}</div>
+											<c:choose>
+												<c:when test="${isAdmin}">
+													<div class="visit">
+														<a href="<c:url value="/admin/ReservationView?date=${statusList.statusDate}&room=2"/>"><b>예약됨</b></a>
+													</div>
+												</c:when>
+												<c:otherwise>
+													<div class="visit">${statusList.room2}</div>
+												</c:otherwise>
+											</c:choose>
 										</c:otherwise>
 									</c:choose>
 								
@@ -76,7 +96,16 @@
 											</div>
 										</c:when>
 										<c:otherwise>
-											<div class="visit">${statusList.room3}</div>
+											<c:choose>
+												<c:when test="${isAdmin}">
+													<div class="visit">
+														<a href="<c:url value="/admin/ReservationView?date=${statusList.statusDate}&room=3"/>"><b>예약됨</b></a>
+													</div>
+												</c:when>
+												<c:otherwise>
+													<div class="visit">${statusList.room3}</div>
+												</c:otherwise>
+											</c:choose>
 										</c:otherwise>
 									</c:choose>
 								
@@ -87,7 +116,16 @@
 											</div>
 										</c:when>
 										<c:otherwise>
-											<div class="visit">${statusList.room4}</div>
+											<c:choose>
+												<c:when test="${isAdmin}">
+													<div class="visit">
+														<a href="<c:url value="/admin/ReservationView?date=${statusList.statusDate}&room=4"/>"><b>예약됨</b></a>
+													</div>
+												</c:when>
+												<c:otherwise>
+													<div class="visit">${statusList.room4}</div>
+												</c:otherwise>
+											</c:choose>
 										</c:otherwise>
 									</c:choose>
 								</c:when>
@@ -103,7 +141,16 @@
 											</div>
 										</c:when>
 										<c:otherwise>
-											<div class="visit">${statusList.room1}</div>
+											<c:choose>
+												<c:when test="${isAdmin}">
+													<div class="visit">
+														<a href="<c:url value="/admin/ReservationView?date=${statusList.statusDate}&room=1"/>"><b>예약됨</b></a>
+													</div>
+												</c:when>
+												<c:otherwise>
+													<div class="visit">${statusList.room1}</div>
+												</c:otherwise>
+											</c:choose>
 										</c:otherwise>
 									</c:choose>
 								
@@ -114,7 +161,16 @@
 											</div>
 										</c:when>
 										<c:otherwise>
-											<div class="visit">${statusList.room2}</div>
+											<c:choose>
+												<c:when test="${isAdmin}">
+													<div class="visit">
+														<a href="<c:url value="/admin/ReservationView?date=${statusList.statusDate}&room=2"/>"><b>예약됨</b></a>
+													</div>
+												</c:when>
+												<c:otherwise>
+													<div class="visit">${statusList.room2}</div>
+												</c:otherwise>
+											</c:choose>
 										</c:otherwise>
 									</c:choose>
 								
@@ -125,7 +181,16 @@
 											</div>
 										</c:when>
 										<c:otherwise>
-											<div class="visit">${statusList.room3}</div>
+											<c:choose>
+												<c:when test="${isAdmin}">
+													<div class="visit">
+														<a href="<c:url value="/admin/ReservationView?date=${statusList.statusDate}&room=3"/>"><b>예약됨</b></a>
+													</div>
+												</c:when>
+												<c:otherwise>
+													<div class="visit">${statusList.room3}</div>
+												</c:otherwise>
+											</c:choose>
 										</c:otherwise>
 									</c:choose>
 								
@@ -136,7 +201,16 @@
 											</div>
 										</c:when>
 										<c:otherwise>
-											<div class="visit">${statusList.room4}</div>
+											<c:choose>
+												<c:when test="${isAdmin}">
+													<div class="visit">
+														<a href="<c:url value="/admin/ReservationView?date=${statusList.statusDate}&room=4"/>"><b>예약됨</b></a>
+													</div>
+												</c:when>
+												<c:otherwise>
+													<div class="visit">${statusList.room4}</div>
+												</c:otherwise>
+											</c:choose>
 										</c:otherwise>
 									</c:choose>
 								</c:otherwise>

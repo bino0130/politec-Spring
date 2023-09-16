@@ -24,7 +24,7 @@ public class ReviewController {
 	private ReplyService replyService;
 	
 	@GetMapping("/test")
-	public String showTest() {
+	public String showTest(@ModelAttribute("newSecondReply") Reply reply) {
 		return "test";
 	}
 	
@@ -74,23 +74,29 @@ public class ReviewController {
 	}
 	
 	// update
-	@GetMapping("/review_update")
+	@GetMapping("/admin/review_update")
 	public String requestReviewUpdateForm(@RequestParam("review_id") int review_id, Model model) {
 		Review updateReview = reviewService.getOneReviewById(review_id);
 		model.addAttribute("updateReview", updateReview);
 		return "review/review_update";
 	}
 	
-	@PostMapping("review_update")
+	@PostMapping("/admin/review_update")
 	public String sendReviewUpdate(@ModelAttribute("updateReview") Review review) {
 		reviewService.updateReview(review);
 		return "redirect:/review_list";
 	}
 	
 	// delete
-	@GetMapping("/review_delete")
+	@GetMapping("/admin/review_delete")
 	public String requestDeleteReview(@RequestParam("review_id") int review_id) {
 		reviewService.deleteReview(review_id);
+		return "redirect:/review_list";
+	}
+	
+	@GetMapping("/admin/reply_delete")
+	public String requestDeleteReply(@RequestParam("reply_id") int reply_id) {
+		replyService.deleteOneReply(reply_id);
 		return "redirect:/review_list";
 	}
 }

@@ -6,7 +6,7 @@
 <!-- logo -->
 <link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.png" type="image/x-icon">
 <meta charset="UTF-8">
-<title>DoubleDeluxe</title>
+<title>EconomySingle</title>
 </head>
 <body>
 <%@ include file="../top.jsp"%>
@@ -14,7 +14,7 @@
 	<div class="container">
         <div class="row">
            	<div class="col-md-6">
-                <img src="${pageContext.request.contextPath}/resources/img/room1.jpg" style="width: 450px; height: 500px; margin-top:25px;">
+                <img src="${pageContext.request.contextPath}/resources/img/room4.jpg" style="width: 450px; height: 500px; margin-top:25px;">
             </div>
             <div class="col-md-6 d_flex align-items-center">
             	<div class="about_content ">
@@ -22,11 +22,11 @@
                       	<span class="icon" style="z-index:1;"><i class="fa fa-info-circle" aria-hidden="true"></i> 객실 정보</span>
                     </h6>
                     <ul class="unordered-list">
-                      	<li><b style="color:black;">객실 이름 : Double Deluxe Room</b></li>
-                       	<li>크기 : 100㎡(구30평)</li>
-                       	<li>구조 : 침실2 + 거실 + 화장실2(독립테라스)</li>
+                      	<li><b style="color:black;">객실 이름 : Economy Single Room</b></li>
+                       	<li>크기 : 50㎡(구15평)</li>
+                       	<li>구조 : 침대 원룸, 화장실(독립 테라스)</li>
                        	<li>구비시설 : TV, 냉장고, 에어컨, 전자렌지, 쇼파, 식탁, 주방집기, 헤어드라이기, 샴푸, 린스, 타올</li>
-                       	<li>인원 : 기준 8명 / 최대 12명</li>
+                       	<li>인원 : 기준 4명 / 최대 6명</li>
                        	<li>초과인원비용 : 0~3세 10,000원, 4세~,초,중,고생 및 성인 30,000원</li>
                     </ul>
                        

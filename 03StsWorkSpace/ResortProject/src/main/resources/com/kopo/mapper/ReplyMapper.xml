@@ -31,7 +31,7 @@
 		
 	<!-- delete -->
 	<delete id="deleteOneReply" parameterType="Integer" >
-		delete from reply where reply_id = ${Reply.reply_id}
+		delete from reply where reply_id = ${reply_id}
 	</delete> 
 	
 </mapper>

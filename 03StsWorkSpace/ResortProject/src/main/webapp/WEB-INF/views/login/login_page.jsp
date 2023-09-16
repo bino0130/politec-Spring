@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,36 +21,37 @@
 <body>
 <%@ include file="../top.jsp" %>
   <div class="half">
-    <div class="bg order-1 order-md-2" style="background-image: url('${pageContext.request.contextPath}/resources/img/banner/about_banner.jpg');"></div>
+    <div class="bg order-1 order-md-2" style="background-image: url('${pageContext.request.contextPath}/resources/img/banner/banner-2.jpg');"></div>
     <div class="contents order-2 order-md-1">
-
       <div class="container">
         <div class="row align-items-center justify-content-center">
           <div class="col-md-6">
             <div class="form-block">
               <div class="text-center mb-5">
-              <h3>Login to <strong>Colorlib</strong></h3>
-              <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
+              <h3><strong>Login</strong></h3>
+              <c:if test="${param.fail ne null}">
+			  		<p style="color:red;"><c:out value="아이디 혹은 비밀번호가 틀렸습니다. 다시 시도해주세요."/></p>
+			  </c:if>
               </div>
-              <form action="#" method="post">
+              <form method="post">
                 <div class="form-group first">
                   <label for="username">Username</label>
-                  <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username">
+                  <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username" name="username">
                 </div>
                 <div class="form-group last mb-3">
                   <label for="password">Password</label>
-                  <input type="password" class="form-control" placeholder="Your Password" id="password">
+                  <input type="password" class="form-control" placeholder="Your Password" id="password" name="password">
+                  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                 </div>
                 
                 <div class="d-sm-flex mb-5 align-items-center">
-                  <label class="control control--checkbox mb-3 mb-sm-0"><span class="caption">Remember me</span>
-                    <input type="checkbox" checked="checked"/>
+                  <label class="control control--checkbox mb-3 mb-sm-0" for="remember"><span class="caption">Remember me</span>
+                    <input type="checkbox" id="remember"/>
                     <div class="control__indicator"></div>
                   </label>
-                  <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
                 </div>
 
-                <input type="submit" value="Log In" class="btn btn-block btn-primary" style="cursor:pointer;">
+                <input type="submit" value="Log In" class="genric-btn primary radius" style="cursor:pointer; width:100%;">
 
               </form>
             </div>
@@ -59,6 +62,7 @@
 
     
   </div>
+  
     
     
 

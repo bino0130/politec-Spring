@@ -15,18 +15,45 @@
         <intercept-url pattern="/manager/**"  access="hasRole('ROLE_MANAGER')" />
         <intercept-url pattern="/member/**"  access="hasRole('ROLE_USER')" />
         <intercept-url pattern="/**"  access="permitAll" />
-        <form-login login-page="/login"/>
-        <logout logout-success-url="/logoutredirect"/>
+        <!-- 로그인된 상태에서는 로그인이나 회원가입 화면에 접근 못하도록 함 -->
+        <intercept-url pattern="/login" access="isAnonymous()"/>
+        <!-- 정적 리소스는 모두 접근 허용 -->
+		<intercept-url pattern="/resources/**" access="permitAll" />
+        <form-login 
+        	username-parameter="username"
+        	password-parameter="password"
+        	login-page="/login" default-target-url="/main"
+        	authentication-failure-url="/login?fail"
+        />
+<!-- form-login의 속성 설명
+1) username-parameter : 로그인 페이지에서 입력한 USER(input)에 대한 parameter name. 생략 시 기본값은 "j_username"
+2) password-parameter : 로그인 페이지에서 입력한 PASSWORD(input)에 대한 parameter name. 생략 시 기본값은 "j_password"
+3) login-processing-url : 로그인 페이지의 form에서 설정한 전송 주소(form의 action속성). 생략 시 기본값은 "/j_spring_security_check"
+4) login-page : Controller로 보낼 로그인 페이지 주소
+5) authentication-failrue-url : 로그인 실패 시 이동할 페이지. 아래 소스 코드같은 경우에는 "/login.html" 뒤에 "?ng"를 붙여서 오류 페이지임을 나타낸다. 
+								오류가 나면, login.jsp에서 이 ng를 받아서 해당 오류 메세지를 출력하게 되는 것이다.
+*authentication-failure-handler-ref : 로그인 실패 로직을 커스터마이징한 객체를 지정
+6) default-target-url : 로그인에 성공했을 때 보내줄 페이지. 생략 했을 시 사용자의 요청 경로로 이동한다. -->
+        <logout 
+        	logout-success-url="/logoutAsk"
+        	invalidate-session="true"
+        	delete-cookies="true"
+        />
     </http>
+<!-- logout의 속성 설명
+1) logout-url : 로그아웃 요청 주소. 생략 시 기본값은 "/j_spring_security_logout"
+2) logout-success-url : 로그아웃 성공 시 이동할 페이지
+3) invalidate-session : 세션 삭제 여부
+4) delete-cookies : 쿠키 삭제 여부 -->
     
     <authentication-manager>
     	<authentication-provider>
         	<user-service>
-        		<user name="admin" password="{noop}1234" authorities="ROLE_ADMIN, ROLE_USER"/> 
+        		<user name="admin" password="{noop}123" authorities="ROLE_ADMIN, ROLE_USER"/> 
         		<user name="manager" password="{noop}1235" authorities="ROLE_MANAGER"/>
         		<user name="guest" password="{noop}1236" authorities="ROLE_USER"/>    
         	 </user-service>
+        	 
     	</authentication-provider>
 	</authentication-manager>
-
 </beans:beans>

@@ -14,6 +14,7 @@ public class ResortRepositoryImpl implements ResortRepository {
 	@Autowired
 	private ResortMapper mapper;
 	
+	private Resort resort = new Resort();
 	private List<Resort> listOfReservations = new ArrayList<Resort>();
 
 	@Override
@@ -30,6 +31,17 @@ public class ResortRepositoryImpl implements ResortRepository {
 	public List<Resort> getAllReserve() {
 		listOfReservations = mapper.getAllReserve();
 		return listOfReservations;
+	}
+
+	@Override
+	public Resort getOneByDateAndRoom(String resv_date, Integer room) {
+		resort = mapper.getOneByDateAndRoom(resv_date, room);
+		return resort;
+	}
+
+	@Override
+	public void deleteOneReservation(String resv_date, Integer room) {
+		mapper.deleteOneReservation(resv_date, room);
 	}
 
 }

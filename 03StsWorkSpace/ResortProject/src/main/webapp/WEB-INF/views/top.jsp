@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="javax.servlet.http.HttpServletRequest" %>
+<%@ page import="javax.servlet.http.HttpServletRequest"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,15 +41,39 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                 	<ul class="nav navbar-nav menu_nav ml-auto">
-                    	<li class="nav-item submenu">
-                    		<a class="nav-link" href="${pageContext.request.contextPath}/login">LogIn</a>
-                    	</li>
+							<sec:authorize access="isAnonymous()">
+								<li class="nav-item submenu">
+									<a class="nav-link" href="${pageContext.request.contextPath}/login">LogIn</a>
+								</li>
+							</sec:authorize>
+							
+							<sec:authorize access="hasRole('ROLE_ADMIN')">
+								<li class="nav-item submenu">
+		                    		<a class="nav-link" id="logoutLink" href="${pageContext.request.contextPath}/logout">LogOut</a>
+		                    		<script>
+		                    			document.getElementById('logoutLink').addEventListener('click', function(event) {
+		                    				event.preventDefault();
+		                    				var form = document.createElement('form');
+		                    				form.method = 'post';
+		                    				form.action = '${pageContext.request.contextPath}/logout';
+		                    				var csrfInput = document.createElement('input');
+		                    				csrfInput.type = 'hidden';
+		                    				csrfInput.name = '${_csrf.parameterName}';
+		                    				csrfInput.value= '${_csrf.token}';
+		                    				form.appendChild(csrfInput);
+		                    				
+		                    				document.body.appendChild(form);
+		                    				form.submit();
+		                    			});
+		                    		</script>
+        		            	</li>
+							</sec:authorize>
                         <li class="nav-item submenu dropdown">
                         	<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         		About us
                         	</a>
                         	<ul class="dropdown-menu">
-                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/b_01">찾아오시는 길</a></li>
+                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/howToCome">찾아오시는 길</a></li>
                         	</ul>
                         </li>
                         <li class="nav-item submenu dropdown">
@@ -54,13 +81,12 @@
                         		Accomodation
                         	</a>
                         	<ul class="dropdown-menu">
-                    			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/EconomyDouble">Economy Double</a></li>
+                    			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/EconomySingle">Economy Single</a></li>
                         		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/SingleDeluxe">Single Deluxe</a></li>
                         		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/DoubleDeluxe">Double Deluxe</a></li>
                         		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/HoneyMoon-Suite">Honeymoon Suite</a></li>
                     		</ul>
                         </li>
-                        <li class="nav-item submenu dropdown"><a class="nav-link" href="gallery.html">Spots</a></li>
                         <li class="nav-item submenu dropdown">
                          	<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                          		Reservation
@@ -68,7 +94,9 @@
                     		<ul class="dropdown-menu">
                     			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/ReservationList">예약 현황</a></li>
                         		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/ReservationPage_1">예약하기</a></li>
-                        		<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/ReservationUpdatePage">예약 변경</a></li>
+                        		<sec:authorize access="hasRole('ROLE_ADMIN')">
+                        			<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/ReservationUpdatePage_1">예약 변경</a></li>
+                        		</sec:authorize>
                     		</ul>
                         </li>
                         <li class="nav-item submenu dropdown">
