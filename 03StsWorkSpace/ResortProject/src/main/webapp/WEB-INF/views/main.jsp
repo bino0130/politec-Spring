@@ -8,7 +8,7 @@
 <!-- logo -->
 <link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.png" type="image/x-icon">
 <meta charset="UTF-8">
-<title>조아 리조트에 오신 것을 환영합니다.</title>
+<title>Royal Hotel</title>
 <style>
 #mainDiv {
 	width : 100%;

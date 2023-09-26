@@ -38,7 +38,7 @@
 					<div class="table-head" style="height:300px;">
 						<div class="serial" style="text-align:center;">내용</div>
 						<div style="text-align:left; width:600px; font-weight:500; color:black; padding-top:8px;">
-							<c:out value="${oneReview.review_content}"/>
+							<c:out value="${oneReview.review_content}${re_cnt}"/>
 						</div>
 					</div>
 					<div class="table-head" style="text-align: right;">

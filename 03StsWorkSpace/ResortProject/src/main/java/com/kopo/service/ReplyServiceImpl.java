@@ -34,7 +34,7 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public Reply getOneReply(int reply_id) {
-		return replyRepository.getOneReply(reply_id);
+	public Integer getReCntById(Integer root_id) {
+		return replyRepository.getReCntById(root_id);
 	}
 }

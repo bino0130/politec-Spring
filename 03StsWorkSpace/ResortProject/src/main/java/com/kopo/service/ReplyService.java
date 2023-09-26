@@ -11,8 +11,8 @@ public interface ReplyService {
 	// Reply 전체 출력
 	public List<Reply> getReplyList(int root_id);
 	
-	// Reply 하나 select
-	public Reply getOneReply(int reply_id);
+	// 답글 순서 select
+	public Integer getReCntById(Integer root_id);
 		
 	// Reply 업데이트
 	public void updateOneReply(Reply reply);

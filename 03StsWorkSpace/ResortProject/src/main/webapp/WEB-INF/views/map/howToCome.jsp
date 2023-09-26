@@ -3,8 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8"/>
-	<title>Kakao Map</title>
+<!-- logo -->
+<link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.png" type="image/x-icon">
+<meta charset="utf-8"/>
+<title>오시는 길</title>
 </head>
 <body>
 <%@ include file="../top.jsp"%>

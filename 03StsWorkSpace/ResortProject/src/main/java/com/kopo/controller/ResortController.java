@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -76,13 +77,6 @@ public class ResortController {
 			
 			for(Resort eachResort : resortList) {
 				if(eachStatus.getStatusDate().equals(eachResort.getResv_date())) {
-//					if(eachResort.getRoom() == 1) {
-//						eachStatus.setRoom1(eachResort.getCustomer_name());
-//					} else if (eachResort.getRoom() == 2) {
-//						eachStatus.setRoom2(eachResort.getCustomer_name());
-//					} else if (eachResort.getRoom() == 3) {
-//						eachStatus.setRoom3(eachResort.getCustomer_name());
-//					}
 					if(eachResort.getRoom() == 1) {
 						eachStatus.setRoom1("예약불가");
 					} else if (eachResort.getRoom() == 2) {

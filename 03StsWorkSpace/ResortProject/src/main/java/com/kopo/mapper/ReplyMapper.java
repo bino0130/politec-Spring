@@ -15,7 +15,7 @@ public interface ReplyMapper {
 	// read
 	public List<Reply> getReplyList(@Param("root_id") int root_id);
 	
-	public Reply getOneReply(@Param("reply_id") int reply_id);
+	public Integer getReCntById(@Param("root_id") Integer root_id);
 	
 	// update
 	public void updateOneReply(@Param("Reply") Reply reply);

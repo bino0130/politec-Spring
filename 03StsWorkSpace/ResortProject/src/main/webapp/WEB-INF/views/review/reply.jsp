@@ -29,44 +29,127 @@
 						</c:when>
 						<c:otherwise>
 							<c:forEach items="${replyList}" var="replyList">
-								<div class="comment-list">
-									<div class="single-comment justify-content-between d-flex">
-										<div class="user justify-content-between d-flex">
-											<div class="desc">
-												<h5><b style="color:black;">${replyList.reply_person}</b></h5>
-												<p class="date" style="color:gray;">${replyList.reply_date}</p>
-												<p class="comment">${replyList.reply_content}</p>
+								<c:choose>
+									<c:when test="${replyList.re_level eq 0}">
+										<div class="comment-list">
+											<div class="single-comment justify-content-between d-flex">
+												<div class="user justify-content-between d-flex">
+													<div class="desc">
+														<h5><b style="color:black;">${replyList.reply_person}</b></h5>
+														<p class="date" style="color:gray;">${replyList.reply_date}</p>
+														<p class="comment">${replyList.reply_content}</p>
+													</div>
+												</div>
+												<div class="reply-btn" style="display:flex;">
+													<a href="" class="btn-reply text-uppercase" data-toggle="modal" data-target="#writeReply" style="height:29.6px;">reply</a>	
+													<div class="modal" id="writeReply"> <!-- 답글 모달 시작 -->
+     														<div class="modal-dialog">
+    															<div class="modal-content">
+      																<div class="modal-header" style="height:70px;">
+        																<h4 class="modal-title">답글 달기</h4>
+        																<button type="button" class="botton close" data-dismiss="modal" aria-label="Close" style="cursor:pointer;">
+		          															<span aria-hidden="true">&times;</span>
+        																</button>
+      																</div>
+      																<form:form modelAttribute="secondReply" method="POST" onsubmit="">
+																		<div style="margin-top:10px;">
+																			<div class="form-group form-inline">
+																				<div class="form-group col-lg-6 col-md-6 name">
+																					<form:hidden path="root_id" value="${oneReview.review_id}"/>
+																					<form:input path="reply_person" type="text" class="form-control" placeholder="Name"
+																						onfocus="this.placeholder=''" onblur="this.placeholder='Name'" value="${replyList.reply_id}"
+																						style=" background-color:#F1F1F1;"/>
+																					<form:hidden path="reply_date" value="<%=dateTime%>"/>
+																				</div>
+																			</div>
+																			<div class="form-group">
+																				<form:textarea path="reply_content" class="form-control mb-10" rows="5" name="Message" 
+																					placeholder="Messege" onfocus="this.placeholder=''" onblur="this.placeholder='Messege'"  
+																					required="true" style="resize:none; background-color:#F1F1F1; width:450px; margin-left:15px;"></form:textarea>
+																				<form:hidden path="re_level" value="1"/>
+																				<form:hidden path="re_cnt" value="${re_cnt}"/>
+																				<form:hidden path="re_Id" value="${replyList.reply_id}"/>
+																			</div>
+																		</div>
+	      																<div class="modal-footer">
+    	     																<button type="submit" class="btn btn-primary" 
+																			onclick="location.href='${pageContext.request.contextPath}/admin/'"
+																			style="cursor:pointer;">작성</button>
+          																	<button type="button" class="btn btn-danger" data-dismiss="modal" style="cursor:pointer;">취소</button>
+      																	</div>
+		      														</form:form>
+    															</div>
+  															</div>
+														</div> <!-- 답글 모달 끝 -->
+													<sec:authorize access="hasRole('ROLE_ADMIN')">
+														<a href="" class="btn-reply text-uppercase" data-toggle="modal" data-target="#deleteReply" style="height:29.6px;">delete</a>
+														<div class="modal" id="deleteReply">
+     														<div class="modal-dialog">
+    															<div class="modal-content">
+      																<div class="modal-header" style="height:70px;">
+        																<h4 class="modal-title">댓글 삭제</h4>
+        																<button type="button" class="botton close" data-dismiss="modal" aria-label="Close" style="cursor:pointer;">
+          																	<span aria-hidden="true">&times;</span>
+        																</button>
+		      														</div>
+      																<div class="modal-body" style="text-align:left;">
+      																	<b style="color:black;">정말 삭제하시겠습니까?</b>
+      																</div>
+      																<div class="modal-footer">
+         																<button type="button" class="btn btn-danger" 
+																		onclick="location.href='${pageContext.request.contextPath}/admin/reply_delete?reply_id=${replyList.reply_id}'"
+																		style="cursor:pointer;">삭제</button>
+          																<button type="button" class="btn btn-primary" data-dismiss="modal" style="cursor:pointer;">취소</button>
+		      														</div>
+    															</div>
+  															</div>
+														</div>
+													</sec:authorize>
+												</div>
 											</div>
 										</div>
-										<div class="reply-btn" style="display:flex;">
-											<a href="" class="btn-reply text-uppercase" data-toggle="modal" data-target="#reply" style="height:29.6px;">reply</a>
-											<sec:authorize access="hasRole('ROLE_ADMIN')">
-												<a href="" class="btn-reply text-uppercase" data-toggle="modal" data-target="#deleteReply" style="height:29.6px;">delete</a>
-												<div class="modal" id="deleteReply">
-     												<div class="modal-dialog">
-    													<div class="modal-content">
-      														<div class="modal-header" style="height:70px;">
-        														<h4 class="modal-title">댓글 삭제</h4>
-        														<button type="button" class="botton close" data-dismiss="modal" aria-label="Close" style="cursor:pointer;">
-          															<span aria-hidden="true">&times;</span>
-        														</button>
-      														</div>
-      														<div class="modal-body" style="text-align:left;">
-      															<b style="color:black;">정말 삭제하시겠습니까?</b>
-      														</div>
-      														<div class="modal-footer">
-         														<button type="button" class="btn btn-danger" 
-																onclick="location.href='${pageContext.request.contextPath}/admin/reply_delete?reply_id=${replyList.reply_id}'"
-																style="cursor:pointer;">삭제</button>
-          														<button type="button" class="btn btn-primary" data-dismiss="modal" style="cursor:pointer;">취소</button>
-      														</div>
-    													</div>
-  													</div>
+									</c:when>
+								
+									<c:otherwise>
+										<div class="comment-list left-padding">
+											<div class="single-comment justify-content-between d-flex">
+												<div class="user justify-content-between d-flex">
+													<div class="desc">
+														<h5><b style="color:black;">${replyList.reply_person}</b></h5>
+														<p class="date" style="color:gray;">${replyList.reply_date}</p>
+														<p class="comment">${replyList.reply_content}</p>
+													</div>
 												</div>
-											</sec:authorize>
+												<div class="reply-btn" style="display:flex;">
+													<sec:authorize access="hasRole('ROLE_ADMIN')">
+														<a href="" class="btn-reply text-uppercase" data-toggle="modal" data-target="#deleteReply" style="height:29.6px;">delete</a>
+														<div class="modal" id="deleteReply">
+     														<div class="modal-dialog">
+    															<div class="modal-content">
+		      														<div class="modal-header" style="height:70px;">
+        																<h4 class="modal-title">댓글 삭제</h4>
+        																<button type="button" class="botton close" data-dismiss="modal" aria-label="Close" style="cursor:pointer;">
+          																	<span aria-hidden="true">&times;</span>
+        																</button>
+      																</div>
+      																<div class="modal-body" style="text-align:left;">
+      																	<b style="color:black;">정말 삭제하시겠습니까?</b>
+		      														</div>
+      																<div class="modal-footer">
+         																<button type="button" class="btn btn-danger" 
+																		onclick="location.href='${pageContext.request.contextPath}/admin/reply_delete?reply_id=${replyList.reply_id}'"
+																		style="cursor:pointer;">삭제</button>
+          																<button type="button" class="btn btn-primary" data-dismiss="modal" style="cursor:pointer;">취소</button>
+      																</div>
+    															</div>
+		  													</div>
+														</div>
+													</sec:authorize>
+												</div>
+											</div>
 										</div>
-									</div>
-								</div>
+									</c:otherwise>
+								</c:choose>
 							</c:forEach>
 						</c:otherwise>
 					</c:choose>
@@ -96,7 +179,7 @@
 								<form:hidden path="re_cnt" value="0"/>
 							</div>
 							<input type="submit" class="primary-btn button_hover" value="Post Comment"
-							style="cursor:pointer;"/>	
+							style="cursor:pointer;"/>
 						</form:form>
 					</div>
 				</div>

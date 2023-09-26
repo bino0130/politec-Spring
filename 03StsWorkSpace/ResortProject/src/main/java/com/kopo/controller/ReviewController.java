@@ -51,25 +51,33 @@ public class ReviewController {
 	@GetMapping("/review_view")
 	public String requestShowReviewForm(@RequestParam("review_id") int review_id, 
 			@ModelAttribute("newReply") Reply reply, Model model,
-			@ModelAttribute("newSecondReply") Reply secondReply) {
+			@ModelAttribute("secondReply") Reply secondReply) {
 		Review oneReview = reviewService.getOneReviewById(review_id);
-//		Reply oneReply = replyService.getOneReply(review_id);
+		int re_cnt = 0;
+		if (replyService.getReCntById(review_id) == null) {
+			re_cnt = 0;
+			model.addAttribute("re_cnt", re_cnt);
+		} else if (replyService.getReCntById(review_id) != null) {
+			re_cnt = replyService.getReCntById(review_id) + 1; // re_cnt + 1
+			model.addAttribute("re_cnt", re_cnt);
+		}
 		int viewCnt = oneReview.getView_cnt(); // 변수에 조회수 담기
-//		int re_level = oneReply.getRe_level();
-//		int re_cnt = oneReply.getRe_cnt();
 		reviewService.updateViewCnt(review_id, viewCnt);
 		List<Reply> replyList = replyService.getReplyList(review_id);
 		
 		model.addAttribute("oneReview", oneReview);
 		model.addAttribute("replyList", replyList);
-//		model.addAttribute("re_level", re_level);
-//		model.addAttribute("re_cnt", re_cnt);
 		return "review/review_view";
 	}
 	
 	@PostMapping("/review_view")
-	public String sendNewReply(@ModelAttribute("newReply") Reply reply) {
-		replyService.makeOneReply(reply);
+	public String sendNewReply(@ModelAttribute("newReply") Reply reply, 
+			@ModelAttribute("secondReply") Reply secondReply) {
+		if(reply != null) {
+			replyService.makeOneReply(reply);
+		} else if (secondReply != null) {
+			replyService.makeOneReply(secondReply);
+		}
 		return "redirect:/review_view?review_id=" + reply.getRoot_id();
 	}
 	

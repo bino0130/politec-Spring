@@ -340,7 +340,7 @@ function validateForm() { // 데이터 전달하는 form 체크
 										onblur="this.placeholder='Reservation Date'" readonly="true"
 										required="true" class="single-input"/>
 									<script>
-									$(function() {
+									/* $(function() {
 										$("#Date").datepicker({
 											minDate : new Date(),
 											maxDate : '+365d',
@@ -348,8 +348,26 @@ function validateForm() { // 데이터 전달하는 form 체크
 											showMonthAfterYear : true,
 											dayNamesMin : ['월', '화', '수', '목', '금', '토', '일' ], // 요일의 한글 형식.
 											monthNamesShort : ['1월', '2월', '3월', '4월', '5월', '6월', '7월',
-																'8월', '9월', '10월', '11월', '12월' ] // 월의 한글 형식.
+																'8월', '9월', '10월', '11월', '12월' ], // 월의 한글 형식.
 											});
+										}); */
+										$(function() {
+										    var reservedDates = ["2023-09-25", "2023-09-26", "2023-09-27"]; // 예약된 날짜 배열
+
+										    function disableReservedDates(date) {
+										        var stringDate = $.datepicker.formatDate('yy-mm-dd', date);
+										        return [reservedDates.indexOf(stringDate) === -1];
+										    }
+
+										    $("#Date").datepicker({
+										        minDate: new Date(),
+										        maxDate: '+365d',
+										        dateFormat: 'yy-mm-dd',
+										        showMonthAfterYear: true,
+										        dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'],
+										        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+										        beforeShowDay: disableReservedDates // 예약된 날짜 비활성화
+										    });
 										});
 									</script>
 								</div>

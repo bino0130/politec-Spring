@@ -8,7 +8,16 @@ public class Reply {
 	private String reply_content;
 	private int re_level; // re_level이 댓글 레벨 (댓글, 답글)
 	private int re_cnt; // re_cnt가 댓글 순서 (답글 내 출력 순서)
+	private int re_Id; // 댓글의 답글이 소속되는 컬럼 
 	
+	public int getRe_Id() {
+		return re_Id;
+	}
+
+	public void setRe_Id(int re_Id) {
+		this.re_Id = re_Id;
+	}
+
 	public Reply() {
 		super();
 	}

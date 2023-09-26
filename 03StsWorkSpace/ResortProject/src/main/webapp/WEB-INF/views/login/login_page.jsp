@@ -45,31 +45,17 @@
                 </div>
                 
                 <div class="d-sm-flex mb-5 align-items-center">
-                  <label class="control control--checkbox mb-3 mb-sm-0" for="remember"><span class="caption">Remember me</span>
-                    <input type="checkbox" id="remember"/>
-                    <div class="control__indicator"></div>
-                  </label>
                 </div>
 
                 <input type="submit" value="Log In" class="genric-btn primary radius" style="cursor:pointer; width:100%;">
-
               </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    
   </div>
-  
-    
-    
-
-    <!-- <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script> -->
+<script src="js/main.js"></script> -->
 <%@ include file="../footer.jsp" %>
 </body>
 </html>

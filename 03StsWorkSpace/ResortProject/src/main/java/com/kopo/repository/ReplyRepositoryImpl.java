@@ -39,8 +39,8 @@ public class ReplyRepositoryImpl implements ReplyRepository {
 	}
 
 	@Override
-	public Reply getOneReply(int reply_id) {
-		reply = mapper.getOneReply(reply_id);
-		return reply;
+	public Integer getReCntById(Integer root_id) {
+		Integer re_cnt = mapper.getReCntById(root_id);
+		return re_cnt;
 	}
 }

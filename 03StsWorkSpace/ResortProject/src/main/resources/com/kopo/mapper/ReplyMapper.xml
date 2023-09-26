@@ -9,18 +9,25 @@
 			<selectKey keyProperty="Reply.reply_id" resultType="Integer" order="BEFORE">
 				select reply_seq.nextval from dual
 			</selectKey>
-			insert into reply (root_id, reply_id, reply_person, reply_date,
-			reply_content, re_level, re_cnt) values (${Reply.root_id}, ${Reply.reply_id}, '${Reply.reply_person}', 
-			to_date('${Reply.reply_date}', 'YYYY-MM-DD'), '${Reply.reply_content}', ${Reply.re_level}, ${Reply.re_cnt})
+			<if test="Reply.re_level == 0">
+				insert into reply (root_id, reply_id, reply_person, reply_date,
+				reply_content, re_level, re_cnt, re_Id) values (${Reply.root_id}, ${Reply.reply_id}, '${Reply.reply_person}', 
+				to_date('${Reply.reply_date}', 'YYYY-MM-DD'), '${Reply.reply_content}', ${Reply.re_level}, ${Reply.re_cnt}, ${Reply.reply_id})
+			</if>
+			<if test="Reply.re_level == 1">
+				insert into reply (root_id, reply_id, reply_person, reply_date,
+				reply_content, re_level, re_cnt, re_Id) values (${Reply.root_id}, ${Reply.reply_id}, '${Reply.reply_person}', 
+				to_date('${Reply.reply_date}', 'YYYY-MM-DD'), '${Reply.reply_content}', ${Reply.re_level}, ${Reply.re_cnt}, ${Reply.re_Id})
+			</if>
 		</insert>
 		
 	<!-- read  -->
 		<select id="getReplyList" resultType="com.kopo.domain.Reply" parameterType="Integer">
-			select * from reply where root_id=${root_id} order by reply_id desc, re_cnt asc
+			select * from reply where root_id=${root_id} order by re_id asc, re_level asc, re_cnt asc
 		</select>
 		
-		<select id="getOneReply" resultType="com.kopo.domain.Reply" parameterType="Integer">
-			select * from reply where reply_id = ${reply_id}
+		<select id="getReCntById" resultType="Integer" parameterType="Integer">
+			select max(re_cnt) from reply where root_id = ${root_id}
 		</select>
 	
 	<!-- update -->
