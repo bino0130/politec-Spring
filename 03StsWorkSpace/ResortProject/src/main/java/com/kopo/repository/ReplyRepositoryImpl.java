@@ -15,7 +15,6 @@ public class ReplyRepositoryImpl implements ReplyRepository {
 	private ReplyMapper mapper;
 	
 	private List<Reply> listOfReply = new ArrayList<Reply>();
-	private Reply reply = new Reply();
 
 	@Override
 	public void makeOneReply(Reply reply) {

@@ -11,13 +11,13 @@
 			</selectKey>
 			<if test="Reply.re_level == 0">
 				insert into reply (root_id, reply_id, reply_person, reply_date,
-				reply_content, re_level, re_cnt, re_Id) values (${Reply.root_id}, ${Reply.reply_id}, '${Reply.reply_person}', 
+				reply_content, re_level, re_cnt, re_id) values (${Reply.root_id}, ${Reply.reply_id}, '${Reply.reply_person}', 
 				to_date('${Reply.reply_date}', 'YYYY-MM-DD'), '${Reply.reply_content}', ${Reply.re_level}, ${Reply.re_cnt}, ${Reply.reply_id})
 			</if>
 			<if test="Reply.re_level == 1">
 				insert into reply (root_id, reply_id, reply_person, reply_date,
-				reply_content, re_level, re_cnt, re_Id) values (${Reply.root_id}, ${Reply.reply_id}, '${Reply.reply_person}', 
-				to_date('${Reply.reply_date}', 'YYYY-MM-DD'), '${Reply.reply_content}', ${Reply.re_level}, ${Reply.re_cnt}, ${Reply.re_Id})
+				reply_content, re_level, re_cnt, re_id) values (${Reply.root_id}, ${Reply.reply_id}, '${Reply.reply_person}', 
+				to_date('${Reply.reply_date}', 'YYYY-MM-DD'), '${Reply.reply_content}', ${Reply.re_level}, ${Reply.re_cnt}, ${Reply.re_id})
 			</if>
 		</insert>
 		

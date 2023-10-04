@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Reply</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Modal에 값 넘겨주려면 선언해줘야함 -->
 </head>
 <body>
 <% 
@@ -37,53 +38,72 @@
 													<div class="desc">
 														<h5><b style="color:black;">${replyList.reply_person}</b></h5>
 														<p class="date" style="color:gray;">${replyList.reply_date}</p>
-														<p class="comment">${replyList.reply_content}</p>
+														<p class="comment">${replyList.reply_content}, reply_id=${replyList.reply_id}, re_id=${replyList.re_id}</p>
 													</div>
 												</div>
 												<div class="reply-btn" style="display:flex;">
-													<a href="" class="btn-reply text-uppercase" data-toggle="modal" data-target="#writeReply" style="height:29.6px;">reply</a>	
-													<div class="modal" id="writeReply"> <!-- 답글 모달 시작 -->
-     														<div class="modal-dialog">
-    															<div class="modal-content">
-      																<div class="modal-header" style="height:70px;">
-        																<h4 class="modal-title">답글 달기</h4>
-        																<button type="button" class="botton close" data-dismiss="modal" aria-label="Close" style="cursor:pointer;">
-		          															<span aria-hidden="true">&times;</span>
-        																</button>
-      																</div>
-      																<form:form modelAttribute="secondReply" method="POST" onsubmit="">
-																		<div style="margin-top:10px;">
-																			<div class="form-group form-inline">
-																				<div class="form-group col-lg-6 col-md-6 name">
-																					<form:hidden path="root_id" value="${oneReview.review_id}"/>
-																					<form:input path="reply_person" type="text" class="form-control" placeholder="Name"
-																						onfocus="this.placeholder=''" onblur="this.placeholder='Name'" value="${replyList.reply_id}"
-																						style=" background-color:#F1F1F1;"/>
-																					<form:hidden path="reply_date" value="<%=dateTime%>"/>
-																				</div>
-																			</div>
-																			<div class="form-group">
-																				<form:textarea path="reply_content" class="form-control mb-10" rows="5" name="Message" 
-																					placeholder="Messege" onfocus="this.placeholder=''" onblur="this.placeholder='Messege'"  
-																					required="true" style="resize:none; background-color:#F1F1F1; width:450px; margin-left:15px;"></form:textarea>
-																				<form:hidden path="re_level" value="1"/>
-																				<form:hidden path="re_cnt" value="${re_cnt}"/>
-																				<form:hidden path="re_Id" value="${replyList.reply_id}"/>
+													<button class="btn-reply text-uppercase" data-toggle="modal" data-id="${replyList.re_id}"
+													data-target="#writeReply" style="height:29.6px;">re_id=${replyList.re_id}, reply</button>
+													
+													<!-- 답글 모달 시작 -->
+													<div class="modal fade" id="writeReply">
+     													<div class="modal-dialog">
+    														<div class="modal-content">
+    														
+      															<div class="modal-header" style="height:70px;">
+        															<h4 class="modal-title">답글 달기</h4>
+        															<button type="button" class="botton close" data-dismiss="modal" aria-label="Close" style="cursor:pointer;">
+		          														<span aria-hidden="true">&times;</span>
+        															</button>
+      															</div>
+      															
+      															<form:form modelAttribute="secondReply" method="POST" onsubmit="">
+      															<div class="modal-body">
+																	<div style="margin-top:10px;">
+																		<div class="form-group form-inline">
+																			<div class="form-group col-lg-6 col-md-6 name">
+																				<form:hidden path="root_id" value="${oneReview.review_id}"/>
+																				<form:input path="reply_person" type="text" class="form-control" placeholder="Name"
+																					onfocus="this.placeholder=''" onblur="this.placeholder='Name'" value=""
+																					style=" background-color:#F1F1F1;"/>
+																				<form:hidden path="reply_date" value="<%=dateTime%>"/>
 																			</div>
 																		</div>
-	      																<div class="modal-footer">
-    	     																<button type="submit" class="btn btn-primary" 
-																			onclick="location.href='${pageContext.request.contextPath}/admin/'"
-																			style="cursor:pointer;">작성</button>
-          																	<button type="button" class="btn btn-danger" data-dismiss="modal" style="cursor:pointer;">취소</button>
-      																	</div>
-		      														</form:form>
-    															</div>
-  															</div>
-														</div> <!-- 답글 모달 끝 -->
+																		<div class="form-group">
+																			<form:textarea path="reply_content" class="form-control mb-10" rows="5" name="Message" 
+																				placeholder="Messege" onfocus="this.placeholder=''" onblur="this.placeholder='Messege'"  
+																				required="true" style="resize:none; background-color:#F1F1F1; width:450px; margin-left:15px;"></form:textarea>
+																			<form:hidden path="re_level" value="1"/>
+																			<form:hidden path="re_cnt" value="${re_cnt}"/>
+																			<form:hidden path="re_id" value="${replyList.reply_id}"/>
+																		</div>
+																	</div>
+																</div>
+																	
+	      														<div class="modal-footer">
+    	     														<button type="submit" class="btn btn-primary" style="cursor:pointer;">작성</button>
+          															<button type="button" class="btn btn-danger" data-dismiss="modal" style="cursor:pointer;">취소</button>
+      															</div>
+		      													</form:form>
+    														</div>
+  														</div>
+													</div>
+													<!-- 답글 모달 끝 -->
+													
+													<!-- Modal에 값 전달해주는 JavaScript 코드 시작 -->
+													<script>
+    													$(document).ready(function () {
+        													$('.btn-reply').click(function () {
+            													var dataId = $(this).data('id');
+            													$('#writeReply').find('.modal-body input[name="re_id"]').val(dataId);
+            													console.log(dataId);
+        													});
+    													});
+													</script>
+													<!-- Modal에 값 전달해주는 JavaScript 코드 끝 -->
 													<sec:authorize access="hasRole('ROLE_ADMIN')">
 														<a href="" class="btn-reply text-uppercase" data-toggle="modal" data-target="#deleteReply" style="height:29.6px;">delete</a>
-														<div class="modal" id="deleteReply">
+														<div class="modal fade" id="deleteReply">
      														<div class="modal-dialog">
     															<div class="modal-content">
       																<div class="modal-header" style="height:70px;">
@@ -117,13 +137,13 @@
 													<div class="desc">
 														<h5><b style="color:black;">${replyList.reply_person}</b></h5>
 														<p class="date" style="color:gray;">${replyList.reply_date}</p>
-														<p class="comment">${replyList.reply_content}</p>
+														<p class="comment">${replyList.reply_content},${replyList.reply_id},${replyList.re_id}</p>
 													</div>
 												</div>
 												<div class="reply-btn" style="display:flex;">
 													<sec:authorize access="hasRole('ROLE_ADMIN')">
 														<a href="" class="btn-reply text-uppercase" data-toggle="modal" data-target="#deleteReply" style="height:29.6px;">delete</a>
-														<div class="modal" id="deleteReply">
+														<div class="modal fade" id="deleteReply">
      														<div class="modal-dialog">
     															<div class="modal-content">
 		      														<div class="modal-header" style="height:70px;">
