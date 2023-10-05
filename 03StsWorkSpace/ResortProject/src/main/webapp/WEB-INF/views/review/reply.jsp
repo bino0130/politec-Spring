@@ -38,12 +38,12 @@
 													<div class="desc">
 														<h5><b style="color:black;">${replyList.reply_person}</b></h5>
 														<p class="date" style="color:gray;">${replyList.reply_date}</p>
-														<p class="comment">${replyList.reply_content}, reply_id=${replyList.reply_id}, re_id=${replyList.re_id}</p>
+														<p class="comment">${replyList.reply_content}</p>
 													</div>
 												</div>
 												<div class="reply-btn" style="display:flex;">
 													<button class="btn-reply text-uppercase" data-toggle="modal" data-id="${replyList.re_id}"
-													data-target="#writeReply" style="height:29.6px;">re_id=${replyList.re_id}, reply</button>
+													data-target="#writeReply" style="height:29.6px;">reply</button>
 													
 													<!-- 답글 모달 시작 -->
 													<div class="modal fade" id="writeReply">
@@ -101,6 +101,7 @@
     													});
 													</script>
 													<!-- Modal에 값 전달해주는 JavaScript 코드 끝 -->
+													
 													<sec:authorize access="hasRole('ROLE_ADMIN')">
 														<a href="" class="btn-reply text-uppercase" data-toggle="modal" data-target="#deleteReply" style="height:29.6px;">delete</a>
 														<div class="modal fade" id="deleteReply">

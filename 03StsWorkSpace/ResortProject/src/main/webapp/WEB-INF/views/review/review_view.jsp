@@ -38,7 +38,7 @@
 					<div class="table-head" style="height:300px;">
 						<div class="serial" style="text-align:center;">내용</div>
 						<div style="text-align:left; width:600px; font-weight:500; color:black; padding-top:8px;">
-							<c:out value="${oneReview.review_content}${re_cnt}"/>
+							<c:out value="${oneReview.review_content}"/>
 						</div>
 					</div>
 					<div class="table-head" style="text-align: right;">
@@ -48,7 +48,7 @@
 								<sec:authorize access="hasRole('ROLE_ADMIN')">
 									<button type="button" class="genric-btn danger radius" data-toggle="modal" data-target="#deleteReview">삭제</button>
 									<!-- modal -->
-									<div class="modal" id="deleteReview">
+									<div class="modal fade" id="deleteReview">
      									<div class="modal-dialog">
     										<div class="modal-content">
       											<div class="modal-header" style="height:70px;">
